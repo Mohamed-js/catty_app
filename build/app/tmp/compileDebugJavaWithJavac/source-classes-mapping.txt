@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/datingapp/BuildConfig.java
+ com.example.datingapp.BuildConfig
+com/example/datingapp/MainActivity.java
+ com.example.datingapp.MainActivity
