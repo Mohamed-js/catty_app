@@ -724,16 +724,16 @@ abstract class AppLocalizations {
   /// **'Keep Dating'**
   String get lbl_keep_dating;
 
-  /// Online Dating App
+  /// Online Animals App
   ///
   /// In en, this message translates to:
-  /// **'Online Dating App'**
+  /// **'Online Animals App'**
   String get lbl_online_dating_app;
 
-  /// Find Your
+  /// Find Your Animal's
   ///
   /// In en, this message translates to:
-  /// **'Find Your'**
+  /// **'Find Your Animal\'s'**
   String get lbl_start_dating_subtitle1;
 
   /// Best Match
@@ -742,23 +742,17 @@ abstract class AppLocalizations {
   /// **'Best Match'**
   String get lbl_start_dating_subtitle2;
 
-  /// Wanna know how the app works?
-  ///
-  /// In en, this message translates to:
-  /// **'Wanna know how the app works?'**
-  String get lbl_start_dating_subtitle3;
-
-  /// Play the Video
-  ///
-  /// In en, this message translates to:
-  /// **'Play the Video'**
-  String get lbl_play_video;
-
   /// Start Dating
   ///
   /// In en, this message translates to:
   /// **'Start Dating'**
   String get lbl_start_dating;
+
+  /// Start Now
+  ///
+  /// In en, this message translates to:
+  /// **'Start Now'**
+  String get lbl_start_now;
 
   /// Be Patient
   ///

@@ -51,25 +51,11 @@ class _StartDatingScreenState extends BaseRouteState {
                   style: Theme.of(context).primaryTextTheme.headline5,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Text(
-                    AppLocalizations.of(context).lbl_start_dating_subtitle3,
-                    style: TextStyle(
-                      color: g.isDarkModeEnable ? Colors.white70 : Color(0xFF5E50E5),
-                      fontWeight: FontWeight.w600,
-                    ),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Image.asset(
+                    g.isDarkModeEnable ? 'assets/images/startdatingimg.png' : 'assets/images/startdatingimg.png',
+                    fit: BoxFit.cover,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Text(
-                    AppLocalizations.of(context).lbl_play_video,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ),
-                Image.asset(
-                  g.isDarkModeEnable ? 'assets/images/start_dating_new.png' : 'assets/images/start_dating_new.png',
-                  fit: BoxFit.cover,
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -93,7 +79,7 @@ class _StartDatingScreenState extends BaseRouteState {
                                 )));
                       },
                       child: Text(
-                        AppLocalizations.of(context).lbl_start_dating,
+                        AppLocalizations.of(context).lbl_start_now,
                         style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
                           MaterialState.pressed,
                         }),

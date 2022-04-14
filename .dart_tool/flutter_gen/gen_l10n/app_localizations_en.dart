@@ -323,22 +323,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lbl_keep_dating => 'Keep Dating';
 
   @override
-  String get lbl_online_dating_app => 'Online Dating App';
+  String get lbl_online_dating_app => 'Online Animals App';
 
   @override
-  String get lbl_start_dating_subtitle1 => 'Find Your';
+  String get lbl_start_dating_subtitle1 => 'Find Your Animal\'s';
 
   @override
   String get lbl_start_dating_subtitle2 => 'Best Match';
 
   @override
-  String get lbl_start_dating_subtitle3 => 'Wanna know how the app works?';
-
-  @override
-  String get lbl_play_video => 'Play the Video';
-
-  @override
   String get lbl_start_dating => 'Start Dating';
+
+  @override
+  String get lbl_start_now => 'Start Now';
 
   @override
   String get lbl_be_patient => 'Be Patient';

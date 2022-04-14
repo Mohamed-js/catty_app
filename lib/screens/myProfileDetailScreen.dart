@@ -44,11 +44,11 @@ class _MyProfileSceenState extends BaseRouteState {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.30,
-                      width: MediaQuery.of(context).size.width * 0.75,
+                      height: MediaQuery.of(context).size.width*.8,
+                      width: MediaQuery.of(context).size.width,
                       child: Container(
                         child: Image.asset(
-                          'assets/images/profile.png',
+                          'assets/images/sample3.png',
                           fit: BoxFit.cover,
                         ),
                         decoration: BoxDecoration(
@@ -56,100 +56,100 @@ class _MyProfileSceenState extends BaseRouteState {
                         ),
                       ),
                     ),
-                    Container(
-                      color: g.isDarkModeEnable ? Color(0xFF130032) : Colors.white,
-                      height: MediaQuery.of(context).size.height * 0.30,
-                      width: MediaQuery.of(context).size.width * 0.25,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.favorite_border,
-                                  color: g.isDarkModeEnable ? Theme.of(context).iconTheme.color : Theme.of(context).primaryColorLight,
-                                  size: 18,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 4),
-                                  child: Text(
-                                    '2.7k',
-                                    style: Theme.of(context).primaryTextTheme.bodyText1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            color: g.isDarkModeEnable ? Color(0xFF230f4E) : Colors.purple[100],
-                          ),
-                          Expanded(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.thumb_up,
-                                  color: g.isDarkModeEnable ? Theme.of(context).iconTheme.color : Theme.of(context).primaryColorLight,
-                                  size: 18,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 4),
-                                  child: Text(
-                                    '3.5k',
-                                    style: Theme.of(context).primaryTextTheme.bodyText1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            color: g.isDarkModeEnable ? Color(0xFF230f4E) : Colors.purple[100],
-                          ),
-                          Expanded(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(
-                                  Icons.comment_outlined,
-                                  color: g.isDarkModeEnable ? Theme.of(context).iconTheme.color : Theme.of(context).primaryColorLight,
-                                  size: 18,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 4),
-                                  child: Text(
-                                    '2.3k',
-                                    style: Theme.of(context).primaryTextTheme.bodyText1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            color: g.isDarkModeEnable ? Color(0xFF230f4E) : Colors.purple[100],
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(22),
-                              gradient: LinearGradient(
-                                colors: [Colors.blue[900], Colors.blueAccent[700]],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                            ),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              radius: 20,
-                              child: Icon(
-                                Icons.border_color_outlined,
-                                size: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
+                    // Container(
+                    //   color: g.isDarkModeEnable ? Color(0xFF130032) : Colors.white,
+                    //   height: MediaQuery.of(context).size.height * 0.30,
+                    //   width: MediaQuery.of(context).size.width * 0.25,
+                    //   child: Column(
+                    //     children: [
+                    //       Expanded(
+                    //         child: Row(
+                    //           mainAxisSize: MainAxisSize.min,
+                    //           children: [
+                    //             Icon(
+                    //               Icons.favorite_border,
+                    //               color: g.isDarkModeEnable ? Theme.of(context).iconTheme.color : Theme.of(context).primaryColorLight,
+                    //               size: 18,
+                    //             ),
+                    //             Padding(
+                    //               padding: const EdgeInsets.only(left: 4),
+                    //               child: Text(
+                    //                 '2.7k',
+                    //                 style: Theme.of(context).primaryTextTheme.bodyText1,
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       Divider(
+                    //         color: g.isDarkModeEnable ? Color(0xFF230f4E) : Colors.purple[100],
+                    //       ),
+                    //       Expanded(
+                    //         child: Row(
+                    //           mainAxisSize: MainAxisSize.min,
+                    //           children: [
+                    //             Icon(
+                    //               Icons.thumb_up,
+                    //               color: g.isDarkModeEnable ? Theme.of(context).iconTheme.color : Theme.of(context).primaryColorLight,
+                    //               size: 18,
+                    //             ),
+                    //             Padding(
+                    //               padding: const EdgeInsets.only(left: 4),
+                    //               child: Text(
+                    //                 '3.5k',
+                    //                 style: Theme.of(context).primaryTextTheme.bodyText1,
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       Divider(
+                    //         color: g.isDarkModeEnable ? Color(0xFF230f4E) : Colors.purple[100],
+                    //       ),
+                    //       Expanded(
+                    //         child: Row(
+                    //           mainAxisSize: MainAxisSize.min,
+                    //           children: [
+                    //             Icon(
+                    //               Icons.comment_outlined,
+                    //               color: g.isDarkModeEnable ? Theme.of(context).iconTheme.color : Theme.of(context).primaryColorLight,
+                    //               size: 18,
+                    //             ),
+                    //             Padding(
+                    //               padding: const EdgeInsets.only(left: 4),
+                    //               child: Text(
+                    //                 '2.3k',
+                    //                 style: Theme.of(context).primaryTextTheme.bodyText1,
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       Divider(
+                    //         color: g.isDarkModeEnable ? Color(0xFF230f4E) : Colors.purple[100],
+                    //       ),
+                    //       Container(
+                    //         decoration: BoxDecoration(
+                    //           borderRadius: BorderRadius.circular(22),
+                    //           gradient: LinearGradient(
+                    //             colors: [Colors.blue[900], Colors.blueAccent[700]],
+                    //             begin: Alignment.topLeft,
+                    //             end: Alignment.bottomRight,
+                    //           ),
+                    //         ),
+                    //         child: CircleAvatar(
+                    //           backgroundColor: Colors.transparent,
+                    //           radius: 20,
+                    //           child: Icon(
+                    //             Icons.border_color_outlined,
+                    //             size: 18,
+                    //             color: Colors.white,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // )
                   ],
                 ),
                 Stack(
@@ -181,14 +181,15 @@ class _MyProfileSceenState extends BaseRouteState {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20, left: 20),
                             child: Text(
-                              'Mathew Ben',
+                              'Salma Ali',
                               style: Theme.of(context).primaryTextTheme.headline1,
                             ),
                           ),
                         ),
                         Padding(
                           padding: g.isRTL ? const EdgeInsets.only(right: 20) : const EdgeInsets.only(left: 20),
-                          child: Row(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
                                 height: 30,
@@ -202,7 +203,7 @@ class _MyProfileSceenState extends BaseRouteState {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4),
                                       child: Text(
-                                        '+01 331 623 8413',
+                                        '+01 234 567 8910',
                                         style: Theme.of(context).primaryTextTheme.bodyText1,
                                       ),
                                     ),
@@ -210,10 +211,8 @@ class _MyProfileSceenState extends BaseRouteState {
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 20),
                                 height: 30,
                                 child: Row(
-                                  mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Icon(
                                       Icons.mail,
@@ -223,13 +222,14 @@ class _MyProfileSceenState extends BaseRouteState {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4),
                                       child: Text(
-                                        'mathew@gmail.com',
+                                        'salma-elgamda@gmail.com',
                                         style: Theme.of(context).primaryTextTheme.bodyText1,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
+                              
                             ],
                           ),
                         ),
@@ -243,254 +243,257 @@ class _MyProfileSceenState extends BaseRouteState {
                         Padding(
                           padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 10) : const EdgeInsets.only(left: 20, top: 10),
                           child: Text(
-                            'Love music, cooking, swimming, going out,\ntravelling etc. Wanna be friends??',
+                            'Love animals, going out, travelling etc.Love animals, going out, travelling etc.',
                             style: Theme.of(context).primaryTextTheme.subtitle2,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: TabBar(
-                            controller: _tabController,
-                            indicatorColor: Theme.of(context).iconTheme.color,
-                            onTap: (int index) async {
-                              _currentIndex = index;
-                              setState(() {});
-                            },
-                            tabs: [
-                              _tabController.index == 0
-                                  ? Tab(
-                                      child: ShaderMask(
-                                        blendMode: BlendMode.srcIn,
-                                        shaderCallback: (Rect bounds) {
-                                          return LinearGradient(
-                                            colors: g.gradientColors,
-                                            begin: Alignment.centerLeft,
-                                            end: Alignment.centerRight,
-                                          ).createShader(bounds);
-                                        },
-                                        child: Text(
-                                          AppLocalizations.of(context).lbl_tab_pictures,
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                      ),
-                                    )
-                                  : Text(
-                                      AppLocalizations.of(context).lbl_tab_pictures,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                              _tabController.index == 1
-                                  ? Tab(
-                                      child: ShaderMask(
-                                        blendMode: BlendMode.srcIn,
-                                        shaderCallback: (Rect bounds) {
-                                          return LinearGradient(
-                                            colors: g.gradientColors,
-                                            begin: Alignment.centerLeft,
-                                            end: Alignment.centerRight,
-                                          ).createShader(bounds);
-                                        },
-                                        child: Text(
-                                          AppLocalizations.of(context).lbl_tab_videos,
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                      ),
-                                    )
-                                  : Text(
-                                      AppLocalizations.of(context).lbl_tab_videos,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                              _tabController.index == 2
-                                  ? Tab(
-                                      child: ShaderMask(
-                                        blendMode: BlendMode.srcIn,
-                                        shaderCallback: (Rect bounds) {
-                                          return LinearGradient(
-                                            colors: g.gradientColors,
-                                            begin: Alignment.centerLeft,
-                                            end: Alignment.centerRight,
-                                          ).createShader(bounds);
-                                        },
-                                        child: Text(
-                                          AppLocalizations.of(context).lbl_tab_mybio,
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                      ),
-                                    )
-                                  : Text(
-                                      AppLocalizations.of(context).lbl_tab_mybio,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                              _tabController.index == 3
-                                  ? Tab(
-                                      child: ShaderMask(
-                                        blendMode: BlendMode.srcIn,
-                                        shaderCallback: (Rect bounds) {
-                                          return LinearGradient(
-                                            colors: g.gradientColors,
-                                            begin: Alignment.centerLeft,
-                                            end: Alignment.centerRight,
-                                          ).createShader(bounds);
-                                        },
-                                        child: Text(
-                                          AppLocalizations.of(context).lbl_tab_more,
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                      ),
-                                    )
-                                  : Text(
-                                      AppLocalizations.of(context).lbl_tab_more,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: (MediaQuery.of(context).size.height * 0.12),
-                          width: MediaQuery.of(context).size.width,
-                          child: TabBarView(
-                            controller: _tabController,
-                            children: [
-                              GridView.builder(
-                                scrollDirection: Axis.horizontal,
-                                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: MediaQuery.of(context).size.width,
-                                  mainAxisSpacing: 2.0,
-                                  crossAxisSpacing: 2.0,
-                                ),
-                                itemCount: 5,
-                                itemBuilder: (ctx, index) {
-                                  return Container(
-                                    alignment: Alignment.center,
-                                    margin: EdgeInsets.only(top: 20, left: 20),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(color: Colors.white),
-                                      color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
-                                    ),
-                                    height: (MediaQuery.of(context).size.height * 0.12),
-                                    width: MediaQuery.of(context).size.width,
-                                    child: GridTile(
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(19),
-                                        child: Image.asset(
-                                          'assets/images/sample1.jpg',
-                                          height: (MediaQuery.of(context).size.height * 0.12),
-                                          width: MediaQuery.of(context).size.width,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                              Container(),
-                              Container(),
-                              Container()
-                            ],
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(top: 20),
+                        //   child: TabBar(
+                        //     controller: _tabController,
+                        //     indicatorColor: Theme.of(context).iconTheme.color,
+                        //     onTap: (int index) async {
+                        //       _currentIndex = index;
+                        //       setState(() {});
+                        //     },
+                        //     tabs: [
+                        //       _tabController.index == 0
+                        //           ? Tab(
+                        //               child: ShaderMask(
+                        //                 blendMode: BlendMode.srcIn,
+                        //                 shaderCallback: (Rect bounds) {
+                        //                   return LinearGradient(
+                        //                     colors: g.gradientColors,
+                        //                     begin: Alignment.centerLeft,
+                        //                     end: Alignment.centerRight,
+                        //                   ).createShader(bounds);
+                        //                 },
+                        //                 child: Text(
+                        //                   AppLocalizations.of(context).lbl_tab_pictures,
+                        //                   style: TextStyle(fontSize: 16),
+                        //                 ),
+                        //               ),
+                        //             )
+                        //           : Text(
+                        //               AppLocalizations.of(context).lbl_tab_pictures,
+                        //               style: TextStyle(fontSize: 16),
+                        //             ),
+                        //       _tabController.index == 1
+                        //           ? Tab(
+                        //               child: ShaderMask(
+                        //                 blendMode: BlendMode.srcIn,
+                        //                 shaderCallback: (Rect bounds) {
+                        //                   return LinearGradient(
+                        //                     colors: g.gradientColors,
+                        //                     begin: Alignment.centerLeft,
+                        //                     end: Alignment.centerRight,
+                        //                   ).createShader(bounds);
+                        //                 },
+                        //                 child: Text(
+                        //                   AppLocalizations.of(context).lbl_tab_videos,
+                        //                   style: TextStyle(fontSize: 16),
+                        //                 ),
+                        //               ),
+                        //             )
+                        //           : Text(
+                        //               AppLocalizations.of(context).lbl_tab_videos,
+                        //               style: TextStyle(fontSize: 16),
+                        //             ),
+                        //       _tabController.index == 2
+                        //           ? Tab(
+                        //               child: ShaderMask(
+                        //                 blendMode: BlendMode.srcIn,
+                        //                 shaderCallback: (Rect bounds) {
+                        //                   return LinearGradient(
+                        //                     colors: g.gradientColors,
+                        //                     begin: Alignment.centerLeft,
+                        //                     end: Alignment.centerRight,
+                        //                   ).createShader(bounds);
+                        //                 },
+                        //                 child: Text(
+                        //                   AppLocalizations.of(context).lbl_tab_mybio,
+                        //                   style: TextStyle(fontSize: 16),
+                        //                 ),
+                        //               ),
+                        //             )
+                        //           : Text(
+                        //               AppLocalizations.of(context).lbl_tab_mybio,
+                        //               style: TextStyle(fontSize: 16),
+                        //             ),
+                        //       _tabController.index == 3
+                        //           ? Tab(
+                        //               child: ShaderMask(
+                        //                 blendMode: BlendMode.srcIn,
+                        //                 shaderCallback: (Rect bounds) {
+                        //                   return LinearGradient(
+                        //                     colors: g.gradientColors,
+                        //                     begin: Alignment.centerLeft,
+                        //                     end: Alignment.centerRight,
+                        //                   ).createShader(bounds);
+                        //                 },
+                        //                 child: Text(
+                        //                   AppLocalizations.of(context).lbl_tab_more,
+                        //                   style: TextStyle(fontSize: 16),
+                        //                 ),
+                        //               ),
+                        //             )
+                        //           : Text(
+                        //               AppLocalizations.of(context).lbl_tab_more,
+                        //               style: TextStyle(fontSize: 16),
+                        //             ),
+                        //     ],
+                        //   ),
+                        // ),
                         Padding(
                           padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 30) : const EdgeInsets.only(left: 20, top: 30),
                           child: Text(
-                            AppLocalizations.of(context).lbl_intrests,
+                            "Animals",
                             style: Theme.of(context).primaryTextTheme.headline3,
                           ),
                         ),
                         Padding(
-                            padding: const EdgeInsets.only(bottom: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: Container(
+                            height: (MediaQuery.of(context).size.height * 0.12),
+                            width: MediaQuery.of(context).size.width,
+                            child: TabBarView(
+                              controller: _tabController,
                               children: [
-                                Expanded(
-                                  child: Padding(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 20, top: 20) : EdgeInsets.only(left: 20, top: 20),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          MdiIcons.music,
-                                          color: Color(0xFFB783EB),
-                                          size: 20,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 4),
-                                          child: Text(
-                                            'Music',
-                                            style: Theme.of(context).accentTextTheme.subtitle2,
+                                GridView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: MediaQuery.of(context).size.width,
+                                    mainAxisSpacing: 2.0,
+                                    crossAxisSpacing: 2.0,
+                                  ),
+                                  itemCount: 3,
+                                  itemBuilder: (ctx, index) {
+                                    return Container(
+                                      alignment: Alignment.center,
+                                      margin: EdgeInsets.only(top: 20, left: 20),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(color: Colors.white),
+                                        color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                      ),
+                                      height: (MediaQuery.of(context).size.height * 0.12),
+                                      width: MediaQuery.of(context).size.width,
+                                      child: GridTile(
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(19),
+                                          child: Image.asset(
+                                            'assets/images/animal.jpg',
+                                            height: (MediaQuery.of(context).size.height * 0.12),
+                                            width: MediaQuery.of(context).size.width,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
+                                      ),
+                                    );
+                                  },
                                 ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(top: 20),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          MdiIcons.cookie,
-                                          color: Color(0xFFB783EB),
-                                          size: 20,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 4),
-                                          child: Text(
-                                            'Cooking',
-                                            style: Theme.of(context).accentTextTheme.subtitle2,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(top: 20),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          MdiIcons.swim,
-                                          color: Color(0xFFB783EB),
-                                          size: 20,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 4),
-                                          child: Text(
-                                            'Swimming',
-                                            style: Theme.of(context).accentTextTheme.subtitle2,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.only(top: 20),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.travel_explore,
-                                          color: Color(0xFFB783EB),
-                                          size: 20,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(left: 4),
-                                          child: Text(
-                                            'Travelling',
-                                            style: Theme.of(context).accentTextTheme.subtitle2,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                Container(),
+                                Container(),
+                                Container()
                               ],
-                            ))
+                            ),
+                          ),
+                        ),
+                        // Padding(
+                        //     padding: const EdgeInsets.only(bottom: 20),
+                        //     child: Row(
+                        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //       children: [
+                        //         Expanded(
+                        //           child: Padding(
+                        //             padding: g.isRTL ? EdgeInsets.only(right: 20, top: 20) : EdgeInsets.only(left: 20, top: 20),
+                        //             child: Row(
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               children: [
+                        //                 Icon(
+                        //                   MdiIcons.music,
+                        //                   color: Color(0xFFB783EB),
+                        //                   size: 20,
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.only(left: 4),
+                        //                   child: Text(
+                        //                     'Music',
+                        //                     style: Theme.of(context).accentTextTheme.subtitle2,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ),
+                        //         Expanded(
+                        //           child: Padding(
+                        //             padding: EdgeInsets.only(top: 20),
+                        //             child: Row(
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               children: [
+                        //                 Icon(
+                        //                   MdiIcons.cookie,
+                        //                   color: Color(0xFFB783EB),
+                        //                   size: 20,
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.only(left: 4),
+                        //                   child: Text(
+                        //                     'Cooking',
+                        //                     style: Theme.of(context).accentTextTheme.subtitle2,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ),
+                        //         Expanded(
+                        //           child: Padding(
+                        //             padding: EdgeInsets.only(top: 20),
+                        //             child: Row(
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               children: [
+                        //                 Icon(
+                        //                   MdiIcons.swim,
+                        //                   color: Color(0xFFB783EB),
+                        //                   size: 20,
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.only(left: 4),
+                        //                   child: Text(
+                        //                     'Swimming',
+                        //                     style: Theme.of(context).accentTextTheme.subtitle2,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ),
+                        //         Expanded(
+                        //           child: Padding(
+                        //             padding: EdgeInsets.only(top: 20),
+                        //             child: Row(
+                        //               mainAxisSize: MainAxisSize.min,
+                        //               children: [
+                        //                 Icon(
+                        //                   Icons.travel_explore,
+                        //                   color: Color(0xFFB783EB),
+                        //                   size: 20,
+                        //                 ),
+                        //                 Padding(
+                        //                   padding: const EdgeInsets.only(left: 4),
+                        //                   child: Text(
+                        //                     'Travelling',
+                        //                     style: Theme.of(context).accentTextTheme.subtitle2,
+                        //                   ),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ))
                       ],
                     ),
                   ),

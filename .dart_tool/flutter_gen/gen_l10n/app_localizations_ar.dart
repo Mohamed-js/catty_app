@@ -332,13 +332,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get lbl_start_dating_subtitle2 => 'Best Match';
 
   @override
-  String get lbl_start_dating_subtitle3 => 'Wanna know how the app works?';
-
-  @override
-  String get lbl_play_video => 'Play the Video';
-
-  @override
   String get lbl_start_dating => 'Start Dating';
+
+  @override
+  String get lbl_start_now => 'Start Now';
 
   @override
   String get lbl_be_patient => 'Be Patient';

@@ -419,29 +419,25 @@
    "@lbl_keep_dating":{
       "description": "Keep Dating"
    },
-   "lbl_online_dating_app" : "Online Dating App",
+   "lbl_online_dating_app" : "Online Animals App",
    "@lbl_online_dating_app":{
-      "description": "Online Dating App"
+      "description": "Online Animals App"
    },
-   "lbl_start_dating_subtitle1" : "Find Your",
+   "lbl_start_dating_subtitle1" : "Find Your Animal's",
    "@lbl_start_dating_subtitle1":{
-      "description": "Find Your"
+      "description": "Find Your Animal's"
    },
    "lbl_start_dating_subtitle2" : "Best Match",
    "@lbl_start_dating_subtitle2":{
       "description": "Best Match"
    },
-   "lbl_start_dating_subtitle3" : "Wanna know how the app works?",
-   "@lbl_start_dating_subtitle3":{
-      "description": "Wanna know how the app works?"
-   },
-   "lbl_play_video" : "Play the Video",
-   "@lbl_play_video":{
-      "description": "Play the Video"
-   },
    "lbl_start_dating" : "Start Dating",
    "@lbl_start_dating":{
       "description": "Start Dating"
+   },
+   "lbl_start_now" : "Start Now",
+   "@lbl_start_now":{
+      "description": "Start Now"
    },
    "lbl_be_patient" : "Be Patient",
    "@lbl_be_patient":{

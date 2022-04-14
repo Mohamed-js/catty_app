@@ -29,9 +29,24 @@ class _IntroScreenState extends BaseRouteState {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: Image.asset(
-                  g.isDarkModeEnable ? 'assets/images/intro_new_dark_1.jpg' : 'assets/images/intro_new_remove_light.png',
-                  fit: BoxFit.contain,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 140),
+                      child: Image.asset(
+                        g.isDarkModeEnable ? 'assets/images/dog.png' : 'assets/images/dog.png',
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    // Text(
+                    //   "I-Pet",
+                    //   style: TextStyle(
+                    //     fontWeight: FontWeight.bold,
+                    //     fontSize: 40,
+                    //     color: Color(0xFFF0384F),
+                    //   )
+                    // ),
+                  ],
                 ),
               ),
               InkWell(
