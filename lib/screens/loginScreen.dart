@@ -11,11 +11,25 @@ class LoginScreen extends BaseRoute {
 }
 
 class _LoginScreenState extends BaseRouteState {
-  TextEditingController _cContactNo = new TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
-  var _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _formKey = GlobalKey<FormState>();
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
   _LoginScreenState() : super();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +43,8 @@ class _LoginScreenState extends BaseRouteState {
         ),
       ),
       child: Scaffold(
-          resizeToAvoidBottomInset: false,
           key: _scaffoldKey,
+          resizeToAvoidBottomInset: false,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: Center(
             child: Padding(
@@ -54,64 +68,155 @@ class _LoginScreenState extends BaseRouteState {
                     style: Theme.of(context).primaryTextTheme.subtitle2,
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                    padding: EdgeInsets.all(1.5),
-                    height: 55,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: g.gradientColors,
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(35),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      height: 55,
-                      child: TextFormField(
-                        style: Theme.of(context).primaryTextTheme.subtitle2,
-                        controller: _cContactNo,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(20),
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.asset(
-                                    'assets/images/flag1.png',
-                                    fit: BoxFit.fitWidth,
-                                    height: 15,
+                    child: Form(
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 20),
+                            padding: EdgeInsets.all(1.5),
+                            // height: 55,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: g.gradientColors,
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(35),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: g.isDarkModeEnable
+                                    ? Colors.black
+                                    : Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.circular(35),
+                              ),
+                              height: 55,
+                              child: TextFormField(
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
+                                controller: _emailController,
+                                validator: (value) => value.isEmpty
+                                    ? "Please enter valid email"
+                                    : null,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  hintText: "Email",
+                                  hintStyle: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Color.fromARGB(141, 42, 6, 110)),
+                                  contentPadding: EdgeInsets.all(20),
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        // Padding(
+                                        //   padding: const EdgeInsets.all(8.0),
+                                        //   child: Image.asset(
+                                        //     'assets/images/flag1.png',
+                                        //     fit: BoxFit.fitWidth,
+                                        //     height: 15,
+                                        //   ),
+                                        // ),
+                                        // Text(
+                                        //   '(+01)',
+                                        //   style: Theme.of(context).primaryTextTheme.subtitle2,
+                                        // ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Icon(
+                                            Icons.email,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: VerticalDivider(
+                                            thickness: 2,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color,
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                Text(
-                                  '(+01)',
-                                  style: Theme.of(context).primaryTextTheme.subtitle2,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Icon(
-                                    Icons.expand_more,
-                                    color: Theme.of(context).iconTheme.color,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: VerticalDivider(
-                                    thickness: 2,
-                                    color: Theme.of(context).iconTheme.color,
-                                  ),
-                                )
-                              ],
+                              ),
                             ),
                           ),
-                        ),
+                          // SECOND INPUTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 10),
+                            padding: EdgeInsets.all(1.5),
+                            // height: 55,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: g.gradientColors,
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(35),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: g.isDarkModeEnable
+                                    ? Colors.black
+                                    : Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.circular(35),
+                              ),
+                              height: 55,
+                              child: TextFormField(
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
+                                controller: _passwordController,
+                                validator: (value) => value.isEmpty
+                                    ? "Please enter valid email"
+                                    : null,
+                                keyboardType: TextInputType.visiblePassword,
+                                decoration: InputDecoration(
+                                  hintText: "Password",
+                                  hintStyle: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Color.fromARGB(141, 42, 6, 110)),
+                                  contentPadding: EdgeInsets.all(20),
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(4.0),
+                                          child: Icon(
+                                            Icons.password,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: VerticalDivider(
+                                            thickness: 2,
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -128,106 +233,112 @@ class _LoginScreenState extends BaseRouteState {
                     ),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => VerifyOtpScreen(
-                                  a: widget.analytics,
-                                  o: widget.observer,
-                                )));
+                        if (_formKey.currentState.validate()) {
+                          // If the form is valid, display a snackbar. In the real world,
+                          // you'd often call a server or save the information in a database.
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Processing Data')),
+                          );
+                        }
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //     builder: (context) => VerifyOtpScreen(
+                        //           a: widget.analytics,
+                        //           o: widget.observer,
+                        //         )));
                       },
                       child: Text(
                         AppLocalizations.of(context).btn_submit,
-                        style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                        style: Theme.of(context)
+                            .textButtonTheme
+                            .style
+                            .textStyle
+                            .resolve({
                           MaterialState.pressed,
                         }),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 25, bottom: 20),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(15),
-                          height: 0.5,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: g.gradientColors,
-                            ),
-                          ),
-                          child: Divider(),
-                        ),
-                        Container(
-                            margin: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25),
-                              border: Border.all(
-                                color: Color(0xFF3F1444),
-                              ),
-                            ),
-                            child: g.isDarkModeEnable
-                                ? CircleAvatar(
-                                    radius: 24,
-                                    backgroundColor: Colors.black,
-                                    child: Text(
-                                      AppLocalizations.of(context).lbl_or,
-                                      style: Theme.of(context).primaryTextTheme.subtitle2,
-                                    ),
-                                  )
-                                : CircleAvatar(
-                                    radius: 24,
-                                    backgroundColor: Colors.white,
-                                    child: Text(
-                                      AppLocalizations.of(context).lbl_or,
-                                      style: Theme.of(context).primaryTextTheme.subtitle2,
-                                    ),
-                                  ))
-                      ],
-                    ),
-                  ),
-                  Text(
-                    AppLocalizations.of(context).lbl_login_using,
-                    style: Theme.of(context).primaryTextTheme.headline3,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 25),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: Color(0xFF2942C7),
-                          child: Text(
-                            'f',
-                            style: Theme.of(context).accentTextTheme.headline2,
-                          ),
-                        ),
-                        Padding(
-                          padding: g.isRTL ? const EdgeInsets.only(right: 15) : const EdgeInsets.only(left: 15),
-                          child: CircleAvatar(
-                            radius: 25,
-                            backgroundColor: Color(0xFFDF4D5F),
-                            child: Text(
-                              'G',
-                              style: Theme.of(context).accentTextTheme.headline2,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 25, bottom: 20),
+                  //   child: Stack(
+                  //     alignment: Alignment.center,
+                  //     children: [
+                  //       Container(
+                  //         margin: EdgeInsets.all(15),
+                  //         height: 0.5,
+                  //         decoration: BoxDecoration(
+                  //           gradient: LinearGradient(
+                  //             begin: Alignment.topLeft,
+                  //             end: Alignment.bottomRight,
+                  //             colors: g.gradientColors,
+                  //           ),
+                  //         ),
+                  //         child: Divider(),
+                  //       ),
+                  //       Container(
+                  //           margin: EdgeInsets.all(15),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(25),
+                  //             border: Border.all(
+                  //               color: Color(0xFF3F1444),
+                  //             ),
+                  //           ),
+                  //           child: g.isDarkModeEnable
+                  //               ? CircleAvatar(
+                  //                   radius: 24,
+                  //                   backgroundColor: Colors.black,
+                  //                   child: Text(
+                  //                     AppLocalizations.of(context).lbl_or,
+                  //                     style: Theme.of(context).primaryTextTheme.subtitle2,
+                  //                   ),
+                  //                 )
+                  //               : CircleAvatar(
+                  //                   radius: 24,
+                  //                   backgroundColor: Colors.white,
+                  //                   child: Text(
+                  //                     AppLocalizations.of(context).lbl_or,
+                  //                     style: Theme.of(context).primaryTextTheme.subtitle2,
+                  //                   ),
+                  //                 ))
+                  //     ],
+                  //   ),
+                  // ),
+                  // Text(
+                  //   AppLocalizations.of(context).lbl_login_using,
+                  //   style: Theme.of(context).primaryTextTheme.headline3,
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 25),
+                  //   child: Row(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //     children: [
+                  //       CircleAvatar(
+                  //         radius: 25,
+                  //         backgroundColor: Color(0xFF2942C7),
+                  //         child: Text(
+                  //           'f',
+                  //           style: Theme.of(context).accentTextTheme.headline2,
+                  //         ),
+                  //       ),
+                  //       Padding(
+                  //         padding: g.isRTL ? const EdgeInsets.only(right: 15) : const EdgeInsets.only(left: 15),
+                  //         child: CircleAvatar(
+                  //           radius: 25,
+                  //           backgroundColor: Color(0xFFDF4D5F),
+                  //           child: Text(
+                  //             'G',
+                  //             style: Theme.of(context).accentTextTheme.headline2,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // )
                 ],
               ),
             ),
           )),
     ));
-  }
-
-  @override
-  void initState() {
-    super.initState();
   }
 }
