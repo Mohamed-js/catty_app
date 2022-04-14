@@ -30,8 +30,8 @@ class _AddMessageScreenState extends BaseRouteState {
   ];
 
   List<AddNewMessage> _addNewMsgList = [
-    new AddNewMessage(name: 'Salma Ali', time: '03:45 PM', imgPath: 'assets/images/card_img_0.png', messageCount: 2, lastMessage: 'Hi, How are you? Is that your dog?'),
-    new AddNewMessage(name: 'Mohammed Saleh', time: '11:49 AM', imgPath: 'assets/images/sample1.jpg', messageCount: 3, lastMessage: 'كيف الحال يا صديقي؟!'),
+    new AddNewMessage(name: 'Salma Ali', time: '03:45 PM', imgPath: 'assets/images/womaan.jpg', messageCount: 2, lastMessage: 'Hi, Is that your dog?'),
+    new AddNewMessage(name: 'Mohammed Saleh', time: '11:49 AM', imgPath: 'assets/images/sample1.jpg', messageCount: 3, lastMessage: 'ما نوع التطعيمات التي تمت؟'),
   ];
 
   _AddMessageScreenState() : super();
@@ -97,82 +97,82 @@ class _AddMessageScreenState extends BaseRouteState {
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 20),
-                        child: Text(
-                          AppLocalizations.of(context).lbl_Add_your_Story,
-                          style: Theme.of(context).primaryTextTheme.subtitle1,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 5),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 15) : EdgeInsets.only(left: 10),
-                            child: Image.asset(
-                              g.isDarkModeEnable ? 'assets/images/swirl arrow.png' : 'assets/images/swirl arrow_light.png',
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 4),
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              height: 50,
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: circleImageList.length,
-                                itemBuilder: (ctx, index) {
-                                  return InkWell(
-                                    onTap: () {
-                                      index == 0
-                                          ? Navigator.of(context).push(MaterialPageRoute(
-                                              builder: (context) => CreateStoryScreen(
-                                                    a: widget.analytics,
-                                                    o: widget.observer,
-                                                  )))
-                                          : Navigator.of(context).push(MaterialPageRoute(
-                                              builder: (context) => ViewStoryScreen(
-                                                    a: widget.analytics,
-                                                    o: widget.observer,
-                                                  )));
-                                    },
-                                    child: Padding(
-                                      padding: g.isRTL ? const EdgeInsets.only(left: 10) : const EdgeInsets.only(right: 10),
-                                      child: index == 0
-                                          ? CircleAvatar(
-                                              radius: 25,
-                                              backgroundColor: Color(0xFFF1405B),
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                              ),
-                                            )
-                                          : CircleAvatar(
-                                              radius: 26,
-                                              backgroundColor: Colors.white,
-                                              child: CircleAvatar(
-                                                radius: 25,
-                                                backgroundColor: Color(0xFFF1405B),
-                                                backgroundImage: AssetImage(
-                                                  circleImageList[index],
-                                                ),
-                                              ),
-                                            ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          ]
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.centerLeft,
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.only(top: 20),
+                    //     child: Text(
+                    //       AppLocalizations.of(context).lbl_Add_your_Story,
+                    //       style: Theme.of(context).primaryTextTheme.subtitle1,
+                    //     ),
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(top: 5),
+                    //   child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.start,
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Padding(
+                    //         padding: g.isRTL ? const EdgeInsets.only(right: 15) : EdgeInsets.only(left: 10),
+                    //         child: Image.asset(
+                    //           g.isDarkModeEnable ? 'assets/images/swirl arrow.png' : 'assets/images/swirl arrow_light.png',
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: EdgeInsets.only(top: 4),
+                    //         child: SizedBox(
+                    //           width: MediaQuery.of(context).size.width,
+                    //           height: 50,
+                    //           child: ListView.builder(
+                    //             scrollDirection: Axis.horizontal,
+                    //             itemCount: circleImageList.length,
+                    //             itemBuilder: (ctx, index) {
+                    //               return InkWell(
+                    //                 onTap: () {
+                    //                   index == 0
+                    //                       ? Navigator.of(context).push(MaterialPageRoute(
+                    //                           builder: (context) => CreateStoryScreen(
+                    //                                 a: widget.analytics,
+                    //                                 o: widget.observer,
+                    //                               )))
+                    //                       : Navigator.of(context).push(MaterialPageRoute(
+                    //                           builder: (context) => ViewStoryScreen(
+                    //                                 a: widget.analytics,
+                    //                                 o: widget.observer,
+                    //                               )));
+                    //                 },
+                    //                 child: Padding(
+                    //                   padding: g.isRTL ? const EdgeInsets.only(left: 10) : const EdgeInsets.only(right: 10),
+                    //                   child: index == 0
+                    //                       ? CircleAvatar(
+                    //                           radius: 25,
+                    //                           backgroundColor: Color(0xFFF1405B),
+                    //                           child: Icon(
+                    //                             Icons.add,
+                    //                             color: Colors.white,
+                    //                           ),
+                    //                         )
+                    //                       : CircleAvatar(
+                    //                           radius: 26,
+                    //                           backgroundColor: Colors.white,
+                    //                           child: CircleAvatar(
+                    //                             radius: 25,
+                    //                             backgroundColor: Color(0xFFF1405B),
+                    //                             backgroundImage: AssetImage(
+                    //                               circleImageList[index],
+                    //                             ),
+                    //                           ),
+                    //                         ),
+                    //                 ),
+                    //               );
+                    //             },
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       ]
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Text(
@@ -215,7 +215,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                           borderRadius: BorderRadius.circular(12),
                                           child: Image.asset(
                                             _addNewMsgList[index].imgPath,
-                                            fit: BoxFit.fitWidth,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                       ),
@@ -375,7 +375,7 @@ class _AddMessageScreenState extends BaseRouteState {
                       },
                       child: CircleAvatar(
                         radius: 18,
-                        backgroundImage: AssetImage('assets/images/profile_img_0.png'),
+                        backgroundImage: AssetImage('assets/images/pro.jpg'),
                       ),
                     ),
                     Row(
@@ -388,7 +388,7 @@ class _AddMessageScreenState extends BaseRouteState {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(4,0,0,0),
                           child: Text(
-                            "Catty",
+                            "I-Pet",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 30,

@@ -1,5 +1,6 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:datingapp/screens/myAnimalProfileScreen.dart';
 import 'package:datingapp/screens/settingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -43,18 +44,38 @@ class _MyProfileSceenState extends BaseRouteState {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      height: MediaQuery.of(context).size.width*.8,
-                      width: MediaQuery.of(context).size.width,
-                      child: Container(
-                        child: Image.asset(
-                          'assets/images/sample3.png',
-                          fit: BoxFit.cover,
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          height: MediaQuery.of(context).size.width*.8,
+                          width: MediaQuery.of(context).size.width,
+                          child: Container(
+                            child: Image.asset(
+                              'assets/images/gmap.png',
+                              fit: BoxFit.cover,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(19, 1, 51, 1),
+                            ),
+                          ),
                         ),
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO(19, 1, 51, 1),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(230, 78, 78, 78),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Upgrade membership to view location.",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ]
                     ),
                     // Container(
                     //   color: g.isDarkModeEnable ? Color(0xFF130032) : Colors.white,
@@ -152,24 +173,24 @@ class _MyProfileSceenState extends BaseRouteState {
                     // )
                   ],
                 ),
-                Stack(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(right: 8),
-                      alignment: Alignment.centerRight,
-                      width: MediaQuery.of(context).size.width,
-                      color: g.isDarkModeEnable ? Color(0xFF130032) : Theme.of(context).scaffoldBackgroundColor,
-                      height: 15,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(left: 8),
-                      alignment: Alignment.centerLeft,
-                      color: Color(0xFFAD45B3),
-                      width: MediaQuery.of(context).size.width / 2 - 35,
-                      height: 15,
-                    ),
-                  ],
-                ),
+                // Stack(
+                //   children: [
+                //     Container(
+                //       padding: EdgeInsets.only(right: 8),
+                //       alignment: Alignment.centerRight,
+                //       width: MediaQuery.of(context).size.width,
+                //       color: g.isDarkModeEnable ? Color(0xFF130032) : Theme.of(context).scaffoldBackgroundColor,
+                //       height: 15,
+                //     ),
+                //     Container(
+                //       padding: EdgeInsets.only(left: 8),
+                //       alignment: Alignment.centerLeft,
+                //       color: Color(0xFFAD45B3),
+                //       width: MediaQuery.of(context).size.width / 2 - 35,
+                //       height: 15,
+                //     ),
+                //   ],
+                // ),
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
@@ -181,7 +202,7 @@ class _MyProfileSceenState extends BaseRouteState {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20, left: 20),
                             child: Text(
-                              'Salma Ali',
+                              'Mohammed Atef',
                               style: Theme.of(context).primaryTextTheme.headline1,
                             ),
                           ),
@@ -222,7 +243,7 @@ class _MyProfileSceenState extends BaseRouteState {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4),
                                       child: Text(
-                                        'salma-elgamda@gmail.com',
+                                        'mohammedatef-js@gmail.com',
                                         style: Theme.of(context).primaryTextTheme.bodyText1,
                                       ),
                                     ),
@@ -368,24 +389,33 @@ class _MyProfileSceenState extends BaseRouteState {
                                   ),
                                   itemCount: 3,
                                   itemBuilder: (ctx, index) {
-                                    return Container(
-                                      alignment: Alignment.center,
-                                      margin: EdgeInsets.only(top: 20, left: 20),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        border: Border.all(color: Colors.white),
-                                        color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
-                                      ),
-                                      height: (MediaQuery.of(context).size.height * 0.12),
-                                      width: MediaQuery.of(context).size.width,
-                                      child: GridTile(
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(19),
-                                          child: Image.asset(
-                                            'assets/images/animal.jpg',
-                                            height: (MediaQuery.of(context).size.height * 0.12),
-                                            width: MediaQuery.of(context).size.width,
-                                            fit: BoxFit.cover,
+                                    return TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                          builder: (context) => MyAnimalProfileScreen(
+                                                a: widget.analytics,
+                                                o: widget.observer,
+                                              )));
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        margin: EdgeInsets.only(top: 20, left: 20),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(20),
+                                          border: Border.all(color: Colors.white),
+                                          color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                        ),
+                                        height: (MediaQuery.of(context).size.height * 0.12),
+                                        width: MediaQuery.of(context).size.width,
+                                        child: GridTile(
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(19),
+                                            child: Image.asset(
+                                              'assets/images/animal.jpg',
+                                              height: (MediaQuery.of(context).size.height * 0.12),
+                                              width: MediaQuery.of(context).size.width,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -546,7 +576,7 @@ class _MyProfileSceenState extends BaseRouteState {
             padding: EdgeInsets.only(left: 8),
             alignment: g.isRTL ? Alignment.centerRight : Alignment.centerLeft,
             color: Color(0xFFDC3664),
-            width: MediaQuery.of(context).size.width / 2 - 35,
+            width: 70,
             height: 65,
             child: IconButton(
               icon: Icon(FontAwesomeIcons.longArrowAltLeft),

@@ -233,18 +233,11 @@ class _LoginScreenState extends BaseRouteState {
                     ),
                     child: TextButton(
                       onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          // If the form is valid, display a snackbar. In the real world,
-                          // you'd often call a server or save the information in a database.
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Processing Data')),
-                          );
-                        }
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //     builder: (context) => VerifyOtpScreen(
-                        //           a: widget.analytics,
-                        //           o: widget.observer,
-                        //         )));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => VerifyOtpScreen(
+                                  a: widget.analytics,
+                                  o: widget.observer,
+                                )));
                       },
                       child: Text(
                         AppLocalizations.of(context).btn_submit,

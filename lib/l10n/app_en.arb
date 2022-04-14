@@ -231,9 +231,9 @@
    "@lbl_login_using":{
       "description": "Login Using"
    },
-   "lbl_short_bio" : "Short Bio",
+   "lbl_short_bio" : "About",
    "@lbl_short_bio":{
-      "description": "Short Bio"
+      "description": "About"
    },
    "lbl_tab_mybio" : "My Bio",
    "@lbl_tab_mybio":{

@@ -441,7 +441,7 @@ class _AddStoryScreenState extends BaseRouteState {
                       },
                       child: CircleAvatar(
                         radius: 18,
-                        backgroundImage: AssetImage('assets/images/profile_img_0.png'),
+                        backgroundImage: AssetImage('assets/images/pro.jpg'),
                       ),
                     ),
                     Row(
@@ -454,7 +454,7 @@ class _AddStoryScreenState extends BaseRouteState {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(4,0,0,0),
                           child: Text(
-                            "Catty",
+                            "I-Pet",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 30,

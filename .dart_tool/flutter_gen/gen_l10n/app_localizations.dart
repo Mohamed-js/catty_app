@@ -442,10 +442,10 @@ abstract class AppLocalizations {
   /// **'Login Using'**
   String get lbl_login_using;
 
-  /// Short Bio
+  /// About
   ///
   /// In en, this message translates to:
-  /// **'Short Bio'**
+  /// **'About'**
   String get lbl_short_bio;
 
   /// My Bio

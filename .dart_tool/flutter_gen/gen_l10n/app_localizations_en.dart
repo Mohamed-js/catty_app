@@ -182,7 +182,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lbl_login_using => 'Login Using';
 
   @override
-  String get lbl_short_bio => 'Short Bio';
+  String get lbl_short_bio => 'About';
 
   @override
   String get lbl_tab_mybio => 'My Bio';
