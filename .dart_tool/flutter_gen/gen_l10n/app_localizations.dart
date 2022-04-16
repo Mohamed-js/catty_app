@@ -802,10 +802,10 @@ abstract class AppLocalizations {
   /// **'Please enter the 4-digit code'**
   String get lbl_4_digit_entre;
 
-  /// sent to your number
+  /// sent to your email
   ///
   /// In en, this message translates to:
-  /// **'sent to your number'**
+  /// **'sent to your email'**
   String get lbl_sent_to_num;
 
   /// Resend OTP

@@ -1,10 +1,12 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/profileDetailScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class VerifyOtpScreen extends BaseRoute {
   VerifyOtpScreen({a, o}) : super(a: a, o: o, r: 'VerifyOtpScreen');
@@ -17,6 +19,11 @@ class _VerifyOtpScreenState extends BaseRouteState {
   FocusNode _fNum2 = FocusNode();
   FocusNode _fNum3 = FocusNode();
   FocusNode _fNum4 = FocusNode();
+
+  String num1;
+  String num2;
+  String num3;
+  String num4;
 
   _VerifyOtpScreenState() : super();
 
@@ -73,7 +80,8 @@ class _VerifyOtpScreenState extends BaseRouteState {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          margin: EdgeInsets.only(top: 10, left: 10, bottom: 10),
+                          margin:
+                              EdgeInsets.only(top: 10, left: 10, bottom: 10),
                           padding: EdgeInsets.all(1.2),
                           height: 55,
                           width: 55,
@@ -87,26 +95,34 @@ class _VerifyOtpScreenState extends BaseRouteState {
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                              color: g.isDarkModeEnable
+                                  ? Colors.black
+                                  : Theme.of(context).scaffoldBackgroundColor,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             height: 55,
                             width: 55,
                             child: TextFormField(
-                              inputFormatters: [LengthLimitingTextInputFormatter(1)],
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1)
+                              ],
                               textInputAction: TextInputAction.next,
-                              decoration: InputDecoration(contentPadding: EdgeInsets.all(5)),
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5)),
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
-                              style: Theme.of(context).primaryTextTheme.subtitle2,
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
                               onChanged: (v) {
                                 FocusScope.of(context).requestFocus(_fNum2);
+                                num1 = v;
                               },
                             ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10, left: 10, bottom: 10),
+                          margin:
+                              EdgeInsets.only(top: 10, left: 10, bottom: 10),
                           padding: EdgeInsets.all(1.2),
                           height: 55,
                           width: 55,
@@ -120,7 +136,9 @@ class _VerifyOtpScreenState extends BaseRouteState {
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                              color: g.isDarkModeEnable
+                                  ? Colors.black
+                                  : Theme.of(context).scaffoldBackgroundColor,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             height: 55,
@@ -128,19 +146,25 @@ class _VerifyOtpScreenState extends BaseRouteState {
                             child: TextFormField(
                               focusNode: _fNum2,
                               textInputAction: TextInputAction.next,
-                              inputFormatters: [LengthLimitingTextInputFormatter(1)],
-                              decoration: InputDecoration(contentPadding: EdgeInsets.all(5)),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1)
+                              ],
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5)),
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
-                              style: Theme.of(context).primaryTextTheme.subtitle2,
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
                               onChanged: (v) {
                                 FocusScope.of(context).requestFocus(_fNum3);
+                                num2 = v;
                               },
                             ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10, left: 10, bottom: 10),
+                          margin:
+                              EdgeInsets.only(top: 10, left: 10, bottom: 10),
                           padding: EdgeInsets.all(1.2),
                           height: 55,
                           width: 55,
@@ -154,7 +178,9 @@ class _VerifyOtpScreenState extends BaseRouteState {
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                              color: g.isDarkModeEnable
+                                  ? Colors.black
+                                  : Theme.of(context).scaffoldBackgroundColor,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             height: 55,
@@ -162,19 +188,25 @@ class _VerifyOtpScreenState extends BaseRouteState {
                             child: TextFormField(
                               focusNode: _fNum3,
                               textInputAction: TextInputAction.next,
-                              inputFormatters: [LengthLimitingTextInputFormatter(1)],
-                              decoration: InputDecoration(contentPadding: EdgeInsets.all(5)),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1)
+                              ],
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5)),
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
-                              style: Theme.of(context).primaryTextTheme.subtitle2,
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
                               onChanged: (v) {
                                 FocusScope.of(context).requestFocus(_fNum4);
+                                num3 = v;
                               },
                             ),
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 10, left: 10, bottom: 10),
+                          margin:
+                              EdgeInsets.only(top: 10, left: 10, bottom: 10),
                           padding: EdgeInsets.all(1.2),
                           height: 55,
                           width: 55,
@@ -188,7 +220,9 @@ class _VerifyOtpScreenState extends BaseRouteState {
                           ),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                              color: g.isDarkModeEnable
+                                  ? Colors.black
+                                  : Theme.of(context).scaffoldBackgroundColor,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             height: 55,
@@ -196,11 +230,18 @@ class _VerifyOtpScreenState extends BaseRouteState {
                             child: TextFormField(
                               focusNode: _fNum4,
                               textInputAction: TextInputAction.next,
-                              inputFormatters: [LengthLimitingTextInputFormatter(1)],
-                              decoration: InputDecoration(contentPadding: EdgeInsets.all(5)),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(1)
+                              ],
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(5)),
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
-                              style: Theme.of(context).primaryTextTheme.subtitle2,
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
+                              onChanged: (v){
+                                num4 = v;
+                              },
                             ),
                           ),
                         ),
@@ -219,16 +260,34 @@ class _VerifyOtpScreenState extends BaseRouteState {
                       ),
                     ),
                     child: TextButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ProfileDetailScreen(
-                                  a: widget.analytics,
-                                  o: widget.observer,
-                                )));
+                      onPressed: () async {
+                        String otp = "$num1$num2$num3$num4";
+                        dynamic isVerified =
+                            await Provider.of<Auth>(context, listen: false)
+                                .verifyUser(otp);
+                        print(isVerified);
+                        if (isVerified != null) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ProfileDetailScreen(
+                                    a: widget.analytics,
+                                    o: widget.observer,
+                                  )));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("OTP is incorrect..."),
+                              backgroundColor: Colors.redAccent,
+                            ),
+                          );
+                        }
                       },
                       child: Text(
                         AppLocalizations.of(context).btn_submit,
-                        style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                        style: Theme.of(context)
+                            .textButtonTheme
+                            .style
+                            .textStyle
+                            .resolve({
                           MaterialState.pressed,
                         }),
                       ),
@@ -247,7 +306,8 @@ class _VerifyOtpScreenState extends BaseRouteState {
                       },
                       child: Text(
                         AppLocalizations.of(context).lbl_resend_otp,
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                     ),
                   ),

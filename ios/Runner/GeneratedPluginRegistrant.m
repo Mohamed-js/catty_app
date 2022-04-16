@@ -6,6 +6,12 @@
 
 #import "GeneratedPluginRegistrant.h"
 
+#if __has_include(<image_picker_ios/FLTImagePickerPlugin.h>)
+#import <image_picker_ios/FLTImagePickerPlugin.h>
+#else
+@import image_picker_ios;
+#endif
+
 #if __has_include(<multi_image_picker2/MultiImagePicker2Plugin.h>)
 #import <multi_image_picker2/MultiImagePicker2Plugin.h>
 #else
@@ -16,6 +22,12 @@
 #import <path_provider_ios/FLTPathProviderPlugin.h>
 #else
 @import path_provider_ios;
+#endif
+
+#if __has_include(<shared_preferences_ios/FLTSharedPreferencesPlugin.h>)
+#import <shared_preferences_ios/FLTSharedPreferencesPlugin.h>
+#else
+@import shared_preferences_ios;
 #endif
 
 #if __has_include(<sqflite/SqflitePlugin.h>)
@@ -33,8 +45,10 @@
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
+  [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [MultiImagePicker2Plugin registerWithRegistrar:[registry registrarForPlugin:@"MultiImagePicker2Plugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
+  [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
   [FLTVideoPlayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTVideoPlayerPlugin"]];
 }

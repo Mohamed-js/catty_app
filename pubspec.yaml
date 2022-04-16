@@ -39,6 +39,8 @@ dependencies:
   multi_image_picker2: ^5.0.2
   provider: any
   dio: ^4.0.6
+  shared_preferences: ^2.0.13
+  image_picker: ^0.8.5
 
 dev_dependencies:
   flutter_test:

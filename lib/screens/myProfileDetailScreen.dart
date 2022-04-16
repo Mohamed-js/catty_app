@@ -8,16 +8,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class MyProfileSceen extends BaseRoute {
-  MyProfileSceen({a, o}) : super(a: a, o: o, r: 'MyProfileSceen');
+class MyProfileScreen extends BaseRoute {
+  MyProfileScreen({a, o}) : super(a: a, o: o, r: 'MyProfileScreen');
   @override
-  _MyProfileSceenState createState() => _MyProfileSceenState();
+  _MyProfileScreenState createState() => _MyProfileScreenState();
 }
 
-class _MyProfileSceenState extends BaseRouteState {
+class _MyProfileScreenState extends BaseRouteState {
   int _currentIndex = 0;
   TabController _tabController;
-  _MyProfileSceenState() : super();
+  _MyProfileScreenState() : super();
 
   @override
   Widget build(BuildContext context) {

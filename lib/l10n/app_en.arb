@@ -471,9 +471,9 @@
    "@lbl_4_digit_entre":{
       "description": "Please enter the 4-digit code"
    },
-   "lbl_sent_to_num" : "sent to your number",
+   "lbl_sent_to_num" : "sent to your email",
    "@lbl_sent_to_num":{
-      "description": "sent to your number"
+      "description": "sent to your email"
    },
    "lbl_resend_otp" : "Resend OTP",
    "@lbl_resend_otp":{

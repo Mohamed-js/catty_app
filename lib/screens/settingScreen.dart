@@ -6,6 +6,8 @@ import 'package:datingapp/screens/liked&LikesScreen.dart';
 import 'package:datingapp/screens/notificationListScreen.dart';
 import 'package:datingapp/screens/rewardScreen.dart';
 import 'package:datingapp/screens/selectPlanScreen.dart';
+import 'package:datingapp/screens/splashScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetDark.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class SettingScreen extends BaseRoute {
   SettingScreen({a, o}) : super(a: a, o: o, r: 'SettingScreen');
@@ -93,7 +96,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_account,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -132,7 +137,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_likes_likes,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -171,7 +178,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_notifications,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -210,7 +219,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_subscription,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -249,7 +260,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_dating_rewards,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -280,7 +293,9 @@ class _SettingScreenState extends BaseRouteState {
                             ).createShader(bounds);
                           },
                           child: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
                             child: Text(
                               AppLocalizations.of(context).lbl_payment,
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -326,7 +341,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_msg_options,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -365,7 +382,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_manage_matches,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -396,7 +415,9 @@ class _SettingScreenState extends BaseRouteState {
                             ).createShader(bounds);
                           },
                           child: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
                             child: Text(
                               AppLocalizations.of(context).lbl_privacy_options,
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -426,7 +447,9 @@ class _SettingScreenState extends BaseRouteState {
                             ).createShader(bounds);
                           },
                           child: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
                             child: Text(
                               AppLocalizations.of(context).lbl_delete_account,
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -461,7 +484,9 @@ class _SettingScreenState extends BaseRouteState {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(
-                            g.isDarkModeEnable ? Icons.dark_mode_outlined : Icons.light_mode,
+                            g.isDarkModeEnable
+                                ? Icons.dark_mode_outlined
+                                : Icons.light_mode,
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
@@ -475,7 +500,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_mode,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -514,7 +541,9 @@ class _SettingScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 10)
+                                  : const EdgeInsets.only(left: 10),
                               child: Text(
                                 'Lang',
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -545,7 +574,9 @@ class _SettingScreenState extends BaseRouteState {
                             ).createShader(bounds);
                           },
                           child: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
                             child: Text(
                               AppLocalizations.of(context).lbl_safety,
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -575,7 +606,9 @@ class _SettingScreenState extends BaseRouteState {
                             ).createShader(bounds);
                           },
                           child: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
                             child: Text(
                               AppLocalizations.of(context).lbl_help_centre,
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -605,7 +638,9 @@ class _SettingScreenState extends BaseRouteState {
                             ).createShader(bounds);
                           },
                           child: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
                             child: Text(
                               AppLocalizations.of(context).lbl_terms_cond,
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -635,7 +670,9 @@ class _SettingScreenState extends BaseRouteState {
                             ).createShader(bounds);
                           },
                           child: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 10) : const EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
                             child: Text(
                               AppLocalizations.of(context).lbl_policy,
                               style: TextStyle(fontWeight: FontWeight.bold),
@@ -687,9 +724,14 @@ class _SettingScreenState extends BaseRouteState {
                 },
               ),
               trailing: IconButton(
-                icon: Icon(Icons.drive_file_move),
+                icon: Icon(Icons.logout),
                 color: Theme.of(context).iconTheme.color,
-                onPressed: () {},
+                onPressed: () async {
+                  final auth = Provider.of<Auth>(context, listen: false);
+                  auth.logout();
+                  Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => SplashScreen()));
+                },
               ),
             ),
           ),

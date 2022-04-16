@@ -2,8 +2,8 @@ import 'package:datingapp/Theme/nativeTheme.dart';
 import 'package:datingapp/l10n/l10n.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/provider/local_provider.dart';
-import 'package:datingapp/screens/addStoryScreen.dart';
 import 'package:datingapp/screens/splashScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -12,8 +12,19 @@ import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(Phoenix(child: MyApp()));
+  runApp(
+    Phoenix(child:
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => Auth()),
+        ],
+        child: MyApp(),
+      ),
+    ),
+  );
 }
+
+
 
 class MyApp extends StatefulWidget {
   @override

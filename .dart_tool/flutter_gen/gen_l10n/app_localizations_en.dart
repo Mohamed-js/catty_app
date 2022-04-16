@@ -362,7 +362,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lbl_4_digit_entre => 'Please enter the 4-digit code';
 
   @override
-  String get lbl_sent_to_num => 'sent to your number';
+  String get lbl_sent_to_num => 'sent to your email';
 
   @override
   String get lbl_resend_otp => 'Resend OTP';

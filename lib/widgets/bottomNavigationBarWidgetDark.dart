@@ -170,6 +170,6 @@ class _BottomNavigationWidgetDarkState extends BaseRouteState {
         AddStoryScreen(a: widget.analytics, o: widget.observer),
         AddYourStoryScreen(a: widget.analytics, o: widget.observer),
         AddMessageScreen(a: widget.analytics, o: widget.observer),
-        MyProfileSceen(a: widget.analytics, o: widget.observer),
+        MyProfileScreen(a: widget.analytics, o: widget.observer),
       ];
 }

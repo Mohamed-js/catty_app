@@ -2,13 +2,18 @@ import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/createStoryScreen.dart';
 import 'package:datingapp/screens/filterOptionsScreen.dart';
+import 'package:datingapp/screens/myAnimalProfileScreen.dart';
+import 'package:datingapp/screens/myProfileDetailScreen.dart';
 import 'package:datingapp/screens/notificationListScreen.dart';
+import 'package:datingapp/screens/splashScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:tcard/tcard.dart';
 
 class AddStoryScreen extends BaseRoute {
@@ -87,10 +92,10 @@ class _AddStoryScreenState extends BaseRouteState {
                                 alignment: Alignment.topRight,
                                 children: [
                                   Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        .7,
-                                    width: MediaQuery.of(context).size.width *
-                                        .85,
+                                    height:
+                                        MediaQuery.of(context).size.height * .7,
+                                    width:
+                                        MediaQuery.of(context).size.width * .85,
                                     child: Align(
                                       alignment: Alignment.bottomCenter,
                                       child: Listener(
@@ -114,7 +119,11 @@ class _AddStoryScreenState extends BaseRouteState {
                                         child: TCard(
                                           cards: _widgets(),
                                           controller: _controller,
-                                          size: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+                                          size: Size(
+                                              MediaQuery.of(context).size.width,
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height),
                                           onForward: (index, info) {
                                             if (info.direction ==
                                                 SwipDirection.Left) {
@@ -420,53 +429,69 @@ class _AddStoryScreenState extends BaseRouteState {
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-              child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
-                      highlightColor: Colors.transparent,
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CreateStoryScreen(
-                                  a: widget.analytics,
-                                  o: widget.observer,
-                                )));
-                      },
-                      child: CircleAvatar(
-                        radius: 18,
-                        backgroundImage: AssetImage('assets/images/pro.jpg'),
+            child: Consumer<Auth>(
+              builder: (context, auth, child) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 8.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        highlightColor: Colors.transparent,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => MyProfileScreen(
+                                    a: widget.analytics,
+                                    o: widget.observer,
+                                  )));
+                        },
+                        child: CircleAvatar(
+                          radius: 18,
+                          backgroundImage: auth.current_user['avatar'].isEmpty
+                              ? AssetImage('assets/images/holder.png')
+                              : NetworkImage('http://localhost:8000/${auth.current_user['avatar']}'),
+                        ),
                       ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.android,
-                          color: Color(0xFFF0384F),
-                          size: 40,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(4,0,0,0),
-                          child: Text(
-                            "I-Pet",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              color: Color(0xFFF0384F),
-                            )
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.android,
+                            color: Color(0xFFF0384F),
+                            size: 40,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 28)
-                  ],
-                ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+                            child: Text("I-Pet",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                  color: Color(0xFFF0384F),
+                                )),
+                          ),
+                        ],
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.logout),
+                        color: Color.fromARGB(255, 82, 8, 255),
+                        onPressed: () async {
+                          final auth =
+                              Provider.of<Auth>(context, listen: false);
+                          auth.logout();
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => SplashScreen()));
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
         ],

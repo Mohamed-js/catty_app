@@ -3,12 +3,16 @@ import 'dart:async';
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/provider/local_provider.dart';
+import 'package:datingapp/screens/addStoryScreen.dart';
 import 'package:datingapp/screens/introScreen.dart';
+import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/screens/startDatingScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends BaseRoute {
   SplashScreen({a, o}) : super(a: a, o: o, r: 'SplashScreen');
@@ -32,13 +36,18 @@ class _SplashScreenState extends BaseRouteState {
             Padding(
               padding: const EdgeInsets.all(30.0),
               child: Image.asset(
-                g.isDarkModeEnable ? 'assets/images/splashydog.png' : 'assets/images/splashydog.png',
+                g.isDarkModeEnable
+                    ? 'assets/images/splashydog.png'
+                    : 'assets/images/splashydog.png',
                 fit: BoxFit.contain,
               ),
             ),
             Text(
-                  "I-Pet",
-                  style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold, color: Colors.white),
+              "I-Pet",
+              style: TextStyle(
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
           ],
         ),
@@ -51,14 +60,24 @@ class _SplashScreenState extends BaseRouteState {
     super.initState();
     _init();
 
-    startTime();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      final auth = Provider.of<Auth>(context, listen: false);
+      await auth.tryLogin();
+      startTime(auth.authenticated);
+    });
   }
 
-  startTime() {
+  startTime(loggedIn) {
     try {
       var _duration = new Duration(seconds: 3);
       return new Timer(_duration, () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => StartDatingScreen()));
+        if (loggedIn) {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddStoryScreen()));
+        } else {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => StartDatingScreen()));
+        }
       });
     } catch (e) {
       print('Exception SplashScreen.dart - startTime() ' + e.toString());

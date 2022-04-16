@@ -94,56 +94,73 @@
 63-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:40:13-30
 64
 65        <provider
-65-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
-66            android:name="com.sangcomz.fishbun.FishBunFileProvider"
-66-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
-67            android:authorities="com.example.datingapp.fishbunfileprovider"
-67-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+65-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+66            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+66-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+67            android:authorities="com.example.datingapp.flutter.image_provider"
+67-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
 68            android:exported="false"
-68-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+68-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
 69            android:grantUriPermissions="true" >
-69-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+69-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
 70            <meta-data
-70-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:17:13-19:58
+70-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
 71                android:name="android.support.FILE_PROVIDER_PATHS"
-71-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:18:17-67
-72                android:resource="@xml/provider_paths" />
-72-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:19:17-55
+71-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+72                android:resource="@xml/flutter_image_picker_file_paths" />
+72-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
 73        </provider>
-74
-75        <activity
-75-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
-76            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
-76-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
-77            android:label="@string/album"
-77-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
-78            android:theme="@style/FishBunTheme" />
-78-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
-79        <activity
-79-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
-80            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
-80-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
-81            android:theme="@style/FishBunTheme" />
-81-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
-82        <activity
-82-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
-83            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
-83-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
-84            android:theme="@style/DetailViewTheme" />
-84-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
-85
-86        <uses-library
-86-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-87            android:name="androidx.window.extensions"
-87-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-88            android:required="false" />
-88-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-89        <uses-library
-89-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-90            android:name="androidx.window.sidecar"
-90-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-91            android:required="false" />
-91-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-92    </application>
-93
-94</manifest>
+74        <provider
+74-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
+75            android:name="com.sangcomz.fishbun.FishBunFileProvider"
+75-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
+76            android:authorities="com.example.datingapp.fishbunfileprovider"
+76-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+77            android:exported="false"
+77-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+78            android:grantUriPermissions="true" >
+78-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+79            <meta-data
+79-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+80                android:name="android.support.FILE_PROVIDER_PATHS"
+80-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+81                android:resource="@xml/provider_paths" />
+81-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+82        </provider>
+83
+84        <activity
+84-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
+85            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
+85-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
+86            android:label="@string/album"
+86-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
+87            android:theme="@style/FishBunTheme" />
+87-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
+88        <activity
+88-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
+89            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
+89-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
+90            android:theme="@style/FishBunTheme" />
+90-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
+91        <activity
+91-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
+92            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
+92-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
+93            android:theme="@style/DetailViewTheme" />
+93-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
+94
+95        <uses-library
+95-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+96            android:name="androidx.window.extensions"
+96-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+97            android:required="false" />
+97-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+98        <uses-library
+98-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+99            android:name="androidx.window.sidecar"
+99-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+100            android:required="false" />
+100-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+101    </application>
+102
+103</manifest>

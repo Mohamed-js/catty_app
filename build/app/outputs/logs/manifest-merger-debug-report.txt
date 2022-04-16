@@ -5,6 +5,9 @@ INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:1:1-42:12
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:1:1-42:12
 MERGED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:1:1-42:12
+MERGED from [:shared_preferences_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] C:\Users\lordd\Documents\GitHub\animal-dating\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -82,6 +85,8 @@ ADDED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\An
 		ADDED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:3:22-78
 application
 ADDED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:4:4-41:19
+MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\56f4cf96c56e3c6b85582297d2e8851f\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\56f4cf96c56e3c6b85582297d2e8851f\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
 MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:11:5-32:19
@@ -150,6 +155,12 @@ uses-sdk
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml
+MERGED from [:shared_preferences_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\Users\lordd\Documents\GitHub\animal-dating\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\Users\lordd\Documents\GitHub\animal-dating\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -270,6 +281,22 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\debug\AndroidManifest.xml:6:5-66
 	android:name
 		ADDED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\debug\AndroidManifest.xml:6:22-64
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+	android:resource
+		ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+	android:name
+		ADDED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\af22d9d074b160bfe6eda1bb458796ae\jetified-exoplayer-common-2.17.0\AndroidManifest.xml:24:5-79
@@ -286,12 +313,6 @@ ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transform
 		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
 	android:name
 		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
-meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:17:13-19:58
-	android:resource
-		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:19:17-55
-	android:name
-		ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:18:17-67
 activity#com.sangcomz.fishbun.ui.album.AlbumActivity
 ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
 	android:label
