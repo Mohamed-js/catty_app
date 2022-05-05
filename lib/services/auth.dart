@@ -27,7 +27,12 @@ class Auth extends ChangeNotifier {
         Dio.Response response = await dio().get('/user',
             options: Dio.Options(
                 headers: {'Authorization': 'Bearer ${res['token']}'}));
+
         _user = response.data;
+        print('================');
+        print(_user);
+        print('================');
+        notifyListeners();
         return res;
       }
       // ERROR
@@ -42,6 +47,9 @@ class Auth extends ChangeNotifier {
             options: Dio.Options(
                 headers: {'Authorization': 'Bearer ${res['token']}'}));
         _user = response.data;
+        print('------------');
+        print(_user);
+        print('------------');
         _isLoggedIn = true;
         notifyListeners();
         return true;
@@ -58,6 +66,7 @@ class Auth extends ChangeNotifier {
       Dio.Response response = await dio().get('/user',
           options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
 
+      print(response.data['verified']);
       if (response.data['verified']) {
         _isLoggedIn = true;
         _user = response.data;
@@ -123,6 +132,38 @@ class Auth extends ChangeNotifier {
           }));
 
       return response.data.toString();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future addAnimal(dat) async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+    dynamic av = '';
+    if (!dat['avatar'].isEmpty) {
+      av = await Dio.MultipartFile.fromFile(
+        dat['avatar'],
+        filename: dat['avatar'].split('/').last,
+      );
+    }
+    Dio.FormData data = Dio.FormData.fromMap({
+      "avatar": av,
+      "name": dat['name'],
+      "info": dat['info'],
+      "gender": dat['gender'],
+      "breed_id": dat['breed_id'],
+    });
+
+    try {
+      Dio.Response response = await dio().post('/animals',
+          data: data,
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'multipart/form-data'
+          }));
+      print(response.data);
+      return response.data;
     } catch (e) {
       print(e);
     }

@@ -17,6 +17,7 @@ class UploadIdScreen extends BaseRoute {
 class _UploadIdScreenState extends BaseRouteState {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   String _ages = 'ID Proof';
+  String _currentImage = '';
   _UploadIdScreenState() : super();
 
   @override

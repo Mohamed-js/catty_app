@@ -1,12 +1,15 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/myAnimalProfileScreen.dart';
+import 'package:datingapp/screens/newAnimalScreen.dart';
 import 'package:datingapp/screens/settingScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class MyProfileScreen extends BaseRoute {
   MyProfileScreen({a, o}) : super(a: a, o: o, r: 'MyProfileScreen');
@@ -17,10 +20,13 @@ class MyProfileScreen extends BaseRoute {
 class _MyProfileScreenState extends BaseRouteState {
   int _currentIndex = 0;
   TabController _tabController;
+
   _MyProfileScreenState() : super();
 
   @override
   Widget build(BuildContext context) {
+    final auth = Provider.of<Auth>(context, listen: false);
+
     return SafeArea(
       child: WillPopScope(
         onWillPop: () {
@@ -44,39 +50,33 @@ class _MyProfileScreenState extends BaseRouteState {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          height: MediaQuery.of(context).size.width*.8,
-                          width: MediaQuery.of(context).size.width,
-                          child: Container(
-                            child: Image.asset(
-                              'assets/images/gmap.png',
-                              fit: BoxFit.cover,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Color.fromRGBO(19, 1, 51, 1),
-                            ),
+                    Stack(alignment: Alignment.center, children: [
+                      Container(
+                        height: MediaQuery.of(context).size.width * .8,
+                        width: MediaQuery.of(context).size.width,
+                        child: Container(
+                          child: Image.asset(
+                            'assets/images/gmap.png',
+                            fit: BoxFit.cover,
                           ),
-                        ),
-                        Container(
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(230, 78, 78, 78),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Upgrade membership to view location.",
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white
-                              ),
-                            ),
+                            color: Color.fromRGBO(19, 1, 51, 1),
                           ),
                         ),
-                      ]
-                    ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(230, 78, 78, 78),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Upgrade membership to view location.",
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ]),
                     // Container(
                     //   color: g.isDarkModeEnable ? Color(0xFF130032) : Colors.white,
                     //   height: MediaQuery.of(context).size.height * 0.30,
@@ -202,35 +202,40 @@ class _MyProfileScreenState extends BaseRouteState {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 20, left: 20),
                             child: Text(
-                              'Mohammed Atef',
-                              style: Theme.of(context).primaryTextTheme.headline1,
+                              auth.current_user['first_name'].toUpperCase() +
+                                  " " +
+                                  auth.current_user['last_name'].toUpperCase(),
+                              style:
+                                  Theme.of(context).primaryTextTheme.headline1,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: g.isRTL ? const EdgeInsets.only(right: 20) : const EdgeInsets.only(left: 20),
+                          padding: g.isRTL
+                              ? const EdgeInsets.only(right: 20)
+                              : const EdgeInsets.only(left: 20),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                height: 30,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.call,
-                                      color: Theme.of(context).iconTheme.color,
-                                      size: 16,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 4),
-                                      child: Text(
-                                        '+01 234 567 8910',
-                                        style: Theme.of(context).primaryTextTheme.bodyText1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                              // Container(
+                              //   height: 30,
+                              //   child: Row(
+                              //     children: [
+                              //       Icon(
+                              //         Icons.call,
+                              //         color: Theme.of(context).iconTheme.color,
+                              //         size: 16,
+                              //       ),
+                              //       Padding(
+                              //         padding: const EdgeInsets.only(left: 4),
+                              //         child: Text(
+                              //           '+01 234 567 8910',
+                              //           style: Theme.of(context).primaryTextTheme.bodyText1,
+                              //         ),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
                               Container(
                                 height: 30,
                                 child: Row(
@@ -243,28 +248,33 @@ class _MyProfileScreenState extends BaseRouteState {
                                     Padding(
                                       padding: const EdgeInsets.only(left: 4),
                                       child: Text(
-                                        'mohammedatef-js@gmail.com',
-                                        style: Theme.of(context).primaryTextTheme.bodyText1,
+                                        auth.current_user['email'],
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .bodyText1,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                              
                             ],
                           ),
                         ),
                         Padding(
-                          padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 30) : const EdgeInsets.only(left: 20, top: 30),
+                          padding: g.isRTL
+                              ? const EdgeInsets.only(right: 20, top: 30)
+                              : const EdgeInsets.only(left: 20, top: 30),
                           child: Text(
                             AppLocalizations.of(context).lbl_short_bio,
                             style: Theme.of(context).primaryTextTheme.headline3,
                           ),
                         ),
                         Padding(
-                          padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 10) : const EdgeInsets.only(left: 20, top: 10),
+                          padding: g.isRTL
+                              ? const EdgeInsets.only(right: 20, top: 10)
+                              : const EdgeInsets.only(left: 20, top: 10),
                           child: Text(
-                            'Love animals, going out, travelling etc.Love animals, going out, travelling etc.',
+                            '-',
                             style: Theme.of(context).primaryTextTheme.subtitle2,
                           ),
                         ),
@@ -366,69 +376,122 @@ class _MyProfileScreenState extends BaseRouteState {
                         //   ),
                         // ),
                         Padding(
-                          padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 30) : const EdgeInsets.only(left: 20, top: 30),
+                          padding: g.isRTL
+                              ? const EdgeInsets.only(right: 20, top: 30)
+                              : const EdgeInsets.only(left: 20, top: 30),
                           child: Text(
-                            "Animals",
+                            "Pets",
                             style: Theme.of(context).primaryTextTheme.headline3,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10.0),
-                          child: Container(
-                            height: (MediaQuery.of(context).size.height * 0.12),
-                            width: MediaQuery.of(context).size.width,
-                            child: TabBarView(
-                              controller: _tabController,
-                              children: [
-                                GridView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: MediaQuery.of(context).size.width,
-                                    mainAxisSpacing: 2.0,
-                                    crossAxisSpacing: 2.0,
-                                  ),
-                                  itemCount: 3,
-                                  itemBuilder: (ctx, index) {
-                                    return TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                          builder: (context) => MyAnimalProfileScreen(
-                                                a: widget.analytics,
-                                                o: widget.observer,
-                                              )));
-                                      },
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        margin: EdgeInsets.only(top: 20, left: 20),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(20),
-                                          border: Border.all(color: Colors.white),
-                                          color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
-                                        ),
-                                        height: (MediaQuery.of(context).size.height * 0.12),
-                                        width: MediaQuery.of(context).size.width,
-                                        child: GridTile(
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(19),
-                                            child: Image.asset(
-                                              'assets/images/animal.jpg',
-                                              height: (MediaQuery.of(context).size.height * 0.12),
-                                              width: MediaQuery.of(context).size.width,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
+                        auth.current_user['animals'].isEmpty
+                            ? Padding(
+                                padding: g.isRTL
+                                    ? const EdgeInsets.only(right: 20, top: 10)
+                                    : const EdgeInsets.only(left: 20, top: 10),
+                                child: TextButton(
+                                  style: TextButton.styleFrom(textStyle: const TextStyle(fontSize: 12), backgroundColor: Color.fromARGB(255, 36, 2, 100)),
+                                  onPressed: () {
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => NewAnimalScreen(
+                                          a: widget.analytics,
+                                          o: widget.observer,
+                                        )));
                                   },
+                                  child: const Text('Add +', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                                 ),
-                                Container(),
-                                Container(),
-                                Container()
-                              ],
-                            ),
-                          ),
-                        ),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: Container(
+                                  height: (MediaQuery.of(context).size.height *
+                                      0.12),
+                                  width: MediaQuery.of(context).size.width,
+                                  child: TabBarView(
+                                    controller: _tabController,
+                                    children: [
+                                      GridView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        gridDelegate:
+                                            SliverGridDelegateWithMaxCrossAxisExtent(
+                                          maxCrossAxisExtent:
+                                              MediaQuery.of(context).size.width,
+                                          mainAxisSpacing: 2.0,
+                                          crossAxisSpacing: 2.0,
+                                        ),
+                                        itemCount:
+                                            auth.current_user['animals'].length,
+                                        itemBuilder: (ctx, index) {
+                                          return TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MyAnimalProfileScreen(
+                                                  auth.current_user['animals']
+                                                      [index]['id'],
+                                                ),
+                                              ));
+                                            },
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              margin: EdgeInsets.only(
+                                                  top: 2, left: 2),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                border: Border.all(
+                                                    color: Colors.white),
+                                                color: g.isDarkModeEnable
+                                                    ? Color(0xFF1D0529)
+                                                    : Colors.white54,
+                                              ),
+                                              height: (MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.12),
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child: GridTile(
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(19),
+                                                  child: auth
+                                                              .current_user[
+                                                                  'animals']
+                                                                  [index]
+                                                                  ['avatars']
+                                                              .length >
+                                                          0
+                                                      ? Image.network(
+                                                          'http://localhost:8000/${auth.current_user['animals'][index]['avatars'][0]['url']}')
+                                                      : Image.asset(
+                                                          'assets/images/animal.jpg',
+                                                          height: (MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              0.12),
+                                                          width: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .width,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                      Container(),
+                                      Container(),
+                                      Container()
+                                    ],
+                                  ),
+                                ),
+                              ),
                         // Padding(
                         //     padding: const EdgeInsets.only(bottom: 20),
                         //     child: Row(
@@ -539,7 +602,8 @@ class _MyProfileScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
+    _tabController =
+        new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
   }
 
@@ -558,7 +622,9 @@ class _MyProfileScreenState extends BaseRouteState {
             padding: EdgeInsets.only(right: 8),
             alignment: g.isRTL ? Alignment.centerLeft : Alignment.centerRight,
             width: MediaQuery.of(context).size.width,
-            color: g.isDarkModeEnable ? Color(0xFF130032) : Theme.of(context).scaffoldBackgroundColor,
+            color: g.isDarkModeEnable
+                ? Color(0xFF130032)
+                : Theme.of(context).scaffoldBackgroundColor,
             height: 65,
             child: IconButton(
               icon: Icon(Icons.settings_outlined),

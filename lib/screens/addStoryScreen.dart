@@ -454,7 +454,7 @@ class _AddStoryScreenState extends BaseRouteState {
                         },
                         child: CircleAvatar(
                           radius: 18,
-                          backgroundImage: auth.current_user['avatar'].isEmpty
+                          backgroundImage: auth.current_user['avatar'] == null
                               ? AssetImage('assets/images/holder.png')
                               : NetworkImage('http://localhost:8000/${auth.current_user['avatar']}'),
                         ),

@@ -1,5 +1,6 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:datingapp/screens/addStoryScreen.dart';
 import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -266,13 +267,20 @@ class _VerifyOtpScreenState extends BaseRouteState {
                             await Provider.of<Auth>(context, listen: false)
                                 .verifyUser(otp);
                         print(isVerified);
-                        if (isVerified != null) {
+                        if (isVerified == false) {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => ProfileDetailScreen(
                                     a: widget.analytics,
                                     o: widget.observer,
                                   )));
-                        } else {
+                        } else if (isVerified == true) {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AddStoryScreen(
+                                    a: widget.analytics,
+                                    o: widget.observer,
+                                  )));
+                        }
+                        else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text("OTP is incorrect..."),

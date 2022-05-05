@@ -242,9 +242,10 @@ class _LoginScreenState extends BaseRouteState {
                   ),
                   child: TextButton(
                     onPressed: () async {
+                      print('trying to login...');
                       if (_formKey.currentState.validate()) {
                         setState(() {
-                            login_btn_text = 'Loading..';
+                          login_btn_text = 'Loading..';
                         });
                         String device_name =
                             Platform.isAndroid ? "android" : "ios";
@@ -257,6 +258,8 @@ class _LoginScreenState extends BaseRouteState {
                         dynamic canLogin =
                             await Provider.of<Auth>(context, listen: false)
                                 .login(creds);
+                        // adb reverse tcp:8000 tcp:8000
+                        
                         if (canLogin == true) {
                           setState(() {
                             login_btn_text = 'Submit';
@@ -271,7 +274,8 @@ class _LoginScreenState extends BaseRouteState {
                             login_err = canLogin['message'];
                             login_btn_text = 'Submit';
                           });
-                          if (login_err == 'Please check your email for the OTP code.') {
+                          if (login_err ==
+                              'Please check your email for the OTP code.') {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(login_err),
@@ -279,20 +283,19 @@ class _LoginScreenState extends BaseRouteState {
                               ),
                             );
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => VerifyOtpScreen(
-                                    a: widget.analytics,
-                                    o: widget.observer,
-                                  )));
-                          } 
-                          else if (login_err == 'The provided credentials are incorrect.') {
+                                builder: (context) => VerifyOtpScreen(
+                                      a: widget.analytics,
+                                      o: widget.observer,
+                                    )));
+                          } else if (login_err ==
+                              'The provided credentials are incorrect.') {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(login_err),
                                 backgroundColor: Colors.redAccent,
                               ),
                             );
-                          }
-                          else {
+                          } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(login_err),
@@ -300,10 +303,10 @@ class _LoginScreenState extends BaseRouteState {
                               ),
                             );
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => VerifyOtpScreen(
-                                    a: widget.analytics,
-                                    o: widget.observer,
-                                  )));
+                                builder: (context) => VerifyOtpScreen(
+                                      a: widget.analytics,
+                                      o: widget.observer,
+                                    )));
                           }
                         }
                       }
