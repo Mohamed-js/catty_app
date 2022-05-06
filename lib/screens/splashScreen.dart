@@ -28,27 +28,20 @@ class _SplashScreenState extends BaseRouteState {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      backgroundColor: Colors.red[700],
+      // backgroundColor: Colors.red[700],
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Image.asset(
+            Image.asset(
                 g.isDarkModeEnable
                     ? 'assets/images/splashydog.png'
                     : 'assets/images/splashydog.png',
                 fit: BoxFit.contain,
-              ),
-            ),
-            Text(
-              "I-Pet",
-              style: TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
+                width: MediaQuery.of(context).size.width * .5),
+            SizedBox(height: 20),
+            Image.asset('assets/images/pets_logo2.png',
+                width: MediaQuery.of(context).size.width * .5),
           ],
         ),
       ),
@@ -62,7 +55,7 @@ class _SplashScreenState extends BaseRouteState {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final auth = Provider.of<Auth>(context, listen: false);
-      await auth.tryLogin();
+      await auth.tryLogin(false);
       startTime(auth.authenticated);
     });
   }

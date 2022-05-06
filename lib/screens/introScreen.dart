@@ -38,14 +38,7 @@ class _IntroScreenState extends BaseRouteState {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    // Text(
-                    //   "I-Pet",
-                    //   style: TextStyle(
-                    //     fontWeight: FontWeight.bold,
-                    //     fontSize: 40,
-                    //     color: Color(0xFFF0384F),
-                    //   )
-                    // ),
+
                   ],
                 ),
               ),

@@ -68,11 +68,11 @@ class _IntrestScreenState extends BaseRouteState {
                           icon: Icon(MdiIcons.messageReplyTextOutline),
                           color: Colors.white,
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => StartConversionScreen(
-                                      a: widget.analytics,
-                                      o: widget.observer,
-                                    )));
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //     builder: (context) => StartConversionScreen(
+                            //           a: widget.analytics,
+                            //           o: widget.observer,
+                            //         )));
                           },
                         )),
                   )
@@ -187,11 +187,11 @@ class _IntrestScreenState extends BaseRouteState {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => StartConversionScreen(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )));
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) => StartConversionScreen(
+                                  //           a: widget.analytics,
+                                  //           o: widget.observer,
+                                  //         )));
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 10),

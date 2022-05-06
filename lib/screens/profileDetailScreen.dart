@@ -317,7 +317,7 @@ class _ProfileDetailScreenState extends BaseRouteState {
                                   .updateProfile(data);
                               if (res == 'Updated successfully.') {
                                 final auth = Provider.of<Auth>(context, listen: false);
-                                await auth.tryLogin();
+                                await auth.tryLogin(false);
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => AddStoryScreen(
                                           a: widget.analytics,

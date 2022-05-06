@@ -1,135 +1,183 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/chatScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:provider/provider.dart';
+import 'dart:math' as math;
 
-class StartConversionScreen extends BaseRoute {
-  StartConversionScreen({a, o}) : super(a: a, o: o, r: 'StartConversionScreen');
+class StartConversionScreen extends StatefulWidget {
+  final Map animal;
+  const StartConversionScreen(this.animal);
   @override
-  _StartConversionScreenState createState() => _StartConversionScreenState();
+  State<StartConversionScreen> createState() => _StartConversionScreenState();
 }
 
-class _StartConversionScreenState extends BaseRouteState {
+class _StartConversionScreenState extends State<StartConversionScreen> {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   _StartConversionScreenState() : super();
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: g.scaffoldBackgroundGradientColors,
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
+    return Consumer<Auth>(builder: (context, auth, child) {
+      return SafeArea(
+          child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: g.scaffoldBackgroundGradientColors,
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+          ),
         ),
-      ),
-      child: Scaffold(
-        key: _scaffoldKey,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20, top: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    g.isDarkModeEnable ? 'assets/images/match_new_remove.png' : 'assets/images/match_new_remove.png',
-                    fit: BoxFit.fitWidth,
-                  ),
-                  Text(AppLocalizations.of(context).lbl_congrats, style: Theme.of(context).primaryTextTheme.headline1),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10),
-                    child: Text(
-                      AppLocalizations.of(context).lbl_its_match,
-                      style: Theme.of(context).primaryTextTheme.subtitle2,
+        child: Scaffold(
+          key: _scaffoldKey,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          body: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      g.isDarkModeEnable
+                          ? 'assets/images/startdatingimg.png'
+                          : 'assets/images/startdatingimg.png',
+                      fit: BoxFit.contain,
+                      width: MediaQuery.of(context).size.width * 0.5,
                     ),
-                  ),
-                  Text('Belle and You both Liked each other', style: Theme.of(context).primaryTextTheme.subtitle2),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    highlightColor: Colors.transparent,
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ChatScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
-                    },
-                    child: Column(
+                    Text(AppLocalizations.of(context).lbl_congrats,
+                        style: Theme.of(context).primaryTextTheme.headline1),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text(
+                        AppLocalizations.of(context).lbl_its_match,
+                        style: Theme.of(context).primaryTextTheme.subtitle2,
+                      ),
+                    ),
+                    Text(
+                        "${widget.animal['user']['first_name'][0].toUpperCase()}${widget.animal['user']['first_name'].substring(1).toLowerCase()} and You both Liked each other's animals",
+                        style: Theme.of(context).primaryTextTheme.subtitle2),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                'http://localhost:8000/${auth.current_user['animals'][0]['avatars'][0]['url']}'),
+                            radius: 32,
+                          ),
+                          Column(
+                            children: [
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 10, top: 10),
+                                  child: Transform.rotate(
+                                      angle: 20 * math.pi / 180,
+                                      child: Icon(
+                                        Icons.favorite,
+                                        color: Color.fromARGB(253, 218, 42, 10),
+                                      ))),
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 10, top: 10),
+                                  child: Transform.rotate(
+                                      angle: -20 * math.pi / 180,
+                                      child: Icon(
+                                        Icons.favorite,
+                                        color: Color.fromARGB(253, 218, 42, 10),
+                                      ))),
+                            ],
+                          ),
+                          CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                'http://localhost:8000/${widget.animal['avatars'][0]['url']}'),
+                            radius: 32,
+                          ),
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      overlayColor:
+                          MaterialStateProperty.all(Colors.transparent),
+                      highlightColor: Colors.transparent,
+                      onTap: () {},
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 40),
+                            child: IconButton(
+                              iconSize: 30,
+                              padding: EdgeInsets.all(0),
+                              icon: Icon(
+                                MdiIcons.messageReplyTextOutline,
+                                color: Color.fromARGB(510, 46, 49, 146),
+                              ),
+                              onPressed: () {},
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: Text(
+                              "Start Conversation Now!",
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle1,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 20),
-                          child: IconButton(
-                            iconSize: 0,
-                            padding: EdgeInsets.all(0),
-                            icon: Icon(
-                              MdiIcons.messageReplyTextOutline,
-                              color: Theme.of(context).iconTheme.color,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 15),
-                          child: Text(
-                            AppLocalizations.of(context).lbl_coversation,
-                            style: TextStyle(
-                              color: g.isDarkModeEnable ? Colors.yellow[700] : Theme.of(context).primaryColorLight,
-                              fontWeight: FontWeight.w600,
+                          padding: const EdgeInsets.only(
+                              top: 20.0, left: 20, bottom: 20, right: 10),
+                          child: ShaderMask(
+                            blendMode: BlendMode.srcIn,
+                            shaderCallback: (Rect bounds) {
+                              return LinearGradient(
+                                colors: g.gradientColors,
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                              ).createShader(bounds);
+                            },
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              overlayColor:
+                                  MaterialStateProperty.all(Colors.transparent),
+                              highlightColor: Colors.transparent,
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                'Keep Matching',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0, left: 20, bottom: 20, right: 10),
-                        child: ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            overlayColor: MaterialStateProperty.all(Colors.transparent),
-                            highlightColor: Colors.transparent,
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(
-                              AppLocalizations.of(context).lbl_keep_dating,
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      ),
-    ));
+      ));
+    });
   }
 
   @override

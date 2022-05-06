@@ -59,7 +59,7 @@ class Auth extends ChangeNotifier {
     }
   }
 
-  Future tryLogin() async {
+  Future tryLogin(refreshing) async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('i-pet-kk');
     if (token != null) {
@@ -72,6 +72,11 @@ class Auth extends ChangeNotifier {
         _user = response.data;
         notifyListeners();
         print(_user);
+      }
+      if (refreshing) {
+        print('Refreshing ==========================================');
+        _user = response.data;
+        notifyListeners();
       }
     } else {
       print("No token.");

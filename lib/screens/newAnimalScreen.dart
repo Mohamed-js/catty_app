@@ -4,6 +4,7 @@ import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/addStoryScreen.dart';
 import 'package:datingapp/screens/likes&IntrestScreen.dart';
 import 'package:datingapp/screens/myAnimalProfileScreen.dart';
+import 'package:datingapp/screens/myProfileDetailScreen.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -411,10 +412,14 @@ class _NewAnimalScreenState extends BaseRouteState {
                                 await Provider.of<Auth>(context, listen: false)
                                     .addAnimal(data);
                             if (res != 'failed') {
-                              final auth = Provider.of<Auth>(context, listen: false);
-                              await auth.tryLogin();
-                              sleep(const Duration(seconds: 2));
-                              Navigator.pop(context);
+                              final auth =
+                                  Provider.of<Auth>(context, listen: false);
+                              await auth.tryLogin(true);
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AddStoryScreen()),
+                                  ModalRoute.withName('/'));
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
