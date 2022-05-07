@@ -3,13 +3,17 @@ import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/chatScreen.dart';
 import 'package:datingapp/screens/createStoryScreen.dart';
+import 'package:datingapp/screens/myProfileDetailScreen.dart';
+import 'package:datingapp/screens/splashScreen.dart';
 import 'package:datingapp/screens/startConversionScreen.dart';
 import 'package:datingapp/screens/viewStoryScreen.dart';
+import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:provider/provider.dart';
 
 class AddMessageScreen extends BaseRoute {
   AddMessageScreen({a, o}) : super(a: a, o: o, r: 'AddMessageScreen');
@@ -52,7 +56,7 @@ class _AddMessageScreenState extends BaseRouteState {
             ),
           ),
           child: Scaffold(
-            appBar: _appBarWidget2(),
+            appBar: _appBarWidget(),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: Padding(
                 padding: EdgeInsets.only(left: 20, right: 20),
@@ -308,38 +312,50 @@ class _AddMessageScreenState extends BaseRouteState {
 
   PreferredSizeWidget _appBarWidget() {
     return PreferredSize(
-      preferredSize: Size.fromHeight(60),
+      preferredSize: Size.fromHeight(70),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
-            child: ListTile(
-              leading: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CircleAvatar(
-                    radius: 18,
-                    backgroundColor: Theme.of(context).primaryColorLight,
-                    child: IconButton(
-                      icon: Icon(MdiIcons.messageReplyTextOutline),
-                      color: Colors.white,
-                      iconSize: 20,
-                      onPressed: () {},
-                    ),
+            child: Consumer<Auth>(
+              builder: (context, auth, child) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 8.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        highlightColor: Colors.transparent,
+                        onTap: () {
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //     builder: (context) => MyProfileScreen(
+                          //           a: widget.analytics,
+                          //           o: widget.observer,
+                          //         )));
+                        },
+                        child: CircleAvatar(
+                          radius: 22,
+                          backgroundImage: auth.current_user['avatar'] == null
+                              ? AssetImage('assets/images/holder.png')
+                              : NetworkImage(
+                                  'http://localhost:8000/${auth.current_user['avatar']}'),
+                        ),
+                      ),
+                      Container(
+                          child: Image.asset('assets/images/pets_logo2.png'),
+                          width: MediaQuery.of(context).size.width * 0.5),
+                      SizedBox(width: 50,)
+                    ],
                   ),
-                  Padding(
-                    padding: g.isRTL ? const EdgeInsets.only(right: 8) : const EdgeInsets.only(left: 8),
-                    child: Text(
-                      AppLocalizations.of(context).lbl_Add_new_message,
-                      style: Theme.of(context).primaryTextTheme.subtitle2,
-                    ),
-                  ),
-                ],
-              ),
-              trailing: Icon(
-                Icons.delete,
-                color: Theme.of(context).iconTheme.color,
-              ),
+                );
+              },
             ),
           ),
         ],
@@ -347,64 +363,5 @@ class _AddMessageScreenState extends BaseRouteState {
     );
   }
 
-  PreferredSizeWidget _appBarWidget2() {
-    return PreferredSize(
-      preferredSize: Size.fromHeight(60),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
-              child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
-                      highlightColor: Colors.transparent,
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CreateStoryScreen(
-                                  a: widget.analytics,
-                                  o: widget.observer,
-                                )));
-                      },
-                      child: CircleAvatar(
-                        radius: 18,
-                        backgroundImage: AssetImage('assets/images/pro.jpg'),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.android,
-                          color: Color(0xFFF0384F),
-                          size: 40,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(4,0,0,0),
-                          child: Text(
-                            "I-Pet",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                              color: Color(0xFFF0384F),
-                            )
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 28)
-                  ],
-                ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+ 
 }

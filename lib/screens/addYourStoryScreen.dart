@@ -7,6 +7,7 @@ import 'package:datingapp/screens/interestScreen.dart';
 
 import 'package:datingapp/screens/notificationListScreen.dart';
 import 'package:datingapp/screens/viewStoryScreen.dart';
+import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -576,11 +577,16 @@ class _AddYourStoryScreenState extends BaseRouteState {
                         ),
                         color: Theme.of(context).iconTheme.color,
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NotificationListScreen(
-                                    a: widget.analytics,
-                                    o: widget.observer,
-                                  )));
+                          Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          BottomNavigationWidgetLight(
+                                            currentIndex: 1,
+                                            a: widget.analytics,
+                                            o: widget.observer,
+                                          )),
+                                  ModalRoute.withName('/'));
                         },
                       ),
                     ),

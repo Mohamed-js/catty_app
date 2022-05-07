@@ -4,6 +4,7 @@ import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/addStoryScreen.dart';
 import 'package:datingapp/screens/likes&IntrestScreen.dart';
 import 'package:datingapp/services/auth.dart';
+import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -319,10 +320,11 @@ class _ProfileDetailScreenState extends BaseRouteState {
                                 final auth = Provider.of<Auth>(context, listen: false);
                                 await auth.tryLogin(false);
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => AddStoryScreen(
-                                          a: widget.analytics,
-                                          o: widget.observer,
-                                        )));
+                              builder: (context) => BottomNavigationWidgetLight(
+                                    currentIndex: 0,
+                                    a: widget.analytics,
+                                    o: widget.observer,
+                                  )));
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

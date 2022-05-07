@@ -6,6 +6,7 @@ import 'package:datingapp/screens/likes&IntrestScreen.dart';
 import 'package:datingapp/screens/myAnimalProfileScreen.dart';
 import 'package:datingapp/screens/myProfileDetailScreen.dart';
 import 'package:datingapp/services/auth.dart';
+import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -415,10 +416,16 @@ class _NewAnimalScreenState extends BaseRouteState {
                               final auth =
                                   Provider.of<Auth>(context, listen: false);
                               await auth.tryLogin(true);
+
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => AddStoryScreen()),
+                                      builder: (context) =>
+                                          BottomNavigationWidgetLight(
+                                            currentIndex: 0,
+                                            a: widget.analytics,
+                                            o: widget.observer,
+                                          )),
                                   ModalRoute.withName('/'));
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(

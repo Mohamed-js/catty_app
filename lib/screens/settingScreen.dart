@@ -152,11 +152,14 @@ class _SettingScreenState extends BaseRouteState {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => NotificationListScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigationWidgetLight(
+                                  currentIndex: 1,
+                                  a: widget.analytics,
+                                  o: widget.observer,
+                                )),
+                      );
                     },
                     child: Padding(
                       padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
@@ -729,8 +732,8 @@ class _SettingScreenState extends BaseRouteState {
                 onPressed: () async {
                   final auth = Provider.of<Auth>(context, listen: false);
                   auth.logout();
-                  Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => SplashScreen()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => SplashScreen()));
                 },
               ),
             ),

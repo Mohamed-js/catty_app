@@ -3,6 +3,7 @@ import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/addStoryScreen.dart';
 import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/services/auth.dart';
+import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -275,7 +276,8 @@ class _VerifyOtpScreenState extends BaseRouteState {
                                   )));
                         } else if (isVerified == true) {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AddStoryScreen(
+                              builder: (context) => BottomNavigationWidgetLight(
+                                    currentIndex: 0,
                                     a: widget.analytics,
                                     o: widget.observer,
                                   )));

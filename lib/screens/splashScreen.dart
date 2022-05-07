@@ -8,6 +8,7 @@ import 'package:datingapp/screens/introScreen.dart';
 import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/screens/startDatingScreen.dart';
 import 'package:datingapp/services/auth.dart';
+import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -65,8 +66,16 @@ class _SplashScreenState extends BaseRouteState {
       var _duration = new Duration(seconds: 3);
       return new Timer(_duration, () {
         if (loggedIn) {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => AddStoryScreen()));
+          Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          BottomNavigationWidgetLight(
+                                            currentIndex: 0,
+                                            a: widget.analytics,
+                                            o: widget.observer,
+                                          )),
+                                  ModalRoute.withName('/'));
         } else {
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => StartDatingScreen()));
