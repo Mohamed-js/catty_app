@@ -322,8 +322,7 @@ class _ProfileDetailScreenState extends BaseRouteState {
                                 Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 0,
-                                    a: widget.analytics,
-                                    o: widget.observer,
+                                   
                                   )));
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(

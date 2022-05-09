@@ -423,8 +423,7 @@ class _NewAnimalScreenState extends BaseRouteState {
                                       builder: (context) =>
                                           BottomNavigationWidgetLight(
                                             currentIndex: 0,
-                                            a: widget.analytics,
-                                            o: widget.observer,
+                                            
                                           )),
                                   ModalRoute.withName('/'));
                             } else {

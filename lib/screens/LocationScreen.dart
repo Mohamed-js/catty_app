@@ -170,8 +170,7 @@ class _LocationScreenState extends BaseRouteState {
                               : Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => BottomNavigationWidgetLight(
                                         currentIndex: 0,
-                                        a: widget.analytics,
-                                        o: widget.observer,
+                                      
                                       )));
                         },
                         child: Text(AppLocalizations.of(context).btn_continue,

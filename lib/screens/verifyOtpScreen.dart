@@ -270,16 +270,11 @@ class _VerifyOtpScreenState extends BaseRouteState {
                         print(isVerified);
                         if (isVerified == false) {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ProfileDetailScreen(
-                                    a: widget.analytics,
-                                    o: widget.observer,
-                                  )));
+                              builder: (context) => ProfileDetailScreen()));
                         } else if (isVerified == true) {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 0,
-                                    a: widget.analytics,
-                                    o: widget.observer,
                                   )));
                         }
                         else {

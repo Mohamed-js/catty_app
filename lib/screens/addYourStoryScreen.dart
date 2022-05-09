@@ -583,8 +583,7 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                       builder: (context) =>
                                           BottomNavigationWidgetLight(
                                             currentIndex: 1,
-                                            a: widget.analytics,
-                                            o: widget.observer,
+                                        
                                           )),
                                   ModalRoute.withName('/'));
                         },

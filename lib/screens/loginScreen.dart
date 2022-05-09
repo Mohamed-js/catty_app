@@ -268,8 +268,7 @@ class _LoginScreenState extends BaseRouteState {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 0,
-                                    a: widget.analytics,
-                                    o: widget.observer,
+                                    
                                   )));
                         } else if (canLogin is Map) {
                           setState(() {

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/provider/local_provider.dart';
@@ -72,13 +71,13 @@ class _SplashScreenState extends BaseRouteState {
                                       builder: (context) =>
                                           BottomNavigationWidgetLight(
                                             currentIndex: 0,
-                                            a: widget.analytics,
-                                            o: widget.observer,
+                            
                                           )),
                                   ModalRoute.withName('/'));
         } else {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => StartDatingScreen()));
+          Navigator.pushAndRemoveUntil(
+            context,
+              MaterialPageRoute(builder: (context) => StartDatingScreen()), ModalRoute.withName('/'));
         }
       });
     } catch (e) {

@@ -72,8 +72,7 @@ class _SettingScreenState extends BaseRouteState {
                           : Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 3,
-                                    a: widget.analytics,
-                                    o: widget.observer,
+                                  
                                   )));
                     },
                     child: Padding(
@@ -156,8 +155,7 @@ class _SettingScreenState extends BaseRouteState {
                         MaterialPageRoute(
                             builder: (context) => BottomNavigationWidgetLight(
                                   currentIndex: 1,
-                                  a: widget.analytics,
-                                  o: widget.observer,
+                           
                                 )),
                       );
                     },
@@ -320,8 +318,7 @@ class _SettingScreenState extends BaseRouteState {
                           : Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 2,
-                                    a: widget.analytics,
-                                    o: widget.observer,
+                                  
                                   )));
                     },
                     child: Padding(
@@ -721,8 +718,6 @@ class _SettingScreenState extends BaseRouteState {
                       : Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => BottomNavigationWidgetLight(
                                 currentIndex: 3,
-                                a: widget.analytics,
-                                o: widget.observer,
                               )));
                 },
               ),

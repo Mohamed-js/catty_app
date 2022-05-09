@@ -38,16 +38,7 @@ class _AddStoryScreenState extends BaseRouteState {
 
   List<dynamic> _recommendations = [];
 
-  final List<String> _imgList = [
-    'assets/images/animal.jpg',
-    'assets/images/animal1.jpg',
-    'assets/images/animal2.jpg',
-    'assets/images/animal3.jpg',
-    'assets/images/animal4.jpg',
-    'assets/images/animal5.jpg',
-    'assets/images/animal6.jpg',
-    'assets/images/animal7.jpg',
-  ];
+
   int _current = 0;
 
   _AddStoryScreenState() : super();
@@ -244,6 +235,17 @@ class _AddStoryScreenState extends BaseRouteState {
                                                             prefs.getString(
                                                                 'i-pet-kk');
 
+                                                        print(auth.current_user[
+                                                            'id']);
+                                                        print(_recommendations[
+                                                                _current]
+                                                            ['user']['id']);
+                                                        print(auth.current_user[
+                                                                'animals'][0]
+                                                            ['id']);
+                                                        print(_recommendations[
+                                                            _current]['id']);
+                                                        print(token);
                                                         Dio.Response response =
                                                             await dio().post(
                                                                 '/likes',
@@ -586,8 +588,7 @@ class _AddStoryScreenState extends BaseRouteState {
             MaterialPageRoute(
                 builder: (context) => BottomNavigationWidgetLight(
                       currentIndex: 3,
-                      a: widget.analytics,
-                      o: widget.observer,
+                      
                     )),
             ModalRoute.withName('/'));
       });
@@ -682,8 +683,7 @@ class _AddStoryScreenState extends BaseRouteState {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 3,
-                                    a: widget.analytics,
-                                    o: widget.observer,
+                                    
                                   )));
                         },
                         child: CircleAvatar(

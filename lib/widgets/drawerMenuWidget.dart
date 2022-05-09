@@ -2,13 +2,12 @@ import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class DrawerMenuWidget extends BaseRoute {
-  DrawerMenuWidget({a, o}) : super(a: a, o: o, r: 'DrawerMenuWidget');
+class DrawerMenuWidget extends StatefulWidget {
   @override
-  _DrawerMenuWidgetState createState() => new _DrawerMenuWidgetState();
+  State<DrawerMenuWidget> createState() => _DrawerMenuWidgetState();
 }
 
-class _DrawerMenuWidgetState extends BaseRouteState {
+class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
   _DrawerMenuWidgetState() : super();
 
   @override

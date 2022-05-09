@@ -6,8 +6,8 @@ List<String> rtlLanguageCodeLList = ['ar', 'arc', 'ckb', 'dv', 'fa', 'ha', 'he',
 String languageCode;
 
 List<Color> gradientColors = [
-  isDarkModeEnable ? Color(0xFF862254) : Color.fromARGB(255, 252, 22, 95),
-  isDarkModeEnable ? Color(0xFF483585) : Color.fromARGB(255, 250, 82, 135),
+  isDarkModeEnable ? Color(0xFF862254) : Color.fromARGB(255, 255, 0, 0),
+  isDarkModeEnable ? Color(0xFF483585) : Color.fromARGB(104, 255, 0, 85),
 ];
 
 List<Color> scaffoldBackgroundGradientColors = [

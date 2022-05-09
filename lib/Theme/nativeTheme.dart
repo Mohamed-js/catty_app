@@ -126,7 +126,7 @@ ThemeData nativeTheme(bool isDarkModeEnable) {
           headline3: TextStyle(fontSize: 19, color: Colors.white, fontWeight: FontWeight.w400),
           headline4: TextStyle(fontSize: 14, color: Colors.white),
           headline5: TextStyle(color: Color(0xFF33196B), fontSize: 14), // filter options title
-          headline6: TextStyle(fontSize: 14, color: Color(0xFFDD3663)), // filter oprions distance show
+          headline6: TextStyle(fontSize: 14, color: Color(0xFFDD3663), fontWeight: FontWeight.w600), // filter oprions distance show
           subtitle1: TextStyle(color: Colors.white70, fontSize: 12),
           subtitle2: TextStyle(color: Colors.green[600], fontSize: 12), // tabbar Tabs text style
           bodyText1: TextStyle(color: Color(0xFFC43F8E), fontSize: 13), // chat title

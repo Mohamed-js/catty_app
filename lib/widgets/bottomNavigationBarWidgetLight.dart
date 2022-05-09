@@ -7,14 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class BottomNavigationWidgetLight extends BaseRoute {
+class BottomNavigationWidgetLight extends StatefulWidget {
   final int currentIndex;
-  BottomNavigationWidgetLight({a, o, this.currentIndex}) : super(a: a, o: o, r: 'BottomNavigationWidgetLight');
+  const BottomNavigationWidgetLight({this.currentIndex});
   @override
-  _BottomNavigationWidgetLightState createState() => new _BottomNavigationWidgetLightState(this.currentIndex);
+  State<BottomNavigationWidgetLight> createState() =>
+      new _BottomNavigationWidgetLightState(this.currentIndex);
 }
 
-class _BottomNavigationWidgetLightState extends BaseRouteState {
+class _BottomNavigationWidgetLightState
+    extends State<BottomNavigationWidgetLight> with TickerProviderStateMixin {
   int currentIndex;
   int _currentIndex = 0;
   TabController _tabController;
@@ -57,10 +59,7 @@ class _BottomNavigationWidgetLightState extends BaseRouteState {
                 tabs: [
                   _tabController.index != 0
                       ? Tab(
-                          icon: Icon(
-                            MdiIcons.cards,
-                            color: Colors.grey[800]
-                          ),
+                          icon: Icon(MdiIcons.cards, color: Colors.grey[800]),
                         )
                       : Tab(
                           icon: ShaderMask(
@@ -76,10 +75,8 @@ class _BottomNavigationWidgetLightState extends BaseRouteState {
                         ),
                   _tabController.index != 1
                       ? Tab(
-                          icon: Icon(
-                            Icons.notifications_rounded,
-                            color: Colors.grey[800]
-                          ),
+                          icon: Icon(Icons.notifications_rounded,
+                              color: Colors.grey[800]),
                         )
                       : Tab(
                           icon: ShaderMask(
@@ -97,11 +94,8 @@ class _BottomNavigationWidgetLightState extends BaseRouteState {
                         )),
                   _tabController.index != 2
                       ? Tab(
-                          icon: Icon(
-                            MdiIcons.messageReplyTextOutline,
-                            color: Colors.grey[800]
-                          ),
-                          
+                          icon: Icon(MdiIcons.messageReplyTextOutline,
+                              color: Colors.grey[800]),
                         )
                       : Tab(
                           icon: ShaderMask(
@@ -117,10 +111,7 @@ class _BottomNavigationWidgetLightState extends BaseRouteState {
                         )),
                   _tabController.index != 3
                       ? Tab(
-                          icon: Icon(
-                            MdiIcons.account,
-                            color: Colors.grey[800]
-                          ),
+                          icon: Icon(MdiIcons.account, color: Colors.grey[800]),
                         )
                       : Tab(
                           icon: ShaderMask(
@@ -152,7 +143,8 @@ class _BottomNavigationWidgetLightState extends BaseRouteState {
         _currentIndex = currentIndex;
       });
     }
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
+    _tabController =
+        new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
   }
 
@@ -163,9 +155,9 @@ class _BottomNavigationWidgetLightState extends BaseRouteState {
   }
 
   List<Widget> _screens() => [
-        AddStoryScreen(a: widget.analytics, o: widget.observer),
-        NotificationListScreen(a: widget.analytics, o: widget.observer),
-        AddMessageScreen(a: widget.analytics, o: widget.observer),
-        MyProfileScreen(a: widget.analytics, o: widget.observer),
+        AddStoryScreen(),
+        NotificationListScreen(),
+        AddMessageScreen(),
+        MyProfileScreen(),
       ];
 }
