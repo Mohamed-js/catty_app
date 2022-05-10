@@ -406,16 +406,16 @@ abstract class AppLocalizations {
   /// **'powered by'**
   String get lbl_powered_by;
 
-  /// Login
+  /// Login/Signup
   ///
   /// In en, this message translates to:
-  /// **'Login'**
+  /// **'Login/Signup'**
   String get lbl_login;
 
-  /// Please enter your valid mobile number.
+  /// Please enter your valid email address.
   ///
   /// In en, this message translates to:
-  /// **'Please enter your valid mobile number.'**
+  /// **'Please enter your valid email address.'**
   String get lbl_login_subtitle1;
 
   /// We will send you a 4-digit code to verify

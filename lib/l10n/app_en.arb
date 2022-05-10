@@ -207,13 +207,13 @@
    "@lbl_powered_by":{
       "description": "powered by"
    },
-   "lbl_login" : "Login",
+   "lbl_login" : "Login/Signup",
    "@lbl_login":{
-      "description": "Login"
+      "description": "Login/Signup"
    },
-   "lbl_login_subtitle1" : "Please enter your valid mobile number.",
+   "lbl_login_subtitle1" : "Please enter your valid email address.",
    "@lbl_login_subtitle1":{
-      "description": "Please enter your valid mobile number."
+      "description": "Please enter your valid email address."
    },
    "lbl_login_subtitle2" : "We will send you a 4-digit code to verify",
    "@lbl_login_subtitle2":{

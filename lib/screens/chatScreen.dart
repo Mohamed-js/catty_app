@@ -398,10 +398,18 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               decoration: BoxDecoration(
                 color: g.isDarkModeEnable ? Color(0xFF3B1159) : Colors.white,
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  topLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(20),
+                  topLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.35),
+                    spreadRadius: 3,
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
               ),
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -469,12 +477,22 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               width: MediaQuery.of(context).size.width * 0.7,
               // height: MediaQuery.of(context).size.height * 0.09,
               decoration: BoxDecoration(
-                color: g.isDarkModeEnable ? Color(0xFF1C0726) : Colors.white60,
+                color: g.isDarkModeEnable
+                    ? Color(0xFF1C0726)
+                    : Color.fromARGB(255, 253, 253, 255),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
-                  topRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.35),
+                    spreadRadius: 3,
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
               ),
               child: Align(
                 alignment: Alignment.centerLeft,

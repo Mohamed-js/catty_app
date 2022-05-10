@@ -164,10 +164,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lbl_powered_by => 'powered by';
 
   @override
-  String get lbl_login => 'Login';
+  String get lbl_login => 'Login/Signup';
 
   @override
-  String get lbl_login_subtitle1 => 'Please enter your valid mobile number.';
+  String get lbl_login_subtitle1 => 'Please enter your valid email address.';
 
   @override
   String get lbl_login_subtitle2 => 'We will send you a 4-digit code to verify';

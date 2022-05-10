@@ -12,6 +12,7 @@ MERGED from [:sqflite] C:\Users\lordd\Documents\GitHub\animal-dating\build\sqfli
 MERGED from [:path_provider_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:multi_image_picker2] C:\Users\lordd\Documents\GitHub\animal-dating\build\multi_image_picker2\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:pusher_websocket_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\pusher_websocket_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\de89a9216ec4cd9c2bf0dab424b9a837\jetified-exoplayer-hls-2.17.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-dash:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\94b7c616e2e611070b32bb1dc02a27ec\jetified-exoplayer-dash-2.17.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\c1992105f1886a58de88f626f3af8aa6\jetified-exoplayer-smoothstreaming-2.17.0\AndroidManifest.xml:17:1-24:12
@@ -169,6 +170,8 @@ MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-datin
 MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:multi_image_picker2] C:\Users\lordd\Documents\GitHub\animal-dating\build\multi_image_picker2\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:multi_image_picker2] C:\Users\lordd\Documents\GitHub\animal-dating\build\multi_image_picker2\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:pusher_websocket_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\pusher_websocket_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:pusher_websocket_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\pusher_websocket_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\de89a9216ec4cd9c2bf0dab424b9a837\jetified-exoplayer-hls-2.17.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\de89a9216ec4cd9c2bf0dab424b9a837\jetified-exoplayer-hls-2.17.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.exoplayer:exoplayer-dash:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\94b7c616e2e611070b32bb1dc02a27ec\jetified-exoplayer-dash-2.17.0\AndroidManifest.xml:20:5-22:41

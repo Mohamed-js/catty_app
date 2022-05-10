@@ -38,7 +38,6 @@ class _AddStoryScreenState extends BaseRouteState {
 
   List<dynamic> _recommendations = [];
 
-
   int _current = 0;
 
   _AddStoryScreenState() : super();
@@ -428,11 +427,8 @@ class _AddStoryScreenState extends BaseRouteState {
                                                     padding: EdgeInsets.only(
                                                         left: 8),
                                                     child: DotsIndicator(
-                                                      dotsCount:
-                                                          _recommendations
-                                                              .length,
-                                                      position:
-                                                          _current.toDouble(),
+                                                      dotsCount: 1,
+                                                      position: 0.toDouble(),
                                                       decorator: DotsDecorator(
                                                         spacing:
                                                             EdgeInsets.all(3),
@@ -588,7 +584,6 @@ class _AddStoryScreenState extends BaseRouteState {
             MaterialPageRoute(
                 builder: (context) => BottomNavigationWidgetLight(
                       currentIndex: 3,
-                      
                     )),
             ModalRoute.withName('/'));
       });
@@ -683,7 +678,6 @@ class _AddStoryScreenState extends BaseRouteState {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 3,
-                                    
                                   )));
                         },
                         child: CircleAvatar(

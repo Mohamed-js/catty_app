@@ -1,4 +1,3 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/screens/addMessageScreen.dart';
 import 'package:datingapp/screens/addStoryScreen.dart';
 import 'package:datingapp/screens/myProfileDetailScreen.dart';
@@ -6,6 +5,7 @@ import 'package:datingapp/screens/notificationListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:pusher_websocket_flutter/pusher.dart';
 
 class BottomNavigationWidgetLight extends StatefulWidget {
   final int currentIndex;
@@ -27,6 +27,7 @@ class _BottomNavigationWidgetLightState
     super.dispose();
   }
 
+  Channel _channel;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -138,6 +139,43 @@ class _BottomNavigationWidgetLightState
   @override
   void initState() {
     super.initState();
+    // START CONNECTION WITH CHANNELS
+    // START CONNECTION WITH CHANNELS
+
+    Future<void> _initPusher() async {
+      try {
+        print(Pusher.init(
+            '222333Aa',
+            PusherOptions(
+                cluster: 'mt1',
+                host: 'localhost/',
+                port: 6001,
+                encrypted: false)));
+      } catch (e) {
+        print(e);
+      }
+
+      await Pusher.connect(onConnectionStateChange: (val) {
+        print('result===========');
+        print(val.currentState);
+        print('result===========');
+      }, onError: (e) {
+        print('error===========');
+        print(e.message);
+        print('error===========');
+      });
+
+      // _channel = await Pusher.subscribe('home');
+
+      // _channel.bind('new_message', (onEvent) {
+      //   print(onEvent.data);
+      // });
+    }
+
+    // _initPusher();
+
+    // END
+    // END
     if (currentIndex != null) {
       setState(() {
         _currentIndex = currentIndex;

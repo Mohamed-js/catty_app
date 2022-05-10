@@ -58,9 +58,12 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                         style: Theme.of(context).primaryTextTheme.subtitle2,
                       ),
                     ),
-                    Text(
-                        "${widget.animal['user']['first_name'][0].toUpperCase()}${widget.animal['user']['first_name'].substring(1).toLowerCase()} and You both Liked each other's animals",
-                        style: Theme.of(context).primaryTextTheme.subtitle2),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                          "${widget.animal['user']['first_name'][0].toUpperCase()}${widget.animal['user']['first_name'].substring(1).toLowerCase()} and You both Liked each other's animals",
+                          style: Theme.of(context).primaryTextTheme.subtitle2),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: Row(
