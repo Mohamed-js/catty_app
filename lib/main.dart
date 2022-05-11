@@ -13,8 +13,8 @@ import 'package:provider/provider.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    Phoenix(child:
-      MultiProvider(
+    Phoenix(
+      child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => Auth()),
         ],
@@ -23,8 +23,6 @@ void main() {
     ),
   );
 }
-
-
 
 class MyApp extends StatefulWidget {
   @override

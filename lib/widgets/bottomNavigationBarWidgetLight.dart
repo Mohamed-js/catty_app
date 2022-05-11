@@ -5,7 +5,8 @@ import 'package:datingapp/screens/notificationListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:pusher_websocket_flutter/pusher.dart';
+import 'package:laravel_echo/laravel_echo.dart';
+import 'package:flutter_pusher_client/flutter_pusher.dart';
 
 class BottomNavigationWidgetLight extends StatefulWidget {
   final int currentIndex;
@@ -143,36 +144,40 @@ class _BottomNavigationWidgetLightState
     // START CONNECTION WITH CHANNELS
 
     Future<void> _initPusher() async {
-      try {
-        print(Pusher.init(
-            '222333Aa',
-            PusherOptions(
-                cluster: 'mt1',
-                host: 'localhost/',
-                port: 6001,
-                encrypted: false)));
-      } catch (e) {
-        print(e);
-      }
-
-      await Pusher.connect(onConnectionStateChange: (val) {
-        print('result===========');
-        print(val.currentState);
-        print('result===========');
+      PusherOptions options = PusherOptions(
+        host: '127.0.0.1',
+        port: 6001,
+        encrypted: false,
+      );
+      FlutterPusher pusher = FlutterPusher('app', options, enableLogging: true,
+          onConnectionStateChange: (e) {
+        print(e.currentState);
       }, onError: (e) {
-        print('error===========');
+        print('error happened');
         print(e.message);
-        print('error===========');
+        print(e.exception);
+        print(e.code);
+        print('error happened');
       });
 
-      // _channel = await Pusher.subscribe('home');
+      pusher.subscribe('home').bind('NewMessage', (event) => {});
 
-      // _channel.bind('new_message', (onEvent) {
-      //   print(onEvent.data);
-      // });
+      Echo echo = new Echo({
+        'broadcaster': 'pusher',
+        'client': pusher,
+      });
+
+      echo.listen('home', 'NewMessage', (e) {
+        print(e);
+      });
+
+      // echo.disconnect();
+
+      // Echo.socket.on('connect', (_) => print('connect'));
+      // socket.on('disconnect', (_) => print('disconnect'));
     }
 
-    // _initPusher();
+    _initPusher();
 
     // END
     // END

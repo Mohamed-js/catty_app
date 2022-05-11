@@ -6,6 +6,12 @@
 
 #import "GeneratedPluginRegistrant.h"
 
+#if __has_include(<flutter_pusher_client/SwiftFlutterPusherPlugin.h>)
+#import <flutter_pusher_client/SwiftFlutterPusherPlugin.h>
+#else
+@import flutter_pusher_client;
+#endif
+
 #if __has_include(<image_picker_ios/FLTImagePickerPlugin.h>)
 #import <image_picker_ios/FLTImagePickerPlugin.h>
 #else
@@ -22,12 +28,6 @@
 #import <path_provider_ios/FLTPathProviderPlugin.h>
 #else
 @import path_provider_ios;
-#endif
-
-#if __has_include(<pusher_websocket_flutter/PusherPlugin.h>)
-#import <pusher_websocket_flutter/PusherPlugin.h>
-#else
-@import pusher_websocket_flutter;
 #endif
 
 #if __has_include(<shared_preferences_ios/FLTSharedPreferencesPlugin.h>)
@@ -51,10 +51,10 @@
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
+  [SwiftFlutterPusherPlugin registerWithRegistrar:[registry registrarForPlugin:@"SwiftFlutterPusherPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [MultiImagePicker2Plugin registerWithRegistrar:[registry registrarForPlugin:@"MultiImagePicker2Plugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
-  [PusherPlugin registerWithRegistrar:[registry registrarForPlugin:@"PusherPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
   [FLTVideoPlayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTVideoPlayerPlugin"]];

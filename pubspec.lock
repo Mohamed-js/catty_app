@@ -144,6 +144,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  flutter_pusher_client:
+    dependency: "direct main"
+    description:
+      name: flutter_pusher_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -238,6 +245,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.1"
+  laravel_echo:
+    dependency: "direct main"
+    description:
+      name: laravel_echo
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.9"
   matcher:
     dependency: transitive
     description:
@@ -385,13 +399,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.2"
-  pusher_websocket_flutter:
-    dependency: "direct main"
-    description:
-      name: pusher_websocket_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   rxdart:
     dependency: transitive
     description:
