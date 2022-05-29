@@ -62,6 +62,7 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                       alignment: Alignment.center,
                       child: Text(
                           "${widget.animal['user']['first_name'][0].toUpperCase()}${widget.animal['user']['first_name'].substring(1).toLowerCase()} and You both Liked each other's animals",
+                          textAlign: TextAlign.center,
                           style: Theme.of(context).primaryTextTheme.subtitle2),
                     ),
                     Padding(
@@ -131,6 +132,7 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                             padding: const EdgeInsets.only(bottom: 15),
                             child: Text(
                               "Start Conversation Now!",
+                              textAlign: TextAlign.center,
                               style:
                                   Theme.of(context).primaryTextTheme.subtitle1,
                             ),

@@ -22,6 +22,7 @@ class _NotificationListScreenState extends BaseRouteState {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   _NotificationListScreenState() : super();
   List<dynamic> _addNewNotificationList = [];
+  bool loading = true;
 
   @override
   Widget build(BuildContext context) {
@@ -56,129 +57,147 @@ class _NotificationListScreenState extends BaseRouteState {
                 ),
                 automaticallyImplyLeading: false),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            body: _addNewNotificationList.isEmpty
+            body: loading
                 ? Center(
                     child: Text('loading...',
                         style: Theme.of(context).primaryTextTheme.bodyText1))
-                : Padding(
-                    padding: EdgeInsets.only(left: 20, right: 20),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4, bottom: 20),
-                          child: Text(
-                            AppLocalizations.of(context)
-                                .lbl_notifications_subtitle,
-                            style: Theme.of(context).primaryTextTheme.subtitle2,
-                          ),
-                        ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: _addNewNotificationList.length,
-                            itemBuilder: (ctx, index) {
-                              return Column(
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        _addNewNotificationList[index]['img'] !=
-                                                null
-                                            ? CircleAvatar(
-                                                backgroundColor: Colors.white,
-                                                radius: 31,
-                                                child: CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                    'http://localhost:8000/${_addNewNotificationList[index]['img']}',
+                : _addNewNotificationList.isEmpty
+                    ? Center(
+                        child: Text('No current notifications...',
+                            style:
+                                Theme.of(context).primaryTextTheme.bodyText1))
+                    : Padding(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 4, bottom: 20),
+                              child: Text(
+                                AppLocalizations.of(context)
+                                    .lbl_notifications_subtitle,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
+                              ),
+                            ),
+                            Expanded(
+                              child: ListView.builder(
+                                itemCount: _addNewNotificationList.length,
+                                itemBuilder: (ctx, index) {
+                                  return Column(
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            _addNewNotificationList[index]
+                                                        ['img'] !=
+                                                    null
+                                                ? CircleAvatar(
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    radius: 31,
+                                                    child: CircleAvatar(
+                                                      backgroundImage:
+                                                          NetworkImage(
+                                                        'http://localhost:8000/${_addNewNotificationList[index]['img']}',
+                                                      ),
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      radius: 30,
+                                                    ),
+                                                  )
+                                                : CircleAvatar(
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    radius: 31,
+                                                    child: CircleAvatar(
+                                                      backgroundImage:
+                                                          AssetImage(
+                                                        'assets/images/card_img_2.png',
+                                                      ),
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      radius: 30,
+                                                    ),
                                                   ),
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  radius: 30,
-                                                ),
-                                              )
-                                            : CircleAvatar(
-                                                backgroundColor: Colors.white,
-                                                radius: 31,
-                                                child: CircleAvatar(
-                                                  backgroundImage: AssetImage(
-                                                    'assets/images/card_img_2.png',
-                                                  ),
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  radius: 30,
-                                                ),
-                                              ),
-                                        Flexible(
-                                          child: Padding(
-                                            padding: g.isRTL
-                                                ? const EdgeInsets.only(
-                                                    right: 12)
-                                                : const EdgeInsets.only(
-                                                    left: 12),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  _addNewNotificationList[index]
-                                                      ['title'],
-                                                  style: Theme.of(context)
-                                                      .primaryTextTheme
-                                                      .subtitle1,
-                                                ),
-                                                Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 4, bottom: 4),
-                                                    child: Text(
+                                            Flexible(
+                                              child: Padding(
+                                                padding: g.isRTL
+                                                    ? const EdgeInsets.only(
+                                                        right: 12)
+                                                    : const EdgeInsets.only(
+                                                        left: 12),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
                                                       _addNewNotificationList[
-                                                          index]['body'],
+                                                          index]['title'],
                                                       style: Theme.of(context)
                                                           .primaryTextTheme
-                                                          .bodyText1,
-                                                    )),
-                                                Text(
-                                                  DateFormat.yMMMEd().format(
-                                                      DateTime.parse(
+                                                          .subtitle1,
+                                                    ),
+                                                    Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 4,
+                                                                bottom: 4),
+                                                        child: Text(
                                                           _addNewNotificationList[
-                                                                  index]
-                                                              ['updated_at'])),
-                                                  style: Theme.of(context)
-                                                      .primaryTextTheme
-                                                      .subtitle2,
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    margin:
-                                        EdgeInsets.only(top: 12, bottom: 12),
-                                    height: 1.5,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: g.gradientColors,
+                                                              index]['body'],
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .primaryTextTheme
+                                                              .bodyText1,
+                                                        )),
+                                                    Text(
+                                                      DateFormat.yMMMEd().format(
+                                                          DateTime.parse(
+                                                              _addNewNotificationList[
+                                                                      index][
+                                                                  'updated_at'])),
+                                                      style: Theme.of(context)
+                                                          .primaryTextTheme
+                                                          .subtitle2,
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    child: Divider(),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            top: 12, bottom: 12),
+                                        height: 1.5,
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                            colors: g.gradientColors,
+                                          ),
+                                        ),
+                                        child: Divider(),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
+                      ),
           ),
         ),
       ),
@@ -199,6 +218,7 @@ class _NotificationListScreenState extends BaseRouteState {
 
       setState(() {
         _addNewNotificationList = response.data;
+        loading = false;
       });
 
       print(_addNewNotificationList);

@@ -3,6 +3,7 @@ import 'package:datingapp/l10n/l10n.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/provider/local_provider.dart';
 import 'package:datingapp/screens/splashScreen.dart';
+import 'package:datingapp/services/app_state.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -17,6 +18,7 @@ void main() {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => Auth()),
+          ChangeNotifierProvider(create: (context) => AppState()),
         ],
         child: MyApp(),
       ),
@@ -36,32 +38,7 @@ class MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    //_init();
   }
-
-  // Future () async {
-  //   try {
-  //     var brightness = SchedulerBinding.instance.window.platformBrightness;
-  //     print("HEllo main");
-  //     bool isDarkMode = brightness == Brightness.dark;
-  //     g.isDarkModeEnable = isDarkMode;
-  //   } catch (e) {
-  //     print('Exception - base.dart - (): ' + e.toString());
-  //   }
-  // }
-
-  // _init() async {
-  //   try {
-  //     SharedPreferences sp = await SharedPreferences.getInstance();
-  //     if (sp.containsKey('isDarkMode') && sp.getBool('isDarkMode') != null) {
-  //       g.isDarkModeEnable = sp.getBool('isDarkMode');
-  //     } else {
-  //       g.isDarkModeEnable = false;
-  //     }
-  //   } catch (e) {
-  //     print('Exception - main.dart - _init(): ' + e.toString());
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(

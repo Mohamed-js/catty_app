@@ -62,21 +62,26 @@ class Auth extends ChangeNotifier {
   Future tryLogin(refreshing) async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('i-pet-kk');
+    print(token);
     if (token != null) {
-      Dio.Response response = await dio().get('/user',
-          options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
+      try {
+        Dio.Response response = await dio().get('/user',
+            options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
 
-      print(response.data['verified']);
-      if (response.data['verified']) {
-        _isLoggedIn = true;
-        _user = response.data;
-        notifyListeners();
-        print(_user);
-      }
-      if (refreshing) {
-        print('Refreshing ==========================================');
-        _user = response.data;
-        notifyListeners();
+        print(response.data['verified']);
+        if (response.data['verified']) {
+          _isLoggedIn = true;
+          _user = response.data;
+          notifyListeners();
+          print(_user);
+        }
+        if (refreshing) {
+          print('Refreshing ==========================================');
+          _user = response.data;
+          notifyListeners();
+        }
+      } catch (e) {
+        print(e);
       }
     } else {
       print("No token.");

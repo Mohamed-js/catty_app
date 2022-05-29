@@ -177,7 +177,7 @@ class _BottomNavigationWidgetLightState
       // socket.on('disconnect', (_) => print('disconnect'));
     }
 
-    _initPusher();
+    // _initPusher();
 
     // END
     // END

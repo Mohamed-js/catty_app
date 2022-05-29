@@ -7,6 +7,7 @@ import 'package:datingapp/screens/myProfileDetailScreen.dart';
 import 'package:datingapp/screens/notificationListScreen.dart';
 import 'package:datingapp/screens/splashScreen.dart';
 import 'package:datingapp/screens/startConversionScreen.dart';
+import 'package:datingapp/services/app_state.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -64,507 +65,525 @@ class _AddStoryScreenState extends BaseRouteState {
               backgroundColor: g.isDarkModeEnable
                   ? Color(0xFF03000C)
                   : Theme.of(context).scaffoldBackgroundColor,
-              body: _recommendations.length == 0
+              body: _openDialog
                   ? Center(
                       child: Padding(
                         padding: g.isRTL
                             ? const EdgeInsets.only(right: 20, top: 10)
                             : const EdgeInsets.only(left: 20, top: 10),
-                        child: const Text('No results to show...',
+                        child: const Text(
+                            'Cannot like more!\n Your quota is finished!',
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color.fromARGB(183, 73, 73, 73),
+                                color: Color.fromARGB(183, 24, 5, 5),
                                 fontWeight: FontWeight.normal)),
                       ),
                     )
-                  : Center(
-                      child: Padding(
-                          padding: EdgeInsets.only(left: 20, right: 20),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 20),
-                                  child: Stack(
-                                    alignment: Alignment.bottomCenter,
-                                    children: [
-                                      _openDialog
-                                          ? Text('No results to show...')
-                                          : AlertDialog(
-                                              title: Text('Reset settings?'),
-                                              content: Text(
-                                                  'This will reset your device to its default factory settings.'),
-                                              actions: [
-                                                FlatButton(
-                                                  textColor: Color(0xFF6200EE),
-                                                  onPressed: () {},
-                                                  child: Text('CANCEL'),
-                                                ),
-                                                FlatButton(
-                                                  textColor: Color(0xFF6200EE),
-                                                  onPressed: () {},
-                                                  child: Text('ACCEPT'),
-                                                ),
-                                              ],
-                                            ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            bottom: 18, left: 10, right: 10),
-                                        height: MediaQuery.of(context)
-                                                .size
-                                                .height *
-                                            0.6, //MediaQuery.of(context).size.height * 0.54,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.85,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(g.isDarkModeEnable
-                                                ? 'assets/images/cards_dark.png'
-                                                : 'assets/images/cards_light.png'),
-                                          ),
-                                        ),
-                                      ),
-                                      Stack(
-                                        alignment: Alignment.topRight,
+                  : _recommendations.length == 0 ||
+                          _current >= _recommendations.length
+                      ? Center(
+                          child: Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 20, top: 10)
+                                : const EdgeInsets.only(left: 20, top: 10),
+                            child: const Text('Trying to find more matches!',
+                                style: TextStyle(
+                                    color: Color.fromARGB(183, 24, 5, 5),
+                                    fontWeight: FontWeight.normal)),
+                          ),
+                        )
+                      : Center(
+                          child: Padding(
+                              padding: EdgeInsets.only(left: 20, right: 20),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 20),
+                                      child: Stack(
+                                        alignment: Alignment.bottomCenter,
                                         children: [
                                           Container(
+                                            margin: EdgeInsets.only(
+                                                bottom: 18,
+                                                left: 10,
+                                                right: 10),
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                .6,
+                                                0.6, //MediaQuery.of(context).size.height * 0.54,
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                .85,
-                                            child: Align(
-                                              alignment: Alignment.bottomCenter,
-                                              child: Listener(
-                                                onPointerMove:
-                                                    (PointerMoveEvent _event) {
-                                                  if (_event.delta.dy > 0) {
-                                                    setState(() {
-                                                      _leftDirection = 1;
-                                                      _rightDirection = null;
-                                                      _upDirection = null;
-                                                    });
-                                                  }
-                                                  if (_event.delta.dx > 0) {
-                                                    setState(() {
-                                                      _rightDirection = 2;
-                                                      _leftDirection = null;
-                                                      _upDirection = null;
-                                                    });
-                                                  }
-                                                },
-                                                child: TCard(
-                                                  cards: _widgets(),
-                                                  controller: _controller,
-                                                  size: Size(
-                                                      MediaQuery.of(context)
-                                                          .size
-                                                          .width,
-                                                      MediaQuery.of(context)
-                                                          .size
-                                                          .height),
-                                                  onForward:
-                                                      (index, info) async {
-                                                    if (info.direction ==
-                                                        SwipDirection.Left) {
-                                                      if (_current ==
-                                                          _recommendations
-                                                              .length) {
-                                                        print(
-                                                            'we are doneeeee');
-                                                      } else {
-                                                        // DIIIIIIIIIIIIIIIIIISLIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                                                        final prefs =
-                                                            await SharedPreferences
-                                                                .getInstance();
-                                                        String token =
-                                                            prefs.getString(
-                                                                'i-pet-kk');
-                                                        print(token);
-                                                        print(auth.current_user[
-                                                                'animals'][0]
-                                                            ['id']);
-                                                        print(_recommendations[
-                                                            _current]['id']);
-                                                        Dio.Response response =
-                                                            await dio().post(
-                                                                '/dislikes',
-                                                                data: {
-                                                                  'disliker_user_id':
-                                                                      auth.current_user[
-                                                                          'id'],
-                                                                  'disliker_animal_id':
-                                                                      auth.current_user['animals']
-                                                                              [
-                                                                              0]
-                                                                          [
-                                                                          'id'],
-                                                                  'disliked_animal_id':
-                                                                      _recommendations[
-                                                                              _current]
-                                                                          [
-                                                                          'id'],
-                                                                },
-                                                                options:
-                                                                    Dio.Options(
-                                                                        headers: {
-                                                                      'Authorization':
-                                                                          'Bearer $token',
-                                                                    }));
-                                                        print(response.data);
-                                                      }
-                                                    }
-                                                    if (info.direction ==
-                                                        SwipDirection.Right) {
-                                                      if (_current ==
-                                                          _recommendations
-                                                              .length) {
-                                                        print(
-                                                            'we are doneeeee');
-                                                      } else {
-                                                        // LIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                                                        final prefs =
-                                                            await SharedPreferences
-                                                                .getInstance();
-                                                        String token =
-                                                            prefs.getString(
-                                                                'i-pet-kk');
-
-                                                        print(auth.current_user[
-                                                            'id']);
-                                                        print(_recommendations[
-                                                                _current]
-                                                            ['user']['id']);
-                                                        print(auth.current_user[
-                                                                'animals'][0]
-                                                            ['id']);
-                                                        print(_recommendations[
-                                                            _current]['id']);
-                                                        print(token);
-                                                        Dio.Response response =
-                                                            await dio().post(
-                                                                '/likes',
-                                                                data: {
-                                                                  'liker_user_id':
-                                                                      auth.current_user[
-                                                                          'id'],
-                                                                  'liked_user_id':
-                                                                      _recommendations[_current]
-                                                                              [
-                                                                              'user']
-                                                                          [
-                                                                          'id'],
-                                                                  'liker_animal_id':
-                                                                      auth.current_user['animals']
-                                                                              [
-                                                                              0]
-                                                                          [
-                                                                          'id'],
-                                                                  'liked_animal_id':
-                                                                      _recommendations[
-                                                                              _current]
-                                                                          [
-                                                                          'id'],
-                                                                },
-                                                                options:
-                                                                    Dio.Options(
-                                                                        headers: {
-                                                                      'Authorization':
-                                                                          'Bearer $token',
-                                                                    }));
-                                                        print(response.data);
-                                                        if (response.data !=
-                                                            "failed to like") {
-                                                          if (response
-                                                              .data['match']) {
-                                                            setState(() {
-                                                              _showMatch = true;
-                                                              Navigator.of(
-                                                                      context)
-                                                                  .push(MaterialPageRoute(
-                                                                      builder: (context) =>
-                                                                          StartConversionScreen(
-                                                                              _recommendations[_current])));
-                                                            });
-                                                          }
-                                                        } else {
-                                                          setState(() {
-                                                            _openDialog = true;
-                                                          });
-                                                        }
-                                                        print(_current);
-                                                        print(_recommendations
-                                                            .length);
-                                                        print(_openDialog);
-                                                      }
-                                                    }
-
-                                                    setState(() {
-                                                      if (_current !=
-                                                          _recommendations
-                                                                  .length -
-                                                              1) {
-                                                        _current = index;
-                                                      }
-                                                      _leftDirection = 0;
-                                                      _rightDirection = 0;
-                                                      _upDirection = 0;
-                                                    });
-                                                  },
-                                                  onEnd: () {
-                                                    // _controller.reset();
-                                                    // _current = 0;
-                                                  },
-                                                ),
+                                                0.85,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(g
+                                                        .isDarkModeEnable
+                                                    ? 'assets/images/cards_dark.png'
+                                                    : 'assets/images/cards_light.png'),
                                               ),
                                             ),
                                           ),
-                                          // Padding(
-                                          //   padding: const EdgeInsets.all(18.0),
-                                          //   child: CircleAvatar(
-                                          //     backgroundColor: Color(0xFF230f4E),
-                                          //     child: IconButton(
-                                          //       icon: Icon(
-                                          //         Icons.bug_report,
-                                          //       ),
-                                          //       color: Colors.white,
-                                          //       onPressed: () {
-                                          //         Navigator.of(context).pop();
-                                          //       },
-                                          //     ),
-                                          //   ),
-                                          // ),
-                                        ],
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(bottom: 30),
-                                        alignment: Alignment.bottomLeft,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.6,
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8),
-                                              child: Row(
-                                                children: [
-                                                  CircleAvatar(
-                                                    backgroundColor:
-                                                        Colors.white,
-                                                    radius: 35,
-                                                    child: CircleAvatar(
-                                                      backgroundImage: _recommendations
-                                                                      .length <=
-                                                                  0 &&
-                                                              _current >=
-                                                                  _recommendations
-                                                                      .length
-                                                          ? AssetImage(
-                                                              'assets/images/holder.png')
-                                                          : NetworkImage(
-                                                              'http://localhost:8000/${_recommendations[_current]['user']['avatar']}',
-                                                            ),
-                                                      radius: 32,
+                                          Stack(
+                                            alignment: Alignment.topRight,
+                                            children: [
+                                              Container(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    .6,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .85,
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                  child: Listener(
+                                                    onPointerMove:
+                                                        (PointerMoveEvent
+                                                            _event) {
+                                                      if (_event.delta.dy > 0) {
+                                                        setState(() {
+                                                          _leftDirection = 1;
+                                                          _rightDirection =
+                                                              null;
+                                                          _upDirection = null;
+                                                        });
+                                                      }
+                                                      if (_event.delta.dx > 0) {
+                                                        setState(() {
+                                                          _rightDirection = 2;
+                                                          _leftDirection = null;
+                                                          _upDirection = null;
+                                                        });
+                                                      }
+                                                    },
+                                                    child: TCard(
+                                                      cards: _widgets(),
+                                                      controller: _controller,
+                                                      size: Size(
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .width,
+                                                          MediaQuery.of(context)
+                                                              .size
+                                                              .height),
+                                                      onForward:
+                                                          (index, info) async {
+                                                        print(_current);
+                                                        print(_recommendations
+                                                                .length -
+                                                            1);
+                                                        if (info.direction ==
+                                                            SwipDirection
+                                                                .Left) {
+                                                          if (_current ==
+                                                              _recommendations
+                                                                      .length -
+                                                                  1) {
+                                                            print(
+                                                                'we are doneeeee');
+                                                          } else {
+                                                            // DIIIIIIIIIIIIIIIIIISLIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                                                            final prefs =
+                                                                await SharedPreferences
+                                                                    .getInstance();
+                                                            String token =
+                                                                prefs.getString(
+                                                                    'i-pet-kk');
+                                                            // print(token);
+                                                            // print(auth.current_user[
+                                                            //         'animals'][0]
+                                                            //     ['id']);
+                                                            // print(_recommendations[
+                                                            //     _current]['id']);
+                                                            Dio.Response
+                                                                response =
+                                                                await dio().post(
+                                                                    '/dislikes',
+                                                                    data: {
+                                                                      'disliker_user_id':
+                                                                          auth.current_user[
+                                                                              'id'],
+                                                                      'disliker_animal_id':
+                                                                          auth.current_user['animals'][0]
+                                                                              [
+                                                                              'id'],
+                                                                      'disliked_animal_id':
+                                                                          _recommendations[_current]
+                                                                              [
+                                                                              'id'],
+                                                                    },
+                                                                    options: Dio
+                                                                        .Options(
+                                                                            headers: {
+                                                                          'Authorization':
+                                                                              'Bearer $token',
+                                                                        }));
+                                                            // print(response.data);
+                                                          }
+                                                        }
+                                                        if (info.direction ==
+                                                            SwipDirection
+                                                                .Right) {
+                                                          if (_current ==
+                                                              _recommendations
+                                                                  .length) {
+                                                            // print(
+                                                            //     'we are doneeeee');
+                                                          } else {
+                                                            // LIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                                                            final prefs =
+                                                                await SharedPreferences
+                                                                    .getInstance();
+                                                            String token =
+                                                                prefs.getString(
+                                                                    'i-pet-kk');
+
+                                                            // print(auth.current_user[
+                                                            //     'id']);
+                                                            // print(_recommendations[
+                                                            //         _current]
+                                                            //     ['user']['id']);
+                                                            // print(auth.current_user[
+                                                            //         'animals'][0]
+                                                            //     ['id']);
+                                                            // print(_recommendations[
+                                                            //     _current]['id']);
+                                                            // print(token);
+                                                            Dio.Response
+                                                                response =
+                                                                await dio().post(
+                                                                    '/likes',
+                                                                    data: {
+                                                                      'liker_user_id':
+                                                                          auth.current_user[
+                                                                              'id'],
+                                                                      'liked_user_id':
+                                                                          _recommendations[_current]['user']
+                                                                              [
+                                                                              'id'],
+                                                                      'liker_animal_id':
+                                                                          auth.current_user['animals'][0]
+                                                                              [
+                                                                              'id'],
+                                                                      'liked_animal_id':
+                                                                          _recommendations[_current]
+                                                                              [
+                                                                              'id'],
+                                                                    },
+                                                                    options: Dio
+                                                                        .Options(
+                                                                            headers: {
+                                                                          'Authorization':
+                                                                              'Bearer $token',
+                                                                        }));
+                                                            if (response.data !=
+                                                                "failed to like") {
+                                                              if (response.data[
+                                                                  'match']) {
+                                                                setState(() {
+                                                                  _showMatch =
+                                                                      true;
+                                                                  Navigator.of(
+                                                                          context)
+                                                                      .push(MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                              StartConversionScreen(_recommendations[_current])));
+                                                                });
+                                                              }
+                                                            } else {
+                                                              setState(() {
+                                                                _openDialog =
+                                                                    true;
+                                                              });
+                                                            }
+                                                            // print(_current);
+                                                            // print(_recommendations
+                                                            //     .length);
+                                                            // print(_openDialog);
+                                                          }
+                                                        }
+
+                                                        // if (_current == _recommendations
+                                                        //     .length - 6) {
+                                                        //   getRecommendations(firstLoad: false);
+                                                        // }
+
+                                                        setState(() {
+                                                          _current = index;
+                                                          _leftDirection = 0;
+                                                          _rightDirection = 0;
+                                                          _upDirection = 0;
+                                                        });
+                                                      },
+                                                      onEnd: () {
+                                                        // _controller.reset();
+                                                        // _current = 0;
+                                                      },
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding: g.isRTL
-                                                        ? const EdgeInsets.only(
-                                                            right: 6)
-                                                        : const EdgeInsets.only(
-                                                            left: 6),
-                                                    child: RichText(
-                                                      text: _recommendations
-                                                                  .length ==
-                                                              0
-                                                          ? TextSpan(text: '-')
-                                                          : TextSpan(
-                                                              children: [
-                                                                TextSpan(
-                                                                  text:
-                                                                      '${_recommendations[_current]['name'][0].toUpperCase()}${_recommendations[_current]['name'].substring(1).toLowerCase()}\n',
-                                                                  style: Theme.of(
-                                                                          context)
-                                                                      .accentTextTheme
-                                                                      .headline3,
-                                                                ),
-                                                                TextSpan(
-                                                                  text:
-                                                                      "${_recommendations[_current]['user']['first_name'][0].toUpperCase()}${_recommendations[_current]['user']['first_name'].substring(1).toLowerCase()}\n${_recommendations[_current]['user']['last_name'][0].toUpperCase()}${_recommendations[_current]['user']['last_name'].substring(1).toLowerCase()}\n",
-                                                                  style: Theme.of(
-                                                                          context)
-                                                                      .accentTextTheme
-                                                                      .subtitle2,
-                                                                ),
-                                                                // TextSpan(
-                                                                //   text: '24 km away',
-                                                                //   style: Theme.of(context)
-                                                                //       .accentTextTheme
-                                                                //       .subtitle1,
-                                                                // ),
-                                                              ],
-                                                            ),
-                                                    ),
-                                                  )
-                                                ],
+                                                ),
                                               ),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                              // Padding(
+                                              //   padding: const EdgeInsets.all(18.0),
+                                              //   child: CircleAvatar(
+                                              //     backgroundColor: Color(0xFF230f4E),
+                                              //     child: IconButton(
+                                              //       icon: Icon(
+                                              //         Icons.bug_report,
+                                              //       ),
+                                              //       color: Colors.white,
+                                              //       onPressed: () {
+                                              //         Navigator.of(context).pop();
+                                              //       },
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                            ],
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(bottom: 30),
+                                            alignment: Alignment.bottomLeft,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.6,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                Align(
-                                                  child: Container(
-                                                    height: 50,
-                                                    padding: EdgeInsets.only(
-                                                        left: 8),
-                                                    child: DotsIndicator(
-                                                      dotsCount: 1,
-                                                      position: 0.toDouble(),
-                                                      decorator: DotsDecorator(
-                                                        spacing:
-                                                            EdgeInsets.all(3),
-                                                        color:
-                                                            Colors.transparent,
-                                                        activeColor:
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8),
+                                                  child: Row(
+                                                    children: [
+                                                      CircleAvatar(
+                                                        backgroundColor:
                                                             Colors.white,
-                                                        activeShape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.0),
-                                                          side: BorderSide(
-                                                              color:
-                                                                  Colors.white),
+                                                        radius: 35,
+                                                        child: CircleAvatar(
+                                                          backgroundImage: _recommendations
+                                                                          .length <=
+                                                                      0 &&
+                                                                  _current >=
+                                                                      _recommendations
+                                                                          .length
+                                                              ? AssetImage(
+                                                                  'assets/images/holder.png')
+                                                              : NetworkImage(
+                                                                  'http://localhost:8000/${_recommendations[_current]['user']['avatar']}',
+                                                                ),
+                                                          radius: 32,
                                                         ),
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.0),
-                                                          side: BorderSide(
-                                                              color:
-                                                                  Colors.white),
+                                                      ),
+                                                      Padding(
+                                                        padding: g.isRTL
+                                                            ? const EdgeInsets
+                                                                .only(right: 6)
+                                                            : const EdgeInsets
+                                                                .only(left: 6),
+                                                        child: RichText(
+                                                          text: _recommendations
+                                                                      .length ==
+                                                                  0
+                                                              ? TextSpan(
+                                                                  text: '-')
+                                                              : TextSpan(
+                                                                  children: [
+                                                                    TextSpan(
+                                                                      text:
+                                                                          '${_recommendations[_current]['name'][0].toUpperCase()}${_recommendations[_current]['name'].substring(1).toLowerCase()}\n',
+                                                                      style: Theme.of(
+                                                                              context)
+                                                                          .accentTextTheme
+                                                                          .headline3,
+                                                                    ),
+                                                                    TextSpan(
+                                                                      text:
+                                                                          "${_recommendations[_current]['user']['first_name'][0].toUpperCase()}${_recommendations[_current]['user']['first_name'].substring(1).toLowerCase()}\n${_recommendations[_current]['user']['last_name'][0].toUpperCase()}${_recommendations[_current]['user']['last_name'].substring(1).toLowerCase()}\n",
+                                                                      style: Theme.of(
+                                                                              context)
+                                                                          .accentTextTheme
+                                                                          .subtitle2,
+                                                                    ),
+                                                                    // TextSpan(
+                                                                    //   text: '24 km away',
+                                                                    //   style: Theme.of(context)
+                                                                    //       .accentTextTheme
+                                                                    //       .subtitle1,
+                                                                    // ),
+                                                                  ],
+                                                                ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Align(
+                                                      child: Container(
+                                                        height: 50,
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 8),
+                                                        child: DotsIndicator(
+                                                          dotsCount: 1,
+                                                          position:
+                                                              0.toDouble(),
+                                                          decorator:
+                                                              DotsDecorator(
+                                                            spacing:
+                                                                EdgeInsets.all(
+                                                                    3),
+                                                            color: Colors
+                                                                .transparent,
+                                                            activeColor:
+                                                                Colors.white,
+                                                            activeShape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5.0),
+                                                              side: BorderSide(
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5.0),
+                                                              side: BorderSide(
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
+                                                    // IconButton(
+                                                    //   icon: Icon(MdiIcons
+                                                    //       .messageReplyTextOutline),
+                                                    //   color: Colors.white,
+                                                    //   onPressed: () {
+                                                    //     Navigator.of(context).pop();
+                                                    //   },
+                                                    // )
+                                                  ],
                                                 ),
-                                                // IconButton(
-                                                //   icon: Icon(MdiIcons
-                                                //       .messageReplyTextOutline),
-                                                //   color: Colors.white,
-                                                //   onPressed: () {
-                                                //     Navigator.of(context).pop();
-                                                //   },
-                                                // )
                                               ],
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 0, bottom: 30),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        _controller.forward(
-                                            direction: SwipDirection.Left);
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(left: 5),
-                                        child: CircleAvatar(
-                                          backgroundColor: Color(0xFFF0384F),
-                                          radius: 24,
-                                          child: CircleAvatar(
-                                            radius: 22,
-                                            backgroundColor: _leftDirection == 1
-                                                ? Color(0xFFF0384F)
-                                                : Colors.white,
-                                            child: Icon(
-                                              Icons.close,
-                                              color: _leftDirection == 1
-                                                  ? Colors.white
-                                                  : Color(0xFFF0384F),
-                                              size: 22,
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 0, bottom: 30),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            _controller.forward(
+                                                direction: SwipDirection.Left);
+                                          },
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 5),
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  Color(0xFFF0384F),
+                                              radius: 24,
+                                              child: CircleAvatar(
+                                                radius: 22,
+                                                backgroundColor:
+                                                    _leftDirection == 1
+                                                        ? Color(0xFFF0384F)
+                                                        : Colors.white,
+                                                child: Icon(
+                                                  Icons.close,
+                                                  color: _leftDirection == 1
+                                                      ? Colors.white
+                                                      : Color(0xFFF0384F),
+                                                  size: 22,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        _controller.forward(
-                                            direction: SwipDirection.None);
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10),
-                                        child: CircleAvatar(
-                                          backgroundColor: Colors.blue,
-                                          radius: 20,
-                                          child: CircleAvatar(
-                                            radius: 18,
-                                            backgroundColor: _upDirection == 3
-                                                ? Colors.blue
-                                                : Colors.white,
-                                            child: Icon(
-                                              Icons.star,
-                                              color: _upDirection == 3
-                                                  ? Colors.white
-                                                  : Colors.blue,
-                                              size: 18,
+                                        InkWell(
+                                          onTap: () {
+                                            _controller.forward(
+                                                direction: SwipDirection.None);
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                            child: CircleAvatar(
+                                              backgroundColor: Colors.blue,
+                                              radius: 20,
+                                              child: CircleAvatar(
+                                                radius: 18,
+                                                backgroundColor:
+                                                    _upDirection == 3
+                                                        ? Colors.blue
+                                                        : Colors.white,
+                                                child: Icon(
+                                                  Icons.star,
+                                                  color: _upDirection == 3
+                                                      ? Colors.white
+                                                      : Colors.blue,
+                                                  size: 18,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        _controller.forward(
-                                            direction: SwipDirection.Right);
-                                      },
-                                      child: CircleAvatar(
-                                        backgroundColor: Color(0xFF34F07F),
-                                        radius: 24,
-                                        child: CircleAvatar(
-                                          radius: 22,
-                                          backgroundColor: _rightDirection == 2
-                                              ? Color(0xFF34F07F)
-                                              : Colors.white,
-                                          child: Icon(
-                                            Icons.favorite,
-                                            color: _rightDirection == 2
-                                                ? Colors.white
-                                                : Color(0xFF34F07F),
-                                            size: 22,
+                                        InkWell(
+                                          onTap: () {
+                                            _controller.forward(
+                                                direction: SwipDirection.Right);
+                                          },
+                                          child: CircleAvatar(
+                                            backgroundColor: Color(0xFF34F07F),
+                                            radius: 24,
+                                            child: CircleAvatar(
+                                              radius: 22,
+                                              backgroundColor:
+                                                  _rightDirection == 2
+                                                      ? Color(0xFF34F07F)
+                                                      : Colors.white,
+                                              child: Icon(
+                                                Icons.favorite,
+                                                color: _rightDirection == 2
+                                                    ? Colors.white
+                                                    : Color(0xFF34F07F),
+                                                size: 22,
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          )),
-                    ),
+                                  )
+                                ],
+                              )),
+                        ),
             ),
           ),
         ),
@@ -575,8 +594,9 @@ class _AddStoryScreenState extends BaseRouteState {
   @override
   void initState() {
     final auth = Provider.of<Auth>(context, listen: false);
+    final app_state = Provider.of<AppState>(context, listen: false);
 
-    // TODO -- if no animal redirect to profile page!
+    // if no animal redirect to profile page!
     if (auth.current_user['animals'].length == 0) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         Navigator.pushAndRemoveUntil(
@@ -589,17 +609,35 @@ class _AddStoryScreenState extends BaseRouteState {
       });
     }
     super.initState();
-    void getRecommendations() async {
+    void getRecommendations({bool firstLoad = true}) async {
+      final prefs = await SharedPreferences.getInstance();
+      await app_state.getFilterOptions();
+      final options = app_state.filter_options;
+
+      Dio.Response response;
       if (auth.current_user['animals'].length > 0) {
-        Dio.Response response = await dio().get(
-            '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=true');
-        setState(() {
-          _recommendations = response.data;
-        });
+        int animalId = prefs.getInt('i-pet-current-animal-id');
+        try {
+          if (animalId != null) {
+            // TODO -- make sure the existing one is one of the current user's animals!
+            response = await dio().get(
+                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+          } else {
+            response = await dio().get(
+                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+            prefs.setInt('i-pet-current-animal-id',
+                auth.current_user['animals'][0]['id']);
+          }
+          setState(() {
+            _recommendations = response.data;
+          });
+        } catch (e) {
+          print(e);
+        }
       }
     }
 
-    getRecommendations();
+    getRecommendations(firstLoad: true);
   }
 
   _widgets() {
