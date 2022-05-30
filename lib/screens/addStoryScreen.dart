@@ -22,6 +22,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tcard/tcard.dart';
 import 'package:datingapp/services/dio.dart';
 import 'package:dio/dio.dart' as Dio;
+import 'dart:developer';
 
 class AddStoryScreen extends BaseRoute {
   AddStoryScreen({a, o}) : super(a: a, o: o, r: 'AddStoryScreen');
@@ -36,6 +37,9 @@ class _AddStoryScreenState extends BaseRouteState {
   int _upDirection;
   bool _openDialog = false;
   bool _showMatch = false;
+
+  dynamic authy;
+  dynamic appStaty;
 
   List<dynamic> _recommendations = [];
 
@@ -163,7 +167,8 @@ class _AddStoryScreenState extends BaseRouteState {
                                                       }
                                                     },
                                                     child: TCard(
-                                                      cards: _widgets(),
+                                                      cards: _widgets(
+                                                          current: _current),
                                                       controller: _controller,
                                                       size: Size(
                                                           MediaQuery.of(context)
@@ -309,10 +314,15 @@ class _AddStoryScreenState extends BaseRouteState {
                                                           }
                                                         }
 
-                                                        // if (_current == _recommendations
-                                                        //     .length - 6) {
-                                                        //   getRecommendations(firstLoad: false);
-                                                        // }
+                                                        if (_current ==
+                                                            _recommendations
+                                                                    .length -
+                                                                6) {
+                                                          getRecommendations(
+                                                              false,
+                                                              appStaty,
+                                                              authy);
+                                                        }
 
                                                         setState(() {
                                                           _current = index;
@@ -322,8 +332,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                                         });
                                                       },
                                                       onEnd: () {
-                                                        // _controller.reset();
-                                                        // _current = 0;
+                                                        // _current = index;
                                                       },
                                                     ),
                                                   ),
@@ -594,7 +603,12 @@ class _AddStoryScreenState extends BaseRouteState {
   @override
   void initState() {
     final auth = Provider.of<Auth>(context, listen: false);
-    final app_state = Provider.of<AppState>(context, listen: false);
+    final appState = Provider.of<AppState>(context, listen: false);
+
+    setState(() {
+      authy = auth;
+      appStaty = appState;
+    });
 
     // if no animal redirect to profile page!
     if (auth.current_user['animals'].length == 0) {
@@ -609,41 +623,16 @@ class _AddStoryScreenState extends BaseRouteState {
       });
     }
     super.initState();
-    void getRecommendations({bool firstLoad = true}) async {
-      final prefs = await SharedPreferences.getInstance();
-      await app_state.getFilterOptions();
-      final options = app_state.filter_options;
 
-      Dio.Response response;
-      if (auth.current_user['animals'].length > 0) {
-        int animalId = prefs.getInt('i-pet-current-animal-id');
-        try {
-          if (animalId != null) {
-            // TODO -- make sure the existing one is one of the current user's animals!
-            response = await dio().get(
-                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
-          } else {
-            response = await dio().get(
-                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
-            prefs.setInt('i-pet-current-animal-id',
-                auth.current_user['animals'][0]['id']);
-          }
-          setState(() {
-            _recommendations = response.data;
-          });
-        } catch (e) {
-          print(e);
-        }
-      }
-    }
-
-    getRecommendations(firstLoad: true);
+    getRecommendations(true, appState, auth);
   }
 
-  _widgets() {
+  _widgets({
+    int current = 0,
+  }) {
     List<Widget> _widgetList = [];
 
-    for (int i = 0; i < _recommendations.length; i++) {
+    for (int i = current; i < _recommendations.length; i++) {
       _widgetList.add(
         Stack(
           alignment: Alignment.center,
@@ -749,5 +738,38 @@ class _AddStoryScreenState extends BaseRouteState {
         ],
       ),
     );
+  }
+
+  void getRecommendations(firstLoad, appState, auth) async {
+    final prefs = await SharedPreferences.getInstance();
+    await appState.getFilterOptions();
+    final options = appState.filter_options;
+
+    Dio.Response response;
+    if (auth.current_user['animals'].length > 0) {
+      int animalId = prefs.getInt('i-pet-current-animal-id');
+      try {
+        if (animalId != null) {
+          // TODO -- make sure the existing one is one of the current user's animals!
+          response = await dio().get(
+              '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+        } else {
+          response = await dio().get(
+              '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+          prefs.setInt(
+              'i-pet-current-animal-id', auth.current_user['animals'][0]['id']);
+        }
+        print('starttttttttttttttttttttttttttt recs');
+        print(_recommendations);
+        print('recs111111111111');
+        setState(() {
+          _recommendations.addAll(response.data);
+        });
+        print('recs2222222222222222');
+        print(response.data);
+      } catch (e) {
+        print(e);
+      }
+    }
   }
 }
