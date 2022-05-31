@@ -38,8 +38,12 @@ class _AddStoryScreenState extends BaseRouteState {
   bool _openDialog = false;
   bool _showMatch = false;
 
+  Widget tCardy;
+
   dynamic authy;
   dynamic appStaty;
+
+  List<Widget> _widgetList = [];
 
   List<dynamic> _recommendations = [];
 
@@ -51,6 +55,115 @@ class _AddStoryScreenState extends BaseRouteState {
   Widget build(BuildContext context) {
     return Consumer<Auth>(builder: (context, auth, child) {
       final auth = Provider.of<Auth>(context, listen: false);
+      if (_widgetList.length > 0) {
+        tCardy = new TCard(
+          cards: _widgetList,
+          // cards: _widgets(
+          //     current: _current),
+          controller: _controller,
+          size: Size(MediaQuery.of(context).size.width,
+              MediaQuery.of(context).size.height),
+          onForward: (index, info) async {
+            print('Current');
+            print(_current + 1);
+            print('Total');
+            print(_recommendations.length);
+            print('Widgets length');
+            print(_widgetList.length);
+            print('caaaaards length');
+            print(tCardy.cards);
+            if (info.direction == SwipDirection.Left) {
+              if (_current == _recommendations.length - 1) {
+              } else {
+                // DIIIIIIIIIIIIIIIIIISLIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                final prefs = await SharedPreferences.getInstance();
+                String token = prefs.getString('i-pet-kk');
+                // print(token);
+                // print(auth.current_user[
+                //         'animals'][0]
+                //     ['id']);
+                // print(_recommendations[
+                //     _current]['id']);
+                Dio.Response response = await dio().post('/dislikes',
+                    data: {
+                      'disliker_user_id': auth.current_user['id'],
+                      'disliker_animal_id': auth.current_user['animals'][0]
+                          ['id'],
+                      'disliked_animal_id': _recommendations[_current]['id'],
+                    },
+                    options: Dio.Options(headers: {
+                      'Authorization': 'Bearer $token',
+                    }));
+                // print(response.data);
+              }
+            }
+            if (info.direction == SwipDirection.Right) {
+              if (_current == _recommendations.length) {
+                // print(
+                //     'we are doneeeee');
+              } else {
+                // LIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+                final prefs = await SharedPreferences.getInstance();
+                String token = prefs.getString('i-pet-kk');
+
+                // print(auth.current_user[
+                //     'id']);
+                // print(_recommendations[
+                //         _current]
+                //     ['user']['id']);
+                // print(auth.current_user[
+                //         'animals'][0]
+                //     ['id']);
+                // print(_recommendations[
+                //     _current]['id']);
+                // print(token);
+                Dio.Response response = await dio().post('/likes',
+                    data: {
+                      'liker_user_id': auth.current_user['id'],
+                      'liked_user_id': _recommendations[_current]['user']['id'],
+                      'liker_animal_id': auth.current_user['animals'][0]['id'],
+                      'liked_animal_id': _recommendations[_current]['id'],
+                    },
+                    options: Dio.Options(headers: {
+                      'Authorization': 'Bearer $token',
+                    }));
+                if (response.data != "failed to like") {
+                  if (response.data['match']) {
+                    setState(() {
+                      _showMatch = true;
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => StartConversionScreen(
+                              _recommendations[_current])));
+                    });
+                  }
+                } else {
+                  setState(() {
+                    _openDialog = true;
+                  });
+                }
+                // print(_current);
+                // print(_recommendations
+                //     .length);
+                // print(_openDialog);
+              }
+            }
+
+            if (_current == _recommendations.length - 6) {
+              int toStart = _recommendations.length;
+              await getRecommendations(false, appStaty, authy);
+            }
+
+            setState(() {
+              _current = index;
+              _leftDirection = 0;
+              _rightDirection = 0;
+              _upDirection = 0;
+            });
+          },
+          onEnd: () {},
+        );
+      }
+
       return SafeArea(
         child: WillPopScope(
           onWillPop: () {
@@ -84,7 +197,8 @@ class _AddStoryScreenState extends BaseRouteState {
                       ),
                     )
                   : _recommendations.length == 0 ||
-                          _current >= _recommendations.length
+                          _current >= _recommendations.length ||
+                          _widgetList.length == 0
                       ? Center(
                           child: Padding(
                             padding: g.isRTL
@@ -147,195 +261,29 @@ class _AddStoryScreenState extends BaseRouteState {
                                                   alignment:
                                                       Alignment.bottomCenter,
                                                   child: Listener(
-                                                    onPointerMove:
-                                                        (PointerMoveEvent
-                                                            _event) {
-                                                      if (_event.delta.dy > 0) {
-                                                        setState(() {
-                                                          _leftDirection = 1;
-                                                          _rightDirection =
-                                                              null;
-                                                          _upDirection = null;
-                                                        });
-                                                      }
-                                                      if (_event.delta.dx > 0) {
-                                                        setState(() {
-                                                          _rightDirection = 2;
-                                                          _leftDirection = null;
-                                                          _upDirection = null;
-                                                        });
-                                                      }
-                                                    },
-                                                    child: TCard(
-                                                      cards: _widgets(
-                                                          current: _current),
-                                                      controller: _controller,
-                                                      size: Size(
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width,
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .height),
-                                                      onForward:
-                                                          (index, info) async {
-                                                        print(_current);
-                                                        print(_recommendations
-                                                                .length -
-                                                            1);
-                                                        if (info.direction ==
-                                                            SwipDirection
-                                                                .Left) {
-                                                          if (_current ==
-                                                              _recommendations
-                                                                      .length -
-                                                                  1) {
-                                                            print(
-                                                                'we are doneeeee');
-                                                          } else {
-                                                            // DIIIIIIIIIIIIIIIIIISLIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                                                            final prefs =
-                                                                await SharedPreferences
-                                                                    .getInstance();
-                                                            String token =
-                                                                prefs.getString(
-                                                                    'i-pet-kk');
-                                                            // print(token);
-                                                            // print(auth.current_user[
-                                                            //         'animals'][0]
-                                                            //     ['id']);
-                                                            // print(_recommendations[
-                                                            //     _current]['id']);
-                                                            Dio.Response
-                                                                response =
-                                                                await dio().post(
-                                                                    '/dislikes',
-                                                                    data: {
-                                                                      'disliker_user_id':
-                                                                          auth.current_user[
-                                                                              'id'],
-                                                                      'disliker_animal_id':
-                                                                          auth.current_user['animals'][0]
-                                                                              [
-                                                                              'id'],
-                                                                      'disliked_animal_id':
-                                                                          _recommendations[_current]
-                                                                              [
-                                                                              'id'],
-                                                                    },
-                                                                    options: Dio
-                                                                        .Options(
-                                                                            headers: {
-                                                                          'Authorization':
-                                                                              'Bearer $token',
-                                                                        }));
-                                                            // print(response.data);
-                                                          }
+                                                      onPointerMove:
+                                                          (PointerMoveEvent
+                                                              _event) {
+                                                        if (_event.delta.dy >
+                                                            0) {
+                                                          setState(() {
+                                                            _leftDirection = 1;
+                                                            _rightDirection =
+                                                                null;
+                                                            _upDirection = null;
+                                                          });
                                                         }
-                                                        if (info.direction ==
-                                                            SwipDirection
-                                                                .Right) {
-                                                          if (_current ==
-                                                              _recommendations
-                                                                  .length) {
-                                                            // print(
-                                                            //     'we are doneeeee');
-                                                          } else {
-                                                            // LIKEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-                                                            final prefs =
-                                                                await SharedPreferences
-                                                                    .getInstance();
-                                                            String token =
-                                                                prefs.getString(
-                                                                    'i-pet-kk');
-
-                                                            // print(auth.current_user[
-                                                            //     'id']);
-                                                            // print(_recommendations[
-                                                            //         _current]
-                                                            //     ['user']['id']);
-                                                            // print(auth.current_user[
-                                                            //         'animals'][0]
-                                                            //     ['id']);
-                                                            // print(_recommendations[
-                                                            //     _current]['id']);
-                                                            // print(token);
-                                                            Dio.Response
-                                                                response =
-                                                                await dio().post(
-                                                                    '/likes',
-                                                                    data: {
-                                                                      'liker_user_id':
-                                                                          auth.current_user[
-                                                                              'id'],
-                                                                      'liked_user_id':
-                                                                          _recommendations[_current]['user']
-                                                                              [
-                                                                              'id'],
-                                                                      'liker_animal_id':
-                                                                          auth.current_user['animals'][0]
-                                                                              [
-                                                                              'id'],
-                                                                      'liked_animal_id':
-                                                                          _recommendations[_current]
-                                                                              [
-                                                                              'id'],
-                                                                    },
-                                                                    options: Dio
-                                                                        .Options(
-                                                                            headers: {
-                                                                          'Authorization':
-                                                                              'Bearer $token',
-                                                                        }));
-                                                            if (response.data !=
-                                                                "failed to like") {
-                                                              if (response.data[
-                                                                  'match']) {
-                                                                setState(() {
-                                                                  _showMatch =
-                                                                      true;
-                                                                  Navigator.of(
-                                                                          context)
-                                                                      .push(MaterialPageRoute(
-                                                                          builder: (context) =>
-                                                                              StartConversionScreen(_recommendations[_current])));
-                                                                });
-                                                              }
-                                                            } else {
-                                                              setState(() {
-                                                                _openDialog =
-                                                                    true;
-                                                              });
-                                                            }
-                                                            // print(_current);
-                                                            // print(_recommendations
-                                                            //     .length);
-                                                            // print(_openDialog);
-                                                          }
+                                                        if (_event.delta.dx >
+                                                            0) {
+                                                          setState(() {
+                                                            _rightDirection = 2;
+                                                            _leftDirection =
+                                                                null;
+                                                            _upDirection = null;
+                                                          });
                                                         }
-
-                                                        if (_current ==
-                                                            _recommendations
-                                                                    .length -
-                                                                6) {
-                                                          getRecommendations(
-                                                              false,
-                                                              appStaty,
-                                                              authy);
-                                                        }
-
-                                                        setState(() {
-                                                          _current = index;
-                                                          _leftDirection = 0;
-                                                          _rightDirection = 0;
-                                                          _upDirection = 0;
-                                                        });
                                                       },
-                                                      onEnd: () {
-                                                        // _current = index;
-                                                      },
-                                                    ),
-                                                  ),
+                                                      child: tCardy),
                                                 ),
                                               ),
                                               // Padding(
@@ -630,8 +578,6 @@ class _AddStoryScreenState extends BaseRouteState {
   _widgets({
     int current = 0,
   }) {
-    List<Widget> _widgetList = [];
-
     for (int i = current; i < _recommendations.length; i++) {
       _widgetList.add(
         Stack(
@@ -675,7 +621,6 @@ class _AddStoryScreenState extends BaseRouteState {
         ),
       );
     }
-    return _widgetList;
   }
 
   PreferredSizeWidget _appBarWidget() {
@@ -762,9 +707,12 @@ class _AddStoryScreenState extends BaseRouteState {
         print('starttttttttttttttttttttttttttt recs');
         print(_recommendations);
         print('recs111111111111');
+        int toStart = _recommendations.length;
         setState(() {
           _recommendations.addAll(response.data);
+          _widgets(current: toStart);
         });
+
         print('recs2222222222222222');
         print(response.data);
       } catch (e) {
