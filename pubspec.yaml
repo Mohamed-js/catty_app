@@ -44,6 +44,8 @@ dependencies:
   intl: ^0.17.0
   flutter_pusher_client: ^0.3.1
   laravel_echo: ^0.2.5
+  flutter_tindercard: ^0.2.0
+  flutter_datetime_picker: ^1.5.1
   # socket_io_client: ^0.9.1
 
 dev_dependencies:

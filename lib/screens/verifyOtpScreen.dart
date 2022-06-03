@@ -1,6 +1,6 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen.dart';
+import 'package:datingapp/screens/addStoryScreen1.dart';
 import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';

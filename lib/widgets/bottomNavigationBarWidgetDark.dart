@@ -1,6 +1,6 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/screens/addMessageScreen.dart';
-import 'package:datingapp/screens/addStoryScreen.dart';
+import 'package:datingapp/screens/addStoryScreen1.dart';
 import 'package:datingapp/screens/addYourStoryScreen.dart';
 import 'package:datingapp/screens/myProfileDetailScreen.dart';
 import 'package:flutter/material.dart';

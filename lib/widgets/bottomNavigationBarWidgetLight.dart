@@ -1,5 +1,5 @@
 import 'package:datingapp/screens/addMessageScreen.dart';
-import 'package:datingapp/screens/addStoryScreen.dart';
+import 'package:datingapp/screens/addStoryScreen1.dart';
 import 'package:datingapp/screens/myProfileDetailScreen.dart';
 import 'package:datingapp/screens/notificationListScreen.dart';
 import 'package:flutter/material.dart';

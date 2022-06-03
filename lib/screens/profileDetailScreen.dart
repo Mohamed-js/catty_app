@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen.dart';
+import 'package:datingapp/screens/addStoryScreen1.dart';
 import 'package:datingapp/screens/likes&IntrestScreen.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
@@ -317,17 +317,19 @@ class _ProfileDetailScreenState extends BaseRouteState {
                                       listen: false)
                                   .updateProfile(data);
                               if (res == 'Updated successfully.') {
-                                final auth = Provider.of<Auth>(context, listen: false);
+                                final auth =
+                                    Provider.of<Auth>(context, listen: false);
                                 await auth.tryLogin(false);
                                 Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BottomNavigationWidgetLight(
-                                    currentIndex: 0,
-                                   
-                                  )));
+                                    builder: (context) =>
+                                        BottomNavigationWidgetLight(
+                                          currentIndex: 0,
+                                        )));
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text('Please choose a valid image.'),
+                                    content:
+                                        Text('Please choose a valid image.'),
                                     backgroundColor: Colors.redAccent,
                                   ),
                                 );
@@ -363,9 +365,9 @@ class _ProfileDetailScreenState extends BaseRouteState {
     try {
       final image = await _picker.pickImage(
           source: ImageSource.gallery,
-          imageQuality: 50,
-          maxHeight: 500,
-          maxWidth: 500);
+          imageQuality: 100,
+          maxHeight: 600,
+          maxWidth: 800);
       setState(() {
         _currentImage = image.path;
       });

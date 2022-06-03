@@ -1,13 +1,14 @@
 import 'dart:io';
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen.dart';
+import 'package:datingapp/screens/addStoryScreen1.dart';
 import 'package:datingapp/screens/likes&IntrestScreen.dart';
 import 'package:datingapp/screens/myAnimalProfileScreen.dart';
 import 'package:datingapp/screens/myProfileDetailScreen.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,8 @@ class _NewAnimalScreenState extends BaseRouteState {
   TextEditingController _cFirstName = new TextEditingController();
   TextEditingController _cInfo = new TextEditingController();
   String _gender = 'Select Gender';
+  String _vaccination = 'No';
+  DateTime _dob;
   String _currentImage = '';
   int breedId;
 
@@ -346,6 +349,91 @@ class _NewAnimalScreenState extends BaseRouteState {
                       ),
                     ),
 
+                    // Vaccination ================================================
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: EdgeInsets.all(1.5),
+                      height: 55,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: g.gradientColors,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                        borderRadius: BorderRadius.circular(35),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: g.isDarkModeEnable
+                              ? Colors.black
+                              : Theme.of(context).scaffoldBackgroundColor,
+                          borderRadius: BorderRadius.circular(35),
+                        ),
+                        height: 55,
+                        child: DropdownButtonFormField<String>(
+                          dropdownColor: Theme.of(context).primaryColorLight,
+                          icon: Padding(
+                            padding: g.isRTL
+                                ? EdgeInsets.only(left: 20)
+                                : EdgeInsets.only(right: 20),
+                            child: Icon(Icons.expand_more,
+                                color: Theme.of(context).iconTheme.color),
+                          ),
+                          value: _vaccination,
+                          items: ['No', 'Yes']
+                              .map((label) => DropdownMenuItem(
+                                    child: Padding(
+                                      padding: g.isRTL
+                                          ? EdgeInsets.only(right: 20)
+                                          : EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        label.toString(),
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .subtitle2,
+                                      ),
+                                    ),
+                                    value: label,
+                                  ))
+                              .toList(),
+                          hint: Padding(
+                            padding: g.isRTL
+                                ? EdgeInsets.only(right: 20)
+                                : EdgeInsets.only(left: 20),
+                            child: Text(_gender.isEmpty
+                                ? AppLocalizations.of(context).lbl_gender_hint
+                                : _gender),
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              _vaccination = value;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          DatePicker.showDatePicker(context,
+                              showTitleActions: true,
+                              minTime: DateTime(2000, 3, 5),
+                              maxTime: new DateTime.now(), onChanged: (date) {
+                            print('change $date');
+                          }, onConfirm: (date) {
+                            print('confirm $date');
+                            setState(() {
+                              _dob = date;
+                            });
+                          },
+                              currentTime: DateTime.now(),
+                              locale: LocaleType.en);
+                        },
+                        child: Text(
+                          'Set date of birth',
+                          style: TextStyle(color: Colors.blue),
+                        )),
+                    // ABOUTTTTTTTTTTTTTTTTTTTT
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -407,6 +495,8 @@ class _NewAnimalScreenState extends BaseRouteState {
                               'gender': _gender,
                               'avatar': _currentImage,
                               'breed_id': breedId,
+                              'vaccination': _vaccination,
+                              'dob': _dob
                             };
                             print(data);
                             dynamic res =
@@ -423,7 +513,6 @@ class _NewAnimalScreenState extends BaseRouteState {
                                       builder: (context) =>
                                           BottomNavigationWidgetLight(
                                             currentIndex: 0,
-                                            
                                           )),
                                   ModalRoute.withName('/'));
                             } else {
@@ -464,9 +553,9 @@ class _NewAnimalScreenState extends BaseRouteState {
     try {
       final image = await _picker.pickImage(
           source: ImageSource.gallery,
-          imageQuality: 50,
-          maxHeight: 500,
-          maxWidth: 500);
+          imageQuality: 100,
+          maxHeight: 600,
+          maxWidth: 800);
       setState(() {
         _currentImage = image.path;
       });

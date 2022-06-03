@@ -72,7 +72,6 @@ class _SettingScreenState extends BaseRouteState {
                           : Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                     currentIndex: 3,
-                                  
                                   )));
                     },
                     child: Padding(
@@ -108,13 +107,55 @@ class _SettingScreenState extends BaseRouteState {
                       ),
                     ),
                   ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.of(context).push(MaterialPageRoute(
+                  //         builder: (context) => LikedAndLikesScreen(
+                  //               a: widget.analytics,
+                  //               o: widget.observer,
+                  //             )));
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           Icons.favorite,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         ShaderMask(
+                  //           blendMode: BlendMode.srcIn,
+                  //           shaderCallback: (Rect bounds) {
+                  //             return LinearGradient(
+                  //               colors: g.gradientColors,
+                  //               begin: Alignment.centerLeft,
+                  //               end: Alignment.centerRight,
+                  //             ).createShader(bounds);
+                  //           },
+                  //           child: Padding(
+                  //             padding: g.isRTL
+                  //                 ? const EdgeInsets.only(right: 10)
+                  //                 : const EdgeInsets.only(left: 10),
+                  //             child: Text(
+                  //               AppLocalizations.of(context).lbl_likes_likes,
+                  //               style: TextStyle(fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LikedAndLikesScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => BottomNavigationWidgetLight(
+                                  currentIndex: 2,
+                                )),
+                      );
                     },
                     child: Padding(
                       padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
@@ -122,7 +163,7 @@ class _SettingScreenState extends BaseRouteState {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(
-                            Icons.favorite,
+                            Icons.message_outlined,
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
@@ -140,7 +181,7 @@ class _SettingScreenState extends BaseRouteState {
                                   ? const EdgeInsets.only(right: 10)
                                   : const EdgeInsets.only(left: 10),
                               child: Text(
-                                AppLocalizations.of(context).lbl_likes_likes,
+                                'Messages',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -149,13 +190,13 @@ class _SettingScreenState extends BaseRouteState {
                       ),
                     ),
                   ),
+
                   InkWell(
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) => BottomNavigationWidgetLight(
                                   currentIndex: 1,
-                           
                                 )),
                       );
                     },
@@ -192,273 +233,272 @@ class _SettingScreenState extends BaseRouteState {
                       ),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SelectPlanScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.vial,
-                            color: Theme.of(context).iconTheme.color,
-                            size: 18,
-                          ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                AppLocalizations.of(context).lbl_subscription,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => RewardScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.bootstrap,
-                            color: Theme.of(context).iconTheme.color,
-                            size: 18,
-                          ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                AppLocalizations.of(context).lbl_dating_rewards,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.account_balance_wallet_outlined,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 18,
-                        ),
-                        ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_payment,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      g.isDarkModeEnable
-                          ? Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BottomNavigationWidgetDark(
-                                    currentIndex: 2,
-                                    a: widget.analytics,
-                                    o: widget.observer,
-                                  )))
-                          : Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BottomNavigationWidgetLight(
-                                    currentIndex: 2,
-                                  
-                                  )));
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.sms,
-                            color: Theme.of(context).iconTheme.color,
-                            size: 18,
-                          ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                AppLocalizations.of(context).lbl_msg_options,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => DatingMatchesScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.group,
-                            color: Theme.of(context).iconTheme.color,
-                            size: 18,
-                          ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                AppLocalizations.of(context).lbl_manage_matches,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.lock,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 18,
-                        ),
-                        ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_privacy_options,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.delete,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 18,
-                        ),
-                        ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_delete_account,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.of(context).push(MaterialPageRoute(
+                  //         builder: (context) => SelectPlanScreen(
+                  //               a: widget.analytics,
+                  //               o: widget.observer,
+                  //             )));
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           FontAwesomeIcons.vial,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         ShaderMask(
+                  //           blendMode: BlendMode.srcIn,
+                  //           shaderCallback: (Rect bounds) {
+                  //             return LinearGradient(
+                  //               colors: g.gradientColors,
+                  //               begin: Alignment.centerLeft,
+                  //               end: Alignment.centerRight,
+                  //             ).createShader(bounds);
+                  //           },
+                  //           child: Padding(
+                  //             padding: g.isRTL
+                  //                 ? const EdgeInsets.only(right: 10)
+                  //                 : const EdgeInsets.only(left: 10),
+                  //             child: Text(
+                  //               AppLocalizations.of(context).lbl_subscription,
+                  //               style: TextStyle(fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.of(context).push(MaterialPageRoute(
+                  //         builder: (context) => RewardScreen(
+                  //               a: widget.analytics,
+                  //               o: widget.observer,
+                  //             )));
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           FontAwesomeIcons.bootstrap,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         ShaderMask(
+                  //           blendMode: BlendMode.srcIn,
+                  //           shaderCallback: (Rect bounds) {
+                  //             return LinearGradient(
+                  //               colors: g.gradientColors,
+                  //               begin: Alignment.centerLeft,
+                  //               end: Alignment.centerRight,
+                  //             ).createShader(bounds);
+                  //           },
+                  //           child: Padding(
+                  //             padding: g.isRTL
+                  //                 ? const EdgeInsets.only(right: 10)
+                  //                 : const EdgeInsets.only(left: 10),
+                  //             child: Text(
+                  //               AppLocalizations.of(context).lbl_dating_rewards,
+                  //               style: TextStyle(fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.account_balance_wallet_outlined,
+                  //         color: Theme.of(context).iconTheme.color,
+                  //         size: 18,
+                  //       ),
+                  //       ShaderMask(
+                  //         blendMode: BlendMode.srcIn,
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: g.gradientColors,
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         child: Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_payment,
+                  //             style: TextStyle(fontWeight: FontWeight.bold),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     g.isDarkModeEnable
+                  //         ? Navigator.of(context).push(MaterialPageRoute(
+                  //             builder: (context) => BottomNavigationWidgetDark(
+                  //                   currentIndex: 2,
+                  //                   a: widget.analytics,
+                  //                   o: widget.observer,
+                  //                 )))
+                  //         : Navigator.of(context).push(MaterialPageRoute(
+                  //             builder: (context) => BottomNavigationWidgetLight(
+                  //                   currentIndex: 2,
+                  //                 )));
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           Icons.sms,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         ShaderMask(
+                  //           blendMode: BlendMode.srcIn,
+                  //           shaderCallback: (Rect bounds) {
+                  //             return LinearGradient(
+                  //               colors: g.gradientColors,
+                  //               begin: Alignment.centerLeft,
+                  //               end: Alignment.centerRight,
+                  //             ).createShader(bounds);
+                  //           },
+                  //           child: Padding(
+                  //             padding: g.isRTL
+                  //                 ? const EdgeInsets.only(right: 10)
+                  //                 : const EdgeInsets.only(left: 10),
+                  //             child: Text(
+                  //               AppLocalizations.of(context).lbl_msg_options,
+                  //               style: TextStyle(fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  //         builder: (context) => DatingMatchesScreen(
+                  //               a: widget.analytics,
+                  //               o: widget.observer,
+                  //             )));
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           Icons.group,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         ShaderMask(
+                  //           blendMode: BlendMode.srcIn,
+                  //           shaderCallback: (Rect bounds) {
+                  //             return LinearGradient(
+                  //               colors: g.gradientColors,
+                  //               begin: Alignment.centerLeft,
+                  //               end: Alignment.centerRight,
+                  //             ).createShader(bounds);
+                  //           },
+                  //           child: Padding(
+                  //             padding: g.isRTL
+                  //                 ? const EdgeInsets.only(right: 10)
+                  //                 : const EdgeInsets.only(left: 10),
+                  //             child: Text(
+                  //               AppLocalizations.of(context).lbl_manage_matches,
+                  //               style: TextStyle(fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.lock,
+                  //         color: Theme.of(context).iconTheme.color,
+                  //         size: 18,
+                  //       ),
+                  //       ShaderMask(
+                  //         blendMode: BlendMode.srcIn,
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: g.gradientColors,
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         child: Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_privacy_options,
+                  //             style: TextStyle(fontWeight: FontWeight.bold),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.delete,
+                  //         color: Theme.of(context).iconTheme.color,
+                  //         size: 18,
+                  //       ),
+                  //       ShaderMask(
+                  //         blendMode: BlendMode.srcIn,
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: g.gradientColors,
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         child: Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_delete_account,
+                  //             style: TextStyle(fontWeight: FontWeight.bold),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                   Container(
                     margin: EdgeInsets.all(15),
                     height: 0.7,
@@ -471,22 +511,231 @@ class _SettingScreenState extends BaseRouteState {
                     ),
                     child: Divider(),
                   ),
-                  GestureDetector(
-                    onTap: () async {
-                      g.isDarkModeEnable = !g.isDarkModeEnable;
-                      // SharedPreferences sp = await SharedPreferences.getInstance();
-                      // sp.setBool('isDarkMode', g.isDarkModeEnable);
-                      Phoenix.rebirth(context);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  // GestureDetector(
+                  //   onTap: () async {
+                  //     g.isDarkModeEnable = !g.isDarkModeEnable;
+                  //     // SharedPreferences sp = await SharedPreferences.getInstance();
+                  //     // sp.setBool('isDarkMode', g.isDarkModeEnable);
+                  //     Phoenix.rebirth(context);
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           g.isDarkModeEnable
+                  //               ? Icons.dark_mode_outlined
+                  //               : Icons.light_mode,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         ShaderMask(
+                  //           blendMode: BlendMode.srcIn,
+                  //           shaderCallback: (Rect bounds) {
+                  //             return LinearGradient(
+                  //               colors: g.gradientColors,
+                  //               begin: Alignment.centerLeft,
+                  //               end: Alignment.centerRight,
+                  //             ).createShader(bounds);
+                  //           },
+                  //           child: Padding(
+                  //             padding: g.isRTL
+                  //                 ? const EdgeInsets.only(right: 10)
+                  //                 : const EdgeInsets.only(left: 10),
+                  //             child: Text(
+                  //               AppLocalizations.of(context).lbl_mode,
+                  //               style: TextStyle(fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.of(context).push(MaterialPageRoute(
+                  //         builder: (context) => ChangeLanguageScreen(
+                  //               a: widget.analytics,
+                  //               o: widget.observer,
+                  //             )));
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           Icons.language,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         ShaderMask(
+                  //           blendMode: BlendMode.srcIn,
+                  //           shaderCallback: (Rect bounds) {
+                  //             return LinearGradient(
+                  //               colors: g.gradientColors,
+                  //               begin: Alignment.centerLeft,
+                  //               end: Alignment.centerRight,
+                  //             ).createShader(bounds);
+                  //           },
+                  //           child: Padding(
+                  //             padding: g.isRTL
+                  //                 ? const EdgeInsets.only(right: 10)
+                  //                 : const EdgeInsets.only(left: 10),
+                  //             child: Text(
+                  //               'Lang',
+                  //               style: TextStyle(fontWeight: FontWeight.bold),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.health_and_safety,
+                  //         color: Theme.of(context).iconTheme.color,
+                  //         size: 18,
+                  //       ),
+                  //       ShaderMask(
+                  //         blendMode: BlendMode.srcIn,
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: g.gradientColors,
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         child: Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_safety,
+                  //             style: TextStyle(fontWeight: FontWeight.bold),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.help_center,
+                  //         color: Theme.of(context).iconTheme.color,
+                  //         size: 18,
+                  //       ),
+                  //       ShaderMask(
+                  //         blendMode: BlendMode.srcIn,
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: g.gradientColors,
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         child: Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_help_centre,
+                  //             style: TextStyle(fontWeight: FontWeight.bold),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.pages,
+                  //         color: Theme.of(context).iconTheme.color,
+                  //         size: 18,
+                  //       ),
+                  //       ShaderMask(
+                  //         blendMode: BlendMode.srcIn,
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: g.gradientColors,
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         child: Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_terms_cond,
+                  //             style: TextStyle(fontWeight: FontWeight.bold),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Icon(
+                  //         Icons.privacy_tip,
+                  //         color: Theme.of(context).iconTheme.color,
+                  //         size: 18,
+                  //       ),
+                  //       ShaderMask(
+                  //         blendMode: BlendMode.srcIn,
+                  //         shaderCallback: (Rect bounds) {
+                  //           return LinearGradient(
+                  //             colors: g.gradientColors,
+                  //             begin: Alignment.centerLeft,
+                  //             end: Alignment.centerRight,
+                  //           ).createShader(bounds);
+                  //         },
+                  //         child: Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_policy,
+                  //             style: TextStyle(fontWeight: FontWeight.bold),
+                  //           ),
+                  //         ),
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                    child: InkWell(
+                      onTap: (() {
+                        final auth = Provider.of<Auth>(context, listen: false);
+                        auth.logout();
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SplashScreen()));
+                      }),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(
-                            g.isDarkModeEnable
-                                ? Icons.dark_mode_outlined
-                                : Icons.light_mode,
+                            Icons.logout,
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
@@ -504,182 +753,13 @@ class _SettingScreenState extends BaseRouteState {
                                   ? const EdgeInsets.only(right: 10)
                                   : const EdgeInsets.only(left: 10),
                               child: Text(
-                                AppLocalizations.of(context).lbl_mode,
+                                'Logout',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
                           )
                         ],
                       ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ChangeLanguageScreen(
-                                a: widget.analytics,
-                                o: widget.observer,
-                              )));
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.language,
-                            color: Theme.of(context).iconTheme.color,
-                            size: 18,
-                          ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Lang',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.health_and_safety,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 18,
-                        ),
-                        ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_safety,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.help_center,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 18,
-                        ),
-                        ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_help_centre,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.pages,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 18,
-                        ),
-                        ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_terms_cond,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.privacy_tip,
-                          color: Theme.of(context).iconTheme.color,
-                          size: 18,
-                        ),
-                        ShaderMask(
-                          blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
-                            return LinearGradient(
-                              colors: g.gradientColors,
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                            ).createShader(bounds);
-                          },
-                          child: Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_policy,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )
-                      ],
                     ),
                   ),
                 ],

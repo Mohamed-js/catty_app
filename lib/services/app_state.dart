@@ -29,6 +29,12 @@ class AppState extends ChangeNotifier {
   List<dynamic> _chats = [];
   List<dynamic> get chats => _chats;
 
+  Map<dynamic, dynamic> _subscription = {};
+  Map<dynamic, dynamic> get subscription => _subscription;
+
+  Map<dynamic, dynamic> _quota = {};
+  Map<dynamic, dynamic> get quota => _quota;
+
   Future getFilterOptions() async {
     final prefs = await SharedPreferences.getInstance();
 
@@ -52,8 +58,49 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  setChats(chats) {
-    _chats = chats;
+  getChats() async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+    Dio.Response response = await dio().get('/chats',
+        options: Dio.Options(headers: {
+          'Authorization': 'Bearer $token',
+        }));
+    _chats = response.data;
+    notifyListeners();
+  }
+
+  getNotifications() async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+    Dio.Response response = await dio().get('/notifications',
+        options: Dio.Options(headers: {
+          'Authorization': 'Bearer $token',
+        }));
+    _notificationList = response.data;
+    notifyListeners();
+  }
+
+  getSubscription() async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+    Dio.Response response = await dio().get('/subscription',
+        options: Dio.Options(headers: {
+          'Authorization': 'Bearer $token',
+        }));
+    _subscription = response.data[0];
+    print(response.data[0]);
+    notifyListeners();
+  }
+
+  getQuota() async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+    Dio.Response response = await dio().get('/quota',
+        options: Dio.Options(headers: {
+          'Authorization': 'Bearer $token',
+        }));
+    _quota = response.data[0];
+    print(response.data[0]);
     notifyListeners();
   }
 }

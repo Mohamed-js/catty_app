@@ -3,6 +3,7 @@ import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/myAnimalProfileScreen.dart';
 import 'package:datingapp/screens/newAnimalScreen.dart';
 import 'package:datingapp/screens/settingScreen.dart';
+import 'package:datingapp/services/app_state.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,8 @@ class _MyProfileScreenState extends BaseRouteState {
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<Auth>(context, listen: false);
-
+    final appState = Provider.of<AppState>(context, listen: false);
+    print(appState.quota);
     return SafeArea(
       child: WillPopScope(
         onWillPop: () {
@@ -62,24 +64,13 @@ class _MyProfileScreenState extends BaseRouteState {
                         height: MediaQuery.of(context).size.width * .8,
                         width: MediaQuery.of(context).size.width,
                         child: Container(
-                          child: Image.asset(
-                            'assets/images/gmap.png',
+                          child: Image.network(
+                            "http://localhost:8000/${auth.current_user['avatar']}",
                             fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
                           ),
                           decoration: BoxDecoration(
                             color: Color.fromRGBO(19, 1, 51, 1),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(230, 78, 78, 78),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Upgrade membership to view location.",
-                            style: TextStyle(fontSize: 15, color: Colors.white),
                           ),
                         ),
                       ),
@@ -198,6 +189,70 @@ class _MyProfileScreenState extends BaseRouteState {
                 //     ),
                 //   ],
                 // ),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            child: Icon(
+                              Icons.thumb_up,
+                              color: Colors.white,
+                            ),
+                            radius: 25,
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            "${appState.quota['likes']}",
+                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Color.fromARGB(255, 255, 123, 0),
+                            child: Icon(
+                              Icons.flash_on,
+                              color: Colors.white,
+                            ),
+                            radius: 25,
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            "${appState.quota['boosts']}",
+                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Color.fromARGB(255, 109, 109, 109),
+                            child: Icon(
+                              Icons.undo,
+                              color: Colors.white,
+                            ),
+                            radius: 25,
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            "${appState.quota['undos']}",
+                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.deepPurple[100],
+                ),
+
                 Expanded(
                   child: SingleChildScrollView(
                     child: Column(
@@ -207,7 +262,7 @@ class _MyProfileScreenState extends BaseRouteState {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 20, left: 20),
+                            padding: const EdgeInsets.only(top: 5, left: 20),
                             child: Text(
                               auth.current_user['first_name'].toUpperCase() +
                                   " " +
@@ -269,8 +324,8 @@ class _MyProfileScreenState extends BaseRouteState {
                         ),
                         Padding(
                           padding: g.isRTL
-                              ? const EdgeInsets.only(right: 20, top: 30)
-                              : const EdgeInsets.only(left: 20, top: 30),
+                              ? const EdgeInsets.only(right: 20, top: 20)
+                              : const EdgeInsets.only(left: 20, top: 20),
                           child: Text(
                             AppLocalizations.of(context).lbl_short_bio,
                             style: Theme.of(context).primaryTextTheme.headline3,
@@ -278,8 +333,8 @@ class _MyProfileScreenState extends BaseRouteState {
                         ),
                         Padding(
                           padding: g.isRTL
-                              ? const EdgeInsets.only(right: 20, top: 10)
-                              : const EdgeInsets.only(left: 20, top: 10),
+                              ? const EdgeInsets.only(right: 20, top: 5)
+                              : const EdgeInsets.only(left: 20, top: 5),
                           child: Text(
                             '-',
                             style: Theme.of(context).primaryTextTheme.subtitle2,
@@ -384,8 +439,8 @@ class _MyProfileScreenState extends BaseRouteState {
                         // ),
                         Padding(
                           padding: g.isRTL
-                              ? const EdgeInsets.only(right: 20, top: 30)
-                              : const EdgeInsets.only(left: 20, top: 30),
+                              ? const EdgeInsets.only(right: 20, top: 20)
+                              : const EdgeInsets.only(left: 20, top: 20),
                           child: Text(
                             "Pets",
                             style: Theme.of(context).primaryTextTheme.headline3,
@@ -394,8 +449,8 @@ class _MyProfileScreenState extends BaseRouteState {
                         auth.current_user['animals'].isEmpty
                             ? Padding(
                                 padding: g.isRTL
-                                    ? const EdgeInsets.only(right: 20, top: 10)
-                                    : const EdgeInsets.only(left: 20, top: 10),
+                                    ? const EdgeInsets.only(right: 20, top: 5)
+                                    : const EdgeInsets.only(left: 20, top: 5),
                                 child: TextButton(
                                   style: TextButton.styleFrom(
                                       textStyle: const TextStyle(fontSize: 12),
@@ -452,6 +507,7 @@ class _MyProfileScreenState extends BaseRouteState {
                                               alignment: Alignment.center,
                                               margin: EdgeInsets.only(
                                                   top: 2, left: 2),
+                                              height: 100,
                                               decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(20),
@@ -461,13 +517,6 @@ class _MyProfileScreenState extends BaseRouteState {
                                                     ? Color(0xFF1D0529)
                                                     : Colors.white54,
                                               ),
-                                              height: (MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.12),
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
                                               child: GridTile(
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -480,18 +529,12 @@ class _MyProfileScreenState extends BaseRouteState {
                                                               .length >
                                                           0
                                                       ? Image.network(
-                                                          'http://localhost:8000/${auth.current_user['animals'][index]['avatars'][0]['url']}')
+                                                          'http://localhost:8000/${auth.current_user['animals'][0]['avatars'][0]['url']}',
+                                                          fit: BoxFit.cover,
+                                                          height: 100,
+                                                        )
                                                       : Image.asset(
                                                           'assets/images/animal.jpg',
-                                                          height: (MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              0.12),
-                                                          width: MediaQuery.of(
-                                                                  context)
-                                                              .size
-                                                              .width,
                                                           fit: BoxFit.cover,
                                                         ),
                                                 ),

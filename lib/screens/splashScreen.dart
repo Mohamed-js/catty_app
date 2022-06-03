@@ -2,10 +2,11 @@ import 'dart:async';
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/provider/local_provider.dart';
-import 'package:datingapp/screens/addStoryScreen.dart';
+import 'package:datingapp/screens/addStoryScreen1.dart';
 import 'package:datingapp/screens/introScreen.dart';
 import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/screens/startDatingScreen.dart';
+import 'package:datingapp/services/app_state.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,14 @@ class _SplashScreenState extends BaseRouteState {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final auth = Provider.of<Auth>(context, listen: false);
+      final appState = Provider.of<AppState>(context, listen: false);
       await auth.tryLogin(false);
+      if (auth.authenticated) {
+        appState.getChats();
+        appState.getNotifications();
+        appState.getSubscription();
+        appState.getQuota();
+      }
       startTime(auth.authenticated);
     });
   }
@@ -66,18 +74,17 @@ class _SplashScreenState extends BaseRouteState {
       return new Timer(_duration, () {
         if (loggedIn) {
           Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          BottomNavigationWidgetLight(
-                                            currentIndex: 0,
-                            
-                                          )),
-                                  ModalRoute.withName('/'));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => BottomNavigationWidgetLight(
+                        currentIndex: 0,
+                      )),
+              ModalRoute.withName('/'));
         } else {
           Navigator.pushAndRemoveUntil(
-            context,
-              MaterialPageRoute(builder: (context) => StartDatingScreen()), ModalRoute.withName('/'));
+              context,
+              MaterialPageRoute(builder: (context) => StartDatingScreen()),
+              ModalRoute.withName('/'));
         }
       });
     } catch (e) {

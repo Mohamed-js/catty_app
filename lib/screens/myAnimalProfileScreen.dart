@@ -47,14 +47,16 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen> {
                     height: MediaQuery.of(context).size.width * .8,
                     width: MediaQuery.of(context).size.width * .75,
                     child: Container(
-                      child: _animal['empty'] == true ||
-                              _animal['avatars'].isEmpty
-                          ? Image.asset(
-                              'assets/images/dog_placeholder.png',
-                              fit: BoxFit.cover,
-                            )
-                          : Image.network(
-                              'http://localhost:8000/${_animal['avatars'][0]['url']}', fit: BoxFit.cover,),
+                      child:
+                          _animal['empty'] == true || _animal['avatars'].isEmpty
+                              ? Image.asset(
+                                  'assets/images/dog_placeholder.png',
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  'http://localhost:8000/${_animal['avatars'][0]['url']}',
+                                  fit: BoxFit.cover,
+                                ),
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(19, 1, 51, 1),
                       ),
@@ -286,13 +288,47 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen> {
                                     child: _animal['empty'] == true
                                         ? Text('')
                                         : Text(
-                                            _animal['vaccinated'] == false
-                                                ? 'NO'
-                                                : "YES",
+                                            _animal['vaccinated']
+                                                ? 'Yes'
+                                                : "No",
                                             style: Theme.of(context)
                                                 .primaryTextTheme
                                                 .bodyText1,
                                           ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              height: 30,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 4),
+                                    child: Text(
+                                      'Date of birth:',
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .bodyText1,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 4),
+                                    child: _animal['empty'] == true
+                                        ? Text('')
+                                        : _animal['dob'] != null
+                                            ? Text(
+                                                _animal['dob'],
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .bodyText1,
+                                              )
+                                            : Text(
+                                                '-',
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .bodyText1,
+                                              ),
                                   ),
                                 ],
                               ),
@@ -322,56 +358,56 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen> {
                                     .subtitle2,
                               ),
                       ),
-                      // Documents
-                      Padding(
-                        padding: g.isRTL
-                            ? const EdgeInsets.only(right: 20, top: 30)
-                            : const EdgeInsets.only(left: 20, top: 10),
-                        child: Text(
-                          'Documents',
-                          style: Theme.of(context).primaryTextTheme.headline3,
-                        ),
-                      ),
-                      Padding(
-                        padding: g.isRTL
-                            ? const EdgeInsets.only(right: 20, top: 10)
-                            : const EdgeInsets.only(left: 20, top: 5),
-                        child: Text(
-                          'No available documents for now...',
-                          style: Theme.of(context).primaryTextTheme.subtitle2,
-                        ),
-                      ),
-                      // Additional info
-                      Padding(
-                        padding: g.isRTL
-                            ? const EdgeInsets.only(right: 20, top: 30)
-                            : const EdgeInsets.only(left: 20, top: 10),
-                        child: Text(
-                          'Additional Information',
-                          style: Theme.of(context).primaryTextTheme.headline3,
-                        ),
-                      ),
-                      Padding(
-                        padding: g.isRTL
-                            ? const EdgeInsets.only(right: 20, top: 10)
-                            : const EdgeInsets.only(
-                                left: 20, top: 5, bottom: 10),
-                        child: _animal['empty'] == true
-                            ? Text('')
-                            : _animal['additional_info'] == null
-                                ? Text(
-                                    'No additional information available.',
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .subtitle2,
-                                  )
-                                : Text(
-                                    _animal['additional_info'],
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .subtitle2,
-                                  ),
-                      ),
+                      // // Documents
+                      // Padding(
+                      //   padding: g.isRTL
+                      //       ? const EdgeInsets.only(right: 20, top: 30)
+                      //       : const EdgeInsets.only(left: 20, top: 10),
+                      //   child: Text(
+                      //     'Documents',
+                      //     style: Theme.of(context).primaryTextTheme.headline3,
+                      //   ),
+                      // ),
+                      // Padding(
+                      //   padding: g.isRTL
+                      //       ? const EdgeInsets.only(right: 20, top: 10)
+                      //       : const EdgeInsets.only(left: 20, top: 5),
+                      //   child: Text(
+                      //     'No available documents for now...',
+                      //     style: Theme.of(context).primaryTextTheme.subtitle2,
+                      //   ),
+                      // ),
+                      // // Additional info
+                      // Padding(
+                      //   padding: g.isRTL
+                      //       ? const EdgeInsets.only(right: 20, top: 30)
+                      //       : const EdgeInsets.only(left: 20, top: 10),
+                      //   child: Text(
+                      //     'Additional Information',
+                      //     style: Theme.of(context).primaryTextTheme.headline3,
+                      //   ),
+                      // ),
+                      // Padding(
+                      //   padding: g.isRTL
+                      //       ? const EdgeInsets.only(right: 20, top: 10)
+                      //       : const EdgeInsets.only(
+                      //           left: 20, top: 5, bottom: 10),
+                      //   child: _animal['empty'] == true
+                      //       ? Text('')
+                      //       : _animal['additional_info'] == null
+                      //           ? Text(
+                      //               'No additional information available.',
+                      //               style: Theme.of(context)
+                      //                   .primaryTextTheme
+                      //                   .subtitle2,
+                      //             )
+                      //           : Text(
+                      //               _animal['additional_info'],
+                      //               style: Theme.of(context)
+                      //                   .primaryTextTheme
+                      //                   .subtitle2,
+                      //             ),
+                      // ),
                       // Padding(
                       //   padding: const EdgeInsets.only(top: 20),
                       //   child: TabBar(

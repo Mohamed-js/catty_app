@@ -29,13 +29,13 @@ class AddMessageScreen extends BaseRoute {
 
 class _AddMessageScreenState extends BaseRouteState {
   TextEditingController _cSearch = new TextEditingController();
-  bool loading = true;
+  bool loading = false;
 
   _AddMessageScreenState() : super();
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AppState>(builder: (context, app_state, child) {
+    return Consumer<AppState>(builder: (context, appState, child) {
       return SafeArea(
         child: WillPopScope(
           onWillPop: () {
@@ -202,7 +202,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                               .primaryTextTheme
                                               .bodyText1)),
                                 )
-                              : app_state.chats.isEmpty
+                              : appState.chats.isEmpty
                                   ? Padding(
                                       padding: const EdgeInsets.only(top: 20.0),
                                       child: Center(
@@ -213,15 +213,15 @@ class _AddMessageScreenState extends BaseRouteState {
                                     )
                                   : Expanded(
                                       child: ListView.builder(
-                                          itemCount: app_state.chats.length,
+                                          itemCount: appState.chats.length,
                                           itemBuilder: (ctx, index) {
                                             dynamic _user =
                                                 auth.current_user['id'] !=
-                                                        app_state.chats[index]
+                                                        appState.chats[index]
                                                             ['sender_id']
-                                                    ? app_state.chats[index]
+                                                    ? appState.chats[index]
                                                         ['sender']
-                                                    : app_state.chats[index]
+                                                    : appState.chats[index]
                                                         ['receiver'];
                                             return Container(
                                               alignment: Alignment.center,
@@ -321,13 +321,12 @@ class _AddMessageScreenState extends BaseRouteState {
                                                               )
                                                             ],
                                                           ),
-                                                          app_state.chats[index]
-                                                                      [
+                                                          appState.chats[index][
                                                                       'last_message'] ==
                                                                   null
                                                               ? Text("-")
                                                               : Text(
-                                                                  '${app_state.chats[index]['last_message']['body']}',
+                                                                  '${appState.chats[index]['last_message']['body']}',
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
@@ -349,14 +348,14 @@ class _AddMessageScreenState extends BaseRouteState {
                                                         MainAxisSize.min,
                                                     children: [
                                                       Expanded(
-                                                        child: app_state.chats[
-                                                                        index][
+                                                        child: appState.chats[index]
+                                                                    [
                                                                     'last_message'] ==
                                                                 null
                                                             ? Text(
                                                                 DateFormat.yMd().format(
                                                                     DateTime.parse(
-                                                                        app_state.chats[index]
+                                                                        appState.chats[index]
                                                                             [
                                                                             'created_at'])),
                                                                 style: Theme.of(
@@ -364,12 +363,13 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                     .primaryTextTheme
                                                                     .caption,
                                                               )
-                                                            : DateFormat.yMd().format(DateTime.parse(app_state.chats[index]
+                                                            : DateFormat.yMd().format(DateTime.parse(appState.chats[index]
                                                                             ['last_message']
                                                                         [
                                                                         'created_at'])) ==
                                                                     DateFormat.yMd()
-                                                                        .format(new DateTime.now())
+                                                                        .format(
+                                                                            new DateTime.now())
                                                                 ? Text(
                                                                     'Today',
                                                                     style: Theme.of(
@@ -380,7 +380,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                 : Text(
                                                                     DateFormat
                                                                             .yMd()
-                                                                        .format(DateTime.parse(app_state.chats[index]['last_message']
+                                                                        .format(DateTime.parse(appState.chats[index]['last_message']
                                                                             [
                                                                             'created_at'])),
                                                                     style: Theme.of(
@@ -389,7 +389,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                         .caption,
                                                                   ),
                                                       ),
-                                                      app_state.chats[index][
+                                                      appState.chats[index][
                                                                   'unread_messages_count'] >
                                                               0
                                                           ? Expanded(
@@ -403,7 +403,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                       Color(
                                                                           0xFFD6386F),
                                                                   child: Text(
-                                                                    '${app_state.chats[index]['unread_messages_count']}',
+                                                                    '${appState.chats[index]['unread_messages_count']}',
                                                                     style: Theme.of(
                                                                             context)
                                                                         .primaryTextTheme
@@ -421,7 +421,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                       MaterialPageRoute(
                                                           builder: (context) =>
                                                               ChatScreen(
-                                                                  app_state.chats[
+                                                                  appState.chats[
                                                                           index]
                                                                       ['id'])));
                                                 },
@@ -441,22 +441,22 @@ class _AddMessageScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    final appState = Provider.of<AppState>(context, listen: false);
-    void getChats() async {
-      final prefs = await SharedPreferences.getInstance();
-      String token = prefs.getString('i-pet-kk');
-      Dio.Response response = await dio().get('/chats',
-          options: Dio.Options(headers: {
-            'Authorization': 'Bearer $token',
-          }));
+    // // final appState = Provider.of<AppState>(context, listen: false);
+    // void getChats() async {
+    //   // final prefs = await SharedPreferences.getInstance();
+    //   // String token = prefs.getString('i-pet-kk');
+    //   // Dio.Response response = await dio().get('/chats',
+    //   //     options: Dio.Options(headers: {
+    //   //       'Authorization': 'Bearer $token',
+    //   //     }));
 
-      setState(() {
-        appState.setChats(response.data);
-        loading = false;
-      });
-    }
+    //   // setState(() {
+    //   //   appState.getChats(response.data);
+    //   //   loading = false;
+    //   // });
+    // }
 
-    getChats();
+    // getChats();
   }
 
   PreferredSizeWidget _appBarWidget() {

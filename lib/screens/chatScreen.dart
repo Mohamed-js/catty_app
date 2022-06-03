@@ -136,13 +136,13 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                   backgroundColor: Colors.white,
                                   child: CircleAvatar(
                                     radius: 55,
-                                    backgroundImage: auth.current_user ==
+                                    backgroundImage: auth.current_user['id'] !=
                                             _chat['sender']['id']
                                         ? NetworkImage(
-                                            'http://localhost:8000/${_chat['receiver']['avatar']}',
+                                            'http://localhost:8000/${_chat['sender']['avatar']}',
                                           )
                                         : NetworkImage(
-                                            'http://localhost:8000/${_chat['sender']['avatar']}',
+                                            'http://localhost:8000/${_chat['receiver']['avatar']}',
                                           ),
                                     backgroundColor: Colors.transparent,
                                   ),
@@ -157,22 +157,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              auth.current_user == _chat['sender']['id']
+                              auth.current_user['id'] != _chat['sender']['id']
                                   ? Text(
-                                      _chat['receiver']['first_name'][0]
-                                              .toUpperCase() +
-                                          _chat['receiver']['first_name']
-                                              .substring(1) +
-                                          " " +
-                                          _chat['receiver']['last_name'][0]
-                                              .toUpperCase() +
-                                          _chat['receiver']['last_name']
-                                              .substring(1),
-                                      style: Theme.of(context)
-                                          .primaryTextTheme
-                                          .headline3,
-                                    )
-                                  : Text(
                                       _chat['sender']['first_name'][0]
                                               .toUpperCase() +
                                           _chat['sender']['first_name']
@@ -181,6 +167,20 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                           _chat['sender']['last_name'][0]
                                               .toUpperCase() +
                                           _chat['sender']['last_name']
+                                              .substring(1),
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .headline3,
+                                    )
+                                  : Text(
+                                      _chat['receiver']['first_name'][0]
+                                              .toUpperCase() +
+                                          _chat['receiver']['first_name']
+                                              .substring(1) +
+                                          " " +
+                                          _chat['receiver']['last_name'][0]
+                                              .toUpperCase() +
+                                          _chat['receiver']['last_name']
                                               .substring(1),
                                       style: Theme.of(context)
                                           .primaryTextTheme
@@ -366,7 +366,6 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       setState(() {
         _chat = response.data;
         for (var msg in _chat['messages']) {
-          print(msg);
           if (current_usr['id'] == msg['sender_id']) {
             _messages.add(_myMessage(msg));
           } else {
@@ -510,22 +509,9 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 5),
-                                child: currentUser == _chat['sender']['id']
+                                child: currentUser['id'] !=
+                                        _chat['sender']['id']
                                     ? Text(
-                                        _chat['receiver']['first_name'][0]
-                                                .toUpperCase() +
-                                            _chat['receiver']['first_name']
-                                                .substring(1) +
-                                            " " +
-                                            _chat['receiver']['last_name'][0]
-                                                .toUpperCase() +
-                                            _chat['receiver']['last_name']
-                                                .substring(1),
-                                        style: Theme.of(context)
-                                            .accentTextTheme
-                                            .headline6,
-                                      )
-                                    : Text(
                                         _chat['sender']['first_name'][0]
                                                 .toUpperCase() +
                                             _chat['sender']['first_name']
@@ -534,6 +520,20 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                             _chat['sender']['last_name'][0]
                                                 .toUpperCase() +
                                             _chat['sender']['last_name']
+                                                .substring(1),
+                                        style: Theme.of(context)
+                                            .accentTextTheme
+                                            .headline6,
+                                      )
+                                    : Text(
+                                        _chat['receiver']['first_name'][0]
+                                                .toUpperCase() +
+                                            _chat['receiver']['first_name']
+                                                .substring(1) +
+                                            " " +
+                                            _chat['receiver']['last_name'][0]
+                                                .toUpperCase() +
+                                            _chat['receiver']['last_name']
                                                 .substring(1),
                                         style: Theme.of(context)
                                             .accentTextTheme
