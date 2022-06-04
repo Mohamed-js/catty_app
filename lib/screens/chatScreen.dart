@@ -1,6 +1,7 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/videoCallingScreen.dart';
+import 'package:datingapp/services/app_state.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetDark.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
@@ -139,10 +140,10 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                     backgroundImage: auth.current_user['id'] !=
                                             _chat['sender']['id']
                                         ? NetworkImage(
-                                            'http://localhost:8000/${_chat['sender']['avatar']}',
+                                            'https://i-pet.herokuapp.com/${_chat['sender']['avatar']}',
                                           )
                                         : NetworkImage(
-                                            'http://localhost:8000/${_chat['receiver']['avatar']}',
+                                            'https://i-pet.herokuapp.com/${_chat['receiver']['avatar']}',
                                           ),
                                     backgroundColor: Colors.transparent,
                                   ),
@@ -310,7 +311,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                           padding: EdgeInsets.all(0),
                           onPressed: () async {
                             dynamic msg = await _sendMessageTo(
-                                chat_id: widget.chat_id, body: _cMessage.text);
+                                chatId: widget.chat_id, body: _cMessage.text);
 
                             if (msg == "sent") {
                               _cMessage.clear();
@@ -358,24 +359,34 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       dynamic current_usr =
           await Provider.of<Auth>(context, listen: false).current_user;
       final prefs = await SharedPreferences.getInstance();
-      String token = prefs.getString('i-pet-kk');
-      Dio.Response response = await dio().get('/chat/${widget.chat_id}',
-          options: Dio.Options(headers: {
-            'Authorization': 'Bearer $token',
-          }));
-      setState(() {
-        _chat = response.data;
-        for (var msg in _chat['messages']) {
-          if (current_usr['id'] == msg['sender_id']) {
-            _messages.add(_myMessage(msg));
-          } else {
-            _messages.add(_hisMessage(msg, current_usr));
+      try {
+        String token = prefs.getString('i-pet-kk');
+        Dio.Response response = await dio().get('/chat/${widget.chat_id}',
+            options: Dio.Options(headers: {
+              'Authorization': 'Bearer $token',
+            }));
+        setState(() {
+          _chat = response.data;
+          for (var msg in _chat['messages']) {
+            if (current_usr['id'] == msg['sender_id']) {
+              _messages.add(_myMessage(msg));
+            } else {
+              _messages.add(_hisMessage(msg, current_usr));
+            }
           }
-        }
-      });
+        });
+      } catch (e) {
+        print(e);
+      }
     }
 
     getChat();
+  }
+
+  void dispose() {
+    super.dispose();
+    final appState = Provider.of<AppState>(context, listen: false);
+    appState.getChats();
   }
 
   void _tabControllerListener() {
@@ -569,24 +580,24 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     );
   }
 
-  _sendMessageTo({chat_id, body}) async {
-    final prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('i-pet-kk');
-    print(chat_id);
-    print(body);
-    print(token);
-    Dio.Response response = await dio().post('/messages',
-        data: {'chat_id': chat_id, 'body': body},
-        options: Dio.Options(headers: {
-          'Authorization': 'Bearer $token',
-        }));
-    print(response);
+  _sendMessageTo({chatId, body}) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('i-pet-kk');
+      Dio.Response response = await dio().post('/messages',
+          data: {'chat_id': chatId, 'body': body},
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
 
-    if (response.data != 'failed') {
-      setState(() {
-        _messages.add(_myMessage(response.data));
-      });
-      return 'sent';
+      if (response.data != 'failed') {
+        setState(() {
+          _messages.add(_myMessage(response.data));
+        });
+        return 'sent';
+      }
+    } catch (e) {
+      print(e);
     }
   }
 

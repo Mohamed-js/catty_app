@@ -107,7 +107,7 @@ class _NotificationListScreenState extends BaseRouteState {
                                                       child: CircleAvatar(
                                                         backgroundImage:
                                                             NetworkImage(
-                                                          'http://localhost:8000/${appState.notificationList[index]['img']}',
+                                                          'https://i-pet.herokuapp.com/${appState.notificationList[index]['img']}',
                                                         ),
                                                         backgroundColor:
                                                             Colors.transparent,
@@ -211,21 +211,7 @@ class _NotificationListScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-
-    // void getNotifications() async {
-    //   final prefs = await SharedPreferences.getInstance();
-    //   String token = prefs.getString('i-pet-kk');
-    //   Dio.Response response = await dio().get('/notifications',
-    //       options: Dio.Options(headers: {
-    //         'Authorization': 'Bearer $token',
-    //       }));
-
-    //   setState(() {
-    //     _addNewNotificationList = response.data;
-    //     loading = false;
-    //   });
-    // }
-
-    // getNotifications();
+    final appState = Provider.of<AppState>(context, listen: false);
+    appState.getNotifications();
   }
 }

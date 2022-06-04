@@ -1,6 +1,7 @@
 import 'package:datingapp/models/businessLayer/baseRoute.dart';
 import 'package:datingapp/models/businessLayer/global.dart' as g;
 import 'package:datingapp/screens/addStoryScreen1.dart';
+import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/screens/verifyOtpScreen.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
@@ -260,16 +261,32 @@ class _LoginScreenState extends BaseRouteState {
                             await Provider.of<Auth>(context, listen: false)
                                 .login(creds);
                         // adb reverse tcp:8000 tcp:8000
-                        
-                        if (canLogin == true) {
+
+                        if (canLogin.isNotEmpty &&
+                            canLogin['message'] == null) {
                           setState(() {
                             login_btn_text = 'Submit';
                           });
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BottomNavigationWidgetLight(
-                                    currentIndex: 0,
-                                    
-                                  )));
+                          print('canLogin');
+                          print(canLogin);
+                          print('canLogin');
+                          if (canLogin['verified'] == false) {
+                            print('redirect to OTPPPPPPPPPPPP');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => VerifyOtpScreen()));
+                          } else if (canLogin['first_name'] != null &&
+                              canLogin['first_name'].isEmpty) {
+                            print('redirect to PROFILEEEEEEEEE ADD');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ProfileDetailScreen()));
+                          } else {
+                            print('redirect to PROFILEEEEEEEEE');
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    BottomNavigationWidgetLight(
+                                      currentIndex: 0,
+                                    )));
+                          }
                         } else if (canLogin is Map) {
                           setState(() {
                             login_err = canLogin['message'];

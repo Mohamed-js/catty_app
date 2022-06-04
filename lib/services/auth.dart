@@ -43,16 +43,21 @@ class Auth extends ChangeNotifier {
       if (res['token'] != null) {
         final prefs = await SharedPreferences.getInstance();
         prefs.setString('i-pet-kk', res['token']);
-        Dio.Response response = await dio().get('/user',
-            options: Dio.Options(
-                headers: {'Authorization': 'Bearer ${res['token']}'}));
-        _user = response.data;
-        print('------------');
-        print(_user);
-        print('------------');
-        _isLoggedIn = true;
+        try {
+          Dio.Response response = await dio().get('/user',
+              options: Dio.Options(
+                  headers: {'Authorization': 'Bearer ${res['token']}'}));
+          _user = response.data;
+          print('------------');
+          print(_user);
+          print('------------');
+          _isLoggedIn = true;
+        } catch (e) {
+          print(e);
+        }
+
         notifyListeners();
-        return true;
+        return res;
       }
     } catch (e) {
       return e;
@@ -106,7 +111,7 @@ class Auth extends ChangeNotifier {
       Dio.Response response = await dio().post('/verify_otp?otp=$otp',
           options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
 
-      if (response.data.toString() == 'approved') {
+      if (response.data.toString() == 'Approved') {
         return true;
       } else {
         return false;
@@ -120,12 +125,13 @@ class Auth extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('i-pet-kk');
     dynamic av = '';
-    if (!dat['img'].isEmpty) {
+    if (dat['img'].isNotEmpty) {
       av = await Dio.MultipartFile.fromFile(
         dat['img'],
         filename: dat['img'].split('/').last,
       );
     }
+
     Dio.FormData data = Dio.FormData.fromMap({
       "avatar": av,
       "first_name": dat['first_name'],
@@ -134,14 +140,14 @@ class Auth extends ChangeNotifier {
     });
 
     try {
-      Dio.Response response = await dio().post('/profile',
+      print(data.fields);
+      Dio.Response response = await dio(multipart: true).post('/profile',
           data: data,
           options: Dio.Options(headers: {
             'Authorization': 'Bearer $token',
-            'Content-Type': 'multipart/form-data'
           }));
 
-      return response.data.toString();
+      return response;
     } catch (e) {
       print(e);
     }

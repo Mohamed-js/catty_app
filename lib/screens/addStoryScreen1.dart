@@ -178,7 +178,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                                         BorderRadius.circular(
                                                             20.0),
                                                     child: Image.network(
-                                                      'http://127.0.0.1:8000/${_recommendations[index]['avatars'][0]['url']}',
+                                                      'https://i-pet.herokuapp.com/${_recommendations[index]['avatars'][0]['url']}',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -207,103 +207,103 @@ class _AddStoryScreenState extends BaseRouteState {
                                                     (CardSwipeOrientation
                                                             orientation,
                                                         int index) async {
-                                                  // print(
-                                                  //     _recommendations[_current]
-                                                  //         ['id']);
-
-                                                  // print('Current');
-                                                  // print(_current + 1);
-                                                  // print('Total');
-                                                  // print(
-                                                  //     _recommendations.length);
-
                                                   if (orientation ==
                                                       CardSwipeOrientation
                                                           .LEFT) {
                                                     // REQEUST ===========
-                                                    Dio.Response response =
-                                                        await dio().post(
-                                                            '/dislikes',
-                                                            data: {
-                                                              'disliker_user_id':
-                                                                  authy.current_user[
-                                                                      'id'],
-                                                              'disliker_animal_id':
-                                                                  authy.current_user[
-                                                                          'animals']
-                                                                      [0]['id'],
-                                                              'disliked_animal_id':
-                                                                  _recommendations[
-                                                                          _current]
-                                                                      ['id'],
-                                                            },
-                                                            options:
-                                                                Dio.Options(
-                                                                    headers: {
-                                                                  'Authorization':
-                                                                      'Bearer $token',
-                                                                }));
-                                                    setState(() {
-                                                      _leftDirection = 0;
-                                                      _rightDirection = 0;
-                                                      _current = _current + 1;
-                                                    });
-                                                    print(
-                                                        'lefteddddddddddddddddddddd');
+                                                    try {
+                                                      Dio.Response response =
+                                                          await dio().post(
+                                                              '/dislikes',
+                                                              data: {
+                                                                'disliker_user_id':
+                                                                    authy.current_user[
+                                                                        'id'],
+                                                                'disliker_animal_id':
+                                                                    authy.current_user[
+                                                                            'animals']
+                                                                        [
+                                                                        0]['id'],
+                                                                'disliked_animal_id':
+                                                                    _recommendations[
+                                                                            _current]
+                                                                        ['id'],
+                                                              },
+                                                              options:
+                                                                  Dio.Options(
+                                                                      headers: {
+                                                                    'Authorization':
+                                                                        'Bearer $token',
+                                                                  }));
+                                                      setState(() {
+                                                        _leftDirection = 0;
+                                                        _rightDirection = 0;
+                                                        _current = _current + 1;
+                                                      });
+                                                      print(
+                                                          'lefteddddddddddddddddddddd');
+                                                    } catch (e) {
+                                                      print(e);
+                                                    }
                                                   } else {
-                                                    Dio.Response response =
-                                                        await dio().post(
-                                                            '/likes',
-                                                            data: {
-                                                              'liker_user_id':
-                                                                  auth.current_user[
-                                                                      'id'],
-                                                              'liked_user_id':
-                                                                  _recommendations[
-                                                                          _current]
-                                                                      [
-                                                                      'user_id'],
-                                                              'liker_animal_id':
-                                                                  auth.current_user[
-                                                                          'animals']
-                                                                      [0]['id'],
-                                                              'liked_animal_id':
-                                                                  _recommendations[
-                                                                          _current]
-                                                                      ['id'],
-                                                            },
-                                                            options:
-                                                                Dio.Options(
-                                                                    headers: {
-                                                                  'Authorization':
-                                                                      'Bearer $token',
-                                                                }));
-                                                    setState(() {
-                                                      _leftDirection = 0;
-                                                      _rightDirection = 0;
-                                                      _current = _current + 1;
-                                                    });
-                                                    print(
-                                                        'righteddddddddddddddd');
+                                                    try {
+                                                      Dio.Response response =
+                                                          await dio().post(
+                                                              '/likes',
+                                                              data: {
+                                                                'liker_user_id':
+                                                                    auth.current_user[
+                                                                        'id'],
+                                                                'liked_user_id':
+                                                                    _recommendations[
+                                                                            _current]
+                                                                        [
+                                                                        'user_id'],
+                                                                'liker_animal_id':
+                                                                    auth.current_user[
+                                                                            'animals']
+                                                                        [
+                                                                        0]['id'],
+                                                                'liked_animal_id':
+                                                                    _recommendations[
+                                                                            _current]
+                                                                        ['id'],
+                                                              },
+                                                              options:
+                                                                  Dio.Options(
+                                                                      headers: {
+                                                                    'Authorization':
+                                                                        'Bearer $token',
+                                                                  }));
+                                                      setState(() {
+                                                        _leftDirection = 0;
+                                                        _rightDirection = 0;
+                                                        _current = _current + 1;
+                                                      });
+                                                      print(
+                                                          'righteddddddddddddddd');
 
-                                                    if (response.data !=
-                                                        "failed to like") {
-                                                      if (response
-                                                          .data['match']) {
+                                                      if (response.data !=
+                                                          "failed to like") {
+                                                        if (response
+                                                            .data['match']) {
+                                                          setState(() {
+                                                            _showMatch = true;
+                                                            Navigator.of(
+                                                                    context)
+                                                                .push(MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        StartConversionScreen(
+                                                                            _recommendations[_current])));
+                                                          });
+                                                        }
+                                                      } else {
                                                         setState(() {
-                                                          _showMatch = true;
-                                                          Navigator.of(context).push(
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      StartConversionScreen(
-                                                                          _recommendations[
-                                                                              _current])));
+                                                          _openDialog = true;
                                                         });
                                                       }
-                                                    } else {
-                                                      setState(() {
-                                                        _openDialog = true;
-                                                      });
+                                                    } catch (e) {
+                                                      print(e);
                                                     }
                                                   }
 
@@ -470,7 +470,7 @@ class _AddStoryScreenState extends BaseRouteState {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
-                  'http://localhost:8000/${_recommendations[i]['avatars'][0]['url']}',
+                  'https://i-pet.herokuapp.com/${_recommendations[i]['avatars'][0]['url']}',
                   height: MediaQuery.of(context).size.height * 0.70,
                   width: MediaQuery.of(context).size.width * 0.75,
                   fit: BoxFit.cover,
@@ -532,7 +532,7 @@ class _AddStoryScreenState extends BaseRouteState {
                           backgroundImage: auth.current_user['avatar'] == null
                               ? AssetImage('assets/images/holder.png')
                               : NetworkImage(
-                                  'http://localhost:8000/${auth.current_user['avatar']}'),
+                                  'https://i-pet.herokuapp.com/${auth.current_user['avatar']}'),
                         ),
                       ),
                       Container(
@@ -571,37 +571,39 @@ class _AddStoryScreenState extends BaseRouteState {
     await appState.getFilterOptions();
     final options = appState.filter_options;
 
-    print(options);
+    try {
+      Dio.Response response;
+      if (auth.current_user['animals'].length > 0) {
+        int animalId = prefs.getInt('i-pet-current-animal-id');
+        try {
+          if (animalId != null) {
+            // TODO -- make sure the existing one is one of the current user's animals!
+            response = await dio().get(
+                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+          } else {
+            response = await dio().get(
+                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+            prefs.setInt('i-pet-current-animal-id',
+                auth.current_user['animals'][0]['id']);
+          }
+          print('starttttttttttttttttttttttttttt recs');
+          print(_recommendations);
+          print('recs111111111111');
+          int toStart = _recommendations.length;
+          setState(() {
+            _recommendations = response.data;
+            _current = 0;
+            _widgets(current: toStart);
+          });
 
-    Dio.Response response;
-    if (auth.current_user['animals'].length > 0) {
-      int animalId = prefs.getInt('i-pet-current-animal-id');
-      try {
-        if (animalId != null) {
-          // TODO -- make sure the existing one is one of the current user's animals!
-          response = await dio().get(
-              '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
-        } else {
-          response = await dio().get(
-              '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
-          prefs.setInt(
-              'i-pet-current-animal-id', auth.current_user['animals'][0]['id']);
+          print('recs2222222222222222');
+          print(response.data);
+        } catch (e) {
+          print(e);
         }
-        print('starttttttttttttttttttttttttttt recs');
-        print(_recommendations);
-        print('recs111111111111');
-        int toStart = _recommendations.length;
-        setState(() {
-          _recommendations = response.data;
-          _current = 0;
-          _widgets(current: toStart);
-        });
-
-        print('recs2222222222222222');
-        print(response.data);
-      } catch (e) {
-        print(e);
       }
+    } catch (e) {
+      print(e);
     }
   }
 }

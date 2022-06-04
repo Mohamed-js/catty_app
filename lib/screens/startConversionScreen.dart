@@ -72,7 +72,7 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                         children: [
                           CircleAvatar(
                             backgroundImage: NetworkImage(
-                                'http://localhost:8000/${auth.current_user['animals'][0]['avatars'][0]['url']}'),
+                                'https://i-pet.herokuapp.com/${auth.current_user['animals'][0]['avatars'][0]['url']}'),
                             radius: 32,
                           ),
                           Column(
@@ -99,7 +99,7 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                           ),
                           CircleAvatar(
                             backgroundImage: NetworkImage(
-                                'http://localhost:8000/${widget.animal['avatars'][0]['url']}'),
+                                'https://i-pet.herokuapp.com/${widget.animal['avatars'][0]['url']}'),
                             radius: 32,
                           ),
                         ],

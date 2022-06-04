@@ -307,6 +307,18 @@ class _ProfileDetailScreenState extends BaseRouteState {
                           ),
                           child: TextButton(
                             onPressed: () async {
+                              if (_cFirstName.text.isEmpty ||
+                                  _cLastName.text.isEmpty ||
+                                  _gender == 'Select Gender' ||
+                                  _currentImage.isEmpty) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Please enter valid data!'),
+                                    backgroundColor: Colors.redAccent,
+                                  ),
+                                );
+                                return;
+                              }
                               Map data = {
                                 'first_name': _cFirstName.text,
                                 'last_name': _cLastName.text,
@@ -316,7 +328,8 @@ class _ProfileDetailScreenState extends BaseRouteState {
                               dynamic res = await Provider.of<Auth>(context,
                                       listen: false)
                                   .updateProfile(data);
-                              if (res == 'Updated successfully.') {
+
+                              if (res.toString() == 'Updated successfully.') {
                                 final auth =
                                     Provider.of<Auth>(context, listen: false);
                                 await auth.tryLogin(false);
@@ -328,8 +341,7 @@ class _ProfileDetailScreenState extends BaseRouteState {
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content:
-                                        Text('Please choose a valid image.'),
+                                    content: Text('Please enter valid data!'),
                                     backgroundColor: Colors.redAccent,
                                   ),
                                 );

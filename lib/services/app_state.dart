@@ -16,7 +16,7 @@ class AppState extends ChangeNotifier {
     'no_vaccination_needed': true,
     'min_age': 0,
     'max_age': 6,
-    'same_breed': true,
+    'same_breed': false,
   };
   Map get filter_options => _filter_options;
 
@@ -59,48 +59,64 @@ class AppState extends ChangeNotifier {
   }
 
   getChats() async {
-    final prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('i-pet-kk');
-    Dio.Response response = await dio().get('/chats',
-        options: Dio.Options(headers: {
-          'Authorization': 'Bearer $token',
-        }));
-    _chats = response.data;
-    notifyListeners();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('i-pet-kk');
+      Dio.Response response = await dio().get('/chats',
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
+      _chats = response.data;
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
   }
 
   getNotifications() async {
-    final prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('i-pet-kk');
-    Dio.Response response = await dio().get('/notifications',
-        options: Dio.Options(headers: {
-          'Authorization': 'Bearer $token',
-        }));
-    _notificationList = response.data;
-    notifyListeners();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('i-pet-kk');
+      Dio.Response response = await dio().get('/notifications',
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
+      _notificationList = response.data;
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
   }
 
   getSubscription() async {
-    final prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('i-pet-kk');
-    Dio.Response response = await dio().get('/subscription',
-        options: Dio.Options(headers: {
-          'Authorization': 'Bearer $token',
-        }));
-    _subscription = response.data[0];
-    print(response.data[0]);
-    notifyListeners();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('i-pet-kk');
+      Dio.Response response = await dio().get('/subscription',
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
+      _subscription = response.data[0];
+
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
   }
 
   getQuota() async {
-    final prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('i-pet-kk');
-    Dio.Response response = await dio().get('/quota',
-        options: Dio.Options(headers: {
-          'Authorization': 'Bearer $token',
-        }));
-    _quota = response.data[0];
-    print(response.data[0]);
-    notifyListeners();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('i-pet-kk');
+      Dio.Response response = await dio().get('/quota',
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
+      _quota = response.data[0];
+
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
   }
 }

@@ -1,8 +1,11 @@
 import 'package:dio/dio.dart';
 
-Dio dio() {
+Dio dio({multipart = false}) {
   Dio dio = new Dio();
-  dio.options.baseUrl = 'http://localhost:8000/api/';
+  dio.options.baseUrl = 'https://i-pet.herokuapp.com/api';
+  if (multipart) {
+    dio.options.headers["Content-Type"] = "multipart/form-data";
+  }
   dio.options.headers['accept'] = 'Application/Json';
 
   return dio;

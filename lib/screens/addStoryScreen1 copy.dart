@@ -68,7 +68,6 @@ class _AddStoryScreenState extends BaseRouteState {
       //       print(_current + 1);
       //       print('Total');
       //       print(_recommendations.length);
- 
 
       //       if (info.direction == SwipDirection.Left) {
       //         if (_current == _recommendations.length - 1) {
@@ -150,7 +149,6 @@ class _AddStoryScreenState extends BaseRouteState {
       //         int toStart = _recommendations.length;
       //         await getRecommendations(false, appStaty, authy);
       //       }
-            
 
       //       setState(() {
       //         _current = index;
@@ -332,7 +330,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                                               ? AssetImage(
                                                                   'assets/images/holder.png')
                                                               : NetworkImage(
-                                                                  'http://localhost:8000/${_recommendations[_current]['user']['avatar']}',
+                                                                  'https://i-pet.herokuapp.com/${_recommendations[_current]['user']['avatar']}',
                                                                 ),
                                                           radius: 32,
                                                         ),
@@ -594,7 +592,7 @@ class _AddStoryScreenState extends BaseRouteState {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
-                  'http://localhost:8000/${_recommendations[i]['avatars'][0]['url']}',
+                  'https://i-pet.herokuapp.com/${_recommendations[i]['avatars'][0]['url']}',
                   height: MediaQuery.of(context).size.height * 0.70,
                   width: MediaQuery.of(context).size.width * 0.75,
                   fit: BoxFit.cover,
@@ -656,7 +654,7 @@ class _AddStoryScreenState extends BaseRouteState {
                           backgroundImage: auth.current_user['avatar'] == null
                               ? AssetImage('assets/images/holder.png')
                               : NetworkImage(
-                                  'http://localhost:8000/${auth.current_user['avatar']}'),
+                                  'https://i-pet.herokuapp.com/${auth.current_user['avatar']}'),
                         ),
                       ),
                       Container(

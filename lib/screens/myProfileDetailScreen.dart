@@ -61,11 +61,11 @@ class _MyProfileScreenState extends BaseRouteState {
                   children: [
                     Stack(alignment: Alignment.center, children: [
                       Container(
-                        height: MediaQuery.of(context).size.width * .8,
+                        height: MediaQuery.of(context).size.width * .75,
                         width: MediaQuery.of(context).size.width,
                         child: Container(
                           child: Image.network(
-                            "http://localhost:8000/${auth.current_user['avatar']}",
+                            "https://i-pet.herokuapp.com/${auth.current_user['avatar']}",
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
                           ),
@@ -251,6 +251,7 @@ class _MyProfileScreenState extends BaseRouteState {
                 ),
                 Divider(
                   color: Colors.deepPurple[100],
+                  height: 1,
                 ),
 
                 Expanded(
@@ -529,7 +530,7 @@ class _MyProfileScreenState extends BaseRouteState {
                                                               .length >
                                                           0
                                                       ? Image.network(
-                                                          'http://localhost:8000/${auth.current_user['animals'][0]['avatars'][0]['url']}',
+                                                          'https://i-pet.herokuapp.com/${auth.current_user['animals'][0]['avatars'][0]['url']}',
                                                           fit: BoxFit.cover,
                                                           height: 100,
                                                         )
@@ -660,6 +661,8 @@ class _MyProfileScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+    // final auth = Provider.of<Auth>(context, listen: false);
+    // auth.logout();
     _tabController =
         new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);

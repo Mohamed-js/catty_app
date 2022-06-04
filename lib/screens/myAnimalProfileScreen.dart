@@ -54,7 +54,7 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen> {
                                   fit: BoxFit.cover,
                                 )
                               : Image.network(
-                                  'http://localhost:8000/${_animal['avatars'][0]['url']}',
+                                  'https://i-pet.herokuapp.com/${_animal['avatars'][0]['url']}',
                                   fit: BoxFit.cover,
                                 ),
                       decoration: BoxDecoration(
@@ -623,16 +623,21 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen> {
     super.initState();
 
     void getAnimal() async {
-      final prefs = await SharedPreferences.getInstance();
-      String token = prefs.getString('i-pet-kk');
-      if (token != null) {
-        Dio.Response response = await dio().get('/animal/${widget.animal_id}',
-            options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
-        setState(() {
-          _animal = response.data;
-        });
+      try {
+        final prefs = await SharedPreferences.getInstance();
+        String token = prefs.getString('i-pet-kk');
+        if (token != null) {
+          Dio.Response response = await dio().get('/animal/${widget.animal_id}',
+              options:
+                  Dio.Options(headers: {'Authorization': 'Bearer $token'}));
+          setState(() {
+            _animal = response.data;
+          });
+        }
+        print(_animal);
+      } catch (e) {
+        print(e);
       }
-      print(_animal);
     }
 
     getAnimal();

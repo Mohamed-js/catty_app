@@ -145,7 +145,7 @@ class _BottomNavigationWidgetLightState
 
     Future<void> _initPusher() async {
       PusherOptions options = PusherOptions(
-        host: '127.0.0.1',
+        host: 'https://i-pet.herokuapp.com/',
         port: 6001,
         encrypted: false,
       );

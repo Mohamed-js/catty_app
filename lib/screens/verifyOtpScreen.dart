@@ -241,7 +241,7 @@ class _VerifyOtpScreenState extends BaseRouteState {
                               keyboardType: TextInputType.number,
                               style:
                                   Theme.of(context).primaryTextTheme.subtitle2,
-                              onChanged: (v){
+                              onChanged: (v) {
                                 num4 = v;
                               },
                             ),
@@ -267,17 +267,24 @@ class _VerifyOtpScreenState extends BaseRouteState {
                         dynamic isVerified =
                             await Provider.of<Auth>(context, listen: false)
                                 .verifyUser(otp);
+                        print('hey');
                         print(isVerified);
-                        if (isVerified == false) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ProfileDetailScreen()));
-                        } else if (isVerified == true) {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BottomNavigationWidgetLight(
-                                    currentIndex: 0,
-                                  )));
-                        }
-                        else {
+
+                        if (isVerified == true) {
+                          final auth =
+                              await Provider.of<Auth>(context, listen: false);
+                          String name = auth.current_user['first_name'];
+                          if (name == null) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ProfileDetailScreen()));
+                          } else {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    BottomNavigationWidgetLight(
+                                      currentIndex: 0,
+                                    )));
+                          }
+                        } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text("OTP is incorrect..."),
@@ -298,24 +305,24 @@ class _VerifyOtpScreenState extends BaseRouteState {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ShaderMask(
-                      blendMode: BlendMode.srcIn,
-                      shaderCallback: (Rect bounds) {
-                        return LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                        ).createShader(bounds);
-                      },
-                      child: Text(
-                        AppLocalizations.of(context).lbl_resend_otp,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(20.0),
+                  //   child: ShaderMask(
+                  //     blendMode: BlendMode.srcIn,
+                  //     shaderCallback: (Rect bounds) {
+                  //       return LinearGradient(
+                  //         colors: g.gradientColors,
+                  //         begin: Alignment.centerLeft,
+                  //         end: Alignment.centerRight,
+                  //       ).createShader(bounds);
+                  //     },
+                  //     child: Text(
+                  //       AppLocalizations.of(context).lbl_resend_otp,
+                  //       style: TextStyle(
+                  //           fontWeight: FontWeight.bold, fontSize: 17),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

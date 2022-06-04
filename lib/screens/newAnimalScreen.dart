@@ -489,6 +489,26 @@ class _NewAnimalScreenState extends BaseRouteState {
                         ),
                         child: TextButton(
                           onPressed: () async {
+                            // print(_cFirstName.text.isEmpty);
+                            // print(_cInfo.text.isEmpty);
+                            print(breedId == null);
+                            // print(_gender == 'Select Gender');
+                            // print(_currentImage.isEmpty);
+                            // print(_dob == null);
+                            if (_cFirstName.text.isEmpty ||
+                                _cInfo.text.isEmpty ||
+                                breedId == null ||
+                                _gender == 'Select Gender' ||
+                                _currentImage.isEmpty ||
+                                _dob == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Please enter valid data!'),
+                                  backgroundColor: Colors.redAccent,
+                                ),
+                              );
+                              return;
+                            }
                             Map data = {
                               'name': _cFirstName.text,
                               'info': _cInfo.text,
@@ -572,13 +592,17 @@ class _NewAnimalScreenState extends BaseRouteState {
   void initState() {
     super.initState();
     void getTypes() async {
-      Dio.Response response = await dio().get('/animals/create');
-      setState(() {
-        typeBreed = response.data;
-        typeBreed.forEach((element) {
-          types.add(element['name'].toUpperCase());
+      try {
+        Dio.Response response = await dio().get('/animals/create');
+        setState(() {
+          typeBreed = response.data;
+          typeBreed.forEach((element) {
+            types.add(element['name'].toUpperCase());
+          });
         });
-      });
+      } catch (e) {
+        print(e);
+      }
     }
 
     getTypes();

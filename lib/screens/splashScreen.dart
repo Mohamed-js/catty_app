@@ -6,6 +6,7 @@ import 'package:datingapp/screens/addStoryScreen1.dart';
 import 'package:datingapp/screens/introScreen.dart';
 import 'package:datingapp/screens/profileDetailScreen.dart';
 import 'package:datingapp/screens/startDatingScreen.dart';
+import 'package:datingapp/screens/verifyOtpScreen.dart';
 import 'package:datingapp/services/app_state.dart';
 import 'package:datingapp/services/auth.dart';
 import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
@@ -64,22 +65,33 @@ class _SplashScreenState extends BaseRouteState {
         appState.getSubscription();
         appState.getQuota();
       }
-      startTime(auth.authenticated);
+      startTime(auth.authenticated, auth.current_user);
     });
   }
 
-  startTime(loggedIn) {
+  startTime(loggedIn, current_user) {
+    print('current_user');
+    print(current_user);
+    print('current_user');
     try {
       var _duration = new Duration(seconds: 3);
       return new Timer(_duration, () {
         if (loggedIn) {
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => BottomNavigationWidgetLight(
-                        currentIndex: 0,
-                      )),
-              ModalRoute.withName('/'));
+          if (current_user['verified'] == false) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => VerifyOtpScreen()));
+          } else if (current_user['first_name'] == null) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => ProfileDetailScreen()));
+          } else {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BottomNavigationWidgetLight(
+                          currentIndex: 0,
+                        )),
+                ModalRoute.withName('/'));
+          }
         } else {
           Navigator.pushAndRemoveUntil(
               context,

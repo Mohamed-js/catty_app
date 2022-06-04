@@ -271,7 +271,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                               BorderRadius
                                                                   .circular(12),
                                                           child: Image.network(
-                                                            "http://localhost:8000/${_user['avatar']}",
+                                                            "https://i-pet.herokuapp.com/${_user['avatar']}",
                                                             fit: BoxFit.cover,
                                                           ),
                                                         ),
@@ -441,22 +441,9 @@ class _AddMessageScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    // // final appState = Provider.of<AppState>(context, listen: false);
-    // void getChats() async {
-    //   // final prefs = await SharedPreferences.getInstance();
-    //   // String token = prefs.getString('i-pet-kk');
-    //   // Dio.Response response = await dio().get('/chats',
-    //   //     options: Dio.Options(headers: {
-    //   //       'Authorization': 'Bearer $token',
-    //   //     }));
 
-    //   // setState(() {
-    //   //   appState.getChats(response.data);
-    //   //   loading = false;
-    //   // });
-    // }
-
-    // getChats();
+    final appState = Provider.of<AppState>(context, listen: false);
+    appState.getChats();
   }
 
   PreferredSizeWidget _appBarWidget() {
@@ -493,7 +480,7 @@ class _AddMessageScreenState extends BaseRouteState {
                           backgroundImage: auth.current_user['avatar'] == null
                               ? AssetImage('assets/images/holder.png')
                               : NetworkImage(
-                                  'http://localhost:8000/${auth.current_user['avatar']}'),
+                                  'https://i-pet.herokuapp.com/${auth.current_user['avatar']}'),
                         ),
                       ),
                       Container(
