@@ -1,6 +1,6 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/LocationScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/LocationScreen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -78,19 +78,25 @@ class _UploadIdScreenState extends BaseRouteState {
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                        color: g.isDarkModeEnable
+                            ? Colors.black
+                            : Theme.of(context).scaffoldBackgroundColor,
                         borderRadius: BorderRadius.circular(35),
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                          color: g.isDarkModeEnable
+                              ? Colors.black
+                              : Theme.of(context).scaffoldBackgroundColor,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 55,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10, right: 10),
                           child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable ? Color(0xFF03000C) : Theme.of(context).scaffoldBackgroundColor,
+                            dropdownColor: g.isDarkModeEnable
+                                ? Color(0xFF03000C)
+                                : Theme.of(context).scaffoldBackgroundColor,
                             icon: Padding(
                               padding: const EdgeInsets.only(right: 20),
                               child: Icon(
@@ -102,20 +108,28 @@ class _UploadIdScreenState extends BaseRouteState {
                             items: ['ID Proof', 'Bio data']
                                 .map((label) => DropdownMenuItem(
                                       child: Padding(
-                                        padding: g.isRTL ? const EdgeInsets.only(right: 20) : const EdgeInsets.only(left: 20),
+                                        padding: g.isRTL
+                                            ? const EdgeInsets.only(right: 20)
+                                            : const EdgeInsets.only(left: 20),
                                         child: Text(
                                           label.toString(),
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       value: label,
                                     ))
                                 .toList(),
                             hint: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(right: 20) : const EdgeInsets.only(left: 20),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(right: 20)
+                                  : const EdgeInsets.only(left: 20),
                               child: Text(
                                 _ages.isNotEmpty ? _ages : 'ID Proof',
-                                style: Theme.of(context).primaryTextTheme.subtitle2,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
                               ),
                             ),
                             onChanged: (value) {
@@ -136,7 +150,9 @@ class _UploadIdScreenState extends BaseRouteState {
                       height: MediaQuery.of(context).size.height * 0.4,
                       width: MediaQuery.of(context).size.width,
                       decoration: BoxDecoration(
-                        color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                        color: g.isDarkModeEnable
+                            ? Colors.black
+                            : Theme.of(context).scaffoldBackgroundColor,
                         borderRadius: BorderRadius.circular(30),
                       ),
                       alignment: Alignment.center,
@@ -159,7 +175,10 @@ class _UploadIdScreenState extends BaseRouteState {
                                   backgroundColor: Color(0xFF4C407B),
                                   child: CircleAvatar(
                                     radius: 16,
-                                    backgroundColor: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                                    backgroundColor: g.isDarkModeEnable
+                                        ? Colors.black
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     child: Icon(
                                       Icons.arrow_upward,
                                       color: Theme.of(context).iconTheme.color,
@@ -216,7 +235,11 @@ class _UploadIdScreenState extends BaseRouteState {
                                   )));
                         },
                         child: Text(AppLocalizations.of(context).btn_continue,
-                            style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            style: Theme.of(context)
+                                .textButtonTheme
+                                .style
+                                .textStyle
+                                .resolve({
                               MaterialState.pressed,
                             })),
                       ),

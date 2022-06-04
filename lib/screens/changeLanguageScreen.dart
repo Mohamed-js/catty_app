@@ -1,7 +1,7 @@
-import 'package:datingapp/l10n/l10n.dart';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/provider/local_provider.dart';
+import 'package:PetsMating/l10n/l10n.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/provider/local_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -56,11 +56,14 @@ class _ChangeLanguageScreenState extends BaseRouteState {
                             groupValue: g.languageCode,
                             onChanged: (val) {
                               g.languageCode = val;
-                              final provider = Provider.of<LocaleProvider>(context, listen: false);
+                              final provider = Provider.of<LocaleProvider>(
+                                  context,
+                                  listen: false);
                               locale = Locale(L10n.all[index].languageCode);
                               provider.setLocale(locale);
                               g.languageCode = locale.languageCode;
-                              if (g.rtlLanguageCodeLList.contains(locale.languageCode)) {
+                              if (g.rtlLanguageCodeLList
+                                  .contains(locale.languageCode)) {
                                 g.isRTL = true;
                               } else {
                                 g.isRTL = false;
@@ -69,7 +72,8 @@ class _ChangeLanguageScreenState extends BaseRouteState {
                             },
                             title: Text(
                               L10n.languageNameList[index],
-                              style: Theme.of(context).primaryTextTheme.bodyText1,
+                              style:
+                                  Theme.of(context).primaryTextTheme.bodyText1,
                             ),
                           ),
                           index != L10n.languageNameList.length - 1

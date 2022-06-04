@@ -1,7 +1,7 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/startConversionScreen.dart';
-import 'package:datingapp/screens/startSwippingScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/startConversionScreen.dart';
+import 'package:PetsMating/screens/startSwippingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -84,7 +84,9 @@ class _IntrestScreenState extends BaseRouteState {
                     padding: EdgeInsets.only(right: 8),
                     alignment: Alignment.centerRight,
                     width: MediaQuery.of(context).size.width,
-                    color: g.isDarkModeEnable ? Color(0xFF130032) : Theme.of(context).scaffoldBackgroundColor,
+                    color: g.isDarkModeEnable
+                        ? Color(0xFF130032)
+                        : Theme.of(context).scaffoldBackgroundColor,
                     height: 15,
                   ),
                   Container(
@@ -124,7 +126,9 @@ class _IntrestScreenState extends BaseRouteState {
                                 ),
                                 child: Text(
                                   'Belle Benson',
-                                  style: Theme.of(context).primaryTextTheme.headline1,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline1,
                                 ),
                               ),
                             ),
@@ -140,14 +144,18 @@ class _IntrestScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           Icons.place,
-                                          color: Theme.of(context).iconTheme.color,
+                                          color:
+                                              Theme.of(context).iconTheme.color,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 4),
+                                          padding:
+                                              const EdgeInsets.only(left: 4),
                                           child: Text(
                                             '1.5 km away',
-                                            style: Theme.of(context).primaryTextTheme.bodyText1,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .bodyText1,
                                           ),
                                         ),
                                       ],
@@ -161,14 +169,18 @@ class _IntrestScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           Icons.favorite_border,
-                                          color: Theme.of(context).iconTheme.color,
+                                          color:
+                                              Theme.of(context).iconTheme.color,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 4),
+                                          padding:
+                                              const EdgeInsets.only(left: 4),
                                           child: Text(
                                             '2.7k',
-                                            style: Theme.of(context).primaryTextTheme.bodyText1,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .bodyText1,
                                           ),
                                         ),
                                       ],
@@ -199,7 +211,10 @@ class _IntrestScreenState extends BaseRouteState {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(22),
                                       gradient: LinearGradient(
-                                        colors: [Colors.green[200], Colors.green[900]],
+                                        colors: [
+                                          Colors.green[200],
+                                          Colors.green[900]
+                                        ],
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                       ),
@@ -225,12 +240,16 @@ class _IntrestScreenState extends BaseRouteState {
                                           )));
                                 },
                                 child: Padding(
-                                  padding: const EdgeInsets.only(left: 10, right: 10),
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 10),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(22),
                                       gradient: LinearGradient(
-                                        colors: [Colors.red[200], Colors.pink[700]],
+                                        colors: [
+                                          Colors.red[200],
+                                          Colors.pink[700]
+                                        ],
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                       ),
@@ -252,14 +271,18 @@ class _IntrestScreenState extends BaseRouteState {
                         ),
                       ),
                       Padding(
-                        padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 30) : const EdgeInsets.only(left: 20, top: 30),
+                        padding: g.isRTL
+                            ? const EdgeInsets.only(right: 20, top: 30)
+                            : const EdgeInsets.only(left: 20, top: 30),
                         child: Text(
                           AppLocalizations.of(context).lbl_hello_friends,
                           style: Theme.of(context).primaryTextTheme.headline3,
                         ),
                       ),
                       Padding(
-                        padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 10) : const EdgeInsets.only(left: 20, top: 10),
+                        padding: g.isRTL
+                            ? const EdgeInsets.only(right: 20, top: 10)
+                            : const EdgeInsets.only(left: 20, top: 10),
                         child: Text(
                           'Love music, cooking, swimming, going out,\ntravelling etc. Wanna be friends??',
                           style: Theme.of(context).primaryTextTheme.subtitle2,
@@ -287,13 +310,15 @@ class _IntrestScreenState extends BaseRouteState {
                                         ).createShader(bounds);
                                       },
                                       child: Text(
-                                        AppLocalizations.of(context).lbl_tab_pictures,
+                                        AppLocalizations.of(context)
+                                            .lbl_tab_pictures,
                                         style: TextStyle(fontSize: 16),
                                       ),
                                     ),
                                   )
                                 : Text(
-                                    AppLocalizations.of(context).lbl_tab_pictures,
+                                    AppLocalizations.of(context)
+                                        .lbl_tab_pictures,
                                     style: TextStyle(fontSize: 16),
                                   ),
                             _tabController.index == 1
@@ -308,7 +333,8 @@ class _IntrestScreenState extends BaseRouteState {
                                         ).createShader(bounds);
                                       },
                                       child: Text(
-                                        AppLocalizations.of(context).lbl_tab_videos,
+                                        AppLocalizations.of(context)
+                                            .lbl_tab_videos,
                                         style: TextStyle(fontSize: 16),
                                       ),
                                     ),
@@ -350,7 +376,8 @@ class _IntrestScreenState extends BaseRouteState {
                                         ).createShader(bounds);
                                       },
                                       child: Text(
-                                        AppLocalizations.of(context).lbl_tab_more,
+                                        AppLocalizations.of(context)
+                                            .lbl_tab_more,
                                         style: TextStyle(fontSize: 16),
                                       ),
                                     ),
@@ -370,8 +397,10 @@ class _IntrestScreenState extends BaseRouteState {
                           children: [
                             GridView.builder(
                               scrollDirection: Axis.horizontal,
-                              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                                maxCrossAxisExtent: MediaQuery.of(context).size.width,
+                              gridDelegate:
+                                  SliverGridDelegateWithMaxCrossAxisExtent(
+                                maxCrossAxisExtent:
+                                    MediaQuery.of(context).size.width,
                                 mainAxisSpacing: 2.0,
                                 crossAxisSpacing: 2.0,
                               ),
@@ -379,21 +408,30 @@ class _IntrestScreenState extends BaseRouteState {
                               itemBuilder: (ctx, index) {
                                 return Container(
                                   alignment: Alignment.center,
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     border: Border.all(color: Colors.white),
-                                    color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1D0529)
+                                        : Colors.white54,
                                   ),
-                                  height: (MediaQuery.of(context).size.height * 0.12),
+                                  height: (MediaQuery.of(context).size.height *
+                                      0.12),
                                   width: MediaQuery.of(context).size.width,
                                   child: GridTile(
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
                                       child: Image.asset(
                                         imgList[index],
-                                        height: (MediaQuery.of(context).size.height * 0.12),
-                                        width: MediaQuery.of(context).size.width,
+                                        height: (MediaQuery.of(context)
+                                                .size
+                                                .height *
+                                            0.12),
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         fit: BoxFit.fitWidth,
                                       ),
                                     ),
@@ -408,7 +446,9 @@ class _IntrestScreenState extends BaseRouteState {
                         ),
                       ),
                       Padding(
-                        padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 30) : const EdgeInsets.only(left: 20, top: 30),
+                        padding: g.isRTL
+                            ? const EdgeInsets.only(right: 20, top: 30)
+                            : const EdgeInsets.only(left: 20, top: 30),
                         child: Text(
                           AppLocalizations.of(context).lbl_intrests,
                           style: Theme.of(context).primaryTextTheme.headline3,
@@ -421,7 +461,11 @@ class _IntrestScreenState extends BaseRouteState {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 20) : const EdgeInsets.only(left: 20, top: 20),
+                                  padding: g.isRTL
+                                      ? const EdgeInsets.only(
+                                          right: 20, top: 20)
+                                      : const EdgeInsets.only(
+                                          left: 20, top: 20),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -434,7 +478,9 @@ class _IntrestScreenState extends BaseRouteState {
                                         padding: const EdgeInsets.only(left: 4),
                                         child: Text(
                                           'Music',
-                                          style: Theme.of(context).accentTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                     ],
@@ -456,7 +502,9 @@ class _IntrestScreenState extends BaseRouteState {
                                         padding: const EdgeInsets.only(left: 4),
                                         child: Text(
                                           'Cooking',
-                                          style: Theme.of(context).accentTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                     ],
@@ -478,7 +526,9 @@ class _IntrestScreenState extends BaseRouteState {
                                         padding: const EdgeInsets.only(left: 4),
                                         child: Text(
                                           'Swimming',
-                                          style: Theme.of(context).accentTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                     ],
@@ -500,7 +550,9 @@ class _IntrestScreenState extends BaseRouteState {
                                         padding: const EdgeInsets.only(left: 4),
                                         child: Text(
                                           'Travelling',
-                                          style: Theme.of(context).accentTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                     ],
@@ -523,7 +575,8 @@ class _IntrestScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
+    _tabController =
+        new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
   }
 
@@ -542,7 +595,9 @@ class _IntrestScreenState extends BaseRouteState {
             padding: EdgeInsets.only(right: 8),
             alignment: Alignment.centerRight,
             width: MediaQuery.of(context).size.width,
-            color: g.isDarkModeEnable ? Color(0xFF130032) : Theme.of(context).scaffoldBackgroundColor,
+            color: g.isDarkModeEnable
+                ? Color(0xFF130032)
+                : Theme.of(context).scaffoldBackgroundColor,
             height: 65,
             child: Icon(
               Icons.more_vert,

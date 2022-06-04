@@ -1,7 +1,7 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/paymentScreen.dart';
-import 'package:datingapp/screens/planDatingScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/paymentScreen.dart';
+import 'package:PetsMating/screens/planDatingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -98,7 +98,11 @@ class _BuyTicketsScreenState extends BaseRouteState {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: g.isRTL ? const EdgeInsets.only(top: 20, right: 20, bottom: 12) : const EdgeInsets.only(top: 20, left: 20, bottom: 12),
+                        padding: g.isRTL
+                            ? const EdgeInsets.only(
+                                top: 20, right: 20, bottom: 12)
+                            : const EdgeInsets.only(
+                                top: 20, left: 20, bottom: 12),
                         child: Text(
                           'Grand Concert',
                           style: Theme.of(context).primaryTextTheme.headline1,
@@ -107,7 +111,9 @@ class _BuyTicketsScreenState extends BaseRouteState {
                       Row(
                         children: [
                           Padding(
-                            padding: g.isRTL ? EdgeInsets.only(right: 20) : EdgeInsets.only(left: 20),
+                            padding: g.isRTL
+                                ? EdgeInsets.only(right: 20)
+                                : EdgeInsets.only(left: 20),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -127,17 +133,23 @@ class _BuyTicketsScreenState extends BaseRouteState {
                                   ),
                                 ),
                                 Padding(
-                                  padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                  padding: g.isRTL
+                                      ? const EdgeInsets.only(right: 4)
+                                      : const EdgeInsets.only(left: 4),
                                   child: Text(
                                     '9 May, 2021',
-                                    style: Theme.of(context).primaryTextTheme.bodyText1,
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1,
                                   ),
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? EdgeInsets.only(right: 10)
+                                : EdgeInsets.only(left: 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -157,10 +169,14 @@ class _BuyTicketsScreenState extends BaseRouteState {
                                   ),
                                 ),
                                 Padding(
-                                  padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                  padding: g.isRTL
+                                      ? const EdgeInsets.only(right: 4)
+                                      : const EdgeInsets.only(left: 4),
                                   child: Text(
                                     '10PM - 01AM',
-                                    style: Theme.of(context).primaryTextTheme.bodyText1,
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .bodyText1,
                                   ),
                                 ),
                               ],
@@ -169,14 +185,18 @@ class _BuyTicketsScreenState extends BaseRouteState {
                         ],
                       ),
                       Padding(
-                        padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 30) : const EdgeInsets.only(left: 20, top: 30),
+                        padding: g.isRTL
+                            ? const EdgeInsets.only(right: 20, top: 30)
+                            : const EdgeInsets.only(left: 20, top: 30),
                         child: Text(
                           AppLocalizations.of(context).lbl_desc,
                           style: Theme.of(context).primaryTextTheme.headline3,
                         ),
                       ),
                       Padding(
-                        padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 10) : const EdgeInsets.only(left: 20, top: 10),
+                        padding: g.isRTL
+                            ? const EdgeInsets.only(right: 20, top: 10)
+                            : const EdgeInsets.only(left: 20, top: 10),
                         child: Text(
                           'Electronic concert will be held near Sabina',
                           style: Theme.of(context).primaryTextTheme.subtitle2,
@@ -185,10 +205,13 @@ class _BuyTicketsScreenState extends BaseRouteState {
                       Row(
                         children: [
                           Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(right: 20) : const EdgeInsets.only(left: 20),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 20)
+                                : const EdgeInsets.only(left: 20),
                             child: Text(
                               'Beach park with dinner,mocktail',
-                              style: Theme.of(context).primaryTextTheme.subtitle2,
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
                             ),
                           ),
                           Padding(
@@ -208,7 +231,9 @@ class _BuyTicketsScreenState extends BaseRouteState {
                         ],
                       ),
                       Padding(
-                        padding: g.isRTL ? const EdgeInsets.only(right: 20, top: 20) : const EdgeInsets.only(left: 20, top: 20),
+                        padding: g.isRTL
+                            ? const EdgeInsets.only(right: 20, top: 20)
+                            : const EdgeInsets.only(left: 20, top: 20),
                         child: Text(
                           AppLocalizations.of(context).lbl_intrestes_viewers,
                           style: Theme.of(context).primaryTextTheme.headline3,
@@ -294,7 +319,9 @@ class _BuyTicketsScreenState extends BaseRouteState {
                                       backgroundColor: Color(0xFF130032),
                                       child: Text(
                                         '+237',
-                                        style: Theme.of(context).accentTextTheme.headline4,
+                                        style: Theme.of(context)
+                                            .accentTextTheme
+                                            .headline4,
                                       ),
                                     ),
                                   ),
@@ -321,16 +348,21 @@ class _BuyTicketsScreenState extends BaseRouteState {
                             ),
                             child: TextButton(
                               onPressed: () {
-                                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                    builder: (context) => PaymentScreen(
-                                          screenId: 1,
-                                          a: widget.analytics,
-                                          o: widget.observer,
-                                        )));
+                                Navigator.of(context)
+                                    .pushReplacement(MaterialPageRoute(
+                                        builder: (context) => PaymentScreen(
+                                              screenId: 1,
+                                              a: widget.analytics,
+                                              o: widget.observer,
+                                            )));
                               },
                               child: Text(
                                 AppLocalizations.of(context).btn_buy_tickets,
-                                style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                                style: Theme.of(context)
+                                    .textButtonTheme
+                                    .style
+                                    .textStyle
+                                    .resolve({
                                   MaterialState.pressed,
                                 }),
                               ),
@@ -363,7 +395,9 @@ class _BuyTicketsScreenState extends BaseRouteState {
             padding: EdgeInsets.only(right: 8),
             alignment: g.isRTL ? Alignment.centerLeft : Alignment.centerRight,
             width: MediaQuery.of(context).size.width,
-            color: g.isDarkModeEnable ? Color(0xFF130032) : Theme.of(context).scaffoldBackgroundColor,
+            color: g.isDarkModeEnable
+                ? Color(0xFF130032)
+                : Theme.of(context).scaffoldBackgroundColor,
             height: 65,
             child: IconButton(
               icon: Icon(FontAwesomeIcons.search),

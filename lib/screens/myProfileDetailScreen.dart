@@ -1,11 +1,11 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/myAnimalProfileScreen.dart';
-import 'package:datingapp/screens/newAnimalScreen.dart';
-import 'package:datingapp/screens/settingScreen.dart';
-import 'package:datingapp/services/app_state.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/myAnimalProfileScreen.dart';
+import 'package:PetsMating/screens/newAnimalScreen.dart';
+import 'package:PetsMating/screens/settingScreen.dart';
+import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -65,7 +65,7 @@ class _MyProfileScreenState extends BaseRouteState {
                         width: MediaQuery.of(context).size.width,
                         child: Container(
                           child: Image.network(
-                            "https://i-pet.herokuapp.com/${auth.current_user['avatar']}",
+                            "${auth.current_user['avatar']}",
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
                           ),
@@ -207,7 +207,9 @@ class _MyProfileScreenState extends BaseRouteState {
                           ),
                           SizedBox(height: 3),
                           Text(
-                            "${appState.quota['likes']}",
+                            appState.quota['likes'] == null
+                                ? '-'
+                                : "${appState.quota['likes']}",
                             style: Theme.of(context).primaryTextTheme.subtitle2,
                           )
                         ],
@@ -224,7 +226,9 @@ class _MyProfileScreenState extends BaseRouteState {
                           ),
                           SizedBox(height: 3),
                           Text(
-                            "${appState.quota['boosts']}",
+                            appState.quota['boosts'] == null
+                                ? '-'
+                                : "${appState.quota['boosts']}",
                             style: Theme.of(context).primaryTextTheme.subtitle2,
                           )
                         ],
@@ -241,7 +245,9 @@ class _MyProfileScreenState extends BaseRouteState {
                           ),
                           SizedBox(height: 3),
                           Text(
-                            "${appState.quota['undos']}",
+                            appState.quota['undos'] == null
+                                ? '-'
+                                : "${appState.quota['undos']}",
                             style: Theme.of(context).primaryTextTheme.subtitle2,
                           )
                         ],
@@ -530,7 +536,7 @@ class _MyProfileScreenState extends BaseRouteState {
                                                               .length >
                                                           0
                                                       ? Image.network(
-                                                          'https://i-pet.herokuapp.com/${auth.current_user['animals'][0]['avatars'][0]['url']}',
+                                                          '${auth.current_user['animals'][0]['avatars'][0]['url']}',
                                                           fit: BoxFit.cover,
                                                           height: 100,
                                                         )
@@ -661,11 +667,15 @@ class _MyProfileScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    // final auth = Provider.of<Auth>(context, listen: false);
+    final auth = Provider.of<Auth>(context, listen: false);
     // auth.logout();
     _tabController =
         new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
+    final appState = Provider.of<AppState>(context, listen: false);
+    appState.getSubscription();
+    appState.getQuota();
+    auth.tryLogin(true);
   }
 
   void _tabControllerListener() {

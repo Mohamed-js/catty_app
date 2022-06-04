@@ -1,10 +1,10 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen1.dart';
-import 'package:datingapp/screens/profileDetailScreen.dart';
-import 'package:datingapp/screens/verifyOtpScreen.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/addStoryScreen1.dart';
+import 'package:PetsMating/screens/profileDetailScreen.dart';
+import 'package:PetsMating/screens/verifyOtpScreen.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'dart:io' show Platform;
@@ -21,6 +21,8 @@ class _LoginScreenState extends BaseRouteState {
   TextEditingController _passwordController = TextEditingController();
   String login_err;
   String login_btn_text = "Submit";
+
+  bool btnIsDisabled = false;
 
   final _formKey = GlobalKey<FormState>();
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
@@ -243,92 +245,102 @@ class _LoginScreenState extends BaseRouteState {
                     ),
                   ),
                   child: TextButton(
-                    onPressed: () async {
-                      print('trying to login...');
-                      if (_formKey.currentState.validate()) {
-                        setState(() {
-                          login_btn_text = 'Loading..';
-                        });
-                        String device_name =
-                            Platform.isAndroid ? "android" : "ios";
-                        Map creds = {
-                          'email': _emailController.text,
-                          'password': _passwordController.text,
-                          'device_name': device_name,
-                        };
+                    onPressed: btnIsDisabled
+                        ? null
+                        : () async {
+                            setState(() {
+                              btnIsDisabled = true;
+                            });
+                            print('trying to login...');
+                            if (_formKey.currentState.validate()) {
+                              setState(() {
+                                login_btn_text = 'Loading..';
+                              });
+                              String device_name =
+                                  Platform.isAndroid ? "android" : "ios";
+                              Map creds = {
+                                'email': _emailController.text,
+                                'password': _passwordController.text,
+                                'device_name': device_name,
+                              };
 
-                        dynamic canLogin =
-                            await Provider.of<Auth>(context, listen: false)
-                                .login(creds);
-                        // adb reverse tcp:8000 tcp:8000
+                              dynamic canLogin = await Provider.of<Auth>(
+                                      context,
+                                      listen: false)
+                                  .login(creds);
+                              // adb reverse tcp:8000 tcp:8000
 
-                        if (canLogin.isNotEmpty &&
-                            canLogin['message'] == null) {
-                          setState(() {
-                            login_btn_text = 'Submit';
-                          });
-                          print('canLogin');
-                          print(canLogin);
-                          print('canLogin');
-                          if (canLogin['verified'] == false) {
-                            print('redirect to OTPPPPPPPPPPPP');
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VerifyOtpScreen()));
-                          } else if (canLogin['first_name'] != null &&
-                              canLogin['first_name'].isEmpty) {
-                            print('redirect to PROFILEEEEEEEEE ADD');
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ProfileDetailScreen()));
-                          } else {
-                            print('redirect to PROFILEEEEEEEEE');
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    BottomNavigationWidgetLight(
-                                      currentIndex: 0,
-                                    )));
-                          }
-                        } else if (canLogin is Map) {
-                          setState(() {
-                            login_err = canLogin['message'];
-                            login_btn_text = 'Submit';
-                          });
-                          if (login_err ==
-                              'Please check your email for the OTP code.') {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(login_err),
-                                backgroundColor: Colors.redAccent,
-                              ),
-                            );
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VerifyOtpScreen(
-                                      a: widget.analytics,
-                                      o: widget.observer,
-                                    )));
-                          } else if (login_err ==
-                              'The provided credentials are incorrect.') {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(login_err),
-                                backgroundColor: Colors.redAccent,
-                              ),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(login_err),
-                                backgroundColor: Colors.teal,
-                              ),
-                            );
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VerifyOtpScreen(
-                                      a: widget.analytics,
-                                      o: widget.observer,
-                                    )));
-                          }
-                        }
-                      }
-                    },
+                              if (canLogin.isNotEmpty &&
+                                  canLogin['message'] == null) {
+                                setState(() {
+                                  login_btn_text = 'Submit';
+                                });
+                                print('canLogin');
+                                print(canLogin);
+                                print('canLogin');
+                                if (canLogin['verified'] == false) {
+                                  print('redirect to OTPPPPPPPPPPPP');
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => VerifyOtpScreen()));
+                                } else if (canLogin['first_name'] != null &&
+                                    canLogin['first_name'].isEmpty) {
+                                  print('redirect to PROFILEEEEEEEEE ADD');
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProfileDetailScreen()));
+                                } else {
+                                  print('redirect to PROFILEEEEEEEEE');
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          BottomNavigationWidgetLight(
+                                            currentIndex: 0,
+                                          )));
+                                }
+                              } else if (canLogin is Map) {
+                                setState(() {
+                                  login_err = canLogin['message'];
+                                  login_btn_text = 'Submit';
+                                });
+                                if (login_err ==
+                                    'Please check your email for the OTP code.') {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(login_err),
+                                      backgroundColor: Colors.redAccent,
+                                    ),
+                                  );
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => VerifyOtpScreen(
+                                            a: widget.analytics,
+                                            o: widget.observer,
+                                          )));
+                                } else if (login_err ==
+                                    'The provided credentials are incorrect.') {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(login_err),
+                                      backgroundColor: Colors.redAccent,
+                                    ),
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(login_err),
+                                      backgroundColor: Colors.teal,
+                                    ),
+                                  );
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => VerifyOtpScreen(
+                                            a: widget.analytics,
+                                            o: widget.observer,
+                                          )));
+                                }
+                              }
+                            }
+                            setState(() {
+                              btnIsDisabled = false;
+                            });
+                          },
                     child: Text(
                       login_btn_text,
                       style: Theme.of(context)

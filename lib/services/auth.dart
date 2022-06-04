@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -73,17 +73,15 @@ class Auth extends ChangeNotifier {
         Dio.Response response = await dio().get('/user',
             options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
 
-        print(response.data['verified']);
-        if (response.data['verified']) {
-          _isLoggedIn = true;
-          _user = response.data;
-          notifyListeners();
-          print(_user);
-        }
         if (refreshing) {
           print('Refreshing ==========================================');
           _user = response.data;
           notifyListeners();
+        } else if (response.data['verified']) {
+          _isLoggedIn = true;
+          _user = response.data;
+          notifyListeners();
+          print(_user);
         }
       } catch (e) {
         print(e);
@@ -169,6 +167,8 @@ class Auth extends ChangeNotifier {
       "info": dat['info'],
       "gender": dat['gender'],
       "breed_id": dat['breed_id'],
+      "vaccinated": dat['vaccinated'],
+      "dob": dat['dob'],
     });
 
     try {

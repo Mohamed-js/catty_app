@@ -1,18 +1,18 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/videoCallingScreen.dart';
-import 'package:datingapp/services/app_state.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetDark.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
-import 'package:datingapp/widgets/drawerMenuWidget.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/videoCallingScreen.dart';
+import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetDark.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/widgets/drawerMenuWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/dio.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
@@ -33,6 +33,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   _ChatScreenState() : super();
 
   List<Widget> _messages = [];
+
+  bool btnIsDisabled = false;
 
   ScrollController _scrollController = new ScrollController();
   // This is what you're looking for!
@@ -140,10 +142,10 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                     backgroundImage: auth.current_user['id'] !=
                                             _chat['sender']['id']
                                         ? NetworkImage(
-                                            'https://i-pet.herokuapp.com/${_chat['sender']['avatar']}',
+                                            '${_chat['sender']['avatar']}',
                                           )
                                         : NetworkImage(
-                                            'https://i-pet.herokuapp.com/${_chat['receiver']['avatar']}',
+                                            '${_chat['receiver']['avatar']}',
                                           ),
                                     backgroundColor: Colors.transparent,
                                   ),
@@ -301,7 +303,6 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                       labelPadding: EdgeInsets.all(0),
                       onTap: (int index) async {
                         _currentIndex = index;
-                        setState(() {});
                       },
                       tabs: [
                         Tab(
@@ -309,14 +310,23 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                           iconSize: 20,
                           icon: Icon(Icons.send),
                           padding: EdgeInsets.all(0),
-                          onPressed: () async {
-                            dynamic msg = await _sendMessageTo(
-                                chatId: widget.chat_id, body: _cMessage.text);
+                          onPressed: btnIsDisabled
+                              ? null
+                              : () async {
+                                  setState(() {
+                                    btnIsDisabled = true;
+                                  });
+                                  dynamic msg = await _sendMessageTo(
+                                      chatId: widget.chat_id,
+                                      body: _cMessage.text);
 
-                            if (msg == "sent") {
-                              _cMessage.clear();
-                            }
-                          },
+                                  if (msg == "sent") {
+                                    _cMessage.clear();
+                                  }
+                                  setState(() {
+                                    btnIsDisabled = false;
+                                  });
+                                },
                         )),
                         Tab(
                           child: Icon(

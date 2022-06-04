@@ -1,7 +1,7 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/datingMatchingScreen.dart';
-import 'package:datingapp/screens/selectPlanScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/datingMatchingScreen.dart';
+import 'package:PetsMating/screens/selectPlanScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -85,14 +85,18 @@ class _PaymentScreenState extends BaseRouteState {
                           dense: true,
                           contentPadding: EdgeInsets.all(0),
                           tileColor: Colors.transparent,
-                          activeColor: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                          activeColor: g.isDarkModeEnable
+                              ? Colors.white
+                              : Theme.of(context).primaryColorLight,
                           subtitle: Text(
                             '**** **** **** 5229',
                             style: Theme.of(context).accentTextTheme.caption,
                           ),
                           value: 0,
                           groupValue: _selected,
-                          title: Text('HDFC Credit Card', style: Theme.of(context).primaryTextTheme.subtitle1),
+                          title: Text('HDFC Credit Card',
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle1),
                           onChanged: (int value) {
                             setState(() {
                               _selected = value;
@@ -119,14 +123,18 @@ class _PaymentScreenState extends BaseRouteState {
                           tileColor: Colors.transparent,
                           dense: true,
                           contentPadding: EdgeInsets.all(0),
-                          activeColor: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                          activeColor: g.isDarkModeEnable
+                              ? Colors.white
+                              : Theme.of(context).primaryColorLight,
                           subtitle: Text(
                             '**** **** **** 4421',
                             style: Theme.of(context).accentTextTheme.caption,
                           ),
                           value: 1,
                           groupValue: _selected,
-                          title: Text('ICICI Credit Card', style: Theme.of(context).primaryTextTheme.subtitle1),
+                          title: Text('ICICI Credit Card',
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle1),
                           onChanged: (int value) {
                             setState(() {
                               _selected = value;
@@ -256,7 +264,8 @@ class _PaymentScreenState extends BaseRouteState {
                         ).createShader(bounds);
                       },
                       child: Text(
-                        AppLocalizations.of(context).lbl_add_new_payment_options,
+                        AppLocalizations.of(context)
+                            .lbl_add_new_payment_options,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -286,7 +295,11 @@ class _PaymentScreenState extends BaseRouteState {
                                       )));
                         },
                         child: Text(AppLocalizations.of(context).btn_pay_now,
-                            style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            style: Theme.of(context)
+                                .textButtonTheme
+                                .style
+                                .textStyle
+                                .resolve({
                               MaterialState.pressed,
                             })),
                       ),

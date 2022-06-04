@@ -1,10 +1,10 @@
-import 'package:datingapp/Theme/nativeTheme.dart';
-import 'package:datingapp/l10n/l10n.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/provider/local_provider.dart';
-import 'package:datingapp/screens/splashScreen.dart';
-import 'package:datingapp/services/app_state.dart';
-import 'package:datingapp/services/auth.dart';
+import 'package:PetsMating/Theme/nativeTheme.dart';
+import 'package:PetsMating/l10n/l10n.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/provider/local_provider.dart';
+import 'package:PetsMating/screens/splashScreen.dart';
+import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';

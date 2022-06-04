@@ -5,10 +5,10 @@
 
 // @dart = 2.11
 
-// When `package:datingapp/main.dart` defines `main`, that definition is shadowed by the definition below.
-export 'package:datingapp/main.dart';
+// When `package:PetsMating/main.dart` defines `main`, that definition is shadowed by the definition below.
+export 'package:PetsMating/main.dart';
 
-import 'package:datingapp/main.dart' as entrypoint;
+import 'package:PetsMating/main.dart' as entrypoint;
 import 'dart:io'; // flutter_ignore: dart_io_import.
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:shared_preferences_android/shared_preferences_android.dart';

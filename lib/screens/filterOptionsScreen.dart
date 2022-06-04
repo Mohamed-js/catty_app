@@ -1,5 +1,5 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,7 +26,10 @@ class _FilterOptionsScreenState extends BaseRouteState {
     return SafeArea(
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: g.scaffoldBackgroundGradientColors, begin: Alignment.bottomCenter, end: Alignment.topCenter),
+          gradient: LinearGradient(
+              colors: g.scaffoldBackgroundGradientColors,
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter),
         ),
         child: Scaffold(
           appBar: _appBarWidget(),
@@ -48,7 +51,8 @@ class _FilterOptionsScreenState extends BaseRouteState {
                     Padding(
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Text(
-                        AppLocalizations.of(context).lbl_filter_options_subtitle,
+                        AppLocalizations.of(context)
+                            .lbl_filter_options_subtitle,
                         textAlign: TextAlign.left,
                         style: Theme.of(context).primaryTextTheme.subtitle2,
                       ),
@@ -74,14 +78,18 @@ class _FilterOptionsScreenState extends BaseRouteState {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                          color: g.isDarkModeEnable
+                              ? Colors.black
+                              : Theme.of(context).scaffoldBackgroundColor,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 55,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10, right: 10),
                           child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable ? Color(0xFF03000C) : Theme.of(context).scaffoldBackgroundColor,
+                            dropdownColor: g.isDarkModeEnable
+                                ? Color(0xFF03000C)
+                                : Theme.of(context).scaffoldBackgroundColor,
                             icon: Padding(
                               padding: const EdgeInsets.only(right: 20),
                               child: Icon(
@@ -93,10 +101,13 @@ class _FilterOptionsScreenState extends BaseRouteState {
                             items: ['Make New Friends', 'Matches']
                                 .map((label) => DropdownMenuItem(
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 20),
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
                                         child: Text(
                                           label.toString(),
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       value: label,
@@ -106,7 +117,9 @@ class _FilterOptionsScreenState extends BaseRouteState {
                               padding: const EdgeInsets.only(left: 20),
                               child: Text(
                                 _here.isNotEmpty ? _here : 'Make New Friends',
-                                style: Theme.of(context).primaryTextTheme.subtitle2,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
                               ),
                             ),
                             onChanged: (value) {
@@ -139,26 +152,34 @@ class _FilterOptionsScreenState extends BaseRouteState {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                          color: g.isDarkModeEnable
+                              ? Colors.black
+                              : Theme.of(context).scaffoldBackgroundColor,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 55,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10, right: 10),
                           child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable ? Color(0xFF03000C) : Theme.of(context).scaffoldBackgroundColor,
+                            dropdownColor: g.isDarkModeEnable
+                                ? Color(0xFF03000C)
+                                : Theme.of(context).scaffoldBackgroundColor,
                             icon: Padding(
                               padding: const EdgeInsets.only(right: 20),
-                              child: Icon(Icons.expand_more, color: Theme.of(context).iconTheme.color),
+                              child: Icon(Icons.expand_more,
+                                  color: Theme.of(context).iconTheme.color),
                             ),
                             value: _want,
                             items: ['Women', 'Men']
                                 .map((label) => DropdownMenuItem(
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 20),
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
                                         child: Text(
                                           label.toString(),
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       value: label,
@@ -198,14 +219,18 @@ class _FilterOptionsScreenState extends BaseRouteState {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                          color: g.isDarkModeEnable
+                              ? Colors.black
+                              : Theme.of(context).scaffoldBackgroundColor,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 55,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10, right: 10),
                           child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable ? Color(0xFF03000C) : Theme.of(context).scaffoldBackgroundColor,
+                            dropdownColor: g.isDarkModeEnable
+                                ? Color(0xFF03000C)
+                                : Theme.of(context).scaffoldBackgroundColor,
                             icon: Padding(
                               padding: const EdgeInsets.only(right: 20),
                               child: Icon(
@@ -217,10 +242,13 @@ class _FilterOptionsScreenState extends BaseRouteState {
                             items: ['20-35', '18-12']
                                 .map((label) => DropdownMenuItem(
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 20),
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
                                         child: Text(
                                           label.toString(),
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       value: label,
@@ -230,7 +258,9 @@ class _FilterOptionsScreenState extends BaseRouteState {
                               padding: const EdgeInsets.only(left: 20),
                               child: Text(
                                 _ages.isNotEmpty ? _ages : '20-35',
-                                style: Theme.of(context).primaryTextTheme.subtitle2,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
                               ),
                             ),
                             onChanged: (value) {
@@ -263,14 +293,18 @@ class _FilterOptionsScreenState extends BaseRouteState {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                          color: g.isDarkModeEnable
+                              ? Colors.black
+                              : Theme.of(context).scaffoldBackgroundColor,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 55,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 10, right: 10),
                           child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable ? Color(0xFF03000C) : Theme.of(context).scaffoldBackgroundColor,
+                            dropdownColor: g.isDarkModeEnable
+                                ? Color(0xFF03000C)
+                                : Theme.of(context).scaffoldBackgroundColor,
                             icon: Padding(
                               padding: const EdgeInsets.only(right: 20),
                               child: Icon(
@@ -279,13 +313,19 @@ class _FilterOptionsScreenState extends BaseRouteState {
                               ),
                             ),
                             value: _ratingController,
-                            items: ['English, French, Bengali', 'Hindi, Gujarati, Marathi']
+                            items: [
+                              'English, French, Bengali',
+                              'Hindi, Gujarati, Marathi'
+                            ]
                                 .map((label) => DropdownMenuItem(
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 20),
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
                                         child: Text(
                                           label.toString(),
-                                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                                          style: Theme.of(context)
+                                              .primaryTextTheme
+                                              .subtitle2,
                                         ),
                                       ),
                                       value: label,
@@ -294,8 +334,12 @@ class _FilterOptionsScreenState extends BaseRouteState {
                             hint: Padding(
                               padding: const EdgeInsets.only(left: 20),
                               child: Text(
-                                _ratingController.isNotEmpty ? _ratingController : 'English, French, Bengali',
-                                style: Theme.of(context).primaryTextTheme.subtitle2,
+                                _ratingController.isNotEmpty
+                                    ? _ratingController
+                                    : 'English, French, Bengali',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
                               ),
                             ),
                             onChanged: (value) {
@@ -328,7 +372,9 @@ class _FilterOptionsScreenState extends BaseRouteState {
                       ),
                       child: Container(
                           decoration: BoxDecoration(
-                            color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                            color: g.isDarkModeEnable
+                                ? Colors.black
+                                : Theme.of(context).scaffoldBackgroundColor,
                             borderRadius: BorderRadius.circular(35),
                           ),
                           height: 55,
@@ -345,8 +391,11 @@ class _FilterOptionsScreenState extends BaseRouteState {
                                     color: Theme.of(context).iconTheme.color,
                                   ),
                                 ),
-                                contentPadding: EdgeInsets.only(left: 20, top: 15),
-                                hintStyle: Theme.of(context).primaryTextTheme.subtitle2,
+                                contentPadding:
+                                    EdgeInsets.only(left: 20, top: 15),
+                                hintStyle: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
                                 hintText: 'Florida, US',
                               ),
                             ),
@@ -357,7 +406,8 @@ class _FilterOptionsScreenState extends BaseRouteState {
                             padding: const EdgeInsets.only(top: 20.0),
                             child: Text(
                               AppLocalizations.of(context).lbl_distance_range,
-                              style: Theme.of(context).accentTextTheme.headline5,
+                              style:
+                                  Theme.of(context).accentTextTheme.headline5,
                             ),
                           )
                         : Padding(
@@ -366,12 +416,17 @@ class _FilterOptionsScreenState extends BaseRouteState {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  AppLocalizations.of(context).lbl_distance_range,
-                                  style: Theme.of(context).accentTextTheme.headline5,
+                                  AppLocalizations.of(context)
+                                      .lbl_distance_range,
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .headline5,
                                 ),
                                 Text(
                                   '0 - ${values.round()} km',
-                                  style: Theme.of(context).accentTextTheme.headline6,
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .headline6,
                                 ),
                               ],
                             ),
@@ -381,7 +436,8 @@ class _FilterOptionsScreenState extends BaseRouteState {
                             padding: EdgeInsets.only(top: 10),
                             child: Text(
                               '0 - ${values.round()} km',
-                              style: Theme.of(context).primaryTextTheme.subtitle2,
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
                             ),
                           )
                         : SizedBox(),
@@ -412,8 +468,10 @@ class _FilterOptionsScreenState extends BaseRouteState {
                               ).createShader(bounds);
                             },
                             child: Text(
-                              AppLocalizations.of(context).lbl_advance_filter_options,
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                              AppLocalizations.of(context)
+                                  .lbl_advance_filter_options,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
                             ),
                           ),
                           Padding(
@@ -445,7 +503,11 @@ class _FilterOptionsScreenState extends BaseRouteState {
                           },
                           child: Text(
                             AppLocalizations.of(context).btn_apply_filters,
-                            style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            style: Theme.of(context)
+                                .textButtonTheme
+                                .style
+                                .textStyle
+                                .resolve({
                               MaterialState.pressed,
                             }),
                           ),

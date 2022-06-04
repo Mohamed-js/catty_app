@@ -1,6 +1,6 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/planDatingScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/planDatingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -38,7 +38,9 @@ class _ViewPlanScreenState extends BaseRouteState {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Image.asset(
-                    g.isDarkModeEnable ? 'assets/images/subscription_dark.png' : 'assets/images/subscription_light.png',
+                    g.isDarkModeEnable
+                        ? 'assets/images/subscription_dark.png'
+                        : 'assets/images/subscription_light.png',
                   ),
                 ),
                 Text(
@@ -75,7 +77,11 @@ class _ViewPlanScreenState extends BaseRouteState {
                                 )));
                       },
                       child: Text(AppLocalizations.of(context).btn_view_plan,
-                          style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                          style: Theme.of(context)
+                              .textButtonTheme
+                              .style
+                              .textStyle
+                              .resolve({
                             MaterialState.pressed,
                           })),
                     ),

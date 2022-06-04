@@ -1,6 +1,6 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/settingScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/settingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,7 +8,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/dio.dart';
+import 'package:intl/intl.dart';
 
 class MyAnimalProfileScreen extends StatefulWidget {
   final int animal_id;
@@ -54,7 +55,7 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen> {
                                   fit: BoxFit.cover,
                                 )
                               : Image.network(
-                                  'https://i-pet.herokuapp.com/${_animal['avatars'][0]['url']}',
+                                  '${_animal['avatars'][0]['url']}',
                                   fit: BoxFit.cover,
                                 ),
                       decoration: BoxDecoration(
@@ -318,7 +319,7 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen> {
                                         ? Text('')
                                         : _animal['dob'] != null
                                             ? Text(
-                                                _animal['dob'],
+                                                "${DateFormat('yyyy-MM-dd').format(DateTime.parse(_animal['dob']))}",
                                                 style: Theme.of(context)
                                                     .primaryTextTheme
                                                     .bodyText1,

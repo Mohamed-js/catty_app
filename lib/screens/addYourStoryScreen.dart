@@ -1,13 +1,13 @@
-import 'package:datingapp/models/addYourStoryModel.dart';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/createStoryScreen.dart';
-import 'package:datingapp/screens/filterOptionsScreen.dart';
-import 'package:datingapp/screens/interestScreen.dart';
+import 'package:PetsMating/models/addYourStoryModel.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/createStoryScreen.dart';
+import 'package:PetsMating/screens/filterOptionsScreen.dart';
+import 'package:PetsMating/screens/interestScreen.dart';
 
-import 'package:datingapp/screens/notificationListScreen.dart';
-import 'package:datingapp/screens/viewStoryScreen.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/screens/notificationListScreen.dart';
+import 'package:PetsMating/screens/viewStoryScreen.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -34,11 +34,36 @@ class _AddYourStoryScreenState extends BaseRouteState {
   ];
 
   List<AddYourStory> _storyList = [
-    new AddYourStory(name: 'Belle Benson', age: 28, km: 1.5, imgPath: 'assets/images/card_img_0.png', count: 35),
-    new AddYourStory(name: 'Ruby Diaz', age: 33, km: 1.2, imgPath: 'assets/images/card_img_1.png', count: 81),
-    new AddYourStory(name: 'Myley Corbyon', age: 23, km: 1.5, imgPath: 'assets/images/card_img_2.png', count: 49),
-    new AddYourStory(name: 'Tony Z', age: 25, km: 2, imgPath: 'assets/images/card_img_1.png', count: 29),
-    new AddYourStory(name: 'Ruby Raman', age: 30, km: 1.6, imgPath: 'assets/images/card_img_4.png', count: 50),
+    new AddYourStory(
+        name: 'Belle Benson',
+        age: 28,
+        km: 1.5,
+        imgPath: 'assets/images/card_img_0.png',
+        count: 35),
+    new AddYourStory(
+        name: 'Ruby Diaz',
+        age: 33,
+        km: 1.2,
+        imgPath: 'assets/images/card_img_1.png',
+        count: 81),
+    new AddYourStory(
+        name: 'Myley Corbyon',
+        age: 23,
+        km: 1.5,
+        imgPath: 'assets/images/card_img_2.png',
+        count: 49),
+    new AddYourStory(
+        name: 'Tony Z',
+        age: 25,
+        km: 2,
+        imgPath: 'assets/images/card_img_1.png',
+        count: 29),
+    new AddYourStory(
+        name: 'Ruby Raman',
+        age: 30,
+        km: 1.6,
+        imgPath: 'assets/images/card_img_4.png',
+        count: 50),
   ];
 
   _AddYourStoryScreenState() : super();
@@ -68,9 +93,13 @@ class _AddYourStoryScreenState extends BaseRouteState {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: g.isRTL ? const EdgeInsets.only(right: 15) : EdgeInsets.only(left: 10),
+                    padding: g.isRTL
+                        ? const EdgeInsets.only(right: 15)
+                        : EdgeInsets.only(left: 10),
                     child: Image.asset(
-                      g.isDarkModeEnable ? 'assets/images/swirl arrow.png' : 'assets/images/swirl arrow_light.png',
+                      g.isDarkModeEnable
+                          ? 'assets/images/swirl arrow.png'
+                          : 'assets/images/swirl arrow_light.png',
                     ),
                   ),
                   Padding(
@@ -85,19 +114,24 @@ class _AddYourStoryScreenState extends BaseRouteState {
                           return InkWell(
                             onTap: () {
                               index == 0
-                                  ? Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => CreateStoryScreen(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )))
-                                  : Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => ViewStoryScreen(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )));
+                                  ? Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CreateStoryScreen(
+                                                a: widget.analytics,
+                                                o: widget.observer,
+                                              )))
+                                  : Navigator.of(context)
+                                      .push(MaterialPageRoute(
+                                          builder: (context) => ViewStoryScreen(
+                                                a: widget.analytics,
+                                                o: widget.observer,
+                                              )));
                             },
                             child: Padding(
-                              padding: g.isRTL ? const EdgeInsets.only(left: 10) : const EdgeInsets.only(right: 10),
+                              padding: g.isRTL
+                                  ? const EdgeInsets.only(left: 10)
+                                  : const EdgeInsets.only(right: 10),
                               child: index == 0
                                   ? CircleAvatar(
                                       radius: 25,
@@ -140,8 +174,12 @@ class _AddYourStoryScreenState extends BaseRouteState {
                       tabs: [
                         Tab(text: AppLocalizations.of(context).lbl_Tab_All),
                         Tab(text: AppLocalizations.of(context).lbl_Tab_Online),
-                        Tab(text: AppLocalizations.of(context).lbl_Tab_new_daters),
-                        Tab(text: AppLocalizations.of(context).lbl_Tab_liked_you),
+                        Tab(
+                            text: AppLocalizations.of(context)
+                                .lbl_Tab_new_daters),
+                        Tab(
+                            text:
+                                AppLocalizations.of(context).lbl_Tab_liked_you),
                       ],
                     ),
                   ),
@@ -150,7 +188,8 @@ class _AddYourStoryScreenState extends BaseRouteState {
                       controller: _tabController,
                       children: [
                         GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 15,
                           ),
@@ -170,7 +209,9 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(color: Colors.white),
-                                  color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                  color: g.isDarkModeEnable
+                                      ? Color(0xFF1D0529)
+                                      : Colors.white54,
                                 ),
                                 child: GridTile(
                                   child: ClipRRect(
@@ -186,31 +227,41 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                       padding: const EdgeInsets.all(15.0),
                                       child: CircleAvatar(
                                         radius: 6,
-                                        backgroundColor: Colors.lightGreenAccent[400],
+                                        backgroundColor:
+                                            Colors.lightGreenAccent[400],
                                       ),
                                     ),
                                   ),
                                   footer: ListTile(
-                                    contentPadding: EdgeInsets.only(left: 12, bottom: 4),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 12, bottom: 4),
                                     title: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
                                             '${_storyList[index].name},${_storyList[index].age}',
-                                            style: Theme.of(context).accentTextTheme.headline4,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline4,
                                           ),
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
-                                              padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.all(0),
+                                              padding: g.isRTL
+                                                  ? EdgeInsets.only(right: 6)
+                                                  : EdgeInsets.all(0),
                                               child: Text(
                                                 '${_storyList[index].km} km away',
-                                                style: Theme.of(context).primaryTextTheme.headline6,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .headline6,
                                               ),
                                             ),
                                             Row(
@@ -221,10 +272,13 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                                   size: 14,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(left: 4, right: 8),
+                                                  padding: EdgeInsets.only(
+                                                      left: 4, right: 8),
                                                   child: Text(
                                                     '${_storyList[index].count}',
-                                                    style: Theme.of(context).primaryTextTheme.headline6,
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .headline6,
                                                   ),
                                                 ),
                                               ],
@@ -240,7 +294,8 @@ class _AddYourStoryScreenState extends BaseRouteState {
                           },
                         ),
                         GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 15,
                           ),
@@ -260,7 +315,9 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(color: Colors.white),
-                                  color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                  color: g.isDarkModeEnable
+                                      ? Color(0xFF1D0529)
+                                      : Colors.white54,
                                 ),
                                 child: GridTile(
                                   child: ClipRRect(
@@ -276,31 +333,41 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                       padding: const EdgeInsets.all(15.0),
                                       child: CircleAvatar(
                                         radius: 6,
-                                        backgroundColor: Colors.lightGreenAccent[400],
+                                        backgroundColor:
+                                            Colors.lightGreenAccent[400],
                                       ),
                                     ),
                                   ),
                                   footer: ListTile(
-                                    contentPadding: EdgeInsets.only(left: 12, bottom: 4),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 12, bottom: 4),
                                     title: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
                                             '${_storyList[index].name},${_storyList[index].age}',
-                                            style: Theme.of(context).accentTextTheme.headline4,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline4,
                                           ),
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
-                                              padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.all(0),
+                                              padding: g.isRTL
+                                                  ? EdgeInsets.only(right: 6)
+                                                  : EdgeInsets.all(0),
                                               child: Text(
                                                 '${_storyList[index].km} km away',
-                                                style: Theme.of(context).primaryTextTheme.headline6,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .headline6,
                                               ),
                                             ),
                                             Row(
@@ -311,10 +378,13 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                                   size: 14,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(left: 4, right: 8),
+                                                  padding: EdgeInsets.only(
+                                                      left: 4, right: 8),
                                                   child: Text(
                                                     '${_storyList[index].count}',
-                                                    style: Theme.of(context).primaryTextTheme.headline6,
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .headline6,
                                                   ),
                                                 ),
                                               ],
@@ -330,7 +400,8 @@ class _AddYourStoryScreenState extends BaseRouteState {
                           },
                         ),
                         GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 15,
                           ),
@@ -350,7 +421,9 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(color: Colors.white),
-                                  color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                  color: g.isDarkModeEnable
+                                      ? Color(0xFF1D0529)
+                                      : Colors.white54,
                                 ),
                                 child: GridTile(
                                   child: ClipRRect(
@@ -366,31 +439,41 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                       padding: const EdgeInsets.all(15.0),
                                       child: CircleAvatar(
                                         radius: 6,
-                                        backgroundColor: Colors.lightGreenAccent[400],
+                                        backgroundColor:
+                                            Colors.lightGreenAccent[400],
                                       ),
                                     ),
                                   ),
                                   footer: ListTile(
-                                    contentPadding: EdgeInsets.only(left: 12, bottom: 4),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 12, bottom: 4),
                                     title: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
                                             '${_storyList[index].name},${_storyList[index].age}',
-                                            style: Theme.of(context).accentTextTheme.headline4,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline4,
                                           ),
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
-                                              padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.all(0),
+                                              padding: g.isRTL
+                                                  ? EdgeInsets.only(right: 6)
+                                                  : EdgeInsets.all(0),
                                               child: Text(
                                                 '${_storyList[index].km} km away',
-                                                style: Theme.of(context).primaryTextTheme.headline6,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .headline6,
                                               ),
                                             ),
                                             Row(
@@ -401,10 +484,13 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                                   size: 14,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(left: 4, right: 8),
+                                                  padding: EdgeInsets.only(
+                                                      left: 4, right: 8),
                                                   child: Text(
                                                     '${_storyList[index].count}',
-                                                    style: Theme.of(context).primaryTextTheme.headline6,
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .headline6,
                                                   ),
                                                 ),
                                               ],
@@ -420,7 +506,8 @@ class _AddYourStoryScreenState extends BaseRouteState {
                           },
                         ),
                         GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 15,
                           ),
@@ -440,7 +527,9 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(color: Colors.white),
-                                  color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                  color: g.isDarkModeEnable
+                                      ? Color(0xFF1D0529)
+                                      : Colors.white54,
                                 ),
                                 child: GridTile(
                                   child: ClipRRect(
@@ -456,31 +545,41 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                       padding: const EdgeInsets.all(15.0),
                                       child: CircleAvatar(
                                         radius: 6,
-                                        backgroundColor: Colors.lightGreenAccent[400],
+                                        backgroundColor:
+                                            Colors.lightGreenAccent[400],
                                       ),
                                     ),
                                   ),
                                   footer: ListTile(
-                                    contentPadding: EdgeInsets.only(left: 12, bottom: 4),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 12, bottom: 4),
                                     title: Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
                                             '${_storyList[index].name},${_storyList[index].age}',
-                                            style: Theme.of(context).accentTextTheme.headline4,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline4,
                                           ),
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
-                                              padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.all(0),
+                                              padding: g.isRTL
+                                                  ? EdgeInsets.only(right: 6)
+                                                  : EdgeInsets.all(0),
                                               child: Text(
                                                 '${_storyList[index].km} km away',
-                                                style: Theme.of(context).primaryTextTheme.headline6,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .headline6,
                                               ),
                                             ),
                                             Row(
@@ -491,10 +590,13 @@ class _AddYourStoryScreenState extends BaseRouteState {
                                                   size: 14,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(left: 4, right: 8),
+                                                  padding: EdgeInsets.only(
+                                                      left: 4, right: 8),
                                                   child: Text(
                                                     '${_storyList[index].count}',
-                                                    style: Theme.of(context).primaryTextTheme.headline6,
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .headline6,
                                                   ),
                                                 ),
                                               ],
@@ -524,7 +626,8 @@ class _AddYourStoryScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
+    _tabController =
+        new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
   }
 
@@ -578,20 +681,21 @@ class _AddYourStoryScreenState extends BaseRouteState {
                         color: Theme.of(context).iconTheme.color,
                         onPressed: () {
                           Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          BottomNavigationWidgetLight(
-                                            currentIndex: 1,
-                                        
-                                          )),
-                                  ModalRoute.withName('/'));
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      BottomNavigationWidgetLight(
+                                        currentIndex: 1,
+                                      )),
+                              ModalRoute.withName('/'));
                         },
                       ),
                     ),
                     IconButton(
                       padding: EdgeInsets.all(0),
-                      icon: Align(alignment: Alignment.bottomRight, child: (Icon(MdiIcons.tuneVerticalVariant))),
+                      icon: Align(
+                          alignment: Alignment.bottomRight,
+                          child: (Icon(MdiIcons.tuneVerticalVariant))),
                       color: Theme.of(context).iconTheme.color,
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(

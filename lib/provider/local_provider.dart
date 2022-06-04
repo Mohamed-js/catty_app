@@ -1,4 +1,4 @@
-import 'package:datingapp/l10n/l10n.dart';
+import 'package:PetsMating/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class LocaleProvider extends ChangeNotifier {

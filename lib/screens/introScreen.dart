@@ -1,6 +1,6 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/startDatingScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/startDatingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -34,11 +34,12 @@ class _IntroScreenState extends BaseRouteState {
                     Padding(
                       padding: const EdgeInsets.only(top: 140),
                       child: Image.asset(
-                        g.isDarkModeEnable ? 'assets/images/dog.png' : 'assets/images/dog.png',
+                        g.isDarkModeEnable
+                            ? 'assets/images/dog.png'
+                            : 'assets/images/dog.png',
                         fit: BoxFit.contain,
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -59,7 +60,8 @@ class _IntroScreenState extends BaseRouteState {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 20.0, left: 20, bottom: 20, right: 5),
+                      padding: const EdgeInsets.only(
+                          top: 20.0, left: 20, bottom: 20, right: 5),
                       child: ShaderMask(
                         blendMode: BlendMode.srcIn,
                         shaderCallback: (Rect bounds) {
@@ -71,7 +73,8 @@ class _IntroScreenState extends BaseRouteState {
                         },
                         child: Text(
                           AppLocalizations.of(context).lbl_get_started,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ),
                     ),

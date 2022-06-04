@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen1.dart';
-import 'package:datingapp/screens/likes&IntrestScreen.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/addStoryScreen1.dart';
+import 'package:PetsMating/screens/likes&IntrestScreen.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';

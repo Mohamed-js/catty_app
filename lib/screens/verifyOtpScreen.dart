@@ -1,9 +1,9 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen1.dart';
-import 'package:datingapp/screens/profileDetailScreen.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/addStoryScreen1.dart';
+import 'package:PetsMating/screens/profileDetailScreen.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -26,6 +26,8 @@ class _VerifyOtpScreenState extends BaseRouteState {
   String num2;
   String num3;
   String num4;
+
+  bool btnIsDisabled = false;
 
   _VerifyOtpScreenState() : super();
 
@@ -262,37 +264,47 @@ class _VerifyOtpScreenState extends BaseRouteState {
                       ),
                     ),
                     child: TextButton(
-                      onPressed: () async {
-                        String otp = "$num1$num2$num3$num4";
-                        dynamic isVerified =
-                            await Provider.of<Auth>(context, listen: false)
-                                .verifyUser(otp);
-                        print('hey');
-                        print(isVerified);
+                      onPressed: btnIsDisabled
+                          ? null
+                          : () async {
+                              setState(() {
+                                btnIsDisabled = true;
+                              });
+                              String otp = "$num1$num2$num3$num4";
+                              dynamic isVerified = await Provider.of<Auth>(
+                                      context,
+                                      listen: false)
+                                  .verifyUser(otp);
+                              print('hey');
+                              print(isVerified);
 
-                        if (isVerified == true) {
-                          final auth =
-                              await Provider.of<Auth>(context, listen: false);
-                          String name = auth.current_user['first_name'];
-                          if (name == null) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ProfileDetailScreen()));
-                          } else {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    BottomNavigationWidgetLight(
-                                      currentIndex: 0,
-                                    )));
-                          }
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text("OTP is incorrect..."),
-                              backgroundColor: Colors.redAccent,
-                            ),
-                          );
-                        }
-                      },
+                              if (isVerified == true) {
+                                final auth = await Provider.of<Auth>(context,
+                                    listen: false);
+                                String name = auth.current_user['first_name'];
+                                if (name == null) {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProfileDetailScreen()));
+                                } else {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          BottomNavigationWidgetLight(
+                                            currentIndex: 0,
+                                          )));
+                                }
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("OTP is incorrect..."),
+                                    backgroundColor: Colors.redAccent,
+                                  ),
+                                );
+                              }
+                              setState(() {
+                                btnIsDisabled = false;
+                              });
+                            },
                       child: Text(
                         AppLocalizations.of(context).btn_submit,
                         style: Theme.of(context)

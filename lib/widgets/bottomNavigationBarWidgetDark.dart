@@ -1,17 +1,19 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/screens/addMessageScreen.dart';
-import 'package:datingapp/screens/addStoryScreen1.dart';
-import 'package:datingapp/screens/addYourStoryScreen.dart';
-import 'package:datingapp/screens/myProfileDetailScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/screens/addMessageScreen.dart';
+import 'package:PetsMating/screens/addStoryScreen1.dart';
+import 'package:PetsMating/screens/addYourStoryScreen.dart';
+import 'package:PetsMating/screens/myProfileDetailScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class BottomNavigationWidgetDark extends BaseRoute {
   final int currentIndex;
-  BottomNavigationWidgetDark({a, o, this.currentIndex}) : super(a: a, o: o, r: 'BottomNavigationWidgetDark');
+  BottomNavigationWidgetDark({a, o, this.currentIndex})
+      : super(a: a, o: o, r: 'BottomNavigationWidgetDark');
   @override
-  _BottomNavigationWidgetDarkState createState() => new _BottomNavigationWidgetDarkState(this.currentIndex);
+  _BottomNavigationWidgetDarkState createState() =>
+      new _BottomNavigationWidgetDarkState(this.currentIndex);
 }
 
 class _BottomNavigationWidgetDarkState extends BaseRouteState {
@@ -156,7 +158,8 @@ class _BottomNavigationWidgetDarkState extends BaseRouteState {
         _currentIndex = currentIndex;
       });
     }
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
+    _tabController =
+        new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
   }
 

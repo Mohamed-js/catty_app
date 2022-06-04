@@ -1,8 +1,8 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/models/datingMatchedModel.dart';
-import 'package:datingapp/screens/settingScreen.dart';
-import 'package:datingapp/screens/viewPlanScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/datingMatchedModel.dart';
+import 'package:PetsMating/screens/settingScreen.dart';
+import 'package:PetsMating/screens/viewPlanScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,11 +19,31 @@ class _DatingMatchesScreenState extends BaseRouteState {
   TabController _tabController;
 
   List<DatingMachedModel> _datingMatchesList = [
-    new DatingMachedModel(name: 'Ruby Raman', time: '12:20 AM', description: 'Found from matches proposal', imgPath: 'assets/images/img_circle_0.png'),
-    new DatingMachedModel(name: 'Sara Chistin', time: '12:20 AM', description: 'Found from matches proposal', imgPath: 'assets/images/sample3.png'),
-    new DatingMachedModel(name: 'Myley Corbyn', time: '12:20 AM', description: 'Found from matches proposal', imgPath: 'assets/images/sample3.png'),
-    new DatingMachedModel(name: 'Sansa Ban', time: '12:20 AM', description: 'Found from matches proposal', imgPath: 'assets/images/img_circle_0.png'),
-    new DatingMachedModel(name: 'Belle Benson', time: '12:20 AM', description: 'Found from matches proposal', imgPath: 'assets/images/msg_img.png'),
+    new DatingMachedModel(
+        name: 'Ruby Raman',
+        time: '12:20 AM',
+        description: 'Found from matches proposal',
+        imgPath: 'assets/images/img_circle_0.png'),
+    new DatingMachedModel(
+        name: 'Sara Chistin',
+        time: '12:20 AM',
+        description: 'Found from matches proposal',
+        imgPath: 'assets/images/sample3.png'),
+    new DatingMachedModel(
+        name: 'Myley Corbyn',
+        time: '12:20 AM',
+        description: 'Found from matches proposal',
+        imgPath: 'assets/images/sample3.png'),
+    new DatingMachedModel(
+        name: 'Sansa Ban',
+        time: '12:20 AM',
+        description: 'Found from matches proposal',
+        imgPath: 'assets/images/img_circle_0.png'),
+    new DatingMachedModel(
+        name: 'Belle Benson',
+        time: '12:20 AM',
+        description: 'Found from matches proposal',
+        imgPath: 'assets/images/msg_img.png'),
   ];
   _DatingMatchesScreenState() : super();
 
@@ -71,7 +91,8 @@ class _DatingMatchesScreenState extends BaseRouteState {
                   Padding(
                     padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      AppLocalizations.of(context).lbl_check_out_list_of_matches_keep_enjoying,
+                      AppLocalizations.of(context)
+                          .lbl_check_out_list_of_matches_keep_enjoying,
                       style: Theme.of(context).primaryTextTheme.subtitle2,
                     ),
                   ),
@@ -90,8 +111,12 @@ class _DatingMatchesScreenState extends BaseRouteState {
                       },
                       tabs: [
                         Tab(text: AppLocalizations.of(context).lbl_Tab_All),
-                        Tab(text: AppLocalizations.of(context).lbl_tab_you_likes),
-                        Tab(text: AppLocalizations.of(context).lbl_Tab_liked_you),
+                        Tab(
+                            text:
+                                AppLocalizations.of(context).lbl_tab_you_likes),
+                        Tab(
+                            text:
+                                AppLocalizations.of(context).lbl_Tab_liked_you),
                         Tab(text: AppLocalizations.of(context).lbl_tab_views),
                       ],
                     ),
@@ -124,25 +149,35 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                           ),
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? const EdgeInsets.only(right: 12) : const EdgeInsets.only(left: 12),
+                                          padding: g.isRTL
+                                              ? const EdgeInsets.only(right: 12)
+                                              : const EdgeInsets.only(left: 12),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 '${_datingMatchesList[index].name}',
-                                                style: Theme.of(context).primaryTextTheme.subtitle1,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .subtitle1,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 4, bottom: 4),
+                                                padding: const EdgeInsets.only(
+                                                    top: 4, bottom: 4),
                                                 child: Text(
                                                   '${_datingMatchesList[index].description}',
-                                                  style: Theme.of(context).primaryTextTheme.bodyText2,
+                                                  style: Theme.of(context)
+                                                      .primaryTextTheme
+                                                      .bodyText2,
                                                 ),
                                               ),
                                               Text(
                                                 '${_datingMatchesList[index].time} | 29.04.2022',
-                                                style: Theme.of(context).primaryTextTheme.caption,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .caption,
                                               )
                                             ],
                                           ),
@@ -155,11 +190,13 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                       size: 32,
                                     ),
                                     onTap: () {
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                          builder: (context) => ViewPlanScreen(
-                                                a: widget.analytics,
-                                                o: widget.observer,
-                                              )));
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ViewPlanScreen(
+                                                    a: widget.analytics,
+                                                    o: widget.observer,
+                                                  )));
                                     },
                                   ),
                                 ),
@@ -203,25 +240,35 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                           ),
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? const EdgeInsets.only(right: 12) : const EdgeInsets.only(left: 12),
+                                          padding: g.isRTL
+                                              ? const EdgeInsets.only(right: 12)
+                                              : const EdgeInsets.only(left: 12),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 'Ruby Raman',
-                                                style: Theme.of(context).primaryTextTheme.subtitle1,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .subtitle1,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 4, bottom: 4),
+                                                padding: const EdgeInsets.only(
+                                                    top: 4, bottom: 4),
                                                 child: Text(
                                                   'Found from matches proposal',
-                                                  style: Theme.of(context).primaryTextTheme.bodyText2,
+                                                  style: Theme.of(context)
+                                                      .primaryTextTheme
+                                                      .bodyText2,
                                                 ),
                                               ),
                                               Text(
                                                 '12:20 AM | 29.04.2022',
-                                                style: Theme.of(context).primaryTextTheme.caption,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .caption,
                                               )
                                             ],
                                           ),
@@ -234,11 +281,13 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                       size: 32,
                                     ),
                                     onTap: () {
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                          builder: (context) => ViewPlanScreen(
-                                                a: widget.analytics,
-                                                o: widget.observer,
-                                              )));
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ViewPlanScreen(
+                                                    a: widget.analytics,
+                                                    o: widget.observer,
+                                                  )));
                                     },
                                   ),
                                 ),
@@ -282,25 +331,35 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                           ),
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? const EdgeInsets.only(right: 12) : const EdgeInsets.only(left: 12),
+                                          padding: g.isRTL
+                                              ? const EdgeInsets.only(right: 12)
+                                              : const EdgeInsets.only(left: 12),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 'Ruby Raman',
-                                                style: Theme.of(context).primaryTextTheme.subtitle1,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .subtitle1,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 4, bottom: 4),
+                                                padding: const EdgeInsets.only(
+                                                    top: 4, bottom: 4),
                                                 child: Text(
                                                   'Found from matches proposal',
-                                                  style: Theme.of(context).primaryTextTheme.bodyText2,
+                                                  style: Theme.of(context)
+                                                      .primaryTextTheme
+                                                      .bodyText2,
                                                 ),
                                               ),
                                               Text(
                                                 '12:20 AM | 29.04.2022',
-                                                style: Theme.of(context).primaryTextTheme.caption,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .caption,
                                               )
                                             ],
                                           ),
@@ -313,11 +372,13 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                       size: 32,
                                     ),
                                     onTap: () {
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                          builder: (context) => ViewPlanScreen(
-                                                a: widget.analytics,
-                                                o: widget.observer,
-                                              )));
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ViewPlanScreen(
+                                                    a: widget.analytics,
+                                                    o: widget.observer,
+                                                  )));
                                     },
                                   ),
                                 ),
@@ -361,25 +422,35 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                           ),
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? const EdgeInsets.only(right: 12) : const EdgeInsets.only(left: 12),
+                                          padding: g.isRTL
+                                              ? const EdgeInsets.only(right: 12)
+                                              : const EdgeInsets.only(left: 12),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 'Ruby Raman',
-                                                style: Theme.of(context).primaryTextTheme.subtitle1,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .subtitle1,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(top: 4, bottom: 4),
+                                                padding: const EdgeInsets.only(
+                                                    top: 4, bottom: 4),
                                                 child: Text(
                                                   'Found from matches proposal',
-                                                  style: Theme.of(context).primaryTextTheme.bodyText2,
+                                                  style: Theme.of(context)
+                                                      .primaryTextTheme
+                                                      .bodyText2,
                                                 ),
                                               ),
                                               Text(
                                                 '12:20 AM | 29.04.2022',
-                                                style: Theme.of(context).primaryTextTheme.caption,
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .caption,
                                               )
                                             ],
                                           ),
@@ -392,11 +463,13 @@ class _DatingMatchesScreenState extends BaseRouteState {
                                       size: 32,
                                     ),
                                     onTap: () {
-                                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                          builder: (context) => ViewPlanScreen(
-                                                a: widget.analytics,
-                                                o: widget.observer,
-                                              )));
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ViewPlanScreen(
+                                                    a: widget.analytics,
+                                                    o: widget.observer,
+                                                  )));
                                     },
                                   ),
                                 ),
@@ -431,7 +504,8 @@ class _DatingMatchesScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
+    _tabController =
+        new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
   }
 

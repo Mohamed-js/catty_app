@@ -1,5 +1,5 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -56,7 +56,9 @@ class _ViewStoryScreenState extends BaseRouteState {
             ),
           ),
           child: Scaffold(
-            backgroundColor: g.isDarkModeEnable ? Color(0xFF03000C) : Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: g.isDarkModeEnable
+                ? Color(0xFF03000C)
+                : Theme.of(context).scaffoldBackgroundColor,
             body: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -73,8 +75,10 @@ class _ViewStoryScreenState extends BaseRouteState {
                           child: StoryView(
                               inline: true,
                               storyItems: storyItems,
-                              controller: StoryController(), // pass controller here too
-                              repeat: false, // should the stories be slid forever
+                              controller:
+                                  StoryController(), // pass controller here too
+                              repeat:
+                                  false, // should the stories be slid forever
                               onStoryShow: (s) {},
                               onComplete: () {
                                 Navigator.of(context).pop();
@@ -92,7 +96,8 @@ class _ViewStoryScreenState extends BaseRouteState {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   IconButton(
-                                    icon: Icon(FontAwesomeIcons.longArrowAltLeft),
+                                    icon:
+                                        Icon(FontAwesomeIcons.longArrowAltLeft),
                                     color: Colors.white,
                                     onPressed: () {
                                       Navigator.of(context).pop();
@@ -100,12 +105,19 @@ class _ViewStoryScreenState extends BaseRouteState {
                                   ),
                                   CircleAvatar(
                                     child: Container(
-                                      height: MediaQuery.of(context).size.height / 100 * 6,
-                                      width: MediaQuery.of(context).size.height / 100 * 6,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              100 *
+                                              6,
+                                      width:
+                                          MediaQuery.of(context).size.height /
+                                              100 *
+                                              6,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
-                                          image: AssetImage('assets/images/img_circle_0.png'),
+                                          image: AssetImage(
+                                              'assets/images/img_circle_0.png'),
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -114,19 +126,25 @@ class _ViewStoryScreenState extends BaseRouteState {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 10.0),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 'Belle Benson',
-                                                style: Theme.of(context).accentTextTheme.headline4,
+                                                style: Theme.of(context)
+                                                    .accentTextTheme
+                                                    .headline4,
                                               ),
                                               Text(
                                                 '5 hours ago',
-                                                style: Theme.of(context).textTheme.subtitle1,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .subtitle1,
                                               )
                                             ],
                                           ),
@@ -146,7 +164,9 @@ class _ViewStoryScreenState extends BaseRouteState {
               ),
             ),
             bottomSheet: BottomAppBar(
-              color: g.isDarkModeEnable ? Color(0xFF14012F) : Theme.of(context).scaffoldBackgroundColor,
+              color: g.isDarkModeEnable
+                  ? Color(0xFF14012F)
+                  : Theme.of(context).scaffoldBackgroundColor,
               elevation: 0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,7 +180,8 @@ class _ViewStoryScreenState extends BaseRouteState {
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(left: 20),
                           hintText: AppLocalizations.of(context).lbl_reply_hint,
-                          hintStyle: Theme.of(context).primaryTextTheme.subtitle2,
+                          hintStyle:
+                              Theme.of(context).primaryTextTheme.subtitle2,
                         ),
                       ),
                     ),

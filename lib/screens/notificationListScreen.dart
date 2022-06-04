@@ -1,14 +1,14 @@
-import 'package:datingapp/models/addNewNotification.dart';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/services/app_state.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/addNewNotification.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/dio.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
@@ -107,7 +107,7 @@ class _NotificationListScreenState extends BaseRouteState {
                                                       child: CircleAvatar(
                                                         backgroundImage:
                                                             NetworkImage(
-                                                          'https://i-pet.herokuapp.com/${appState.notificationList[index]['img']}',
+                                                          '${appState.notificationList[index]['img']}',
                                                         ),
                                                         backgroundColor:
                                                             Colors.transparent,

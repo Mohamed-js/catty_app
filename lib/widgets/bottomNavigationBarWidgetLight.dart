@@ -1,9 +1,9 @@
-import 'package:datingapp/screens/addMessageScreen.dart';
-import 'package:datingapp/screens/addStoryScreen1.dart';
-import 'package:datingapp/screens/myProfileDetailScreen.dart';
-import 'package:datingapp/screens/notificationListScreen.dart';
+import 'package:PetsMating/screens/addMessageScreen.dart';
+import 'package:PetsMating/screens/addStoryScreen1.dart';
+import 'package:PetsMating/screens/myProfileDetailScreen.dart';
+import 'package:PetsMating/screens/notificationListScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:laravel_echo/laravel_echo.dart';
 import 'package:flutter_pusher_client/flutter_pusher.dart';

@@ -1,4 +1,4 @@
-package com.example.datingapp;
+package com.etk.PetsMating;
 
 import io.flutter.embedding.android.FlutterActivity;
 // import io.flutter.embedding.engine.FlutterEngine;

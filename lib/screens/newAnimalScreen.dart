@@ -1,19 +1,20 @@
 import 'dart:io';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen1.dart';
-import 'package:datingapp/screens/likes&IntrestScreen.dart';
-import 'package:datingapp/screens/myAnimalProfileScreen.dart';
-import 'package:datingapp/screens/myProfileDetailScreen.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/addStoryScreen1.dart';
+import 'package:PetsMating/screens/likes&IntrestScreen.dart';
+import 'package:PetsMating/screens/myAnimalProfileScreen.dart';
+import 'package:PetsMating/screens/myProfileDetailScreen.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/dio.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class NewAnimalScreen extends BaseRoute {
   NewAnimalScreen({a, o}) : super(a: a, o: o, r: 'NewAnimalScreen');
@@ -29,6 +30,7 @@ class _NewAnimalScreenState extends BaseRouteState {
   DateTime _dob;
   String _currentImage = '';
   int breedId;
+  bool btnIsDisabled = false;
 
   String _type = 'Select Type';
   String _breed = 'Select Breed';
@@ -488,62 +490,70 @@ class _NewAnimalScreenState extends BaseRouteState {
                           ),
                         ),
                         child: TextButton(
-                          onPressed: () async {
-                            // print(_cFirstName.text.isEmpty);
-                            // print(_cInfo.text.isEmpty);
-                            print(breedId == null);
-                            // print(_gender == 'Select Gender');
-                            // print(_currentImage.isEmpty);
-                            // print(_dob == null);
-                            if (_cFirstName.text.isEmpty ||
-                                _cInfo.text.isEmpty ||
-                                breedId == null ||
-                                _gender == 'Select Gender' ||
-                                _currentImage.isEmpty ||
-                                _dob == null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Please enter valid data!'),
-                                  backgroundColor: Colors.redAccent,
-                                ),
-                              );
-                              return;
-                            }
-                            Map data = {
-                              'name': _cFirstName.text,
-                              'info': _cInfo.text,
-                              'gender': _gender,
-                              'avatar': _currentImage,
-                              'breed_id': breedId,
-                              'vaccination': _vaccination,
-                              'dob': _dob
-                            };
-                            print(data);
-                            dynamic res =
-                                await Provider.of<Auth>(context, listen: false)
-                                    .addAnimal(data);
-                            if (res != 'failed') {
-                              final auth =
-                                  Provider.of<Auth>(context, listen: false);
-                              await auth.tryLogin(true);
+                          onPressed: btnIsDisabled
+                              ? null
+                              : () async {
+                                  setState(() {
+                                    btnIsDisabled = true;
+                                  });
+                                  if (_cFirstName.text.isEmpty ||
+                                      _cInfo.text.isEmpty ||
+                                      breedId == null ||
+                                      _gender == 'Select Gender' ||
+                                      _currentImage.isEmpty ||
+                                      _dob == null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('Please enter valid data!'),
+                                        backgroundColor: Colors.redAccent,
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                  Map data = {
+                                    'name': _cFirstName.text,
+                                    'info': _cInfo.text,
+                                    'gender': _gender,
+                                    'avatar': _currentImage,
+                                    'breed_id': breedId,
+                                    'vaccinated': _vaccination,
+                                    'dob': _dob
+                                  };
+                                  print(data);
+                                  dynamic res = await Provider.of<Auth>(context,
+                                          listen: false)
+                                      .addAnimal(data);
+                                  print(res);
+                                  if (res != 'failed') {
+                                    final auth = Provider.of<Auth>(context,
+                                        listen: false);
+                                    await auth.tryLogin(true);
 
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          BottomNavigationWidgetLight(
-                                            currentIndex: 0,
-                                          )),
-                                  ModalRoute.withName('/'));
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('Please enter valid values.'),
-                                  backgroundColor: Colors.redAccent,
-                                ),
-                              );
-                            }
-                          },
+                                    Navigator.pushAndRemoveUntil(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                BottomNavigationWidgetLight(
+                                                  currentIndex: 0,
+                                                )),
+                                        ModalRoute.withName('/'));
+                                  } else {
+                                    setState(() {
+                                      btnIsDisabled = false;
+                                    });
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content:
+                                            Text('Please enter valid values.'),
+                                        backgroundColor: Colors.redAccent,
+                                      ),
+                                    );
+                                  }
+                                  setState(() {
+                                    btnIsDisabled = false;
+                                  });
+                                },
                           child: Text(
                             'Save',
                             style: Theme.of(context)

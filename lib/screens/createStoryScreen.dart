@@ -1,6 +1,6 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addTextCreateStoryScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/addTextCreateStoryScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:multi_image_picker2/multi_image_picker2.dart';
@@ -75,14 +75,18 @@ class _CreateStoryScreenState extends BaseRouteState {
                                   radius: 30,
                                   child: Text(
                                     AppLocalizations.of(context).lbl_Aa,
-                                    style: Theme.of(context).accentTextTheme.headline1,
+                                    style: Theme.of(context)
+                                        .accentTextTheme
+                                        .headline1,
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 4),
                                   child: Text(
                                     AppLocalizations.of(context).lbl_Text,
-                                    style: Theme.of(context).accentTextTheme.headline4,
+                                    style: Theme.of(context)
+                                        .accentTextTheme
+                                        .headline4,
                                   ),
                                 )
                               ],
@@ -123,7 +127,9 @@ class _CreateStoryScreenState extends BaseRouteState {
                                   padding: const EdgeInsets.only(top: 4),
                                   child: Text(
                                     AppLocalizations.of(context).lbl_Media,
-                                    style: Theme.of(context).accentTextTheme.headline4,
+                                    style: Theme.of(context)
+                                        .accentTextTheme
+                                        .headline4,
                                   ),
                                 )
                               ],
@@ -136,7 +142,8 @@ class _CreateStoryScreenState extends BaseRouteState {
                   images != null && images.length > 0
                       ? Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                            padding: const EdgeInsets.only(
+                                left: 20, right: 20, top: 20),
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width,
                               child: GridView.count(
@@ -149,7 +156,9 @@ class _CreateStoryScreenState extends BaseRouteState {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(color: Colors.white),
-                                      color: g.isDarkModeEnable ? Color(0xFF1D0529) : Colors.white54,
+                                      color: g.isDarkModeEnable
+                                          ? Color(0xFF1D0529)
+                                          : Colors.white54,
                                     ),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(19),
@@ -183,7 +192,11 @@ class _CreateStoryScreenState extends BaseRouteState {
                         Navigator.of(context).pop();
                       },
                       child: Text(AppLocalizations.of(context).btn_create,
-                          style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                          style: Theme.of(context)
+                              .textButtonTheme
+                              .style
+                              .textStyle
+                              .resolve({
                             MaterialState.pressed,
                           })),
                     ),

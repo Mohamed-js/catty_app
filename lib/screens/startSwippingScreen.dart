@@ -1,5 +1,5 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -40,7 +40,9 @@ class _StartSwippingScreenState extends BaseRouteState {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Image.asset(
-                    g.isDarkModeEnable ? 'assets/images/unmatch_new_remove.png' : 'assets/images/unmatch_new_remove.png',
+                    g.isDarkModeEnable
+                        ? 'assets/images/unmatch_new_remove.png'
+                        : 'assets/images/unmatch_new_remove.png',
                   ),
                 ),
                 Text(

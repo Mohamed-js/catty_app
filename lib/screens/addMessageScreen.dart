@@ -1,15 +1,15 @@
-import 'package:datingapp/models/addNewMessageModel.dart';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/chatScreen.dart';
-import 'package:datingapp/screens/createStoryScreen.dart';
-import 'package:datingapp/screens/myProfileDetailScreen.dart';
-import 'package:datingapp/screens/splashScreen.dart';
-import 'package:datingapp/screens/startConversionScreen.dart';
-import 'package:datingapp/screens/viewStoryScreen.dart';
-import 'package:datingapp/services/app_state.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/addNewMessageModel.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/chatScreen.dart';
+import 'package:PetsMating/screens/createStoryScreen.dart';
+import 'package:PetsMating/screens/myProfileDetailScreen.dart';
+import 'package:PetsMating/screens/splashScreen.dart';
+import 'package:PetsMating/screens/startConversionScreen.dart';
+import 'package:PetsMating/screens/viewStoryScreen.dart';
+import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,7 +17,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
@@ -271,7 +271,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                               BorderRadius
                                                                   .circular(12),
                                                           child: Image.network(
-                                                            "https://i-pet.herokuapp.com/${_user['avatar']}",
+                                                            "${_user['avatar']}",
                                                             fit: BoxFit.cover,
                                                           ),
                                                         ),
@@ -479,8 +479,7 @@ class _AddMessageScreenState extends BaseRouteState {
                           radius: 22,
                           backgroundImage: auth.current_user['avatar'] == null
                               ? AssetImage('assets/images/holder.png')
-                              : NetworkImage(
-                                  'https://i-pet.herokuapp.com/${auth.current_user['avatar']}'),
+                              : NetworkImage('${auth.current_user['avatar']}'),
                         ),
                       ),
                       Container(

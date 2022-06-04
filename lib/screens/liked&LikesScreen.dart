@@ -1,5 +1,5 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -71,9 +71,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                             borderRadius: BorderRadius.circular(35),
                           ),
                           child: Container(
-                            padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? EdgeInsets.only(right: 10)
+                                : EdgeInsets.only(left: 10),
                             decoration: BoxDecoration(
-                              color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                              color: g.isDarkModeEnable
+                                  ? Colors.black
+                                  : Colors.white,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             height: 60,
@@ -82,14 +86,20 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                               children: [
                                 Icon(
                                   Icons.photo_camera,
-                                  color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                  color: g.isDarkModeEnable
+                                      ? Colors.white
+                                      : Theme.of(context).primaryColorLight,
                                   size: 20,
                                 ),
                                 Padding(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 6)
+                                      : EdgeInsets.only(left: 6),
                                   child: Text(
                                     'Photography',
-                                    style: Theme.of(context).primaryTextTheme.subtitle2,
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .subtitle2,
                                   ),
                                 )
                               ],
@@ -99,19 +109,29 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Cooking') ? _list.removeWhere((e) => e == 'Cooking') : _list.add('Cooking');
+                              _list.contains('Cooking')
+                                  ? _list.removeWhere((e) => e == 'Cooking')
+                                  : _list.add('Cooking');
                             });
                           },
                           child: !_list.contains('Cooking')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
-                                  margin: g.isRTL ? EdgeInsets.only(top: 30, right: 20) : EdgeInsets.only(top: 30, left: 20),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 30, right: 20)
+                                      : EdgeInsets.only(top: 30, left: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -121,20 +141,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Cooking',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
                                   ),
                                 )
                               : Container(
-                                  margin: g.isRTL ? EdgeInsets.only(top: 30, right: 20) : EdgeInsets.only(top: 30, left: 20),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 30, right: 20)
+                                      : EdgeInsets.only(top: 30, left: 20),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -144,9 +171,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -155,14 +186,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           MdiIcons.cookie,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Cooking',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],
@@ -173,19 +211,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Video Games') ? _list.removeWhere((e) => e == 'Video Games') : _list.add('Video Games');
+                              _list.contains('Video Games')
+                                  ? _list.removeWhere((e) => e == 'Video Games')
+                                  : _list.add('Video Games');
                             });
                           },
                           child: !_list.contains('Video Games')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
                                   margin: EdgeInsets.only(top: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -195,10 +241,14 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Video Games',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
@@ -208,7 +258,8 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                   margin: EdgeInsets.only(top: 20.0),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -218,9 +269,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -229,14 +284,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           Icons.videogame_asset,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Video Games',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],
@@ -245,7 +307,9 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                 ),
                         ),
                         Container(
-                          margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                          margin: g.isRTL
+                              ? EdgeInsets.only(top: 20, right: 20)
+                              : EdgeInsets.only(top: 20, left: 20),
                           padding: EdgeInsets.all(1.2),
                           height: 60,
                           width: MediaQuery.of(context).size.width * 0.42,
@@ -258,9 +322,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                             borderRadius: BorderRadius.circular(35),
                           ),
                           child: Container(
-                            padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? EdgeInsets.only(right: 10)
+                                : EdgeInsets.only(left: 10),
                             decoration: BoxDecoration(
-                              color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                              color: g.isDarkModeEnable
+                                  ? Colors.black
+                                  : Colors.white,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             height: 60,
@@ -269,14 +337,20 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                               children: [
                                 Icon(
                                   MdiIcons.music,
-                                  color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                  color: g.isDarkModeEnable
+                                      ? Colors.white
+                                      : Theme.of(context).primaryColorLight,
                                   size: 20,
                                 ),
                                 Padding(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 6)
+                                      : EdgeInsets.only(left: 6),
                                   child: Text(
                                     'Music',
-                                    style: Theme.of(context).primaryTextTheme.subtitle2,
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .subtitle2,
                                   ),
                                 )
                               ],
@@ -297,9 +371,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                             borderRadius: BorderRadius.circular(35),
                           ),
                           child: Container(
-                            padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                            padding: g.isRTL
+                                ? EdgeInsets.only(right: 10)
+                                : EdgeInsets.only(left: 10),
                             decoration: BoxDecoration(
-                              color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                              color: g.isDarkModeEnable
+                                  ? Colors.black
+                                  : Colors.white,
                               borderRadius: BorderRadius.circular(35),
                             ),
                             height: 60,
@@ -308,14 +386,20 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                               children: [
                                 Icon(
                                   Icons.travel_explore_outlined,
-                                  color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                  color: g.isDarkModeEnable
+                                      ? Colors.white
+                                      : Theme.of(context).primaryColorLight,
                                   size: 20,
                                 ),
                                 Padding(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 6)
+                                      : EdgeInsets.only(left: 6),
                                   child: Text(
                                     'Travelling',
-                                    style: Theme.of(context).primaryTextTheme.subtitle2,
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .subtitle2,
                                   ),
                                 )
                               ],
@@ -325,19 +409,29 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Shopping') ? _list.removeWhere((e) => e == 'Shopping') : _list.add('Shopping');
+                              _list.contains('Shopping')
+                                  ? _list.removeWhere((e) => e == 'Shopping')
+                                  : _list.add('Shopping');
                             });
                           },
                           child: !_list.contains('Shopping')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -347,20 +441,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Shopping',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
                                   ),
                                 )
                               : Container(
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -370,9 +471,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -381,14 +486,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           Icons.shopping_bag_outlined,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Shopping',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],
@@ -399,19 +511,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                             onTap: () {
                               setState(() {
-                                _list.contains('Speeches') ? _list.removeWhere((e) => e == 'Speeches') : _list.add('Speeches');
+                                _list.contains('Speeches')
+                                    ? _list.removeWhere((e) => e == 'Speeches')
+                                    : _list.add('Speeches');
                               });
                             },
                             child: !_list.contains('Speeches')
                                 ? Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     margin: EdgeInsets.only(top: 20),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                      color: g.isDarkModeEnable
+                                          ? Color(0xFF1B1143)
+                                          : Theme.of(context)
+                                              .scaffoldBackgroundColor,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
-                                    width: MediaQuery.of(context).size.width * 0.42,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.42,
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -421,10 +541,14 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Speeches',
-                                            style: Theme.of(context).accentTextTheme.overline,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .overline,
                                           ),
                                         )
                                       ],
@@ -434,7 +558,8 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     margin: EdgeInsets.only(top: 20.0),
                                     padding: EdgeInsets.all(1.2),
                                     height: 60,
-                                    width: MediaQuery.of(context).size.width * 0.42,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.42,
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: g.gradientColors,
@@ -444,9 +569,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     child: Container(
-                                      padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                      padding: g.isRTL
+                                          ? EdgeInsets.only(right: 10)
+                                          : EdgeInsets.only(left: 10),
                                       decoration: BoxDecoration(
-                                        color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                        color: g.isDarkModeEnable
+                                            ? Colors.black
+                                            : Colors.white,
                                         borderRadius: BorderRadius.circular(35),
                                       ),
                                       height: 60,
@@ -455,14 +584,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         children: [
                                           Icon(
                                             Icons.shopping_bag_outlined,
-                                            color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                            color: g.isDarkModeEnable
+                                                ? Colors.white
+                                                : Theme.of(context)
+                                                    .primaryColorLight,
                                             size: 20,
                                           ),
                                           Padding(
-                                            padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                            padding: g.isRTL
+                                                ? EdgeInsets.only(right: 6)
+                                                : EdgeInsets.only(left: 6),
                                             child: Text(
                                               'Speeches',
-                                              style: Theme.of(context).primaryTextTheme.subtitle2,
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .subtitle2,
                                             ),
                                           )
                                         ],
@@ -472,19 +608,30 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Art & Crafts') ? _list.removeWhere((e) => e == 'Art & Crafts') : _list.add('Art & Crafts');
+                              _list.contains('Art & Crafts')
+                                  ? _list
+                                      .removeWhere((e) => e == 'Art & Crafts')
+                                  : _list.add('Art & Crafts');
                             });
                           },
                           child: !_list.contains('Art & Crafts')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -494,20 +641,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Art & Crafts',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
                                   ),
                                 )
                               : Container(
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -517,9 +671,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -528,14 +686,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           Icons.palette,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Art & Crafts',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],
@@ -546,19 +711,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Swimming') ? _list.removeWhere((e) => e == 'Swimming') : _list.add('Swimming');
+                              _list.contains('Swimming')
+                                  ? _list.removeWhere((e) => e == 'Swimming')
+                                  : _list.add('Swimming');
                             });
                           },
                           child: !_list.contains('Swimming')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
                                   margin: EdgeInsets.only(top: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -568,10 +741,14 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Swimming',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
@@ -581,7 +758,8 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                   margin: EdgeInsets.only(top: 20.0),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -591,9 +769,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -602,14 +784,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           MdiIcons.swim,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Swimming',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],
@@ -620,19 +809,29 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Drinking') ? _list.removeWhere((e) => e == 'Drinking') : _list.add('Drinking');
+                              _list.contains('Drinking')
+                                  ? _list.removeWhere((e) => e == 'Drinking')
+                                  : _list.add('Drinking');
                             });
                           },
                           child: !_list.contains('Drinking')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -642,20 +841,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Drinking',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
                                   ),
                                 )
                               : Container(
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -665,9 +871,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -676,14 +886,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           Icons.wine_bar,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Drinking',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],
@@ -694,19 +911,28 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Exstreme Sports') ? _list.removeWhere((e) => e == 'Exstreme Sports') : _list.add('Exstreme Sports');
+                              _list.contains('Exstreme Sports')
+                                  ? _list.removeWhere(
+                                      (e) => e == 'Exstreme Sports')
+                                  : _list.add('Exstreme Sports');
                             });
                           },
                           child: !_list.contains('Exstreme Sports')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
                                   margin: EdgeInsets.only(top: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -716,10 +942,14 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Exstreme Sports',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
@@ -729,7 +959,8 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                   margin: EdgeInsets.only(top: 20.0),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -739,9 +970,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -750,14 +985,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           Icons.sports_rounded,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Exstreme Sports',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],
@@ -768,19 +1010,29 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                         InkWell(
                           onTap: () {
                             setState(() {
-                              _list.contains('Fitness') ? _list.removeWhere((e) => e == 'Fitness') : _list.add('Fitness');
+                              _list.contains('Fitness')
+                                  ? _list.removeWhere((e) => e == 'Fitness')
+                                  : _list.add('Fitness');
                             });
                           },
                           child: !_list.contains('Fitness')
                               ? Container(
-                                  padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 10)
+                                      : EdgeInsets.only(left: 10),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   decoration: BoxDecoration(
-                                    color: g.isDarkModeEnable ? Color(0xFF1B1143) : Theme.of(context).scaffoldBackgroundColor,
+                                    color: g.isDarkModeEnable
+                                        ? Color(0xFF1B1143)
+                                        : Theme.of(context)
+                                            .scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -790,20 +1042,27 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                         size: 20,
                                       ),
                                       Padding(
-                                        padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                        padding: g.isRTL
+                                            ? EdgeInsets.only(right: 6)
+                                            : EdgeInsets.only(left: 6),
                                         child: Text(
                                           'Fitness',
-                                          style: Theme.of(context).accentTextTheme.overline,
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .overline,
                                         ),
                                       )
                                     ],
                                   ),
                                 )
                               : Container(
-                                  margin: g.isRTL ? EdgeInsets.only(top: 20, right: 20) : EdgeInsets.only(top: 20, left: 20),
+                                  margin: g.isRTL
+                                      ? EdgeInsets.only(top: 20, right: 20)
+                                      : EdgeInsets.only(top: 20, left: 20),
                                   padding: EdgeInsets.all(1.2),
                                   height: 60,
-                                  width: MediaQuery.of(context).size.width * 0.42,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.42,
                                   decoration: BoxDecoration(
                                     gradient: LinearGradient(
                                       colors: g.gradientColors,
@@ -813,9 +1072,13 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                     borderRadius: BorderRadius.circular(35),
                                   ),
                                   child: Container(
-                                    padding: g.isRTL ? EdgeInsets.only(right: 10) : EdgeInsets.only(left: 10),
+                                    padding: g.isRTL
+                                        ? EdgeInsets.only(right: 10)
+                                        : EdgeInsets.only(left: 10),
                                     decoration: BoxDecoration(
-                                      color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                                      color: g.isDarkModeEnable
+                                          ? Colors.black
+                                          : Colors.white,
                                       borderRadius: BorderRadius.circular(35),
                                     ),
                                     height: 60,
@@ -824,14 +1087,21 @@ class _LikedAndLikesScreenState extends BaseRouteState {
                                       children: [
                                         Icon(
                                           MdiIcons.run,
-                                          color: g.isDarkModeEnable ? Colors.white : Theme.of(context).primaryColorLight,
+                                          color: g.isDarkModeEnable
+                                              ? Colors.white
+                                              : Theme.of(context)
+                                                  .primaryColorLight,
                                           size: 20,
                                         ),
                                         Padding(
-                                          padding: g.isRTL ? EdgeInsets.only(right: 6) : EdgeInsets.only(left: 6),
+                                          padding: g.isRTL
+                                              ? EdgeInsets.only(right: 6)
+                                              : EdgeInsets.only(left: 6),
                                           child: Text(
                                             'Fitness',
-                                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                                            style: Theme.of(context)
+                                                .primaryTextTheme
+                                                .subtitle2,
                                           ),
                                         )
                                       ],

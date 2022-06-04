@@ -1,5 +1,5 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -42,7 +42,8 @@ class _AddTextCreateStoryState extends BaseRouteState {
                 textAlign: TextAlign.center,
                 controller: _cText,
                 decoration: InputDecoration(
-                    hintText: AppLocalizations.of(context).lbl_hint_start_typing,
+                    hintText:
+                        AppLocalizations.of(context).lbl_hint_start_typing,
                     hintStyle: TextStyle(
                       fontSize: 26,
                     )),
@@ -82,7 +83,9 @@ class _AddTextCreateStoryState extends BaseRouteState {
               Navigator.of(context).pop();
             },
             child: Padding(
-              padding: g.isRTL ? const EdgeInsets.only(left: 6) : const EdgeInsets.only(right: 6),
+              padding: g.isRTL
+                  ? const EdgeInsets.only(left: 6)
+                  : const EdgeInsets.only(right: 6),
               child: Text(
                 AppLocalizations.of(context).lbl_done,
                 style: TextStyle(color: Colors.white54),

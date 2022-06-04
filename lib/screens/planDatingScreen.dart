@@ -1,7 +1,7 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/buyTicketsScreen.dart';
-import 'package:datingapp/screens/datingMatchingScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/buyTicketsScreen.dart';
+import 'package:PetsMating/screens/datingMatchingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -81,7 +81,8 @@ class _PlanDatingScreenState extends BaseRouteState {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Colors.black : Colors.white,
+                          color:
+                              g.isDarkModeEnable ? Colors.black : Colors.white,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 55,
@@ -90,9 +91,13 @@ class _PlanDatingScreenState extends BaseRouteState {
                           controller: _cSearch,
                           cursorColor: Colors.white,
                           decoration: InputDecoration(
-                            contentPadding: g.isRTL ? EdgeInsets.only(right: 22, top: 15) : EdgeInsets.only(left: 22, top: 15),
-                            hintText: AppLocalizations.of(context).hint_Searchlbl_Search_Message_match,
-                            hintStyle: Theme.of(context).primaryTextTheme.subtitle2,
+                            contentPadding: g.isRTL
+                                ? EdgeInsets.only(right: 22, top: 15)
+                                : EdgeInsets.only(left: 22, top: 15),
+                            hintText: AppLocalizations.of(context)
+                                .hint_Searchlbl_Search_Message_match,
+                            hintStyle:
+                                Theme.of(context).primaryTextTheme.subtitle2,
                             suffixIcon: Padding(
                               padding: const EdgeInsets.only(right: 8),
                               child: Icon(
@@ -107,10 +112,15 @@ class _PlanDatingScreenState extends BaseRouteState {
                     Padding(
                       padding: const EdgeInsets.only(top: 12),
                       child: TabBar(
-                        overlayColor: MaterialStateProperty.all(Colors.transparent),
-                        labelPadding: g.isRTL ? EdgeInsets.only(left: 50) : EdgeInsets.only(right: 50),
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        labelPadding: g.isRTL
+                            ? EdgeInsets.only(left: 50)
+                            : EdgeInsets.only(right: 50),
                         indicatorSize: TabBarIndicatorSize.tab,
-                        indicatorPadding: g.isRTL ? EdgeInsets.only(left: 50) : EdgeInsets.only(right: 50),
+                        indicatorPadding: g.isRTL
+                            ? EdgeInsets.only(left: 50)
+                            : EdgeInsets.only(right: 50),
                         isScrollable: true,
                         controller: _tabController,
                         indicatorColor: Theme.of(context).iconTheme.color,
@@ -131,7 +141,8 @@ class _PlanDatingScreenState extends BaseRouteState {
                                       ).createShader(bounds);
                                     },
                                     child: Text(
-                                      AppLocalizations.of(context).lbl_tab_popular,
+                                      AppLocalizations.of(context)
+                                          .lbl_tab_popular,
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -152,7 +163,8 @@ class _PlanDatingScreenState extends BaseRouteState {
                                       ).createShader(bounds);
                                     },
                                     child: Text(
-                                      AppLocalizations.of(context).lbl_tab_events,
+                                      AppLocalizations.of(context)
+                                          .lbl_tab_events,
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -173,7 +185,8 @@ class _PlanDatingScreenState extends BaseRouteState {
                                       ).createShader(bounds);
                                     },
                                     child: Text(
-                                      AppLocalizations.of(context).lbl_tab_parties,
+                                      AppLocalizations.of(context)
+                                          .lbl_tab_parties,
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -194,7 +207,8 @@ class _PlanDatingScreenState extends BaseRouteState {
                                       ).createShader(bounds);
                                     },
                                     child: Text(
-                                      AppLocalizations.of(context).lbl_tab_parties,
+                                      AppLocalizations.of(context)
+                                          .lbl_tab_parties,
                                       style: TextStyle(fontSize: 16),
                                     ),
                                   ),
@@ -215,11 +229,13 @@ class _PlanDatingScreenState extends BaseRouteState {
                             itemBuilder: (ctx, index) {
                               return InkWell(
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                      builder: (context) => BuyTicketsScreen(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )));
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              BuyTicketsScreen(
+                                                a: widget.analytics,
+                                                o: widget.observer,
+                                              )));
                                 },
                                 child: Stack(
                                   alignment: Alignment.bottomCenter,
@@ -231,51 +247,72 @@ class _PlanDatingScreenState extends BaseRouteState {
                                         borderRadius: BorderRadius.circular(20),
                                         color: Colors.white,
                                       ),
-                                      height: MediaQuery.of(context).size.height * 0.25,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.25,
                                       width: MediaQuery.of(context).size.width,
                                       child: Container(
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           child: Image.asset(
                                             'assets/images/plan_dating.png',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           color: Color.fromRGBO(19, 1, 51, 1),
                                         ),
                                       ),
                                     ),
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          margin: g.isRTL ? EdgeInsets.only(right: 20, top: 10) : EdgeInsets.only(left: 20, top: 10),
+                                          margin: g.isRTL
+                                              ? EdgeInsets.only(
+                                                  right: 20, top: 10)
+                                              : EdgeInsets.only(
+                                                  left: 20, top: 10),
                                           height: 30,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           child: Text(
                                             'Grand Concert',
-                                            style: Theme.of(context).accentTextTheme.headline2,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline2,
                                           ),
                                         ),
                                         Row(
                                           children: [
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 20, bottom: 20) : EdgeInsets.only(left: 20, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 20, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 20, bottom: 20),
                                               child: Row(
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
@@ -284,42 +321,64 @@ class _PlanDatingScreenState extends BaseRouteState {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '9 May, 2021',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 10, bottom: 20) : EdgeInsets.only(left: 10, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 10, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 10, bottom: 20),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
-                                                      Icons.watch_later_outlined,
+                                                      Icons
+                                                          .watch_later_outlined,
                                                       color: Colors.white,
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '10PM - 01AM',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
@@ -339,11 +398,13 @@ class _PlanDatingScreenState extends BaseRouteState {
                             itemBuilder: (ctx, index) {
                               return InkWell(
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                      builder: (context) => BuyTicketsScreen(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )));
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              BuyTicketsScreen(
+                                                a: widget.analytics,
+                                                o: widget.observer,
+                                              )));
                                 },
                                 child: Stack(
                                   alignment: Alignment.bottomCenter,
@@ -355,51 +416,72 @@ class _PlanDatingScreenState extends BaseRouteState {
                                         borderRadius: BorderRadius.circular(20),
                                         color: Colors.white,
                                       ),
-                                      height: MediaQuery.of(context).size.height * 0.25,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.25,
                                       width: MediaQuery.of(context).size.width,
                                       child: Container(
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           child: Image.asset(
                                             'assets/images/plan_dating.png',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           color: Color.fromRGBO(19, 1, 51, 1),
                                         ),
                                       ),
                                     ),
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          margin: g.isRTL ? EdgeInsets.only(right: 20, top: 10) : EdgeInsets.only(left: 20, top: 10),
+                                          margin: g.isRTL
+                                              ? EdgeInsets.only(
+                                                  right: 20, top: 10)
+                                              : EdgeInsets.only(
+                                                  left: 20, top: 10),
                                           height: 30,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           child: Text(
                                             'Grand Concert',
-                                            style: Theme.of(context).accentTextTheme.headline2,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline2,
                                           ),
                                         ),
                                         Row(
                                           children: [
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 20, bottom: 20) : EdgeInsets.only(left: 20, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 20, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 20, bottom: 20),
                                               child: Row(
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
@@ -408,42 +490,64 @@ class _PlanDatingScreenState extends BaseRouteState {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '9 May, 2021',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 10, bottom: 20) : EdgeInsets.only(left: 10, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 10, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 10, bottom: 20),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
-                                                      Icons.watch_later_outlined,
+                                                      Icons
+                                                          .watch_later_outlined,
                                                       color: Colors.white,
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '10PM - 01AM',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
@@ -463,11 +567,13 @@ class _PlanDatingScreenState extends BaseRouteState {
                             itemBuilder: (ctx, index) {
                               return InkWell(
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                      builder: (context) => BuyTicketsScreen(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )));
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              BuyTicketsScreen(
+                                                a: widget.analytics,
+                                                o: widget.observer,
+                                              )));
                                 },
                                 child: Stack(
                                   alignment: Alignment.bottomCenter,
@@ -479,51 +585,72 @@ class _PlanDatingScreenState extends BaseRouteState {
                                         borderRadius: BorderRadius.circular(20),
                                         color: Colors.white,
                                       ),
-                                      height: MediaQuery.of(context).size.height * 0.25,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.25,
                                       width: MediaQuery.of(context).size.width,
                                       child: Container(
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           child: Image.asset(
                                             'assets/images/plan_dating.png',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           color: Color.fromRGBO(19, 1, 51, 1),
                                         ),
                                       ),
                                     ),
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          margin: g.isRTL ? EdgeInsets.only(right: 20, top: 10) : EdgeInsets.only(left: 20, top: 10),
+                                          margin: g.isRTL
+                                              ? EdgeInsets.only(
+                                                  right: 20, top: 10)
+                                              : EdgeInsets.only(
+                                                  left: 20, top: 10),
                                           height: 30,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           child: Text(
                                             'Grand Concert',
-                                            style: Theme.of(context).accentTextTheme.headline2,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline2,
                                           ),
                                         ),
                                         Row(
                                           children: [
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 20, bottom: 20) : EdgeInsets.only(left: 20, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 20, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 20, bottom: 20),
                                               child: Row(
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
@@ -532,42 +659,64 @@ class _PlanDatingScreenState extends BaseRouteState {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '9 May, 2021',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 10, bottom: 20) : EdgeInsets.only(left: 10, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 10, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 10, bottom: 20),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
-                                                      Icons.watch_later_outlined,
+                                                      Icons
+                                                          .watch_later_outlined,
                                                       color: Colors.white,
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '10PM - 01AM',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
@@ -587,11 +736,13 @@ class _PlanDatingScreenState extends BaseRouteState {
                             itemBuilder: (ctx, index) {
                               return InkWell(
                                 onTap: () {
-                                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                                      builder: (context) => BuyTicketsScreen(
-                                            a: widget.analytics,
-                                            o: widget.observer,
-                                          )));
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              BuyTicketsScreen(
+                                                a: widget.analytics,
+                                                o: widget.observer,
+                                              )));
                                 },
                                 child: Stack(
                                   alignment: Alignment.bottomCenter,
@@ -603,51 +754,72 @@ class _PlanDatingScreenState extends BaseRouteState {
                                         borderRadius: BorderRadius.circular(20),
                                         color: Colors.white,
                                       ),
-                                      height: MediaQuery.of(context).size.height * 0.25,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.25,
                                       width: MediaQuery.of(context).size.width,
                                       child: Container(
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           child: Image.asset(
                                             'assets/images/plan_dating.png',
                                             fit: BoxFit.cover,
                                           ),
                                         ),
                                         decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(18.5),
+                                          borderRadius:
+                                              BorderRadius.circular(18.5),
                                           color: Color.fromRGBO(19, 1, 51, 1),
                                         ),
                                       ),
                                     ),
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          margin: g.isRTL ? EdgeInsets.only(right: 20, top: 10) : EdgeInsets.only(left: 20, top: 10),
+                                          margin: g.isRTL
+                                              ? EdgeInsets.only(
+                                                  right: 20, top: 10)
+                                              : EdgeInsets.only(
+                                                  left: 20, top: 10),
                                           height: 30,
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           child: Text(
                                             'Grand Concert',
-                                            style: Theme.of(context).accentTextTheme.headline2,
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .headline2,
                                           ),
                                         ),
                                         Row(
                                           children: [
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 20, bottom: 20) : EdgeInsets.only(left: 20, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 20, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 20, bottom: 20),
                                               child: Row(
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
@@ -656,42 +828,64 @@ class _PlanDatingScreenState extends BaseRouteState {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '9 May, 2021',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ),
                                             Container(
-                                              margin: g.isRTL ? EdgeInsets.only(right: 10, bottom: 20) : EdgeInsets.only(left: 10, bottom: 20),
+                                              margin: g.isRTL
+                                                  ? EdgeInsets.only(
+                                                      right: 10, bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      left: 10, bottom: 20),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   ShaderMask(
                                                     blendMode: BlendMode.srcIn,
-                                                    shaderCallback: (Rect bounds) {
+                                                    shaderCallback:
+                                                        (Rect bounds) {
                                                       return LinearGradient(
                                                         colors: [
-                                                          Color.fromRGBO(134, 34, 84, 1),
-                                                          Color.fromRGBO(72, 53, 133, 1),
+                                                          Color.fromRGBO(
+                                                              134, 34, 84, 1),
+                                                          Color.fromRGBO(
+                                                              72, 53, 133, 1),
                                                         ],
-                                                        begin: Alignment.centerLeft,
-                                                        end: Alignment.centerRight,
+                                                        begin: Alignment
+                                                            .centerLeft,
+                                                        end: Alignment
+                                                            .centerRight,
                                                       ).createShader(bounds);
                                                     },
                                                     child: Icon(
-                                                      Icons.watch_later_outlined,
+                                                      Icons
+                                                          .watch_later_outlined,
                                                       color: Colors.white,
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 4)
+                                                        : const EdgeInsets.only(
+                                                            left: 4),
                                                     child: Text(
                                                       '10PM - 01AM',
-                                                      style: Theme.of(context).textTheme.subtitle1,
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .subtitle1,
                                                     ),
                                                   ),
                                                 ],
@@ -720,7 +914,8 @@ class _PlanDatingScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
+    _tabController =
+        new TabController(length: 4, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
   }
 

@@ -1,14 +1,15 @@
 import 'dart:io';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/addStoryScreen1.dart';
-import 'package:datingapp/screens/likes&IntrestScreen.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/addStoryScreen1.dart';
+import 'package:PetsMating/screens/likes&IntrestScreen.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ProfileDetailScreen extends BaseRoute {
   ProfileDetailScreen({a, o}) : super(a: a, o: o, r: 'ProfileDetailScreen');
@@ -22,6 +23,8 @@ class _ProfileDetailScreenState extends BaseRouteState {
 
   String _gender = 'Select Gender';
   String _currentImage = '';
+
+  bool btnIsDisabled = false;
 
   var _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -306,47 +309,62 @@ class _ProfileDetailScreenState extends BaseRouteState {
                             ),
                           ),
                           child: TextButton(
-                            onPressed: () async {
-                              if (_cFirstName.text.isEmpty ||
-                                  _cLastName.text.isEmpty ||
-                                  _gender == 'Select Gender' ||
-                                  _currentImage.isEmpty) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Please enter valid data!'),
-                                    backgroundColor: Colors.redAccent,
-                                  ),
-                                );
-                                return;
-                              }
-                              Map data = {
-                                'first_name': _cFirstName.text,
-                                'last_name': _cLastName.text,
-                                'gender': _gender,
-                                'img': _currentImage
-                              };
-                              dynamic res = await Provider.of<Auth>(context,
-                                      listen: false)
-                                  .updateProfile(data);
+                            onPressed: btnIsDisabled
+                                ? null
+                                : () async {
+                                    setState(() {
+                                      btnIsDisabled = true;
+                                    });
+                                    if (_cFirstName.text.isEmpty ||
+                                        _cLastName.text.isEmpty ||
+                                        _gender == 'Select Gender' ||
+                                        _currentImage.isEmpty) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text('Please enter valid data!'),
+                                          backgroundColor: Colors.redAccent,
+                                        ),
+                                      );
+                                      return;
+                                    }
+                                    Map data = {
+                                      'first_name': _cFirstName.text,
+                                      'last_name': _cLastName.text,
+                                      'gender': _gender,
+                                      'img': _currentImage
+                                    };
+                                    dynamic res = await Provider.of<Auth>(
+                                            context,
+                                            listen: false)
+                                        .updateProfile(data);
 
-                              if (res.toString() == 'Updated successfully.') {
-                                final auth =
-                                    Provider.of<Auth>(context, listen: false);
-                                await auth.tryLogin(false);
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        BottomNavigationWidgetLight(
-                                          currentIndex: 0,
-                                        )));
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Please enter valid data!'),
-                                    backgroundColor: Colors.redAccent,
-                                  ),
-                                );
-                              }
-                            },
+                                    if (res.toString() ==
+                                        'Updated successfully.') {
+                                      final auth = Provider.of<Auth>(context,
+                                          listen: false);
+                                      await auth.tryLogin(false);
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BottomNavigationWidgetLight(
+                                                    currentIndex: 0,
+                                                  )));
+                                    } else {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text('Please enter valid data!'),
+                                          backgroundColor: Colors.redAccent,
+                                        ),
+                                      );
+                                    }
+                                    setState(() {
+                                      btnIsDisabled = false;
+                                    });
+                                  },
                             child: Text(
                               'Save',
                               style: Theme.of(context)

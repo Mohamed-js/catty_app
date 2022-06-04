@@ -1,6 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -38,7 +38,9 @@ class _VideoCallingScreenState extends BaseRouteState {
                 Stack(
                   children: [
                     Image.asset(
-                      g.isDarkModeEnable ? 'assets/images/video img_dark.png' : 'assets/images/video img_light.png',
+                      g.isDarkModeEnable
+                          ? 'assets/images/video img_dark.png'
+                          : 'assets/images/video img_light.png',
                       height: MediaQuery.of(context).size.height - 24,
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.cover,
@@ -74,19 +76,27 @@ class _VideoCallingScreenState extends BaseRouteState {
                             borderRadius: BorderRadius.circular(5),
                             color: Color(0xFF230f4E),
                           ),
-                          margin: g.isRTL ? const EdgeInsets.only(right: 20) : const EdgeInsets.only(left: 20),
+                          margin: g.isRTL
+                              ? const EdgeInsets.only(right: 20)
+                              : const EdgeInsets.only(left: 20),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Padding(
-                                padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                padding: g.isRTL
+                                    ? const EdgeInsets.only(right: 4)
+                                    : const EdgeInsets.only(left: 4),
                                 child: Text(
                                   'Matched',
-                                  style: TextStyle(color: g.isDarkModeEnable ? Colors.yellow[700] : Colors.white),
+                                  style: TextStyle(
+                                      color: g.isDarkModeEnable
+                                          ? Colors.yellow[700]
+                                          : Colors.white),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 3, bottom: 3),
+                                padding:
+                                    const EdgeInsets.only(left: 3, bottom: 3),
                                 child: Image.asset(
                                   'assets/images/heart.png',
                                   height: 18,
@@ -96,18 +106,24 @@ class _VideoCallingScreenState extends BaseRouteState {
                           ),
                         ),
                         Padding(
-                          padding: g.isRTL ? const EdgeInsets.only(right: 20) : const EdgeInsets.only(left: 20),
+                          padding: g.isRTL
+                              ? const EdgeInsets.only(right: 20)
+                              : const EdgeInsets.only(left: 20),
                           child: Text(
                             'Sara Christin',
                             style: Theme.of(context).accentTextTheme.headline2,
                           ),
                         ),
                         Container(
-                          margin: g.isRTL ? EdgeInsets.only(right: 20, top: 20, bottom: 20) : EdgeInsets.only(left: 20, top: 20, bottom: 20),
+                          margin: g.isRTL
+                              ? EdgeInsets.only(right: 20, top: 20, bottom: 20)
+                              : EdgeInsets.only(left: 20, top: 20, bottom: 20),
                           height: 40,
                           width: 90,
                           decoration: BoxDecoration(
-                            color: g.isDarkModeEnable ? Colors.black38 : Colors.grey[800],
+                            color: g.isDarkModeEnable
+                                ? Colors.black38
+                                : Colors.grey[800],
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Row(
@@ -119,11 +135,14 @@ class _VideoCallingScreenState extends BaseRouteState {
                                 radius: 6,
                                 child: CircleAvatar(
                                   radius: 5,
-                                  backgroundColor: Theme.of(context).primaryColorLight,
+                                  backgroundColor:
+                                      Theme.of(context).primaryColorLight,
                                 ),
                               ),
                               Padding(
-                                padding: g.isRTL ? const EdgeInsets.only(right: 4) : const EdgeInsets.only(left: 4),
+                                padding: g.isRTL
+                                    ? const EdgeInsets.only(right: 4)
+                                    : const EdgeInsets.only(left: 4),
                                 child: Text(
                                   '27:15',
                                   style: TextStyle(color: Colors.white),
@@ -135,7 +154,9 @@ class _VideoCallingScreenState extends BaseRouteState {
                       ],
                     ),
                     Container(
-                      margin: g.isRTL ? EdgeInsets.only(left: 20, bottom: 20) : EdgeInsets.only(right: 20, bottom: 20),
+                      margin: g.isRTL
+                          ? EdgeInsets.only(left: 20, bottom: 20)
+                          : EdgeInsets.only(right: 20, bottom: 20),
                       padding: EdgeInsets.all(1.2),
                       height: 120,
                       width: 100,
@@ -169,7 +190,8 @@ class _VideoCallingScreenState extends BaseRouteState {
           decoration: BoxDecoration(
             color: g.isDarkModeEnable ? null : Colors.black,
             borderRadius: BorderRadius.vertical(
-              bottom: Radius.elliptical(MediaQuery.of(context).size.width, 100.0),
+              bottom:
+                  Radius.elliptical(MediaQuery.of(context).size.width, 100.0),
             ),
           ),
           child: AnimatedBottomNavigationBar.builder(
@@ -214,7 +236,8 @@ class _VideoCallingScreenState extends BaseRouteState {
           ),
           child: CircleAvatar(
             radius: 30,
-            backgroundColor: g.isDarkModeEnable ? Color(0xFFFA692C) : Colors.transparent,
+            backgroundColor:
+                g.isDarkModeEnable ? Color(0xFFFA692C) : Colors.transparent,
             child: Icon(
               Icons.call,
               color: Colors.white,

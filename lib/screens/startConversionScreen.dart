@@ -1,7 +1,7 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/chatScreen.dart';
-import 'package:datingapp/services/auth.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/chatScreen.dart';
+import 'package:PetsMating/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -72,7 +72,7 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                         children: [
                           CircleAvatar(
                             backgroundImage: NetworkImage(
-                                'https://i-pet.herokuapp.com/${auth.current_user['animals'][0]['avatars'][0]['url']}'),
+                                '${auth.current_user['animals'][0]['avatars'][0]['url']}'),
                             radius: 32,
                           ),
                           Column(
@@ -99,7 +99,7 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                           ),
                           CircleAvatar(
                             backgroundImage: NetworkImage(
-                                'https://i-pet.herokuapp.com/${widget.animal['avatars'][0]['url']}'),
+                                '${widget.animal['avatars'][0]['url']}'),
                             radius: 32,
                           ),
                         ],

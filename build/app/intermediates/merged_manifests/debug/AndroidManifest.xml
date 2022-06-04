@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.datingapp"
+    package="com.etk.PetsMating"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -19,9 +19,9 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="datingapp" >
+        android:label="PetsMating" >
         <activity
-            android:name="com.example.datingapp.MainActivity"
+            android:name="com.etk.PetsMating.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"
@@ -64,7 +64,7 @@
 
         <provider
             android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-            android:authorities="com.example.datingapp.flutter.image_provider"
+            android:authorities="com.etk.PetsMating.flutter.image_provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -73,7 +73,7 @@
         </provider>
         <provider
             android:name="com.sangcomz.fishbun.FishBunFileProvider"
-            android:authorities="com.example.datingapp.fishbunfileprovider"
+            android:authorities="com.etk.PetsMating.fishbunfileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data

@@ -1,7 +1,7 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/widgets/bottomNavigationBarWidgetDark.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetDark.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -51,7 +51,8 @@ class _LocationScreenState extends BaseRouteState {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(child: SizedBox()),
-                  Text(AppLocalizations.of(context).lbl_location, style: Theme.of(context).primaryTextTheme.headline1),
+                  Text(AppLocalizations.of(context).lbl_location,
+                      style: Theme.of(context).primaryTextTheme.headline1),
                   Padding(
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
@@ -59,7 +60,8 @@ class _LocationScreenState extends BaseRouteState {
                       style: Theme.of(context).primaryTextTheme.subtitle2,
                     ),
                   ),
-                  Text(AppLocalizations.of(context).lbl_location_subtitle2, style: Theme.of(context).primaryTextTheme.subtitle2),
+                  Text(AppLocalizations.of(context).lbl_location_subtitle2,
+                      style: Theme.of(context).primaryTextTheme.subtitle2),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -84,7 +86,9 @@ class _LocationScreenState extends BaseRouteState {
                     ),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                        color: g.isDarkModeEnable
+                            ? Colors.black
+                            : Theme.of(context).scaffoldBackgroundColor,
                         borderRadius: BorderRadius.circular(35),
                       ),
                       height: 60,
@@ -94,14 +98,19 @@ class _LocationScreenState extends BaseRouteState {
                         controller: _cLocation,
                         decoration: InputDecoration(
                           suffixIcon: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(left: 20) : const EdgeInsets.only(right: 20),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(left: 20)
+                                : const EdgeInsets.only(right: 20),
                             child: Icon(
                               Icons.my_location,
                               color: Theme.of(context).iconTheme.color,
                             ),
                           ),
-                          contentPadding: g.isRTL ? EdgeInsets.only(right: 20, top: 15) : EdgeInsets.only(left: 20, top: 15),
-                          hintStyle: Theme.of(context).primaryTextTheme.subtitle2,
+                          contentPadding: g.isRTL
+                              ? EdgeInsets.only(right: 20, top: 15)
+                              : EdgeInsets.only(left: 20, top: 15),
+                          hintStyle:
+                              Theme.of(context).primaryTextTheme.subtitle2,
                           hintText: 'Florida, US',
                         ),
                       ),
@@ -121,7 +130,9 @@ class _LocationScreenState extends BaseRouteState {
                     ),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: g.isDarkModeEnable ? Colors.black : Theme.of(context).scaffoldBackgroundColor,
+                        color: g.isDarkModeEnable
+                            ? Colors.black
+                            : Theme.of(context).scaffoldBackgroundColor,
                         borderRadius: BorderRadius.circular(35),
                       ),
                       height: 60,
@@ -131,15 +142,21 @@ class _LocationScreenState extends BaseRouteState {
                         controller: _cNewLocation,
                         decoration: InputDecoration(
                           suffixIcon: Padding(
-                            padding: g.isRTL ? const EdgeInsets.only(left: 20) : const EdgeInsets.only(right: 20),
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(left: 20)
+                                : const EdgeInsets.only(right: 20),
                             child: Icon(
                               Icons.search,
                               color: Theme.of(context).iconTheme.color,
                             ),
                           ),
-                          contentPadding: g.isRTL ? EdgeInsets.only(right: 20, top: 15) : EdgeInsets.only(left: 20, top: 15),
-                          hintStyle: Theme.of(context).primaryTextTheme.subtitle2,
-                          hintText: AppLocalizations.of(context).lbl_search_location_hint,
+                          contentPadding: g.isRTL
+                              ? EdgeInsets.only(right: 20, top: 15)
+                              : EdgeInsets.only(left: 20, top: 15),
+                          hintStyle:
+                              Theme.of(context).primaryTextTheme.subtitle2,
+                          hintText: AppLocalizations.of(context)
+                              .lbl_search_location_hint,
                         ),
                       ),
                     ),
@@ -162,19 +179,24 @@ class _LocationScreenState extends BaseRouteState {
                         onPressed: () {
                           g.isDarkModeEnable
                               ? Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => BottomNavigationWidgetDark(
+                                  builder: (context) =>
+                                      BottomNavigationWidgetDark(
                                         currentIndex: 0,
                                         a: widget.analytics,
                                         o: widget.observer,
                                       )))
                               : Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => BottomNavigationWidgetLight(
+                                  builder: (context) =>
+                                      BottomNavigationWidgetLight(
                                         currentIndex: 0,
-                                      
                                       )));
                         },
                         child: Text(AppLocalizations.of(context).btn_continue,
-                            style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            style: Theme.of(context)
+                                .textButtonTheme
+                                .style
+                                .textStyle
+                                .resolve({
                               MaterialState.pressed,
                             })),
                       ),

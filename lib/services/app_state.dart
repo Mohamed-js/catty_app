@@ -1,7 +1,7 @@
 import 'dart:ffi';
 import 'dart:io';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/services/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class AppState extends ChangeNotifier {
   Map _filter_options = {
     'no_vaccination_needed': true,
     'min_age': 0,
-    'max_age': 6,
+    'max_age': 100,
     'same_breed': false,
   };
   Map get filter_options => _filter_options;

@@ -1,6 +1,6 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/loginScreen.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -53,7 +53,9 @@ class _StartDatingScreenState extends BaseRouteState {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Image.asset(
-                    g.isDarkModeEnable ? 'assets/images/startdatingimg.png' : 'assets/images/startdatingimg.png',
+                    g.isDarkModeEnable
+                        ? 'assets/images/startdatingimg.png'
+                        : 'assets/images/startdatingimg.png',
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -80,7 +82,11 @@ class _StartDatingScreenState extends BaseRouteState {
                       },
                       child: Text(
                         AppLocalizations.of(context).lbl_start_now,
-                        style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                        style: Theme.of(context)
+                            .textButtonTheme
+                            .style
+                            .textStyle
+                            .resolve({
                           MaterialState.pressed,
                         }),
                       ),

@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.datingapp"
+3    package="com.etk.PetsMating"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -28,11 +28,11 @@
 20        android:debuggable="true"
 21        android:icon="@mipmap/ic_launcher"
 21-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:6:9-43
-22        android:label="datingapp" >
-22-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:5:9-34
+22        android:label="PetsMating" >
+22-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:5:9-35
 23        <activity
 23-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:7:9-35:20
-24            android:name="com.example.datingapp.MainActivity"
+24            android:name="com.etk.PetsMating.MainActivity"
 24-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:8:13-41
 25            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
 25-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:11:13-163
@@ -97,7 +97,7 @@
 65-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
 66            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
 66-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
-67            android:authorities="com.example.datingapp.flutter.image_provider"
+67            android:authorities="com.etk.PetsMating.flutter.image_provider"
 67-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
 68            android:exported="false"
 68-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
@@ -114,7 +114,7 @@
 74-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
 75            android:name="com.sangcomz.fishbun.FishBunFileProvider"
 75-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
-76            android:authorities="com.example.datingapp.fishbunfileprovider"
+76            android:authorities="com.etk.PetsMating.fishbunfileprovider"
 76-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
 77            android:exported="false"
 77-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37

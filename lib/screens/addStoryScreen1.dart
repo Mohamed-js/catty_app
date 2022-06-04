@@ -1,15 +1,15 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
-import 'package:datingapp/screens/createStoryScreen.dart';
-import 'package:datingapp/screens/filterOptionsScreen.dart';
-import 'package:datingapp/screens/myAnimalProfileScreen.dart';
-import 'package:datingapp/screens/myProfileDetailScreen.dart';
-import 'package:datingapp/screens/notificationListScreen.dart';
-import 'package:datingapp/screens/splashScreen.dart';
-import 'package:datingapp/screens/startConversionScreen.dart';
-import 'package:datingapp/services/app_state.dart';
-import 'package:datingapp/services/auth.dart';
-import 'package:datingapp/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/createStoryScreen.dart';
+import 'package:PetsMating/screens/filterOptionsScreen.dart';
+import 'package:PetsMating/screens/myAnimalProfileScreen.dart';
+import 'package:PetsMating/screens/myProfileDetailScreen.dart';
+import 'package:PetsMating/screens/notificationListScreen.dart';
+import 'package:PetsMating/screens/splashScreen.dart';
+import 'package:PetsMating/screens/startConversionScreen.dart';
+import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:datingapp/services/dio.dart';
+import 'package:PetsMating/services/dio.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'dart:developer';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
@@ -178,7 +178,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                                         BorderRadius.circular(
                                                             20.0),
                                                     child: Image.network(
-                                                      'https://i-pet.herokuapp.com/${_recommendations[index]['avatars'][0]['url']}',
+                                                      '${_recommendations[index]['avatars'][0]['url']}',
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),
@@ -470,7 +470,7 @@ class _AddStoryScreenState extends BaseRouteState {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.network(
-                  'https://i-pet.herokuapp.com/${_recommendations[i]['avatars'][0]['url']}',
+                  '${_recommendations[i]['avatars'][0]['url']}',
                   height: MediaQuery.of(context).size.height * 0.70,
                   width: MediaQuery.of(context).size.width * 0.75,
                   fit: BoxFit.cover,
@@ -531,8 +531,7 @@ class _AddStoryScreenState extends BaseRouteState {
                           radius: 22,
                           backgroundImage: auth.current_user['avatar'] == null
                               ? AssetImage('assets/images/holder.png')
-                              : NetworkImage(
-                                  'https://i-pet.herokuapp.com/${auth.current_user['avatar']}'),
+                              : NetworkImage('${auth.current_user['avatar']}'),
                         ),
                       ),
                       Container(

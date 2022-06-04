@@ -1,5 +1,5 @@
-import 'package:datingapp/models/businessLayer/baseRoute.dart';
-import 'package:datingapp/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -67,7 +67,9 @@ class _RewardScreenState extends BaseRouteState {
                         alignment: Alignment.center,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Color(0xFF140133) : Colors.white,
+                          color: g.isDarkModeEnable
+                              ? Color(0xFF140133)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 75,
@@ -80,7 +82,9 @@ class _RewardScreenState extends BaseRouteState {
                               children: [
                                 Text(
                                   'dating',
-                                  style: Theme.of(context).primaryTextTheme.headline1,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline1,
                                 ),
                                 Align(
                                   alignment: Alignment.center,
@@ -101,7 +105,9 @@ class _RewardScreenState extends BaseRouteState {
                                       },
                                       child: Text(
                                         'PLATINUM',
-                                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                   ),
@@ -110,7 +116,8 @@ class _RewardScreenState extends BaseRouteState {
                             ),
                             Text(
                               'Priority Likes, See who Likes you & More',
-                              style: Theme.of(context).primaryTextTheme.overline,
+                              style:
+                                  Theme.of(context).primaryTextTheme.overline,
                             )
                           ],
                         ),
@@ -139,7 +146,9 @@ class _RewardScreenState extends BaseRouteState {
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Color(0xFF140133) : Colors.white,
+                          color: g.isDarkModeEnable
+                              ? Color(0xFF140133)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 75,
@@ -153,7 +162,9 @@ class _RewardScreenState extends BaseRouteState {
                               children: [
                                 Text(
                                   'dating',
-                                  style: Theme.of(context).primaryTextTheme.headline1,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline1,
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(left: 8),
@@ -172,7 +183,9 @@ class _RewardScreenState extends BaseRouteState {
                                     },
                                     child: Text(
                                       'GOLD',
-                                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 )
@@ -180,7 +193,8 @@ class _RewardScreenState extends BaseRouteState {
                             ),
                             Text(
                               'See who Likes you & More',
-                              style: Theme.of(context).primaryTextTheme.overline,
+                              style:
+                                  Theme.of(context).primaryTextTheme.overline,
                             )
                           ],
                         ),
@@ -209,7 +223,9 @@ class _RewardScreenState extends BaseRouteState {
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Color(0xFF140133) : Colors.white,
+                          color: g.isDarkModeEnable
+                              ? Color(0xFF140133)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 75,
@@ -224,7 +240,9 @@ class _RewardScreenState extends BaseRouteState {
                               children: [
                                 Text(
                                   'dating',
-                                  style: Theme.of(context).primaryTextTheme.headline1,
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .headline1,
                                 ),
                                 ShaderMask(
                                   blendMode: BlendMode.srcIn,
@@ -244,7 +262,8 @@ class _RewardScreenState extends BaseRouteState {
                             ),
                             Text(
                               'Unlimited Likes & More',
-                              style: Theme.of(context).primaryTextTheme.overline,
+                              style:
+                                  Theme.of(context).primaryTextTheme.overline,
                             ),
                           ],
                         ),
@@ -273,7 +292,9 @@ class _RewardScreenState extends BaseRouteState {
                       child: Container(
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
-                          color: g.isDarkModeEnable ? Color(0xFF140133) : Colors.white,
+                          color: g.isDarkModeEnable
+                              ? Color(0xFF140133)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(35),
                         ),
                         height: 75,
@@ -282,7 +303,8 @@ class _RewardScreenState extends BaseRouteState {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              backgroundColor: g.isDarkModeEnable ? null : Colors.white,
+                              backgroundColor:
+                                  g.isDarkModeEnable ? null : Colors.white,
                               child: ShaderMask(
                                 blendMode: BlendMode.srcIn,
                                 shaderCallback: (Rect bounds) {
@@ -303,7 +325,9 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(bottom: 6),
                                     child: Text(
                                       'Get boosts to increase your matches!',
-                                      style: Theme.of(context).accentTextTheme.headline4,
+                                      style: Theme.of(context)
+                                          .accentTextTheme
+                                          .headline4,
                                     ),
                                   )
                                 : ShaderMask(
@@ -319,7 +343,9 @@ class _RewardScreenState extends BaseRouteState {
                                       padding: const EdgeInsets.only(bottom: 6),
                                       child: Text(
                                         'Get boosts to increase your matches!',
-                                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                   ),
@@ -396,7 +422,8 @@ class _RewardScreenState extends BaseRouteState {
                               padding: EdgeInsets.only(top: 10, bottom: 10),
                               child: Text(
                                 'Unlimited Likes',
-                                style: Theme.of(context).accentTextTheme.headline4,
+                                style:
+                                    Theme.of(context).accentTextTheme.headline4,
                               ),
                             ),
                             Padding(
@@ -422,18 +449,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '12',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.headline5,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -445,7 +476,8 @@ class _RewardScreenState extends BaseRouteState {
                             clipBehavior: Clip.none,
                             children: [
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.16,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.16,
                                 padding: EdgeInsets.all(1.5),
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
@@ -455,7 +487,8 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                 ),
                                 child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.16,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.16,
                                   decoration: BoxDecoration(
                                     border: Border(
                                       bottom: BorderSide(
@@ -466,29 +499,38 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(top: 10),
                                         child: Text(
                                           '6',
-                                          style: Theme.of(context).textTheme.headline2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                         ),
                                       ),
                                       Text(
                                         'months',
-                                        style: Theme.of(context).textTheme.bodyText2,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                                        padding: const EdgeInsets.only(
+                                            top: 10, left: 10, right: 10),
                                         child: Text(
                                           '₹300.0/mo',
-                                          style: Theme.of(context).textTheme.caption,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .caption,
                                         ),
                                       ),
                                       Text(
                                         'Save 32%',
-                                        style: Theme.of(context).textTheme.caption,
+                                        style:
+                                            Theme.of(context).textTheme.caption,
                                       )
                                     ],
                                   ),
@@ -498,7 +540,8 @@ class _RewardScreenState extends BaseRouteState {
                                 top: -5,
                                 child: Container(
                                   height: 10,
-                                  width: MediaQuery.of(context).size.width * 0.15,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     gradient: LinearGradient(
@@ -525,18 +568,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '12',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.bodyText2,
+                                    style:
+                                        Theme.of(context).textTheme.bodyText2,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -563,8 +610,13 @@ class _RewardScreenState extends BaseRouteState {
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: Text(AppLocalizations.of(context).btn_continue,
-                                style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            child: Text(
+                                AppLocalizations.of(context).btn_continue,
+                                style: Theme.of(context)
+                                    .textButtonTheme
+                                    .style
+                                    .textStyle
+                                    .resolve({
                                   MaterialState.pressed,
                                 })),
                           ),
@@ -579,7 +631,8 @@ class _RewardScreenState extends BaseRouteState {
         },
       );
     } catch (e) {
-      print('Exception - rewardScreen.dart - _openPlusRewardDialog(): ' + e.toString());
+      print('Exception - rewardScreen.dart - _openPlusRewardDialog(): ' +
+          e.toString());
     }
   }
 
@@ -637,7 +690,8 @@ class _RewardScreenState extends BaseRouteState {
                               padding: EdgeInsets.only(top: 10, bottom: 10),
                               child: Text(
                                 '1 Free Boost Every Month',
-                                style: Theme.of(context).accentTextTheme.headline4,
+                                style:
+                                    Theme.of(context).accentTextTheme.headline4,
                               ),
                             ),
                           ],
@@ -656,18 +710,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '12',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.headline5,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -679,7 +737,8 @@ class _RewardScreenState extends BaseRouteState {
                             clipBehavior: Clip.none,
                             children: [
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.16,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.16,
                                 padding: EdgeInsets.all(1.5),
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
@@ -689,7 +748,8 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                 ),
                                 child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.16,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.16,
                                   decoration: BoxDecoration(
                                     border: Border(
                                       bottom: BorderSide(
@@ -700,29 +760,38 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(top: 10),
                                         child: Text(
                                           '6',
-                                          style: Theme.of(context).textTheme.headline2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                         ),
                                       ),
                                       Text(
                                         'months',
-                                        style: Theme.of(context).textTheme.bodyText2,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                                        padding: const EdgeInsets.only(
+                                            top: 10, left: 10, right: 10),
                                         child: Text(
                                           '₹300.0/mo',
-                                          style: Theme.of(context).textTheme.caption,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .caption,
                                         ),
                                       ),
                                       Text(
                                         'Save 32%',
-                                        style: Theme.of(context).textTheme.caption,
+                                        style:
+                                            Theme.of(context).textTheme.caption,
                                       )
                                     ],
                                   ),
@@ -732,7 +801,8 @@ class _RewardScreenState extends BaseRouteState {
                                 top: -5,
                                 child: Container(
                                   height: 10,
-                                  width: MediaQuery.of(context).size.width * 0.15,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     gradient: LinearGradient(
@@ -759,18 +829,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '1',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.headline5,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -797,8 +871,13 @@ class _RewardScreenState extends BaseRouteState {
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: Text(AppLocalizations.of(context).btn_continue,
-                                style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            child: Text(
+                                AppLocalizations.of(context).btn_continue,
+                                style: Theme.of(context)
+                                    .textButtonTheme
+                                    .style
+                                    .textStyle
+                                    .resolve({
                                   MaterialState.pressed,
                                 })),
                           ),
@@ -813,7 +892,8 @@ class _RewardScreenState extends BaseRouteState {
         },
       );
     } catch (e) {
-      print('Exception - rewardScreen.dart - _openGoldRewardDialog(): ' + e.toString());
+      print('Exception - rewardScreen.dart - _openGoldRewardDialog(): ' +
+          e.toString());
     }
   }
 
@@ -871,7 +951,8 @@ class _RewardScreenState extends BaseRouteState {
                               padding: EdgeInsets.only(top: 10, bottom: 10),
                               child: Text(
                                 'Unlimited Likes',
-                                style: Theme.of(context).accentTextTheme.headline4,
+                                style:
+                                    Theme.of(context).accentTextTheme.headline4,
                               ),
                             ),
                             Padding(
@@ -897,18 +978,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '12',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.headline5,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -920,7 +1005,8 @@ class _RewardScreenState extends BaseRouteState {
                             clipBehavior: Clip.none,
                             children: [
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.16,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.16,
                                 padding: EdgeInsets.all(1.5),
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
@@ -930,7 +1016,8 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                 ),
                                 child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.16,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.16,
                                   decoration: BoxDecoration(
                                     border: Border(
                                       bottom: BorderSide(
@@ -941,29 +1028,38 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(top: 10),
                                         child: Text(
                                           '6',
-                                          style: Theme.of(context).textTheme.headline2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                         ),
                                       ),
                                       Text(
                                         'months',
-                                        style: Theme.of(context).textTheme.bodyText2,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                                        padding: const EdgeInsets.only(
+                                            top: 10, left: 10, right: 10),
                                         child: Text(
                                           '₹300.0/mo',
-                                          style: Theme.of(context).textTheme.caption,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .caption,
                                         ),
                                       ),
                                       Text(
                                         'Save 32%',
-                                        style: Theme.of(context).textTheme.caption,
+                                        style:
+                                            Theme.of(context).textTheme.caption,
                                       )
                                     ],
                                   ),
@@ -973,7 +1069,8 @@ class _RewardScreenState extends BaseRouteState {
                                 top: -5,
                                 child: Container(
                                   height: 10,
-                                  width: MediaQuery.of(context).size.width * 0.15,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     gradient: LinearGradient(
@@ -1000,18 +1097,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '1',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.headline5,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -1038,8 +1139,13 @@ class _RewardScreenState extends BaseRouteState {
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: Text(AppLocalizations.of(context).btn_continue,
-                                style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            child: Text(
+                                AppLocalizations.of(context).btn_continue,
+                                style: Theme.of(context)
+                                    .textButtonTheme
+                                    .style
+                                    .textStyle
+                                    .resolve({
                                   MaterialState.pressed,
                                 })),
                           ),
@@ -1054,7 +1160,8 @@ class _RewardScreenState extends BaseRouteState {
         },
       );
     } catch (e) {
-      print('Exception - rewardScreen.dart - _openPlatinumRewardDialog(): ' + e.toString());
+      print('Exception - rewardScreen.dart - _openPlatinumRewardDialog(): ' +
+          e.toString());
     }
   }
 
@@ -1099,15 +1206,18 @@ class _RewardScreenState extends BaseRouteState {
                                   children: [
                                     Text(
                                       'Up to',
-                                      style: Theme.of(context).textTheme.bodyText2,
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
                                     ),
                                     Text(
                                       '10.5k',
-                                      style: Theme.of(context).textTheme.overline,
+                                      style:
+                                          Theme.of(context).textTheme.overline,
                                     ),
                                     Text(
                                       'Views',
-                                      style: Theme.of(context).textTheme.bodyText2,
+                                      style:
+                                          Theme.of(context).textTheme.bodyText2,
                                     ),
                                   ],
                                 ),
@@ -1117,7 +1227,8 @@ class _RewardScreenState extends BaseRouteState {
                               padding: EdgeInsets.only(top: 10, bottom: 10),
                               child: Text(
                                 'Unlimited Likes',
-                                style: Theme.of(context).accentTextTheme.headline4,
+                                style:
+                                    Theme.of(context).accentTextTheme.headline4,
                               ),
                             ),
                             Padding(
@@ -1143,18 +1254,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '12',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.headline5,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -1166,7 +1281,8 @@ class _RewardScreenState extends BaseRouteState {
                             clipBehavior: Clip.none,
                             children: [
                               Container(
-                                height: MediaQuery.of(context).size.height * 0.16,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.16,
                                 padding: EdgeInsets.all(1.5),
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
@@ -1176,7 +1292,8 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                 ),
                                 child: Container(
-                                  height: MediaQuery.of(context).size.height * 0.16,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.16,
                                   decoration: BoxDecoration(
                                     border: Border(
                                       bottom: BorderSide(
@@ -1187,29 +1304,38 @@ class _RewardScreenState extends BaseRouteState {
                                   ),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(top: 10),
                                         child: Text(
                                           '6',
-                                          style: Theme.of(context).textTheme.headline2,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline2,
                                         ),
                                       ),
                                       Text(
                                         'months',
-                                        style: Theme.of(context).textTheme.bodyText2,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                                        padding: const EdgeInsets.only(
+                                            top: 10, left: 10, right: 10),
                                         child: Text(
                                           '₹300.0/mo',
-                                          style: Theme.of(context).textTheme.caption,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .caption,
                                         ),
                                       ),
                                       Text(
                                         'Save 32%',
-                                        style: Theme.of(context).textTheme.caption,
+                                        style:
+                                            Theme.of(context).textTheme.caption,
                                       )
                                     ],
                                   ),
@@ -1219,7 +1345,8 @@ class _RewardScreenState extends BaseRouteState {
                                 top: -5,
                                 child: Container(
                                   height: 10,
-                                  width: MediaQuery.of(context).size.width * 0.15,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.15,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     gradient: LinearGradient(
@@ -1246,18 +1373,22 @@ class _RewardScreenState extends BaseRouteState {
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '12',
-                                      style: Theme.of(context).textTheme.headline3,
+                                      style:
+                                          Theme.of(context).textTheme.headline3,
                                     ),
                                   ),
                                   Text(
                                     'months',
-                                    style: Theme.of(context).textTheme.headline5,
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Text(
                                       '₹255.00/mo',
-                                      style: Theme.of(context).primaryTextTheme.caption,
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption,
                                     ),
                                   ),
                                 ],
@@ -1284,8 +1415,13 @@ class _RewardScreenState extends BaseRouteState {
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: Text(AppLocalizations.of(context).btn_boost_me,
-                                style: Theme.of(context).textButtonTheme.style.textStyle.resolve({
+                            child: Text(
+                                AppLocalizations.of(context).btn_boost_me,
+                                style: Theme.of(context)
+                                    .textButtonTheme
+                                    .style
+                                    .textStyle
+                                    .resolve({
                                   MaterialState.pressed,
                                 })),
                           ),
@@ -1300,7 +1436,8 @@ class _RewardScreenState extends BaseRouteState {
         },
       );
     } catch (e) {
-      print('Exception - rewardScreen.dart - _openBoostDialog(): ' + e.toString());
+      print('Exception - rewardScreen.dart - _openBoostDialog(): ' +
+          e.toString());
     }
   }
 }
