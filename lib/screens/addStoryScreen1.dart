@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -51,8 +52,6 @@ class _AddStoryScreenState extends BaseRouteState {
 
   dynamic authy;
   dynamic appStaty;
-
-  List<Widget> _widgetList = [];
 
   List<dynamic> _recommendations = [];
 
@@ -98,17 +97,50 @@ class _AddStoryScreenState extends BaseRouteState {
                       ),
                     )
                   : _recommendations.length == 0 ||
-                          _current >= _recommendations.length ||
-                          _widgetList.length == 0
+                          _current >= _recommendations.length
                       ? Center(
                           child: Padding(
                             padding: g.isRTL
                                 ? const EdgeInsets.only(right: 20, top: 10)
                                 : const EdgeInsets.only(left: 20, top: 10),
-                            child: const Text('Trying to find more matches!',
-                                style: TextStyle(
-                                    color: Color.fromARGB(183, 24, 5, 5),
-                                    fontWeight: FontWeight.normal)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  height: 100,
+                                  child: LoadingIndicator(
+                                      indicatorType: Indicator.orbit,
+
+                                      /// Required, The loading type of the widget
+                                      colors: const [
+                                        Color.fromARGB(255, 214, 27, 27)
+                                      ],
+
+                                      /// Optional, The color collections
+                                      strokeWidth: 2,
+
+                                      /// Optional, The stroke of the line, only applicable to widget which contains line
+                                      backgroundColor: Colors.transparent,
+
+                                      /// Optional, Background of the widget
+                                      pathBackgroundColor: Colors.black
+
+                                      /// Optional, the stroke backgroundColor
+                                      ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('Trying to',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(183, 24, 5, 5),
+                                        fontWeight: FontWeight.normal)),
+                                Text('find more matches!',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(183, 24, 5, 5),
+                                        fontWeight: FontWeight.normal)),
+                              ],
+                            ),
                           ),
                         )
                       : Center(
@@ -450,54 +482,6 @@ class _AddStoryScreenState extends BaseRouteState {
     getRecommendations(true, appState, auth);
   }
 
-  _widgets({
-    int current = 0,
-  }) {
-    for (int i = current; i < _recommendations.length; i++) {
-      _widgetList.add(
-        Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: Colors.white,
-                ),
-                color: Colors.black,
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  '${_recommendations[i]['avatars'][0]['url']}',
-                  height: MediaQuery.of(context).size.height * 0.70,
-                  width: MediaQuery.of(context).size.width * 0.75,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.70 - 1.5,
-              width: MediaQuery.of(context).size.width * 0.75 - 1.5,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.black, Colors.transparent],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.center,
-                ),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: Colors.transparent,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
-  }
-
   PreferredSizeWidget _appBarWidget() {
     return PreferredSize(
       preferredSize: Size.fromHeight(70),
@@ -592,7 +576,6 @@ class _AddStoryScreenState extends BaseRouteState {
           setState(() {
             _recommendations = response.data;
             _current = 0;
-            _widgets(current: toStart);
           });
 
           print('recs2222222222222222');

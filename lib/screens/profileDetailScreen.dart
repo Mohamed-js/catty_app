@@ -8,6 +8,7 @@ import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -365,16 +366,34 @@ class _ProfileDetailScreenState extends BaseRouteState {
                                       btnIsDisabled = false;
                                     });
                                   },
-                            child: Text(
-                              'Save',
-                              style: Theme.of(context)
-                                  .textButtonTheme
-                                  .style
-                                  .textStyle
-                                  .resolve({
-                                MaterialState.pressed,
-                              }),
-                            ),
+                            child: btnIsDisabled
+                                ? LoadingIndicator(
+                                    indicatorType: Indicator.ballPulse,
+
+                                    /// Required, The loading type of the widget
+                                    colors: const [Colors.white],
+
+                                    /// Optional, The color collections
+                                    strokeWidth: 2,
+
+                                    /// Optional, The stroke of the line, only applicable to widget which contains line
+                                    backgroundColor: Colors.transparent,
+
+                                    /// Optional, Background of the widget
+                                    pathBackgroundColor: Colors.black
+
+                                    /// Optional, the stroke backgroundColor
+                                    )
+                                : Text(
+                                    'Save',
+                                    style: Theme.of(context)
+                                        .textButtonTheme
+                                        .style
+                                        .textStyle
+                                        .resolve({
+                                      MaterialState.pressed,
+                                    }),
+                                  ),
                           ),
                         ),
                       )
