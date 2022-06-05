@@ -180,7 +180,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                           // ),
                                           // TINDERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR === start
                                           Container(
-                                            child: _recommendations.length > 1
+                                            child: _recommendations.length > 0
                                                 ? new TinderSwapCard(
                                                     swipeUp: false,
                                                     swipeDown: false,
