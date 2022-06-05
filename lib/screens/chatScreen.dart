@@ -395,8 +395,6 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   void dispose() {
     super.dispose();
-    final appState = Provider.of<AppState>(context, listen: false);
-    appState.getChats();
   }
 
   void _tabControllerListener() {

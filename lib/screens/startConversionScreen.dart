@@ -2,6 +2,7 @@ import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/screens/chatScreen.dart';
 import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -130,11 +131,28 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 15),
-                            child: Text(
-                              "Start Conversation Now!",
-                              textAlign: TextAlign.center,
-                              style:
-                                  Theme.of(context).primaryTextTheme.subtitle1,
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              overlayColor:
+                                  MaterialStateProperty.all(Colors.transparent),
+                              highlightColor: Colors.transparent,
+                              onTap: () {
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BottomNavigationWidgetLight(
+                                              currentIndex: 2,
+                                            )),
+                                    ModalRoute.withName('/'));
+                              },
+                              child: Text(
+                                'Start conversation now!',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
                             ),
                           ),
                         ],

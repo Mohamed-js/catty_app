@@ -341,7 +341,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                                                     .push(MaterialPageRoute(
                                                                         builder:
                                                                             (context) =>
-                                                                                StartConversionScreen(_recommendations[_current])));
+                                                                                StartConversionScreen(_recommendations[index])));
                                                               });
                                                             }
                                                           } else {
@@ -504,9 +504,9 @@ class _AddStoryScreenState extends BaseRouteState {
             ModalRoute.withName('/'));
       });
     }
-    super.initState();
 
     getRecommendations(true, appState, auth);
+    super.initState();
   }
 
   PreferredSizeWidget _appBarWidget() {
