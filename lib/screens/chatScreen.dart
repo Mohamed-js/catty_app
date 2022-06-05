@@ -9,6 +9,7 @@ import 'package:PetsMating/widgets/drawerMenuWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:loading_indicator/loading_indicator.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:dio/dio.dart' as Dio;
@@ -63,7 +64,28 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             endDrawer: DrawerMenuWidget(),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             body: _chat.isEmpty || _chat['messages'].length < 1
-                ? Text('loading...')
+                ? Center(
+                    child: Container(
+                      height: 50,
+                      child: LoadingIndicator(
+                          indicatorType: Indicator.lineScalePulseOut,
+
+                          /// Required, The loading type of the widget
+                          colors: const [Color.fromARGB(255, 214, 27, 27)],
+
+                          /// Optional, The color collections
+                          strokeWidth: 2,
+
+                          /// Optional, The stroke of the line, only applicable to widget which contains line
+                          backgroundColor: Colors.transparent,
+
+                          /// Optional, Background of the widget
+                          pathBackgroundColor: Colors.black
+
+                          /// Optional, the stroke backgroundColor
+                          ),
+                    ),
+                  )
                 : Center(
                     child: Container(
                       child: Column(
