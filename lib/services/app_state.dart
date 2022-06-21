@@ -12,10 +12,13 @@ class AppState extends ChangeNotifier {
   Map _user;
   Map get current_user => _user;
 
+  int _animalId;
+  int get current_animal_id => _animalId;
+
   Map _filter_options = {
     'no_vaccination_needed': true,
     'min_age': 0,
-    'max_age': 100,
+    'max_age': 20,
     'same_breed': false,
   };
   Map get filter_options => _filter_options;
@@ -35,13 +38,35 @@ class AppState extends ChangeNotifier {
   Map<dynamic, dynamic> _quota = {};
   Map<dynamic, dynamic> get quota => _quota;
 
+  changeFilters(
+    noVaccinationNeeded,
+    sameBreed,
+    minAge,
+    maxAge,
+  ) async {
+    final prefs = await SharedPreferences.getInstance();
+    _filter_options = {
+      'no_vaccination_needed': noVaccinationNeeded,
+      'min_age': minAge,
+      'max_age': maxAge,
+      'same_breed': sameBreed,
+    };
+
+    print(noVaccinationNeeded.runtimeType);
+
+    prefs.setBool('i-pet-filter-vaccinated', noVaccinationNeeded);
+    prefs.setBool('i-pet-filter-same-breed', sameBreed);
+    prefs.setDouble('i-pet-filter-min-age', minAge);
+    prefs.setDouble('i-pet-filter-max-age', maxAge);
+    notifyListeners();
+  }
+
   Future getFilterOptions() async {
     final prefs = await SharedPreferences.getInstance();
-
     bool no_vaccination_needed = prefs.getBool('i-pet-filter-vaccinated');
     bool same_breed = prefs.getBool('i-pet-filter-same-breed');
-    int min_age = prefs.getInt('i-pet-filter-min-age');
-    int max_age = prefs.getInt('i-pet-filter-max-age');
+    double min_age = prefs.getDouble('i-pet-filter-min-age');
+    double max_age = prefs.getDouble('i-pet-filter-max-age');
 
     if (same_breed != null) {
       _filter_options['same_breed'] = same_breed;
@@ -71,6 +96,14 @@ class AppState extends ChangeNotifier {
     } catch (e) {
       print(e);
     }
+  }
+
+  readChat(chatId) async {
+    // for (var message in _chats[chatId]['messages']) {
+    //   message['seen'] = true;
+    // }
+    _chats[chatId]['unread_messages_count'] = 0;
+    notifyListeners();
   }
 
   getNotifications() async {
@@ -118,5 +151,32 @@ class AppState extends ChangeNotifier {
     } catch (e) {
       print(e);
     }
+  }
+
+  void setCurrentAnimal(user, idToChange) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (idToChange != null) {
+      print(idToChange);
+      _animalId = idToChange;
+      prefs.setInt('i-pet-current-animal-id', idToChange);
+    } else {
+      int id = prefs.getInt('i-pet-current-animal-id');
+
+      if (id != null && user['animals'].isNotEmpty) {
+        bool exists = false;
+        for (var animal in user['animals']) {
+          if (animal['id'] == id) {
+            exists = true;
+          }
+        }
+        if (exists) {
+          _animalId = id;
+        } else {
+          prefs.setInt('i-pet-current-animal-id', user['animals'][0]['id']);
+          _animalId = user['animals'][0]['id'];
+        }
+      }
+    }
+    notifyListeners();
   }
 }

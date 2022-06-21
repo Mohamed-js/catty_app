@@ -210,21 +210,177 @@ class _AddStoryScreenState extends BaseRouteState {
                                                                 .height *
                                                             .55,
                                                     cardBuilder:
-                                                        (context, index) =>
-                                                            Card(
-                                                      elevation: 0,
-                                                      borderOnForeground: false,
-                                                      color: Colors.transparent,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(20.0),
-                                                        child: Image.network(
-                                                          '${_recommendations[index]['avatars'][0]['url']}',
-                                                          fit: BoxFit.cover,
+                                                        (context, index) {
+                                                      int age = DateTime.now()
+                                                              .year -
+                                                          DateTime.parse(
+                                                                  _recommendations[
+                                                                          index]
+                                                                      ['dob'])
+                                                              .year;
+                                                      int month1 =
+                                                          DateTime.now().month;
+                                                      int month2 = DateTime.parse(
+                                                              _recommendations[
+                                                                  index]['dob'])
+                                                          .month;
+                                                      if (month2 > month1) {
+                                                        age--;
+                                                      } else if (month1 ==
+                                                          month2) {
+                                                        int day1 =
+                                                            DateTime.now().day;
+                                                        int day2 = DateTime.parse(
+                                                                _recommendations[
+                                                                        index]
+                                                                    ['dob'])
+                                                            .day;
+                                                        if (day2 > day1) {
+                                                          age--;
+                                                        }
+                                                      }
+                                                      return Card(
+                                                        elevation: 0,
+                                                        borderOnForeground:
+                                                            false,
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: Stack(
+                                                          children: [
+                                                            Positioned.fill(
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  '${_recommendations[index]['avatars'][0]['url']}',
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Positioned(
+                                                                bottom: 0,
+                                                                child:
+                                                                    Container(
+                                                                  width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width *
+                                                                      .7,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    gradient:
+                                                                        LinearGradient(
+                                                                      begin: Alignment
+                                                                          .centerRight,
+                                                                      end: Alignment
+                                                                          .centerLeft,
+                                                                      colors: [
+                                                                        Color.fromARGB(
+                                                                            0,
+                                                                            17,
+                                                                            17,
+                                                                            17),
+                                                                        Color.fromARGB(
+                                                                            113,
+                                                                            17,
+                                                                            17,
+                                                                            17),
+                                                                        Color.fromARGB(
+                                                                            179,
+                                                                            17,
+                                                                            17,
+                                                                            17),
+                                                                        Color.fromARGB(
+                                                                            200,
+                                                                            17,
+                                                                            17,
+                                                                            17),
+                                                                        Color.fromARGB(
+                                                                            221,
+                                                                            17,
+                                                                            17,
+                                                                            17),
+                                                                      ],
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .only(
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              20),
+                                                                      // bottomRight:
+                                                                      //     Radius.circular(
+                                                                      //         20)
+                                                                    ),
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
+                                                                        left:
+                                                                            20.0,
+                                                                        bottom:
+                                                                            10),
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Container(
+                                                                          padding:
+                                                                              EdgeInsets.all(2),
+                                                                          // decoration:
+                                                                          //     BoxDecoration(color: Colors.green),
+                                                                          child: FittedBox(
+                                                                              fit: BoxFit.fill,
+                                                                              alignment: Alignment.center,
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  Text(
+                                                                                    "${_recommendations[index]['name'][0].toUpperCase()}${_recommendations[index]['name'].substring(1)}",
+                                                                                    style: TextStyle(color: Colors.white, fontSize: 30),
+                                                                                  ),
+                                                                                  SizedBox(
+                                                                                    width: 5,
+                                                                                  ),
+                                                                                  _recommendations[index]['gender'] == "Male"
+                                                                                      ? Icon(
+                                                                                          Icons.male,
+                                                                                          color: Colors.pink,
+                                                                                          size: 20.0,
+                                                                                        )
+                                                                                      : Icon(
+                                                                                          Icons.female,
+                                                                                          color: Colors.pink,
+                                                                                          size: 20.0,
+                                                                                        ),
+                                                                                ],
+                                                                              )),
+                                                                        ),
+                                                                        Text(
+                                                                          age == 0
+                                                                              ? "less than a year"
+                                                                              : "$age years",
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Colors.green,
+                                                                            // fontSize: 30
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ))
+                                                          ],
                                                         ),
-                                                      ),
-                                                    )
+                                                      );
+                                                    }
                                                     // )
                                                     ,
                                                     cardController:
@@ -266,9 +422,8 @@ class _AddStoryScreenState extends BaseRouteState {
                                                                         authy.current_user[
                                                                             'id'],
                                                                     'disliker_animal_id':
-                                                                        authy.current_user['animals'][0]
-                                                                            [
-                                                                            'id'],
+                                                                        appStaty
+                                                                            .current_animal_id,
                                                                     'disliked_animal_id':
                                                                         _recommendations[_current]
                                                                             [
@@ -306,9 +461,8 @@ class _AddStoryScreenState extends BaseRouteState {
                                                                             [
                                                                             'user_id'],
                                                                     'liker_animal_id':
-                                                                        auth.current_user['animals'][0]
-                                                                            [
-                                                                            'id'],
+                                                                        appStaty
+                                                                            .current_animal_id,
                                                                     'liked_animal_id':
                                                                         _recommendations[_current]
                                                                             [
@@ -548,20 +702,14 @@ class _AddStoryScreenState extends BaseRouteState {
                       Container(
                           child: Image.asset('assets/images/pets_logo2.png'),
                           width: MediaQuery.of(context).size.width * 0.5),
-                      // IconButton(
-                      //   icon: Icon(Icons.logout),
-                      //   color: Color.fromARGB(510, 46, 49, 146),
-                      //   onPressed: () async {
-                      //     final auth =
-                      //         Provider.of<Auth>(context, listen: false);
-                      //     auth.logout();
-                      //     Navigator.of(context).push(MaterialPageRoute(
-                      //         builder: (context) => SplashScreen()));
-                      //   },
-                      // ),
-                      SizedBox(
-                        width: 35,
-                      )
+                      IconButton(
+                        icon: Icon(Icons.filter_alt),
+                        color: Color.fromARGB(510, 46, 49, 146),
+                        onPressed: () async {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => FilterOptionsScreen()));
+                        },
+                      ),
                     ],
                   ),
                 );
@@ -581,36 +729,29 @@ class _AddStoryScreenState extends BaseRouteState {
     await appState.getFilterOptions();
     final options = appState.filter_options;
 
-    try {
-      Dio.Response response;
-      if (auth.current_user['animals'].length > 0) {
-        int animalId = prefs.getInt('i-pet-current-animal-id');
-        try {
-          if (animalId != null) {
-            // TODO -- make sure the existing one is one of the current user's animals!
-            response = await dio().get(
-                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
-          } else {
-            response = await dio().get(
-                '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
-            prefs.setInt('i-pet-current-animal-id',
-                auth.current_user['animals'][0]['id']);
-          }
-          print('starttttttttttttttttttttttttttt recs');
-          print(_recommendations);
-          print('recs111111111111');
-          int toStart = _recommendations.length;
-          setState(() {
-            _recommendations = response.data;
-            _current = 0;
-          });
+    print("options['same_breed']");
+    print(options['same_breed']);
+    print("options['no_vaccination_needed']");
+    print(options['no_vaccination_needed']);
+    print("options['min_age']");
+    print(options['min_age']);
+    print("options['max_age']");
+    print(options['max_age']);
+    print("firstLoad");
+    print(firstLoad);
+    print("appState.current_animal_id");
+    print(appState.current_animal_id);
 
-          print('recs2222222222222222');
-          print(response.data);
-        } catch (e) {
-          print(e);
-        }
-      }
+    Dio.Response response;
+    try {
+      response = await dio().get(
+          '/recommendations?id=${appState.current_animal_id}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+
+      // int toStart = _recommendations.length;
+      setState(() {
+        _recommendations = response.data;
+        _current = 0;
+      });
     } catch (e) {
       print(e);
     }

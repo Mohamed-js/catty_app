@@ -1,8 +1,12 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:select_form_field/select_form_field.dart';
 
 class FilterOptionsScreen extends BaseRoute {
   FilterOptionsScreen({a, o}) : super(a: a, o: o, r: 'FilterOptionsScreen');
@@ -11,13 +15,43 @@ class FilterOptionsScreen extends BaseRoute {
 }
 
 class _FilterOptionsScreenState extends BaseRouteState {
-  TextEditingController _cLocation = new TextEditingController();
-  double values = 0;
-  String _ratingController = "English, French, Bengali";
-  String _here = 'Make New Friends';
-  String _want = 'Women';
-  String _ages = "20-35";
   var _scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController _noVaccinationNeeded = TextEditingController();
+  TextEditingController _sameBreed = TextEditingController();
+
+  dynamic appStaty;
+
+  final List<Map<String, dynamic>> _breedOpts = [
+    {
+      'value': true,
+      'label': "the same breed.",
+      // 'icon': Icon(Icons.check),
+      'textStyle': TextStyle(color: Color.fromARGB(255, 0, 25, 107)),
+    },
+    {
+      'value': false,
+      'label': "any of it's type.",
+      // 'icon': Icon(Icons.close),
+      'textStyle': TextStyle(color: Color.fromARGB(255, 0, 25, 107)),
+    },
+  ];
+
+  final List<Map<String, dynamic>> _vaccinationOpts = [
+    {
+      'value': true,
+      'label': "No.",
+      // 'icon': Icon(Icons.check),
+      'textStyle': TextStyle(color: Color.fromARGB(255, 0, 25, 107)),
+    },
+    {
+      'value': false,
+      'label': "Yes.",
+      // 'icon': Icon(Icons.close),
+      'textStyle': TextStyle(color: Color.fromARGB(255, 0, 25, 107)),
+    },
+  ];
+
+  RangeValues _currentRangeValues;
 
   _FilterOptionsScreenState() : super();
 
@@ -60,428 +94,72 @@ class _FilterOptionsScreenState extends BaseRouteState {
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: Text(
-                        AppLocalizations.of(context).lbl_here_to,
+                        "Search only among",
                         style: Theme.of(context).accentTextTheme.headline5,
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                      padding: EdgeInsets.all(1.2),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: g.isDarkModeEnable
-                              ? Colors.black
-                              : Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        height: 55,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable
-                                ? Color(0xFF03000C)
-                                : Theme.of(context).scaffoldBackgroundColor,
-                            icon: Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.expand_more,
-                                color: Theme.of(context).iconTheme.color,
-                              ),
-                            ),
-                            value: _here,
-                            items: ['Make New Friends', 'Matches']
-                                .map((label) => DropdownMenuItem(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Text(
-                                          label.toString(),
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .subtitle2,
-                                        ),
-                                      ),
-                                      value: label,
-                                    ))
-                                .toList(),
-                            hint: Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(
-                                _here.isNotEmpty ? _here : 'Make New Friends',
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle2,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _here = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
+                    SelectFormField(
+                      type: SelectFormFieldType.dropdown, // or can be dialog
+                      // initialValue:
+                      //     appStaty.filter_options['same_breed'].toString(),
+                      icon: Icon(Icons.search),
+                      items: _breedOpts,
+                      // onChanged: (val) => setState(
+                      //     () => {_sameBreed = val == 'true' ? true : false}),
+                      controller: _sameBreed,
+                      onSaved: (val) => print(val),
+                      style: Theme.of(context).primaryTextTheme.subtitle2,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: Text(
-                        AppLocalizations.of(context).lbl_want_to_meet,
+                        "Vaccination is required ?",
                         style: Theme.of(context).accentTextTheme.headline5,
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                      padding: EdgeInsets.all(1.2),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: g.isDarkModeEnable
-                              ? Colors.black
-                              : Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        height: 55,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable
-                                ? Color(0xFF03000C)
-                                : Theme.of(context).scaffoldBackgroundColor,
-                            icon: Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Icon(Icons.expand_more,
-                                  color: Theme.of(context).iconTheme.color),
-                            ),
-                            value: _want,
-                            items: ['Women', 'Men']
-                                .map((label) => DropdownMenuItem(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Text(
-                                          label.toString(),
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .subtitle2,
-                                        ),
-                                      ),
-                                      value: label,
-                                    ))
-                                .toList(),
-                            hint: Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(_want.isEmpty ? 'Women' : _want),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _want = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
+                    SelectFormField(
+                      type: SelectFormFieldType.dropdown, // or can be dialog
+                      // initialValue: appStaty
+                      //     .filter_options['no_vaccination_needed']
+                      //     .toString(),
+                      controller: _noVaccinationNeeded,
+                      icon: Icon(Icons.vaccines),
+                      items: _vaccinationOpts,
+                      // onChanged: (val) => setState(() => {
+                      //       _noVaccinationNeeded = val == 'true' ? true : false
+                      //     }),
+                      onSaved: (val) => print(val),
+                      style: Theme.of(context).primaryTextTheme.subtitle2,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
-                      child: Text(
-                        AppLocalizations.of(context).lbl_prefer_age_range,
-                        style: Theme.of(context).accentTextTheme.headline5,
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                      padding: EdgeInsets.all(1.2),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: g.isDarkModeEnable
-                              ? Colors.black
-                              : Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        height: 55,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable
-                                ? Color(0xFF03000C)
-                                : Theme.of(context).scaffoldBackgroundColor,
-                            icon: Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.expand_more,
-                                color: Theme.of(context).iconTheme.color,
-                              ),
-                            ),
-                            value: _ages,
-                            items: ['20-35', '18-12']
-                                .map((label) => DropdownMenuItem(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Text(
-                                          label.toString(),
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .subtitle2,
-                                        ),
-                                      ),
-                                      value: label,
-                                    ))
-                                .toList(),
-                            hint: Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(
-                                _ages.isNotEmpty ? _ages : '20-35',
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle2,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _ages = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Text(
-                        AppLocalizations.of(context).lbl_prefer_language,
-                        style: Theme.of(context).accentTextTheme.headline5,
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                      padding: EdgeInsets.all(1.2),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: g.isDarkModeEnable
-                              ? Colors.black
-                              : Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        height: 55,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: DropdownButtonFormField<String>(
-                            dropdownColor: g.isDarkModeEnable
-                                ? Color(0xFF03000C)
-                                : Theme.of(context).scaffoldBackgroundColor,
-                            icon: Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Icon(
-                                Icons.expand_more,
-                                color: Theme.of(context).iconTheme.color,
-                              ),
-                            ),
-                            value: _ratingController,
-                            items: [
-                              'English, French, Bengali',
-                              'Hindi, Gujarati, Marathi'
-                            ]
-                                .map((label) => DropdownMenuItem(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Text(
-                                          label.toString(),
-                                          style: Theme.of(context)
-                                              .primaryTextTheme
-                                              .subtitle2,
-                                        ),
-                                      ),
-                                      value: label,
-                                    ))
-                                .toList(),
-                            hint: Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(
-                                _ratingController.isNotEmpty
-                                    ? _ratingController
-                                    : 'English, French, Bengali',
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle2,
-                              ),
-                            ),
-                            onChanged: (value) {
-                              setState(() {
-                                _ratingController = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Text(
-                        AppLocalizations.of(context).lbl_location,
-                        style: Theme.of(context).accentTextTheme.headline5,
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10.0),
-                      padding: EdgeInsets.all(1.2),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                          decoration: BoxDecoration(
-                            color: g.isDarkModeEnable
-                                ? Colors.black
-                                : Theme.of(context).scaffoldBackgroundColor,
-                            borderRadius: BorderRadius.circular(35),
-                          ),
-                          height: 55,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
-                            child: TextFormField(
-                              textAlign: TextAlign.start,
-                              controller: _cLocation,
-                              decoration: InputDecoration(
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.only(right: 20),
-                                  child: Icon(
-                                    Icons.place,
-                                    color: Theme.of(context).iconTheme.color,
-                                  ),
-                                ),
-                                contentPadding:
-                                    EdgeInsets.only(left: 20, top: 15),
-                                hintStyle: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle2,
-                                hintText: 'Florida, US',
-                              ),
-                            ),
-                          )),
-                    ),
-                    g.isDarkModeEnable
-                        ? Padding(
-                            padding: const EdgeInsets.only(top: 20.0),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_distance_range,
-                              style:
-                                  Theme.of(context).accentTextTheme.headline5,
-                            ),
-                          )
-                        : Padding(
-                            padding: const EdgeInsets.only(top: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  AppLocalizations.of(context)
-                                      .lbl_distance_range,
-                                  style: Theme.of(context)
-                                      .accentTextTheme
-                                      .headline5,
-                                ),
-                                Text(
-                                  '0 - ${values.round()} km',
-                                  style: Theme.of(context)
-                                      .accentTextTheme
-                                      .headline6,
-                                ),
-                              ],
-                            ),
-                          ),
-                    g.isDarkModeEnable
-                        ? Padding(
-                            padding: EdgeInsets.only(top: 10),
-                            child: Text(
-                              '0 - ${values.round()} km',
-                              style:
-                                  Theme.of(context).primaryTextTheme.subtitle2,
-                            ),
-                          )
-                        : SizedBox(),
-                    Slider(
-                        activeColor: Color.fromRGBO(246, 74, 105, 1),
-                        inactiveColor: Color.fromRGBO(35, 4, 254, 0.3),
-                        min: 0,
-                        max: 100,
-                        value: values,
-                        onChanged: (value) {
-                          setState(() {
-                            values = value;
-                          });
-                        }),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Text(
-                              AppLocalizations.of(context)
-                                  .lbl_advance_filter_options,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
-                            ),
+                          Text(
+                            "Age range: ",
+                            style: Theme.of(context).accentTextTheme.headline5,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 6),
-                            child: Icon(
-                              FontAwesomeIcons.longArrowAltRight,
-                            ),
-                          )
+                          Text(
+                            "${_currentRangeValues.start.round().toString()} - ${_currentRangeValues.end.round().toString()}",
+                            style: Theme.of(context).accentTextTheme.headline5,
+                          ),
                         ],
                       ),
+                    ),
+                    RangeSlider(
+                      values: _currentRangeValues,
+                      max: 25,
+                      divisions: 10,
+                      labels: RangeLabels(
+                        _currentRangeValues.start.round().toString(),
+                        _currentRangeValues.end.round().toString(),
+                      ),
+                      onChanged: (RangeValues values) {
+                        setState(() {
+                          _currentRangeValues = values;
+                        });
+                      },
                     ),
                     Align(
                       alignment: Alignment.center,
@@ -498,8 +176,20 @@ class _FilterOptionsScreenState extends BaseRouteState {
                           ),
                         ),
                         child: TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
+                          onPressed: () async {
+                            await appStaty.changeFilters(
+                              _noVaccinationNeeded.text == "true"
+                                  ? true
+                                  : false,
+                              _sameBreed.text == "true" ? true : false,
+                              _currentRangeValues.start,
+                              _currentRangeValues.end,
+                            );
+
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    BottomNavigationWidgetLight(
+                                        currentIndex: 0)));
                           },
                           child: Text(
                             AppLocalizations.of(context).btn_apply_filters,
@@ -524,6 +214,22 @@ class _FilterOptionsScreenState extends BaseRouteState {
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+    final appState = Provider.of<AppState>(context, listen: false);
+    print(appState.filter_options);
+    setState(() {
+      appStaty = Provider.of<AppState>(context, listen: false);
+      _noVaccinationNeeded.text =
+          appState.filter_options['no_vaccination_needed'].toString();
+      _sameBreed.text = appState.filter_options['same_breed'].toString();
+      _currentRangeValues = RangeValues(
+          appState.filter_options['min_age'].toDouble(),
+          appState.filter_options['max_age'].toDouble());
+    });
+  }
+
   PreferredSizeWidget _appBarWidget() {
     return PreferredSize(
       preferredSize: Size.fromHeight(60),
@@ -539,10 +245,10 @@ class _FilterOptionsScreenState extends BaseRouteState {
                   Navigator.of(context).pop();
                 },
               ),
-              trailing: Icon(
-                Icons.refresh,
-                color: Theme.of(context).iconTheme.color,
-              ),
+              // trailing: Icon(
+              //   Icons.refresh,
+              //   color: Theme.of(context).iconTheme.color,
+              // ),
             ),
           ),
         ],

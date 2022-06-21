@@ -482,24 +482,62 @@ class _MyProfileScreenState extends BaseRouteState {
                               //     ],
                               //   ),
                               // ),
-                              Padding(
-                                padding: g.isRTL
-                                    ? const EdgeInsets.only(right: 20, top: 20)
-                                    : const EdgeInsets.only(left: 20, top: 20),
-                                child: Text(
-                                  "Pets",
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .headline3,
-                                ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: g.isRTL
+                                        ? const EdgeInsets.only(right: 20)
+                                        : const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      "Pets",
+                                      style: Theme.of(context)
+                                          .primaryTextTheme
+                                          .headline3,
+                                    ),
+                                  ),
+                                  auth.current_user['animals'].length < 3 &&
+                                          auth.current_user['animals']
+                                              .isNotEmpty
+                                      ? Container(
+                                          padding: g.isRTL
+                                              ? const EdgeInsets.only(right: 5)
+                                              : const EdgeInsets.only(left: 5),
+                                          width: 35,
+                                          height: 30,
+                                          child: TextButton(
+                                            style: TextButton.styleFrom(
+                                                textStyle: const TextStyle(
+                                                    fontSize: 12),
+                                                backgroundColor: Color.fromARGB(
+                                                    255, 36, 2, 100)),
+                                            onPressed: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          NewAnimalScreen(
+                                                            a: widget.analytics,
+                                                            o: widget.observer,
+                                                          )));
+                                            },
+                                            child: const Text('+',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ),
+                                        )
+                                      : SizedBox(height: 0, width: 0),
+                                ],
                               ),
                               auth.current_user['animals'].isEmpty
                                   ? Padding(
                                       padding: g.isRTL
-                                          ? const EdgeInsets.only(
-                                              right: 20, top: 5)
-                                          : const EdgeInsets.only(
-                                              left: 20, top: 5),
+                                          ? const EdgeInsets.only(right: 20)
+                                          : const EdgeInsets.only(left: 20),
                                       child: TextButton(
                                         style: TextButton.styleFrom(
                                             textStyle:
@@ -523,7 +561,7 @@ class _MyProfileScreenState extends BaseRouteState {
                                     )
                                   : Padding(
                                       padding:
-                                          const EdgeInsets.only(bottom: 10.0),
+                                          const EdgeInsets.only(bottom: 5.0),
                                       child: Container(
                                         height: (MediaQuery.of(context)
                                                 .size
@@ -549,56 +587,122 @@ class _MyProfileScreenState extends BaseRouteState {
                                                   .current_user['animals']
                                                   .length,
                                               itemBuilder: (ctx, index) {
-                                                return TextButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context)
-                                                        .push(MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          MyAnimalProfileScreen(
-                                                        auth.current_user[
-                                                                'animals']
-                                                            [index]['id'],
-                                                      ),
-                                                    ));
-                                                  },
-                                                  child: Container(
-                                                    alignment: Alignment.center,
-                                                    margin: EdgeInsets.only(
-                                                        top: 2, left: 2),
-                                                    height: 100,
-                                                    decoration: BoxDecoration(
+                                                return Container(
+                                                  decoration: BoxDecoration(
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  23)),
                                                       border: Border.all(
-                                                          color: Colors.white),
-                                                      color: g.isDarkModeEnable
-                                                          ? Color(0xFF1D0529)
-                                                          : Colors.white54,
-                                                    ),
-                                                    child: GridTile(
-                                                      child: ClipRRect(
+                                                          width: 5,
+                                                          color: auth.current_user['animals']
+                                                                          [index]
+                                                                      ['id'] ==
+                                                                  appState
+                                                                      .current_animal_id
+                                                              ? Color.fromARGB(
+                                                                  213,
+                                                                  61,
+                                                                  2,
+                                                                  109)
+                                                              : Color(
+                                                                  0xFFEEFCFF))),
+                                                  child: PopupMenuButton(
+                                                    itemBuilder: (context) => [
+                                                      PopupMenuItem(
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            Navigator.of(
+                                                                    context)
+                                                                .push(MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        MyAnimalProfileScreen(auth.current_user['animals'][index]
+                                                                            [
+                                                                            'id'])));
+                                                          },
+                                                          child: Text(
+                                                            "View animal",
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .primaryTextTheme
+                                                                .subtitle2,
+                                                          ),
+                                                        ),
+                                                        onTap: () => {},
+                                                      ),
+                                                      PopupMenuItem(
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            appState.setCurrentAnimal(
+                                                                auth
+                                                                    .current_user,
+                                                                auth.current_user[
+                                                                        'animals']
+                                                                    [
+                                                                    index]['id']);
+                                                            Navigator.of(
+                                                                    context)
+                                                                .push(MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        BottomNavigationWidgetLight(
+                                                                            currentIndex:
+                                                                                0)));
+                                                          },
+                                                          child: Text(
+                                                            "Set as active animal",
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .primaryTextTheme
+                                                                .subtitle2,
+                                                          ),
+                                                        ),
+                                                        onTap: () {},
+                                                      )
+                                                    ],
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      height: 100,
+                                                      decoration: BoxDecoration(
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(19),
-                                                        child: auth
-                                                                    .current_user[
-                                                                        'animals']
-                                                                        [index][
-                                                                        'avatars']
-                                                                    .length >
-                                                                0
-                                                            ? Image.network(
-                                                                '${auth.current_user['animals'][0]['avatars'][0]['url']}',
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                                height: 100,
-                                                              )
-                                                            : Image.asset(
-                                                                'assets/images/animal.jpg',
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
+                                                                .circular(20),
+                                                        border: Border.all(
+                                                            color:
+                                                                Colors.white),
+                                                        color:
+                                                            g.isDarkModeEnable
+                                                                ? Color(
+                                                                    0xFF1D0529)
+                                                                : Colors
+                                                                    .white54,
+                                                      ),
+                                                      child: GridTile(
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                          child: auth
+                                                                      .current_user[
+                                                                          'animals']
+                                                                          [
+                                                                          index]
+                                                                          [
+                                                                          'avatars']
+                                                                      .length >
+                                                                  0
+                                                              ? Image.network(
+                                                                  '${auth.current_user['animals'][index]['avatars'][0]['url']}',
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                  height: 100,
+                                                                )
+                                                              : Image.asset(
+                                                                  'assets/images/animal.jpg',
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -612,6 +716,7 @@ class _MyProfileScreenState extends BaseRouteState {
                                         ),
                                       ),
                                     ),
+
                               // Padding(
                               //     padding: const EdgeInsets.only(bottom: 20),
                               //     child: Row(

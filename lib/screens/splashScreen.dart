@@ -58,8 +58,10 @@ class _SplashScreenState extends BaseRouteState {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final auth = Provider.of<Auth>(context, listen: false);
       final appState = Provider.of<AppState>(context, listen: false);
+
       await auth.tryLogin(false);
       if (auth.authenticated) {
+        appState.setCurrentAnimal(auth.current_user, null);
         appState.getChats();
         appState.getNotifications();
         appState.getSubscription();

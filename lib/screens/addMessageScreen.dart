@@ -417,6 +417,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                   ),
                                                 ),
                                                 onTap: () {
+                                                  appState.readChat(index);
                                                   Navigator.of(context).push(
                                                       MaterialPageRoute(
                                                           builder: (context) =>
