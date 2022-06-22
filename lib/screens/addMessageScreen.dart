@@ -297,7 +297,7 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                         bottom:
                                                                             10),
                                                                 child: Text(
-                                                                  '${_user['first_name']} ${_user['last_name']}',
+                                                                  '${_user['first_name'][0].toUpperCase()}${_user['first_name'].substring(1)} ${_user['last_name'][0].toUpperCase()}${_user['last_name'].substring(1)}',
                                                                   style: Theme.of(
                                                                           context)
                                                                       .primaryTextTheme

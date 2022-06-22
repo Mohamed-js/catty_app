@@ -5,11 +5,11 @@ import 'package:PetsMating/screens/notificationListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:laravel_echo/laravel_echo.dart';
-import 'package:flutter_pusher_client/flutter_pusher.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 
 class BottomNavigationWidgetLight extends StatefulWidget {
   final int currentIndex;
+
   const BottomNavigationWidgetLight({this.currentIndex});
   @override
   State<BottomNavigationWidgetLight> createState() =>
@@ -22,13 +22,14 @@ class _BottomNavigationWidgetLightState
   int _currentIndex = 0;
   TabController _tabController;
   _BottomNavigationWidgetLightState(this.currentIndex) : super();
+  Socket socket;
 
   @override
   void dispose() {
+    // socket.disconnect();
     super.dispose();
   }
 
-  Channel _channel;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -140,47 +141,9 @@ class _BottomNavigationWidgetLightState
   @override
   void initState() {
     super.initState();
-    // START CONNECTION WITH CHANNELS
-    // START CONNECTION WITH CHANNELS
 
-    Future<void> _initPusher() async {
-      PusherOptions options = PusherOptions(
-        host: 'https://i-pet.herokuapp.com/',
-        port: 6001,
-        encrypted: false,
-      );
-      FlutterPusher pusher = FlutterPusher('app', options, enableLogging: true,
-          onConnectionStateChange: (e) {
-        print(e.currentState);
-      }, onError: (e) {
-        print('error happened');
-        print(e.message);
-        print(e.exception);
-        print(e.code);
-        print('error happened');
-      });
+    _initSocketIO();
 
-      pusher.subscribe('home').bind('NewMessage', (event) => {});
-
-      Echo echo = new Echo({
-        'broadcaster': 'pusher',
-        'client': pusher,
-      });
-
-      echo.listen('home', 'NewMessage', (e) {
-        print(e);
-      });
-
-      // echo.disconnect();
-
-      // Echo.socket.on('connect', (_) => print('connect'));
-      // socket.on('disconnect', (_) => print('disconnect'));
-    }
-
-    // _initPusher();
-
-    // END
-    // END
     if (currentIndex != null) {
       setState(() {
         _currentIndex = currentIndex;
@@ -197,10 +160,52 @@ class _BottomNavigationWidgetLightState
     });
   }
 
+  void _initSocketIO() {
+    print('TRYYYYYYING TO Connect ==================================');
+    socket = io("http://127.0.0.1:3000/", <String, dynamic>{
+      "transports": ["websocket"],
+      "autoConnect": false,
+    });
+
+    socket.connect();
+
+    socket.on('connect', (data) {
+      print(socket.connected);
+      sendMessage('Hello!');
+    });
+
+    socket.on('message', (data) {
+      print(data);
+    });
+
+    socket.on('disconnect', (data) {
+      print('disconnect');
+    });
+
+    socket.on('error', (data) {
+      print('error');
+    });
+
+    print('END TRYYYYYYING TO Connect ==============================');
+  }
+
   List<Widget> _screens() => [
         AddStoryScreen(),
         NotificationListScreen(),
         AddMessageScreen(),
         MyProfileScreen(),
       ];
+
+  sendMessage(String message) {
+    socket.emit(
+      "message",
+      {
+        "chat_id": 2,
+        "id": socket.id,
+        "message": message, //--> message to be sent
+        "username": 'username',
+        "sentAt": DateTime.now().toLocal().toString().substring(0, 16),
+      },
+    );
+  }
 }

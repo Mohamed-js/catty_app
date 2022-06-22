@@ -12,12 +12,6 @@
 @import emoji_picker_flutter;
 #endif
 
-#if __has_include(<flutter_pusher_client/SwiftFlutterPusherPlugin.h>)
-#import <flutter_pusher_client/SwiftFlutterPusherPlugin.h>
-#else
-@import flutter_pusher_client;
-#endif
-
 #if __has_include(<image_picker_ios/FLTImagePickerPlugin.h>)
 #import <image_picker_ios/FLTImagePickerPlugin.h>
 #else
@@ -64,7 +58,6 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [EmojiPickerFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"EmojiPickerFlutterPlugin"]];
-  [SwiftFlutterPusherPlugin registerWithRegistrar:[registry registrarForPlugin:@"SwiftFlutterPusherPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [MultiImagePicker2Plugin registerWithRegistrar:[registry registrarForPlugin:@"MultiImagePicker2Plugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];

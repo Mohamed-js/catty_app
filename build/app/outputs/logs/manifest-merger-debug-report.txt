@@ -10,7 +10,6 @@ MERGED from [:permission_handler_android] C:\Users\lordd\Documents\GitHub\animal
 MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] C:\Users\lordd\Documents\GitHub\animal-dating\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:flutter_pusher_client] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_pusher_client\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:emoji_picker_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_picker_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -186,8 +185,6 @@ MERGED from [:flutter_plugin_android_lifecycle] C:\Users\lordd\Documents\GitHub\
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\Users\lordd\Documents\GitHub\animal-dating\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\Users\lordd\Documents\GitHub\animal-dating\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_pusher_client] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_pusher_client\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:flutter_pusher_client] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_pusher_client\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:emoji_picker_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_picker_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

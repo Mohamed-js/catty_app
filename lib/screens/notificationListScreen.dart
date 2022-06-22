@@ -1,6 +1,7 @@
 import 'package:PetsMating/models/addNewNotification.dart';
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/ownerProfileScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
@@ -89,95 +90,119 @@ class _NotificationListScreenState extends BaseRouteState {
                                 child: ListView.builder(
                                   itemCount: appState.notificationList.length,
                                   itemBuilder: (ctx, index) {
+                                    print(appState.notificationList[index]);
                                     return Column(
                                       children: [
-                                        Container(
-                                          width:
-                                              MediaQuery.of(context).size.width,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              appState.notificationList[index]
-                                                          ['img'] !=
-                                                      null
-                                                  ? CircleAvatar(
-                                                      backgroundColor:
-                                                          Colors.white,
-                                                      radius: 31,
-                                                      child: CircleAvatar(
-                                                        backgroundImage:
-                                                            NetworkImage(
-                                                          '${appState.notificationList[index]['img']}',
-                                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(MaterialPageRoute(
+                                                builder: (context) => appState
+                                                                    .notificationList[
+                                                                index][
+                                                            'redirect_to_id'] ==
+                                                        null
+                                                    ? BottomNavigationWidgetLight(
+                                                        currentIndex: 2)
+                                                    : OwnerProfileScreen(appState
+                                                                .notificationList[
+                                                            index]
+                                                        ['redirect_to_id'])));
+                                          },
+                                          child: Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                appState.notificationList[index]
+                                                            ['img'] !=
+                                                        null
+                                                    ? CircleAvatar(
                                                         backgroundColor:
-                                                            Colors.transparent,
-                                                        radius: 30,
-                                                      ),
-                                                    )
-                                                  : CircleAvatar(
-                                                      backgroundColor:
-                                                          Colors.white,
-                                                      radius: 31,
-                                                      child: CircleAvatar(
-                                                        backgroundImage:
-                                                            AssetImage(
-                                                          'assets/images/card_img_2.png',
+                                                            Colors.white,
+                                                        radius: 31,
+                                                        child: CircleAvatar(
+                                                          backgroundImage:
+                                                              NetworkImage(
+                                                            '${appState.notificationList[index]['img']}',
+                                                          ),
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          radius: 30,
                                                         ),
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        radius: 30,
-                                                      ),
-                                                    ),
-                                              Flexible(
-                                                child: Padding(
-                                                  padding: g.isRTL
-                                                      ? const EdgeInsets.only(
-                                                          right: 12)
-                                                      : const EdgeInsets.only(
-                                                          left: 12),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        appState.notificationList[
-                                                            index]['title'],
-                                                        style: Theme.of(context)
-                                                            .primaryTextTheme
-                                                            .subtitle1,
-                                                      ),
-                                                      Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  top: 4,
-                                                                  bottom: 4),
-                                                          child: Text(
-                                                            appState.notificationList[
-                                                                index]['body'],
-                                                            style: Theme.of(
-                                                                    context)
-                                                                .primaryTextTheme
-                                                                .bodyText1,
-                                                          )),
-                                                      Text(
-                                                        DateFormat.yMMMEd().format(
-                                                            DateTime.parse(appState
-                                                                        .notificationList[
-                                                                    index][
-                                                                'updated_at'])),
-                                                        style: Theme.of(context)
-                                                            .primaryTextTheme
-                                                            .subtitle2,
                                                       )
-                                                    ],
+                                                    : CircleAvatar(
+                                                        backgroundColor:
+                                                            Colors.white,
+                                                        radius: 31,
+                                                        child: CircleAvatar(
+                                                          backgroundImage:
+                                                              AssetImage(
+                                                            'assets/images/card_img_2.png',
+                                                          ),
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          radius: 30,
+                                                        ),
+                                                      ),
+                                                Flexible(
+                                                  child: Padding(
+                                                    padding: g.isRTL
+                                                        ? const EdgeInsets.only(
+                                                            right: 12)
+                                                        : const EdgeInsets.only(
+                                                            left: 12),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          appState.notificationList[
+                                                              index]['title'],
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .primaryTextTheme
+                                                              .subtitle1,
+                                                        ),
+                                                        Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    top: 4,
+                                                                    bottom: 4),
+                                                            child: Text(
+                                                              appState.notificationList[
+                                                                      index]
+                                                                  ['body'],
+                                                              style: Theme.of(
+                                                                      context)
+                                                                  .primaryTextTheme
+                                                                  .bodyText1,
+                                                            )),
+                                                        Text(
+                                                          DateFormat.yMMMEd().format(
+                                                              DateTime.parse(
+                                                                  appState.notificationList[
+                                                                          index]
+                                                                      [
+                                                                      'updated_at'])),
+                                                          style: Theme.of(
+                                                                  context)
+                                                              .primaryTextTheme
+                                                              .subtitle2,
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                              )
-                                            ],
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                         Container(

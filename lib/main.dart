@@ -10,8 +10,26 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:redis/redis.dart';
 
 void main() {
+  // IO.Socket socket = IO.io('http://localhost:3000/');
+
+  // socket.onConnect((_) {
+  //   print('connect');
+  //   print(_);
+  //   socket.emit('message', 'test');
+  // });
+  // socket.connect();
+
+  // socket.onError((data) => print(data));
+
+  // socket.on('connection', (data) => print('connected'));
+  // socket.on('disconnect', (data) => print('connected'));
+  // socket.on('message', (data) => print(data));
+
+  // socket.connect();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     Phoenix(

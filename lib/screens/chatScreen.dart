@@ -29,6 +29,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
+  Map usr;
   TabController _tabController;
   int _currentIndex = 0;
   Map<String, dynamic> _chat = {};
@@ -93,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
           child: Consumer<Auth>(builder: (context, auth, child) {
             return Scaffold(
               key: _scaffoldKey,
-              endDrawer: DrawerMenuWidget(),
+              endDrawer: DrawerMenuWidget(usr, widget.chat_id),
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               body: _chat.isEmpty || _chat['messages'].length < 1
                   ? Center(
@@ -175,14 +176,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                             FontAwesomeIcons.longArrowAltLeft),
                                         color: Colors.white,
                                         onPressed: () {
-                                          // Navigator.of(context).pushAndRemoveUntil(
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) =>
-                                          //             BottomNavigationWidgetLight(
-                                          //               currentIndex: 2,
-                                          //               a: widget.analytics,
-                                          //               o: widget.observer,
-                                          //             )));
+                                          Navigator.of(context).pop();
                                         },
                                       ),
                                     ),
@@ -263,6 +257,73 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
                             _renderMessages(),
 
+                            emojiShowing
+                                ? Column(
+                                    children: [
+                                      SizedBox(
+                                        height: 250,
+                                        child: EmojiPicker(
+                                            onEmojiSelected: (Category category,
+                                                Emoji emoji) {
+                                              _onEmojiSelected(emoji);
+                                            },
+                                            onBackspacePressed:
+                                                _onBackspacePressed,
+                                            config: Config(
+                                                columns: 7,
+                                                // Issue: https://github.com/flutter/flutter/issues/28894
+                                                // emojiSizeMax:
+                                                //     32 * (Platform.isIOS ? 1.30 : 1.0),
+                                                // verticalSpacing: 0,
+                                                // horizontalSpacing: 0,
+                                                // gridPadding: EdgeInsets.zero,
+                                                initCategory: Category.RECENT,
+                                                bgColor: Color.fromARGB(
+                                                    193, 212, 241, 255),
+                                                indicatorColor: Colors.blue,
+                                                iconColor: Color.fromARGB(
+                                                    255, 28, 3, 119),
+                                                iconColorSelected:
+                                                    Color.fromARGB(
+                                                        255, 28, 3, 119),
+                                                progressIndicatorColor:
+                                                    Color.fromARGB(
+                                                        255, 28, 3, 119),
+                                                backspaceColor: Color.fromARGB(
+                                                    255, 28, 3, 119),
+                                                skinToneDialogBgColor:
+                                                    Color.fromARGB(
+                                                        255, 194, 27, 27),
+                                                skinToneIndicatorColor:
+                                                    Color.fromARGB(
+                                                        255, 240, 74, 74),
+                                                enableSkinTones: true,
+                                                showRecentsTab: true,
+                                                recentsLimit: 28,
+                                                replaceEmojiOnLimitExceed:
+                                                    false,
+                                                noRecents: const Text(
+                                                  'No Recents',
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.black26),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                                tabIndicatorAnimDuration:
+                                                    kTabScrollDuration,
+                                                categoryIcons:
+                                                    const CategoryIcons(),
+                                                buttonMode: ButtonMode.MATERIAL)),
+                                      ),
+                                      SizedBox(
+                                        height: 50,
+                                      )
+                                    ],
+                                  )
+                                : SizedBox(
+                                    height: 0,
+                                  )
+
                             // VIDEO CALLLLLLLLLLLLLLL
                             // Padding(
                             //   padding: const EdgeInsets.only(top: 5),
@@ -325,190 +386,200 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                       // HEREEEEEEEEEE
                     ),
               bottomSheet: BottomAppBar(
+                notchMargin: 0,
                 color: g.isDarkModeEnable
                     ? Color(0xFF14012F)
                     : Theme.of(context).scaffoldBackgroundColor,
-                elevation: 1,
+                elevation: 0,
                 child: Container(
-                  height: emojiShowing ? 315 : 65,
+                  // height: emojiShowing ? 315 : 65,
+                  height: 60,
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width * 0.45,
-                            child: TextField(
-                              style:
-                                  Theme.of(context).primaryTextTheme.subtitle2,
-                              controller: _cMessage,
-                              decoration: InputDecoration(
-                                contentPadding: g.isRTL
-                                    ? EdgeInsets.only(right: 20)
-                                    : EdgeInsets.only(left: 20),
-                                hintText: AppLocalizations.of(context)
-                                    .lbl_hint_chat_type_msg,
-                                hintStyle: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle2,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 65,
-                            width: MediaQuery.of(context).size.width * 0.45,
-                            child: TabBar(
-                              controller: _tabController,
-                              indicatorWeight: 2,
-                              indicatorColor:
-                                  Theme.of(context).primaryColorLight,
-                              labelColor: Theme.of(context).iconTheme.color,
-                              unselectedLabelColor:
-                                  Theme.of(context).primaryColorLight,
-                              indicatorSize: TabBarIndicatorSize.label,
-                              indicatorPadding: EdgeInsets.only(bottom: 55),
-                              labelPadding: EdgeInsets.all(0),
-                              onTap: (int index) async {
-                                _currentIndex = index;
-                              },
-                              tabs: [
-                                !btnIsDisabled
-                                    ? Tab(
-                                        child: IconButton(
-                                        iconSize: 20,
-                                        icon: Icon(Icons.send),
-                                        padding: EdgeInsets.all(0),
-                                        onPressed: btnIsDisabled
-                                            ? null
-                                            : () async {
-                                                if (_cMessage.text.isNotEmpty) {
-                                                  setState(() {
-                                                    btnIsDisabled = true;
-                                                  });
-
-                                                  dynamic msg =
-                                                      await _sendMessageTo(
-                                                          chatId:
-                                                              widget.chat_id,
-                                                          body: _cMessage.text);
-
-                                                  if (msg == "sent") {
-                                                    _cMessage.clear();
-                                                  }
-                                                  setState(() {
-                                                    btnIsDisabled = false;
-                                                  });
-                                                }
-                                              },
-                                      ))
-                                    : Tab(
-                                        child: IconButton(
-                                        iconSize: 20,
-                                        icon: Icon(Icons.circle_outlined),
-                                        padding: EdgeInsets.all(0),
-                                        onPressed: btnIsDisabled
-                                            ? null
-                                            : () async {
-                                                if (_cMessage.text.isNotEmpty) {
-                                                  setState(() {
-                                                    btnIsDisabled = true;
-                                                  });
-
-                                                  dynamic msg =
-                                                      await _sendMessageTo(
-                                                          chatId:
-                                                              widget.chat_id,
-                                                          body: _cMessage.text);
-
-                                                  if (msg == "sent") {
-                                                    _cMessage.clear();
-                                                  }
-                                                  setState(() {
-                                                    btnIsDisabled = false;
-                                                  });
-                                                }
-                                              },
-                                      )),
-                                Tab(
-                                  child: IconButton(
-                                    iconSize: 20,
-                                    icon: Icon(MdiIcons.emoticonHappy),
-                                    padding: EdgeInsets.all(0),
-                                    onPressed: () async {
-                                      setState(() {
-                                        emojiShowing =
-                                            emojiShowing ? false : true;
-                                      });
-                                    },
+                      _chat['blocker_id'] != null
+                          ? _chat['blocker_id'] == auth.current_user['id']
+                              ? Container(
+                                  decoration: BoxDecoration(color: Colors.red),
+                                  width: MediaQuery.of(context).size.width,
+                                  child: TextButton(
+                                      onPressed: () async {
+                                        try {
+                                          final prefs = await SharedPreferences
+                                              .getInstance();
+                                          String token =
+                                              prefs.getString('i-pet-kk');
+                                          Dio.Response response = await dio().put(
+                                              '/chat/${widget.chat_id}?todo=unblock',
+                                              options: Dio.Options(headers: {
+                                                'Authorization':
+                                                    'Bearer $token',
+                                              }));
+                                          print(response);
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      BottomNavigationWidgetLight(
+                                                          currentIndex: 2)));
+                                        } catch (e) {
+                                          print(e);
+                                        }
+                                      },
+                                      child: Text(
+                                        'Unblock ${usr["first_name"][0].toUpperCase()}${usr["first_name"].substring(1)}',
+                                        style: TextStyle(color: Colors.white),
+                                      )))
+                              : Container(
+                                  decoration: BoxDecoration(color: Colors.red),
+                                  width: MediaQuery.of(context).size.width,
+                                  child: TextButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        'Blocked',
+                                        style: TextStyle(color: Colors.white),
+                                      )))
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.45,
+                                  child: TextField(
+                                    style: Theme.of(context)
+                                        .primaryTextTheme
+                                        .subtitle2,
+                                    controller: _cMessage,
+                                    decoration: InputDecoration(
+                                      contentPadding: g.isRTL
+                                          ? EdgeInsets.only(right: 20)
+                                          : EdgeInsets.only(left: 20),
+                                      hintText: AppLocalizations.of(context)
+                                          .lbl_hint_chat_type_msg,
+                                      hintStyle: Theme.of(context)
+                                          .primaryTextTheme
+                                          .subtitle2,
+                                    ),
                                   ),
                                 ),
-                                // Tab(
-                                //   child: Icon(
-                                //     MdiIcons.attachment,
-                                //     size: 20,
-                                //   ),
-                                // ),
-                                // Tab(
-                                //   child: Icon(
-                                //     MdiIcons.microphone,
-                                //     size: 20,
-                                //   ),
-                                // ),
+                                Container(
+                                  height: 60,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.45,
+                                  child: TabBar(
+                                    controller: _tabController,
+                                    indicatorWeight: 2,
+                                    indicatorColor:
+                                        Theme.of(context).primaryColorLight,
+                                    labelColor:
+                                        Theme.of(context).iconTheme.color,
+                                    unselectedLabelColor:
+                                        Theme.of(context).primaryColorLight,
+                                    indicatorSize: TabBarIndicatorSize.label,
+                                    indicatorPadding:
+                                        EdgeInsets.only(bottom: 55),
+                                    labelPadding: EdgeInsets.all(0),
+                                    onTap: (int index) async {
+                                      _currentIndex = index;
+                                    },
+                                    tabs: [
+                                      !btnIsDisabled
+                                          ? Tab(
+                                              child: IconButton(
+                                              iconSize: 20,
+                                              icon: Icon(Icons.send),
+                                              padding: EdgeInsets.all(0),
+                                              onPressed: btnIsDisabled
+                                                  ? null
+                                                  : () async {
+                                                      if (_cMessage
+                                                          .text.isNotEmpty) {
+                                                        setState(() {
+                                                          btnIsDisabled = true;
+                                                        });
+
+                                                        dynamic msg =
+                                                            await _sendMessageTo(
+                                                                chatId: widget
+                                                                    .chat_id,
+                                                                body: _cMessage
+                                                                    .text);
+
+                                                        if (msg == "sent") {
+                                                          _cMessage.clear();
+                                                        }
+                                                        setState(() {
+                                                          btnIsDisabled = false;
+                                                        });
+                                                      }
+                                                    },
+                                            ))
+                                          : Tab(
+                                              child: IconButton(
+                                              iconSize: 20,
+                                              icon: Icon(Icons.circle_outlined),
+                                              padding: EdgeInsets.all(0),
+                                              onPressed: btnIsDisabled
+                                                  ? null
+                                                  : () async {
+                                                      if (_cMessage
+                                                          .text.isNotEmpty) {
+                                                        setState(() {
+                                                          btnIsDisabled = true;
+                                                        });
+
+                                                        dynamic msg =
+                                                            await _sendMessageTo(
+                                                                chatId: widget
+                                                                    .chat_id,
+                                                                body: _cMessage
+                                                                    .text);
+
+                                                        if (msg == "sent") {
+                                                          _cMessage.clear();
+                                                        }
+                                                        setState(() {
+                                                          btnIsDisabled = false;
+                                                        });
+                                                      }
+                                                    },
+                                            )),
+                                      Tab(
+                                        child: IconButton(
+                                          iconSize: 20,
+                                          icon: Icon(MdiIcons.emoticonHappy),
+                                          padding: EdgeInsets.all(0),
+                                          onPressed: () async {
+                                            setState(() {
+                                              emojiShowing =
+                                                  emojiShowing ? false : true;
+                                            });
+                                            if (emojiShowing) {
+                                              _scrollController.animateTo(
+                                                0.0,
+                                                curve: Curves.easeOut,
+                                                duration: const Duration(
+                                                    milliseconds: 300),
+                                              );
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                      // Tab(
+                                      //   child: Icon(
+                                      //     MdiIcons.attachment,
+                                      //     size: 20,
+                                      //   ),
+                                      // ),
+                                      // Tab(
+                                      //   child: Icon(
+                                      //     MdiIcons.microphone,
+                                      //     size: 20,
+                                      //   ),
+                                      // ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                      emojiShowing
-                          ? SizedBox(
-                              height: 250,
-                              child: EmojiPicker(
-                                  onEmojiSelected:
-                                      (Category category, Emoji emoji) {
-                                    _onEmojiSelected(emoji);
-                                  },
-                                  onBackspacePressed: _onBackspacePressed,
-                                  config: Config(
-                                      columns: 7,
-                                      // Issue: https://github.com/flutter/flutter/issues/28894
-                                      // emojiSizeMax:
-                                      //     32 * (Platform.isIOS ? 1.30 : 1.0),
-                                      // verticalSpacing: 0,
-                                      // horizontalSpacing: 0,
-                                      // gridPadding: EdgeInsets.zero,
-                                      initCategory: Category.RECENT,
-                                      bgColor: const Color(0xFFF2F2F2),
-                                      indicatorColor: Colors.blue,
-                                      iconColor: Color.fromARGB(255, 235, 2, 2),
-                                      iconColorSelected:
-                                          Color.fromARGB(255, 28, 3, 119),
-                                      progressIndicatorColor:
-                                          Color.fromARGB(255, 28, 3, 119),
-                                      backspaceColor:
-                                          Color.fromARGB(255, 28, 3, 119),
-                                      skinToneDialogBgColor:
-                                          Color.fromARGB(255, 128, 87, 87),
-                                      skinToneIndicatorColor:
-                                          Color.fromARGB(255, 110, 72, 72),
-                                      enableSkinTones: true,
-                                      showRecentsTab: true,
-                                      recentsLimit: 28,
-                                      replaceEmojiOnLimitExceed: false,
-                                      noRecents: const Text(
-                                        'No Recents',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black26),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      tabIndicatorAnimDuration:
-                                          kTabScrollDuration,
-                                      categoryIcons: const CategoryIcons(),
-                                      buttonMode: ButtonMode.MATERIAL)),
-                            )
-                          : SizedBox(
-                              height: 0,
-                            )
                     ],
                   ),
                 ),
@@ -547,12 +618,27 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             }
           }
         });
+        print(_chat);
       } catch (e) {
         print(e);
       }
     }
 
-    getChat();
+    void getUsr() async {
+      final auth = await Provider.of<Auth>(context, listen: false);
+      setState(() {
+        usr = auth.current_user['id'] == _chat['sender_id']
+            ? _chat['receiver']
+            : _chat['sender'];
+      });
+    }
+
+    Future getChatUsr() async {
+      await getChat();
+      getUsr();
+    }
+
+    getChatUsr();
   }
 
   void dispose() {
@@ -762,12 +848,14 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
           }));
 
       if (response.data != 'failed') {
-        print(response.data);
-        print(appState.chats);
-
+        _scrollController.animateTo(
+          0.0,
+          curve: Curves.easeOut,
+          duration: const Duration(milliseconds: 300),
+        );
         setState(() {
           emojiShowing = false;
-          _messages.add(_myMessage(response.data));
+          _messages.insert(0, _myMessage(response.data));
         });
         return 'sent';
       }
@@ -780,13 +868,16 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     if (_messages.length > 0) {
       return Expanded(
         child: ListView(
+            reverse: true,
             controller: _scrollController,
             shrinkWrap: true,
             children: <Widget>[
+              emojiShowing
+                  ? SizedBox(height: 10)
+                  : SizedBox(
+                      height: 70,
+                    ),
               ..._messages,
-              SizedBox(
-                height: 90,
-              )
             ]),
       );
     }

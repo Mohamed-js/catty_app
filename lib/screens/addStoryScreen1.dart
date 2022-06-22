@@ -513,6 +513,11 @@ class _AddStoryScreenState extends BaseRouteState {
                                                         }
                                                       }
 
+                                                      setState(() {
+                                                        _leftDirection = 0;
+                                                        _rightDirection = 0;
+                                                      });
+
                                                       if ((_current) ==
                                                           (_recommendations
                                                               .length)) {
@@ -732,19 +737,6 @@ class _AddStoryScreenState extends BaseRouteState {
     });
     await appState.getFilterOptions();
     final options = appState.filter_options;
-
-    print("options['same_breed']");
-    print(options['same_breed']);
-    print("options['no_vaccination_needed']");
-    print(options['no_vaccination_needed']);
-    print("options['min_age']");
-    print(options['min_age']);
-    print("options['max_age']");
-    print(options['max_age']);
-    print("firstLoad");
-    print(firstLoad);
-    print("appState.current_animal_id");
-    print(appState.current_animal_id);
 
     Dio.Response response;
     try {

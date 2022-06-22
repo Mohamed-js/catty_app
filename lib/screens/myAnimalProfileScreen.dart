@@ -1,5 +1,6 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/ownerProfileScreen.dart';
 import 'package:PetsMating/screens/settingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -110,15 +111,23 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                       Padding(
                                         padding: const EdgeInsets.only(
                                             top: 18.0, bottom: 4),
-                                        child: Icon(
-                                          Icons.favorite_outline,
-                                          color: g.isDarkModeEnable
-                                              ? Theme.of(context)
-                                                  .iconTheme
-                                                  .color
-                                              : Theme.of(context)
-                                                  .primaryColorLight,
-                                          size: 24,
+                                        child: Column(
+                                          children: [
+                                            Icon(
+                                              Icons.favorite,
+                                              color: g.isDarkModeEnable
+                                                  ? Theme.of(context)
+                                                      .iconTheme
+                                                      .color
+                                                  : Theme.of(context)
+                                                      .primaryColorLight,
+                                              size: 24,
+                                            ),
+                                            Text('20',
+                                                style: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .bodyText1)
+                                          ],
                                         ),
                                       ),
                                       Divider(
@@ -127,13 +136,30 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                             : Colors.purple[100],
                                       ),
                                       Container(
-                                        child: CircleAvatar(
-                                          backgroundColor: Colors.transparent,
-                                          radius: 18,
-                                          child: Icon(
-                                            Icons.message,
-                                            size: 22,
-                                            color: Color(0xFF230f4E),
+                                        child: InkWell(
+                                          onTap: () {
+                                            Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        OwnerProfileScreen(
+                                                            _animal['user']
+                                                                ['id'])));
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              children: [
+                                                Icon(
+                                                  Icons.person,
+                                                  size: 22,
+                                                  color: Color(0xFF230f4E),
+                                                ),
+                                                Text('Contact',
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .bodyText1)
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -146,14 +172,21 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                         padding:
                                             const EdgeInsets.only(bottom: 8.0),
                                         child: Container(
-                                          child: CircleAvatar(
-                                            backgroundColor: Colors.transparent,
-                                            radius: 18,
-                                            child: Icon(
-                                              Icons.report_problem_rounded,
-                                              size: 22,
-                                              color: Color.fromARGB(
-                                                  255, 247, 149, 3),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              children: [
+                                                Icon(
+                                                  Icons.report_problem_rounded,
+                                                  size: 22,
+                                                  color: Color.fromARGB(
+                                                      255, 247, 149, 3),
+                                                ),
+                                                Text('Report',
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .bodyText1)
+                                              ],
                                             ),
                                           ),
                                         ),
