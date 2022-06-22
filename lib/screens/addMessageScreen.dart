@@ -392,26 +392,35 @@ class _AddMessageScreenState extends BaseRouteState {
                                                       appState.chats[index][
                                                                   'unread_messages_count'] >
                                                               0
-                                                          ? Expanded(
-                                                              child: Align(
-                                                                alignment: Alignment
-                                                                    .bottomRight,
-                                                                child:
-                                                                    CircleAvatar(
-                                                                  radius: 9,
-                                                                  backgroundColor:
-                                                                      Color(
-                                                                          0xFFD6386F),
-                                                                  child: Text(
-                                                                    '${appState.chats[index]['unread_messages_count']}',
-                                                                    style: Theme.of(
-                                                                            context)
-                                                                        .primaryTextTheme
-                                                                        .headline6,
+                                                          ? appState.chats[index]
+                                                                          [
+                                                                          'last_message']
+                                                                      [
+                                                                      'sender_id'] !=
+                                                                  auth.current_user[
+                                                                      'id']
+                                                              ? Expanded(
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .bottomRight,
+                                                                    child:
+                                                                        CircleAvatar(
+                                                                      radius: 9,
+                                                                      backgroundColor:
+                                                                          Color(
+                                                                              0xFFD6386F),
+                                                                      child:
+                                                                          Text(
+                                                                        '${appState.chats[index]['unread_messages_count']}',
+                                                                        style: Theme.of(context)
+                                                                            .primaryTextTheme
+                                                                            .headline6,
+                                                                      ),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ),
-                                                            )
+                                                                )
+                                                              : Text('')
                                                           : Text(''),
                                                     ],
                                                   ),

@@ -17,6 +17,8 @@ import 'package:PetsMating/services/dio.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'dart:io';
 
 class ChatScreen extends StatefulWidget {
   final int chat_id;
@@ -32,6 +34,20 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   Map<String, dynamic> _chat = {};
   TextEditingController _cMessage = new TextEditingController();
   _ChatScreenState() : super();
+  bool emojiShowing = false;
+  _onEmojiSelected(Emoji emoji) {
+    _cMessage
+      ..text += emoji.emoji
+      ..selection = TextSelection.fromPosition(
+          TextPosition(offset: _cMessage.text.length));
+  }
+
+  _onBackspacePressed() {
+    _cMessage
+      ..text = _cMessage.text.characters.skipLast(1).toString()
+      ..selection = TextSelection.fromPosition(
+          TextPosition(offset: _cMessage.text.length));
+  }
 
   List<Widget> _messages = [];
 
@@ -49,333 +65,457 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: g.scaffoldBackgroundGradientColors,
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
+    return WillPopScope(
+      onWillPop: () {
+        if (emojiShowing) {
+          setState(() {
+            emojiShowing = false;
+          });
+        } else {
+          return Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => BottomNavigationWidgetLight(
+                        currentIndex: 2,
+                      )),
+              ModalRoute.withName('/'));
+        }
+      },
+      child: SafeArea(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: g.scaffoldBackgroundGradientColors,
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
           ),
-        ),
-        child: Consumer<Auth>(builder: (context, auth, child) {
-          return Scaffold(
-            key: _scaffoldKey,
-            endDrawer: DrawerMenuWidget(),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            body: _chat.isEmpty || _chat['messages'].length < 1
-                ? Center(
-                    child: Container(
-                      height: 50,
-                      child: LoadingIndicator(
-                          indicatorType: Indicator.lineScalePulseOut,
+          child: Consumer<Auth>(builder: (context, auth, child) {
+            return Scaffold(
+              key: _scaffoldKey,
+              endDrawer: DrawerMenuWidget(),
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              body: _chat.isEmpty || _chat['messages'].length < 1
+                  ? Center(
+                      child: Container(
+                        height: 50,
+                        child: LoadingIndicator(
+                            indicatorType: Indicator.lineScalePulseOut,
 
-                          /// Required, The loading type of the widget
-                          colors: const [Color.fromARGB(255, 214, 27, 27)],
+                            /// Required, The loading type of the widget
+                            colors: const [Color.fromARGB(255, 214, 27, 27)],
 
-                          /// Optional, The color collections
-                          strokeWidth: 2,
+                            /// Optional, The color collections
+                            strokeWidth: 2,
 
-                          /// Optional, The stroke of the line, only applicable to widget which contains line
-                          backgroundColor: Colors.transparent,
+                            /// Optional, The stroke of the line, only applicable to widget which contains line
+                            backgroundColor: Colors.transparent,
 
-                          /// Optional, Background of the widget
-                          pathBackgroundColor: Colors.black
+                            /// Optional, Background of the widget
+                            pathBackgroundColor: Colors.black
 
-                          /// Optional, the stroke backgroundColor
-                          ),
-                    ),
-                  )
-                : Center(
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Stack(
-                            alignment: Alignment.bottomCenter,
-                            clipBehavior: Clip.none,
-                            children: [
-                              Stack(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(10),
-                                    alignment: g.isRTL
-                                        ? Alignment.topLeft
-                                        : Alignment.topRight,
-                                    width: MediaQuery.of(context).size.width,
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.15,
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.more_vert,
-                                        size: 28,
-                                      ),
-                                      color: Theme.of(context).iconTheme.color,
-                                      onPressed: () {
-                                        _scaffoldKey.currentState
-                                            .openEndDrawer();
-                                      },
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(10),
-                                    alignment: g.isRTL
-                                        ? Alignment.topRight
-                                        : Alignment.topLeft,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color(0xffD6376E),
-                                          Color(0xFFAD45B3)
-                                        ],
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
+                            /// Optional, the stroke backgroundColor
+                            ),
+                      ),
+                    )
+                  : Center(
+                      child: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Stack(
+                              alignment: Alignment.bottomCenter,
+                              clipBehavior: Clip.none,
+                              children: [
+                                Stack(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      alignment: g.isRTL
+                                          ? Alignment.topLeft
+                                          : Alignment.topRight,
+                                      width: MediaQuery.of(context).size.width,
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.15,
+                                      child: IconButton(
+                                        icon: Icon(
+                                          Icons.more_vert,
+                                          size: 28,
+                                        ),
+                                        color:
+                                            Theme.of(context).iconTheme.color,
+                                        onPressed: () {
+                                          _scaffoldKey.currentState
+                                              .openEndDrawer();
+                                        },
                                       ),
                                     ),
-                                    width: 75,
-                                    height: 65,
-                                    child: IconButton(
-                                      icon: Icon(
-                                          FontAwesomeIcons.longArrowAltLeft),
-                                      color: Colors.white,
-                                      onPressed: () {
-                                        // Navigator.of(context).pushAndRemoveUntil(
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) =>
-                                        //             BottomNavigationWidgetLight(
-                                        //               currentIndex: 2,
-                                        //               a: widget.analytics,
-                                        //               o: widget.observer,
-                                        //             )));
-                                      },
+                                    Container(
+                                      padding: EdgeInsets.all(10),
+                                      alignment: g.isRTL
+                                          ? Alignment.topRight
+                                          : Alignment.topLeft,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color(0xffD6376E),
+                                            Color(0xFFAD45B3)
+                                          ],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                        ),
+                                      ),
+                                      width: 75,
+                                      height: 65,
+                                      child: IconButton(
+                                        icon: Icon(
+                                            FontAwesomeIcons.longArrowAltLeft),
+                                        color: Colors.white,
+                                        onPressed: () {
+                                          // Navigator.of(context).pushAndRemoveUntil(
+                                          //     MaterialPageRoute(
+                                          //         builder: (context) =>
+                                          //             BottomNavigationWidgetLight(
+                                          //               currentIndex: 2,
+                                          //               a: widget.analytics,
+                                          //               o: widget.observer,
+                                          //             )));
+                                        },
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Positioned(
-                                top: 10,
-                                child: CircleAvatar(
-                                  radius: 57,
-                                  backgroundColor: Colors.white,
+                                  ],
+                                ),
+                                Positioned(
+                                  top: 10,
                                   child: CircleAvatar(
-                                    radius: 55,
-                                    backgroundImage: auth.current_user['id'] !=
-                                            _chat['sender']['id']
-                                        ? NetworkImage(
-                                            '${_chat['sender']['avatar']}',
-                                          )
-                                        : NetworkImage(
-                                            '${_chat['receiver']['avatar']}',
-                                          ),
-                                    backgroundColor: Colors.transparent,
+                                    radius: 57,
+                                    backgroundColor: Colors.white,
+                                    child: CircleAvatar(
+                                      radius: 55,
+                                      backgroundImage:
+                                          auth.current_user['id'] !=
+                                                  _chat['sender']['id']
+                                              ? NetworkImage(
+                                                  '${_chat['sender']['avatar']}',
+                                                )
+                                              : NetworkImage(
+                                                  '${_chat['receiver']['avatar']}',
+                                                ),
+                                      backgroundColor: Colors.transparent,
+                                    ),
                                   ),
                                 ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            // TODOOOOOOOOOOO
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                auth.current_user['id'] != _chat['sender']['id']
+                                    ? Text(
+                                        _chat['sender']['first_name'][0]
+                                                .toUpperCase() +
+                                            _chat['sender']['first_name']
+                                                .substring(1) +
+                                            " " +
+                                            _chat['sender']['last_name'][0]
+                                                .toUpperCase() +
+                                            _chat['sender']['last_name']
+                                                .substring(1),
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .headline3,
+                                      )
+                                    : Text(
+                                        _chat['receiver']['first_name'][0]
+                                                .toUpperCase() +
+                                            _chat['receiver']['first_name']
+                                                .substring(1) +
+                                            " " +
+                                            _chat['receiver']['last_name'][0]
+                                                .toUpperCase() +
+                                            _chat['receiver']['last_name']
+                                                .substring(1),
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .headline3,
+                                      ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 4, bottom: 6),
+                                  child: CircleAvatar(
+                                    radius: 4,
+                                    backgroundColor:
+                                        Colors.lightGreenAccent[400],
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+
+                            _renderMessages(),
+
+                            // VIDEO CALLLLLLLLLLLLLLL
+                            // Padding(
+                            //   padding: const EdgeInsets.only(top: 5),
+                            //   child: Row(
+                            //     mainAxisSize: MainAxisSize.min,
+                            //     children: [
+                            //       IconButton(
+                            //         icon: Image.asset(
+                            //           'assets/images/chat icon.png',
+                            //           height: 30,
+                            //         ),
+                            //         color: Theme.of(context).iconTheme.color,
+                            //         onPressed: () {},
+                            //       ),
+                            //       Padding(
+                            //         padding: const EdgeInsets.only(left: 8),
+                            //         child: IconButton(
+                            //           icon: ShaderMask(
+                            //               blendMode: BlendMode.srcIn,
+                            //               shaderCallback: (Rect bounds) {
+                            //                 return LinearGradient(
+                            //                   colors: [Color(0xFFFA809D), Color(0xFFFB2205E)],
+                            //                   begin: Alignment.centerLeft,
+                            //                   end: Alignment.centerRight,
+                            //                 ).createShader(bounds);
+                            //               },
+                            //               child: Icon(FontAwesomeIcons.video)),
+                            //           color: Theme.of(context).iconTheme.color,
+                            //           onPressed: () {
+                            //             Navigator.of(context).push(MaterialPageRoute(
+                            //                 builder: (context) => VideoCallingScreen(
+                            //                       a: widget.analytics,
+                            //                       o: widget.observer,
+                            //                     )));
+                            //           },
+                            //         ),
+                            //       )
+                            //     ],
+                            //   ),
+                            // ),
+                            // -============================================-
+                            // Today
+                            // Container(
+                            //   margin: EdgeInsets.only(top: 10),
+                            //   alignment: Alignment.center,
+                            //   child: Chip(
+                            //     backgroundColor: g.isDarkModeEnable
+                            //         ? Color(0xFF1F1828)
+                            //         : Color(0xFF7974AA),
+                            //     label: Text(
+                            //       'Today',
+                            //       style:
+                            //           Theme.of(context).accentTextTheme.subtitle1,
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
+                        ),
+                      ),
+                      // HEREEEEEEEEEE
+                    ),
+              bottomSheet: BottomAppBar(
+                color: g.isDarkModeEnable
+                    ? Color(0xFF14012F)
+                    : Theme.of(context).scaffoldBackgroundColor,
+                elevation: 1,
+                child: Container(
+                  height: emojiShowing ? 315 : 65,
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: TextField(
+                              style:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
+                              controller: _cMessage,
+                              decoration: InputDecoration(
+                                contentPadding: g.isRTL
+                                    ? EdgeInsets.only(right: 20)
+                                    : EdgeInsets.only(left: 20),
+                                hintText: AppLocalizations.of(context)
+                                    .lbl_hint_chat_type_msg,
+                                hintStyle: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
                               ),
-                            ],
+                            ),
                           ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          // TODOOOOOOOOOOO
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              auth.current_user['id'] != _chat['sender']['id']
-                                  ? Text(
-                                      _chat['sender']['first_name'][0]
-                                              .toUpperCase() +
-                                          _chat['sender']['first_name']
-                                              .substring(1) +
-                                          " " +
-                                          _chat['sender']['last_name'][0]
-                                              .toUpperCase() +
-                                          _chat['sender']['last_name']
-                                              .substring(1),
-                                      style: Theme.of(context)
-                                          .primaryTextTheme
-                                          .headline3,
-                                    )
-                                  : Text(
-                                      _chat['receiver']['first_name'][0]
-                                              .toUpperCase() +
-                                          _chat['receiver']['first_name']
-                                              .substring(1) +
-                                          " " +
-                                          _chat['receiver']['last_name'][0]
-                                              .toUpperCase() +
-                                          _chat['receiver']['last_name']
-                                              .substring(1),
-                                      style: Theme.of(context)
-                                          .primaryTextTheme
-                                          .headline3,
-                                    ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 4, bottom: 6),
-                                child: CircleAvatar(
-                                  radius: 4,
-                                  backgroundColor: Colors.lightGreenAccent[400],
+                          Container(
+                            height: 65,
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: TabBar(
+                              controller: _tabController,
+                              indicatorWeight: 2,
+                              indicatorColor:
+                                  Theme.of(context).primaryColorLight,
+                              labelColor: Theme.of(context).iconTheme.color,
+                              unselectedLabelColor:
+                                  Theme.of(context).primaryColorLight,
+                              indicatorSize: TabBarIndicatorSize.label,
+                              indicatorPadding: EdgeInsets.only(bottom: 55),
+                              labelPadding: EdgeInsets.all(0),
+                              onTap: (int index) async {
+                                _currentIndex = index;
+                              },
+                              tabs: [
+                                !btnIsDisabled
+                                    ? Tab(
+                                        child: IconButton(
+                                        iconSize: 20,
+                                        icon: Icon(Icons.send),
+                                        padding: EdgeInsets.all(0),
+                                        onPressed: btnIsDisabled
+                                            ? null
+                                            : () async {
+                                                if (_cMessage.text.isNotEmpty) {
+                                                  setState(() {
+                                                    btnIsDisabled = true;
+                                                  });
+
+                                                  dynamic msg =
+                                                      await _sendMessageTo(
+                                                          chatId:
+                                                              widget.chat_id,
+                                                          body: _cMessage.text);
+
+                                                  if (msg == "sent") {
+                                                    _cMessage.clear();
+                                                  }
+                                                  setState(() {
+                                                    btnIsDisabled = false;
+                                                  });
+                                                }
+                                              },
+                                      ))
+                                    : Tab(
+                                        child: IconButton(
+                                        iconSize: 20,
+                                        icon: Icon(Icons.circle_outlined),
+                                        padding: EdgeInsets.all(0),
+                                        onPressed: btnIsDisabled
+                                            ? null
+                                            : () async {
+                                                if (_cMessage.text.isNotEmpty) {
+                                                  setState(() {
+                                                    btnIsDisabled = true;
+                                                  });
+
+                                                  dynamic msg =
+                                                      await _sendMessageTo(
+                                                          chatId:
+                                                              widget.chat_id,
+                                                          body: _cMessage.text);
+
+                                                  if (msg == "sent") {
+                                                    _cMessage.clear();
+                                                  }
+                                                  setState(() {
+                                                    btnIsDisabled = false;
+                                                  });
+                                                }
+                                              },
+                                      )),
+                                Tab(
+                                  child: IconButton(
+                                    iconSize: 20,
+                                    icon: Icon(MdiIcons.emoticonHappy),
+                                    padding: EdgeInsets.all(0),
+                                    onPressed: () async {
+                                      setState(() {
+                                        emojiShowing =
+                                            emojiShowing ? false : true;
+                                      });
+                                    },
+                                  ),
                                 ),
-                              )
-                            ],
+                                // Tab(
+                                //   child: Icon(
+                                //     MdiIcons.attachment,
+                                //     size: 20,
+                                //   ),
+                                // ),
+                                // Tab(
+                                //   child: Icon(
+                                //     MdiIcons.microphone,
+                                //     size: 20,
+                                //   ),
+                                // ),
+                              ],
+                            ),
                           ),
-                          SizedBox(
-                            height: 15,
-                          ),
-
-                          _renderMessages(),
-
-                          // VIDEO CALLLLLLLLLLLLLLL
-                          // Padding(
-                          //   padding: const EdgeInsets.only(top: 5),
-                          //   child: Row(
-                          //     mainAxisSize: MainAxisSize.min,
-                          //     children: [
-                          //       IconButton(
-                          //         icon: Image.asset(
-                          //           'assets/images/chat icon.png',
-                          //           height: 30,
-                          //         ),
-                          //         color: Theme.of(context).iconTheme.color,
-                          //         onPressed: () {},
-                          //       ),
-                          //       Padding(
-                          //         padding: const EdgeInsets.only(left: 8),
-                          //         child: IconButton(
-                          //           icon: ShaderMask(
-                          //               blendMode: BlendMode.srcIn,
-                          //               shaderCallback: (Rect bounds) {
-                          //                 return LinearGradient(
-                          //                   colors: [Color(0xFFFA809D), Color(0xFFFB2205E)],
-                          //                   begin: Alignment.centerLeft,
-                          //                   end: Alignment.centerRight,
-                          //                 ).createShader(bounds);
-                          //               },
-                          //               child: Icon(FontAwesomeIcons.video)),
-                          //           color: Theme.of(context).iconTheme.color,
-                          //           onPressed: () {
-                          //             Navigator.of(context).push(MaterialPageRoute(
-                          //                 builder: (context) => VideoCallingScreen(
-                          //                       a: widget.analytics,
-                          //                       o: widget.observer,
-                          //                     )));
-                          //           },
-                          //         ),
-                          //       )
-                          //     ],
-                          //   ),
-                          // ),
-                          // -============================================-
-                          // Today
-                          // Container(
-                          //   margin: EdgeInsets.only(top: 10),
-                          //   alignment: Alignment.center,
-                          //   child: Chip(
-                          //     backgroundColor: g.isDarkModeEnable
-                          //         ? Color(0xFF1F1828)
-                          //         : Color(0xFF7974AA),
-                          //     label: Text(
-                          //       'Today',
-                          //       style:
-                          //           Theme.of(context).accentTextTheme.subtitle1,
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
-                    ),
-                    // HEREEEEEEEEEE
+                      emojiShowing
+                          ? SizedBox(
+                              height: 250,
+                              child: EmojiPicker(
+                                  onEmojiSelected:
+                                      (Category category, Emoji emoji) {
+                                    _onEmojiSelected(emoji);
+                                  },
+                                  onBackspacePressed: _onBackspacePressed,
+                                  config: Config(
+                                      columns: 7,
+                                      // Issue: https://github.com/flutter/flutter/issues/28894
+                                      // emojiSizeMax:
+                                      //     32 * (Platform.isIOS ? 1.30 : 1.0),
+                                      // verticalSpacing: 0,
+                                      // horizontalSpacing: 0,
+                                      // gridPadding: EdgeInsets.zero,
+                                      initCategory: Category.RECENT,
+                                      bgColor: const Color(0xFFF2F2F2),
+                                      indicatorColor: Colors.blue,
+                                      iconColor: Color.fromARGB(255, 235, 2, 2),
+                                      iconColorSelected:
+                                          Color.fromARGB(255, 28, 3, 119),
+                                      progressIndicatorColor:
+                                          Color.fromARGB(255, 28, 3, 119),
+                                      backspaceColor:
+                                          Color.fromARGB(255, 28, 3, 119),
+                                      skinToneDialogBgColor:
+                                          Color.fromARGB(255, 128, 87, 87),
+                                      skinToneIndicatorColor:
+                                          Color.fromARGB(255, 110, 72, 72),
+                                      enableSkinTones: true,
+                                      showRecentsTab: true,
+                                      recentsLimit: 28,
+                                      replaceEmojiOnLimitExceed: false,
+                                      noRecents: const Text(
+                                        'No Recents',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black26),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      tabIndicatorAnimDuration:
+                                          kTabScrollDuration,
+                                      categoryIcons: const CategoryIcons(),
+                                      buttonMode: ButtonMode.MATERIAL)),
+                            )
+                          : SizedBox(
+                              height: 0,
+                            )
+                    ],
                   ),
-            bottomSheet: BottomAppBar(
-              color: g.isDarkModeEnable
-                  ? Color(0xFF14012F)
-                  : Theme.of(context).scaffoldBackgroundColor,
-              elevation: 0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: TextField(
-                      style: Theme.of(context).primaryTextTheme.subtitle2,
-                      controller: _cMessage,
-                      decoration: InputDecoration(
-                        contentPadding: g.isRTL
-                            ? EdgeInsets.only(right: 20)
-                            : EdgeInsets.only(left: 20),
-                        hintText:
-                            AppLocalizations.of(context).lbl_hint_chat_type_msg,
-                        hintStyle: Theme.of(context).primaryTextTheme.subtitle2,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 65,
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: TabBar(
-                      controller: _tabController,
-                      indicatorWeight: 3,
-                      indicatorColor: Theme.of(context).primaryColorLight,
-                      labelColor: Theme.of(context).iconTheme.color,
-                      unselectedLabelColor: Theme.of(context).primaryColorLight,
-                      indicatorSize: TabBarIndicatorSize.label,
-                      indicatorPadding: EdgeInsets.only(bottom: 55),
-                      labelPadding: EdgeInsets.all(0),
-                      onTap: (int index) async {
-                        _currentIndex = index;
-                      },
-                      tabs: [
-                        Tab(
-                            child: IconButton(
-                          iconSize: 20,
-                          icon: Icon(Icons.send),
-                          padding: EdgeInsets.all(0),
-                          onPressed: btnIsDisabled
-                              ? null
-                              : () async {
-                                  setState(() {
-                                    btnIsDisabled = true;
-                                  });
-                                  dynamic msg = await _sendMessageTo(
-                                      chatId: widget.chat_id,
-                                      body: _cMessage.text);
-
-                                  if (msg == "sent") {
-                                    _cMessage.clear();
-                                  }
-                                  setState(() {
-                                    btnIsDisabled = false;
-                                  });
-                                },
-                        )),
-                        Tab(
-                          child: Icon(
-                            MdiIcons.emoticonHappy,
-                            size: 20,
-                          ),
-                        ),
-                        Tab(
-                          child: Icon(
-                            MdiIcons.attachment,
-                            size: 20,
-                          ),
-                        ),
-                        // Tab(
-                        //   child: Icon(
-                        //     MdiIcons.microphone,
-                        //     size: 20,
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+        ),
       ),
     );
   }
@@ -385,7 +525,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     super.initState();
 
     _tabController =
-        new TabController(length: 3, vsync: this, initialIndex: _currentIndex);
+        new TabController(length: 2, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
     void getChat() async {
       dynamic current_usr =
@@ -611,6 +751,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 
   _sendMessageTo({chatId, body}) async {
+    final appState = Provider.of<AppState>(context, listen: false);
     try {
       final prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('i-pet-kk');
@@ -621,7 +762,11 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
           }));
 
       if (response.data != 'failed') {
+        print(response.data);
+        print(appState.chats);
+
         setState(() {
+          emojiShowing = false;
           _messages.add(_myMessage(response.data));
         });
         return 'sent';

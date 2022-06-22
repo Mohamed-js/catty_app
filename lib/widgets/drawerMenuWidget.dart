@@ -1,4 +1,5 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/screens/myProfileDetailScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -51,7 +52,10 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                         'View Profile',
                         style: TextStyle(fontSize: 15, color: Colors.white),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MyProfileScreen()));
+                      },
                     ),
                     Divider(
                       color: Colors.white54,

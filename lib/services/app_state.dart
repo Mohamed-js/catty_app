@@ -179,4 +179,10 @@ class AppState extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void reduceLikesQuota() {
+    _quota['likes'] = _quota['likes'] - 1;
+
+    notifyListeners();
+  }
 }

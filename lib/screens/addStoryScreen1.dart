@@ -446,7 +446,9 @@ class _AddStoryScreenState extends BaseRouteState {
                                                         } catch (e) {
                                                           print(e);
                                                         }
-                                                      } else {
+                                                      } else if (orientation ==
+                                                          CardSwipeOrientation
+                                                              .RIGHT) {
                                                         try {
                                                           Dio.Response
                                                               response =
@@ -482,6 +484,8 @@ class _AddStoryScreenState extends BaseRouteState {
                                                           });
                                                           print(
                                                               'righteddddddddddddddd');
+                                                          appStaty
+                                                              .reduceLikesQuota();
 
                                                           if (response.data !=
                                                               "failed to like") {
