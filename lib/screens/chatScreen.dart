@@ -19,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'dart:io';
+import 'package:PetsMating/services/socket.dart';
 
 class ChatScreen extends StatefulWidget {
   final int chat_id;
@@ -29,6 +30,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
+  dynamic socket;
   Map usr;
   TabController _tabController;
   int _currentIndex = 0;
@@ -591,41 +593,34 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     );
   }
 
+  void initSock() async {
+    final auth = Provider.of<Auth>(context, listen: false);
+    socket = socketInit(userId: auth.current_user['id'], context: context);
+  }
+
   @override
   void initState() {
     super.initState();
-
+    initSock();
     _tabController =
         new TabController(length: 2, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
-    void getChat() async {
-      dynamic current_usr =
-          await Provider.of<Auth>(context, listen: false).current_user;
+    Future getChat() async {
+      dynamic auth = Provider.of<Auth>(context, listen: false);
       final prefs = await SharedPreferences.getInstance();
       try {
-        String token = prefs.getString('i-pet-kk');
-        Dio.Response response = await dio().get('/chat/${widget.chat_id}',
-            options: Dio.Options(headers: {
-              'Authorization': 'Bearer $token',
-            }));
         setState(() {
-          _chat = response.data;
-          for (var msg in _chat['messages']) {
-            if (current_usr['id'] == msg['sender_id']) {
-              _messages.add(_myMessage(msg));
-            } else {
-              _messages.add(_hisMessage(msg, current_usr));
-            }
-          }
+          _updateChat(auth);
         });
+
         print(_chat);
       } catch (e) {
         print(e);
       }
     }
 
-    void getUsr() async {
-      final auth = await Provider.of<Auth>(context, listen: false);
+    void getUsr() {
+      final auth = Provider.of<Auth>(context, listen: false);
       setState(() {
         usr = auth.current_user['id'] == _chat['sender_id']
             ? _chat['receiver']
@@ -642,6 +637,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 
   void dispose() {
+    socket.dispose();
     super.dispose();
   }
 
@@ -836,9 +832,23 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     );
   }
 
+  sendMessage(String message, senderId) {
+    socket.emit(
+      "message",
+      {
+        "chat_id": widget.chat_id,
+        "body": message,
+        "sender_id": senderId,
+        "receiver_id": usr['id']
+      },
+    );
+  }
+
   _sendMessageTo({chatId, body}) async {
     final appState = Provider.of<AppState>(context, listen: false);
+    final auth = Provider.of<Auth>(context, listen: false);
     try {
+      sendMessage(body, auth.current_user['id']);
       final prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('i-pet-kk');
       Dio.Response response = await dio().post('/messages',
@@ -855,7 +865,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         );
         setState(() {
           emojiShowing = false;
-          _messages.insert(0, _myMessage(response.data));
+          appState.insertComingMessage(response.data);
+          _updateChat(auth);
         });
         return 'sent';
       }
@@ -864,7 +875,23 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     }
   }
 
+  _updateChat(auth) {
+    _chat = Provider.of<AppState>(context, listen: false)
+        .chats
+        .where((chat) => chat['id'] == widget.chat_id)
+        .toList()[0];
+    _messages = [];
+    for (var msg in _chat['messages']) {
+      if (auth.current_user['id'] == msg['sender_id']) {
+        _messages.add(_myMessage(msg));
+      } else {
+        _messages.add(_hisMessage(msg, auth.current_user));
+      }
+    }
+  }
+
   _renderMessages() {
+    print(_chat);
     if (_messages.length > 0) {
       return Expanded(
         child: ListView(
@@ -880,6 +907,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               ..._messages,
             ]),
       );
+    } else {
+      return Text('data');
     }
   }
 }

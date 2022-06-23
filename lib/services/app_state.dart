@@ -1,9 +1,10 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 import 'dart:io';
 import 'package:PetsMating/services/auth.dart';
 import 'package:PetsMating/services/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dio/dio.dart' as Dio;
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
@@ -182,6 +183,39 @@ class AppState extends ChangeNotifier {
 
   void reduceLikesQuota() {
     _quota['likes'] = _quota['likes'] - 1;
+
+    notifyListeners();
+  }
+
+  void insertComingMessage(data) {
+    var now = new DateTime.now();
+    final chat = _chats.where((chat) {
+      return chat['id'] == data['chat_id'];
+    }).toList()[0];
+
+    chat['last_message'] = {
+      'sender_id': data['sender_id'],
+      'body': data['body'],
+      'seen': false,
+      'chat_id': data['chat_id'],
+      'created_at': new DateFormat("yyyy-MM-dd").format(now)
+    };
+
+    chat['messages'].insert(0, {
+      'sender_id': data['sender_id'],
+      'body': data['body'],
+      'seen': false,
+      'chat_id': data['chat_id'],
+      'created_at': new DateFormat("yyyy-MM-dd").format(now)
+    });
+
+    chat['unread_messages_count']++;
+
+    _chats = _chats.where((chat) {
+      return chat['id'] != data['chat_id'];
+    }).toList();
+
+    _chats.insert(0, chat);
 
     notifyListeners();
   }
