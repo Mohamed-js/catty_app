@@ -20,8 +20,8 @@ class LoginScreen extends BaseRoute {
 class _LoginScreenState extends BaseRouteState {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  String login_err;
-  String login_btn_text = "Submit";
+  String loginErr;
+  String loginBtnText = "Submit";
 
   bool btnIsDisabled = false;
 
@@ -185,6 +185,9 @@ class _LoginScreenState extends BaseRouteState {
                             ),
                             height: 60,
                             child: TextFormField(
+                              obscureText: true,
+                              enableSuggestions: false,
+                              autocorrect: false,
                               style:
                                   Theme.of(context).primaryTextTheme.subtitle2,
                               controller: _passwordController,
@@ -255,7 +258,7 @@ class _LoginScreenState extends BaseRouteState {
                             print('trying to login...');
                             if (_formKey.currentState.validate()) {
                               setState(() {
-                                login_btn_text = 'Loading..';
+                                loginBtnText = 'Loading..';
                               });
                               String device_name =
                                   Platform.isAndroid ? "android" : "ios";
@@ -269,12 +272,13 @@ class _LoginScreenState extends BaseRouteState {
                                       context,
                                       listen: false)
                                   .login(creds);
+                              print(canLogin);
                               // adb reverse tcp:8000 tcp:8000
 
                               if (canLogin.isNotEmpty &&
                                   canLogin['message'] == null) {
                                 setState(() {
-                                  login_btn_text = 'Submit';
+                                  loginBtnText = 'Submit';
                                 });
                                 print('canLogin');
                                 print(canLogin);
@@ -299,14 +303,14 @@ class _LoginScreenState extends BaseRouteState {
                                 }
                               } else if (canLogin is Map) {
                                 setState(() {
-                                  login_err = canLogin['message'];
-                                  login_btn_text = 'Submit';
+                                  loginErr = canLogin['message'];
+                                  loginBtnText = 'Submit';
                                 });
-                                if (login_err ==
+                                if (loginErr ==
                                     'Please check your email for the OTP code.') {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(login_err),
+                                      content: Text(loginErr),
                                       backgroundColor: Colors.redAccent,
                                     ),
                                   );
@@ -315,18 +319,18 @@ class _LoginScreenState extends BaseRouteState {
                                             a: widget.analytics,
                                             o: widget.observer,
                                           )));
-                                } else if (login_err ==
+                                } else if (loginErr ==
                                     'The provided credentials are incorrect.') {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(login_err),
+                                      content: Text(loginErr),
                                       backgroundColor: Colors.redAccent,
                                     ),
                                   );
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
-                                      content: Text(login_err),
+                                      content: Text(loginErr),
                                       backgroundColor: Colors.teal,
                                     ),
                                   );
@@ -361,7 +365,7 @@ class _LoginScreenState extends BaseRouteState {
                             /// Optional, the stroke backgroundColor
                             )
                         : Text(
-                            login_btn_text,
+                            loginBtnText,
                             style: Theme.of(context)
                                 .textButtonTheme
                                 .style

@@ -100,9 +100,6 @@ class AppState extends ChangeNotifier {
   }
 
   readChat(chatId) async {
-    // for (var message in _chats[chatId]['messages']) {
-    //   message['seen'] = true;
-    // }
     _chats[chatId]['unread_messages_count'] = 0;
     notifyListeners();
   }

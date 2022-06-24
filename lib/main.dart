@@ -10,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:PetsMating/services/socket.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,10 +35,25 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   dynamic analytics;
   dynamic observer;
+  dynamic socket;
+
+  void initSock() async {
+    final auth = Provider.of<Auth>(context, listen: false);
+    await auth.tryLogin(false);
+    socket = socketInit(
+        userId: auth.current_user['id'], receiver: true, context: context);
+  }
 
   @override
   void initState() {
     super.initState();
+    initSock();
+  }
+
+  @override
+  void dispose() {
+    socket.dispose();
+    super.dispose();
   }
 
   @override

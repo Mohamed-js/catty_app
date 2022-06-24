@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:socket_io_client/socket_io_client.dart';
 import 'package:PetsMating/services/socket.dart';
 
 class BottomNavigationWidgetLight extends StatefulWidget {
@@ -25,7 +24,7 @@ class _BottomNavigationWidgetLightState
   int _currentIndex = 0;
   TabController _tabController;
   _BottomNavigationWidgetLightState(this.currentIndex) : super();
-  dynamic socket;
+
   @override
   void dispose() {
     super.dispose();
@@ -139,18 +138,9 @@ class _BottomNavigationWidgetLightState
     );
   }
 
-  void initSock() {
-    final auth = Provider.of<Auth>(context, listen: false);
-    socket = socketInit(
-        userId: auth.current_user['id'], receiver: true, context: context);
-  }
-
   @override
   void initState() {
     super.initState();
-    initSock();
-    int userId = Provider.of<Auth>(context, listen: false).current_user['id'];
-    // _initSocketIO(userId);
 
     if (currentIndex != null) {
       setState(() {

@@ -593,9 +593,19 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     );
   }
 
+  void _updateChatFromSocket() {
+    final auth = Provider.of<Auth>(context, listen: false);
+    setState(() {
+      _updateChat(auth);
+    });
+  }
+
   void initSock() async {
     final auth = Provider.of<Auth>(context, listen: false);
-    socket = socketInit(userId: auth.current_user['id'], context: context);
+    socket = socketInit(
+        userId: auth.current_user['id'],
+        context: context,
+        refreshChat: _updateChatFromSocket);
   }
 
   @override
@@ -608,6 +618,11 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     Future getChat() async {
       dynamic auth = Provider.of<Auth>(context, listen: false);
       final prefs = await SharedPreferences.getInstance();
+      String token = prefs.getString('i-pet-kk');
+      await dio().get('/chat/${widget.chat_id}',
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
       try {
         setState(() {
           _updateChat(auth);
