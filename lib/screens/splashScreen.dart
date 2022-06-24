@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/provider/local_provider.dart';
-import 'package:PetsMating/screens/addStoryScreen1.dart';
-import 'package:PetsMating/screens/introScreen.dart';
 import 'package:PetsMating/screens/profileDetailScreen.dart';
 import 'package:PetsMating/screens/startDatingScreen.dart';
 import 'package:PetsMating/screens/verifyOtpScreen.dart';
@@ -11,10 +9,9 @@ import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/services/auth.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:PetsMating/services/dio.dart';
 
 class SplashScreen extends BaseRoute {
   SplashScreen({a, o}) : super(a: a, o: o, r: 'SplashScreen');
@@ -52,6 +49,7 @@ class _SplashScreenState extends BaseRouteState {
 
   @override
   void initState() {
+    dio().get('https://chatty-sockett.herokuapp.com/asd');
     super.initState();
     _init();
 
@@ -72,9 +70,6 @@ class _SplashScreenState extends BaseRouteState {
   }
 
   startTime(loggedIn, current_user) {
-    print('current_user');
-    print(current_user);
-    print('current_user');
     try {
       var _duration = new Duration(seconds: 3);
       return new Timer(_duration, () {

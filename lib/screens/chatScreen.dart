@@ -612,8 +612,6 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         setState(() {
           _updateChat(auth);
         });
-
-        print(_chat);
       } catch (e) {
         print(e);
       }
@@ -891,7 +889,6 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 
   _renderMessages() {
-    print(_chat);
     if (_messages.length > 0) {
       return Expanded(
         child: ListView(

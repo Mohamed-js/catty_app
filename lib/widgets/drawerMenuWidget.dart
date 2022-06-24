@@ -34,7 +34,7 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
       children: [
         Container(
           alignment: Alignment.center,
-          height: MediaQuery.of(context).size.height * 0.7,
+          height: MediaQuery.of(context).size.height * 0.4,
           color: Colors.transparent,
           child: ClipRRect(
             borderRadius: BorderRadius.only(

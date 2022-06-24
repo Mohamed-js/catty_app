@@ -6,7 +6,7 @@ Socket socketInit({userId, receiver: false, context}) {
   final appState = Provider.of<AppState>(context, listen: false);
   Socket socket;
   print('TRYYYYYYING TO Connect ==================================');
-  socket = io("http://i-pet.herokuapp.com:3000/", <String, dynamic>{
+  socket = io("https://chatty-sockett.herokuapp.com/", <String, dynamic>{
     "transports": ["websocket"],
     "autoConnect": false,
   });
