@@ -1,6 +1,7 @@
 import 'package:PetsMating/services/app_state.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/socket_io_client.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
 Socket socketInit({userId, receiver: false, context}) {
   final appState = Provider.of<AppState>(context, listen: false);
@@ -19,17 +20,13 @@ Socket socketInit({userId, receiver: false, context}) {
   });
 
   socket.on('message', (data) {
-    print('Emitted message ====');
     print(data);
-    print('Emitted message ====');
   });
 
   if (receiver) {
     socket.on('message_$userId', (data) {
-      print('==== Coming message ====');
-      print(data);
-      print('==== Coming message ====');
       appState.insertComingMessage(data);
+      FlutterRingtonePlayer.play(fromAsset: "assets/bird.mp3");
     });
   }
 

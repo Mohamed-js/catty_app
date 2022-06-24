@@ -12,6 +12,12 @@
 @import emoji_picker_flutter;
 #endif
 
+#if __has_include(<flutter_ringtone_player/FlutterRingtonePlayerPlugin.h>)
+#import <flutter_ringtone_player/FlutterRingtonePlayerPlugin.h>
+#else
+@import flutter_ringtone_player;
+#endif
+
 #if __has_include(<image_picker_ios/FLTImagePickerPlugin.h>)
 #import <image_picker_ios/FLTImagePickerPlugin.h>
 #else
@@ -58,6 +64,7 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [EmojiPickerFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"EmojiPickerFlutterPlugin"]];
+  [FlutterRingtonePlayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterRingtonePlayerPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [MultiImagePicker2Plugin registerWithRegistrar:[registry registrarForPlugin:@"MultiImagePicker2Plugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
