@@ -276,6 +276,8 @@ class _LoginScreenState extends BaseRouteState {
                               print(canLogin);
                               // adb reverse tcp:8000 tcp:8000
 
+                              final auth = await Provider.of<Auth>(context,
+                                  listen: false);
                               if (canLogin.isNotEmpty &&
                                   canLogin['message'] == null) {
                                 setState(() {
@@ -285,25 +287,26 @@ class _LoginScreenState extends BaseRouteState {
                                 print(canLogin);
                                 print('canLogin');
                                 if (canLogin['verified'] == false) {
-                                  print('redirect to OTPPPPPPPPPPPP');
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => VerifyOtpScreen()));
-                                } else if (canLogin['first_name'] == null) {
-                                  print('redirect to PROFILEEEEEEEEE ADD');
+                                } else if (auth.current_user['first_name'] ==
+                                    null) {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
                                           ProfileDetailScreen()));
-                                } else if (canLogin['longitude'] == null) {
-                                  print('redirect to ADD LOCATIONNNNNN');
+                                } else if (auth.current_user['longitude'] ==
+                                    null) {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => LocationScreen()));
                                 } else {
-                                  print('redirect to PROFILEEEEEEEEE');
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          BottomNavigationWidgetLight(
-                                            currentIndex: 0,
-                                          )));
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              BottomNavigationWidgetLight(
+                                                currentIndex: 0,
+                                              )),
+                                      ModalRoute.withName('/'));
                                 }
                               } else if (canLogin is Map) {
                                 setState(() {

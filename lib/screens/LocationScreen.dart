@@ -205,6 +205,7 @@ class _LocationScreenState extends BaseRouteState {
                                     _cLongitude.text =
                                         location.longitude.toString();
                                     print('location');
+                                    handleSubmit();
                                   } else {
                                     if (permission ==
                                         LocationPermission.denied) {
@@ -225,6 +226,7 @@ class _LocationScreenState extends BaseRouteState {
                                             location.latitude.toString();
                                         _cLongitude.text =
                                             location.longitude.toString();
+                                        handleSubmit();
                                         print('location');
                                       } else {
                                         ScaffoldMessenger.of(context)
@@ -263,57 +265,6 @@ class _LocationScreenState extends BaseRouteState {
                                       backgroundColor: Colors.redAccent,
                                     ),
                                   );
-                                  setState(() {
-                                    btnIsDisabled = false;
-                                  });
-                                }
-                                if (_cCountry.text.isEmpty ||
-                                    _cCity.text.isEmpty ||
-                                    _cLongitude.text.isEmpty ||
-                                    _cLatitude.text.isEmpty) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                          'Cannot get your position correctly!'),
-                                      backgroundColor: Colors.redAccent,
-                                    ),
-                                  );
-                                  setState(() {
-                                    btnIsDisabled = false;
-                                  });
-                                  return;
-                                } else {
-                                  Map data = {
-                                    'country': _cCountry.text,
-                                    'city': _cCity.text,
-                                    'longitude': _cLongitude.text,
-                                    'latitude': _cLatitude.text
-                                  };
-                                  dynamic res = await Provider.of<Auth>(context,
-                                          listen: false)
-                                      .addLocation(data);
-
-                                  if (res.toString() ==
-                                      'Updated successfully.') {
-                                    final auth = Provider.of<Auth>(context,
-                                        listen: false);
-                                    await auth.tryLogin(false);
-
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                BottomNavigationWidgetLight(
-                                                  currentIndex: 0,
-                                                )));
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                            'Error happened getting your location!'),
-                                        backgroundColor: Colors.redAccent,
-                                      ),
-                                    );
-                                  }
                                   setState(() {
                                     btnIsDisabled = false;
                                   });
@@ -386,5 +337,52 @@ class _LocationScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+  }
+
+  void handleSubmit() async {
+    if (_cCountry.text.isEmpty ||
+        _cCity.text.isEmpty ||
+        _cLongitude.text.isEmpty ||
+        _cLatitude.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Cannot get your position correctly!'),
+          backgroundColor: Colors.redAccent,
+        ),
+      );
+      setState(() {
+        btnIsDisabled = false;
+      });
+      return;
+    } else {
+      Map data = {
+        'country': _cCountry.text,
+        'city': _cCity.text,
+        'longitude': _cLongitude.text,
+        'latitude': _cLatitude.text
+      };
+      dynamic res =
+          await Provider.of<Auth>(context, listen: false).addLocation(data);
+
+      if (res.toString() == 'Updated successfully.') {
+        final auth = Provider.of<Auth>(context, listen: false);
+        await auth.tryLogin(false);
+
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => BottomNavigationWidgetLight(
+                  currentIndex: 0,
+                )));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error happened getting your location!'),
+            backgroundColor: Colors.redAccent,
+          ),
+        );
+      }
+      setState(() {
+        btnIsDisabled = false;
+      });
+    }
   }
 }

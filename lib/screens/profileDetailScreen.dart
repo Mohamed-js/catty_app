@@ -329,6 +329,10 @@ class _ProfileDetailScreenState extends BaseRouteState {
                                           backgroundColor: Colors.redAccent,
                                         ),
                                       );
+                                      setState(() {
+                                        btnIsDisabled = false;
+                                      });
+
                                       return;
                                     }
                                     Map data = {

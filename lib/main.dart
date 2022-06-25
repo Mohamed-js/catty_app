@@ -11,6 +11,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:PetsMating/services/socket.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,9 +40,12 @@ class MyAppState extends State<MyApp> {
 
   void initSock() async {
     final auth = Provider.of<Auth>(context, listen: false);
+
     await auth.tryLogin(false);
-    socket = socketInit(
-        userId: auth.current_user['id'], receiver: true, context: context);
+    if (auth.current_user != null) {
+      socket = socketInit(
+          userId: auth.current_user['id'], receiver: true, context: context);
+    }
   }
 
   @override
@@ -57,23 +61,29 @@ class MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-      create: (context) => LocaleProvider(),
-      builder: (context, child) {
-        final provider = Provider.of<LocaleProvider>(context);
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    return ChangeNotifierProvider(
+        create: (context) => LocaleProvider(),
+        builder: (context, child) {
+          final provider = Provider.of<LocaleProvider>(context);
 
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: nativeTheme(g.isDarkModeEnable),
-          home: SplashScreen(a: analytics, o: observer),
-          locale: provider.locale,
-          supportedLocales: L10n.all,
-          localizationsDelegates: [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-        );
-      });
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: nativeTheme(g.isDarkModeEnable),
+            home: SplashScreen(a: analytics, o: observer),
+            locale: provider.locale,
+            supportedLocales: L10n.all,
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+          );
+        });
+  }
 }
