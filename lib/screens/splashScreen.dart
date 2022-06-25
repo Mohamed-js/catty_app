@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/provider/local_provider.dart';
+import 'package:PetsMating/screens/LocationScreen.dart';
 import 'package:PetsMating/screens/profileDetailScreen.dart';
 import 'package:PetsMating/screens/startDatingScreen.dart';
 import 'package:PetsMating/screens/verifyOtpScreen.dart';
@@ -80,6 +81,9 @@ class _SplashScreenState extends BaseRouteState {
           } else if (current_user['first_name'] == null) {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => ProfileDetailScreen()));
+          } else if (current_user['longitude'] == null) {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => LocationScreen()));
           } else {
             Navigator.pushAndRemoveUntil(
                 context,

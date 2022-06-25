@@ -184,4 +184,30 @@ class Auth extends ChangeNotifier {
       print(e);
     }
   }
+
+  Future addLocation(dat) async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+
+    Dio.FormData data = Dio.FormData.fromMap({
+      "country": dat['country'],
+      "city": dat['city'],
+      "longitude": dat['longitude'],
+      "latitude": dat['latitude'],
+    });
+
+    try {
+      print(data.fields);
+      print('Bearer $token');
+      Dio.Response response = await dio().post('/location',
+          data: data,
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
+
+      return response;
+    } catch (e) {
+      print(e);
+    }
+  }
 }

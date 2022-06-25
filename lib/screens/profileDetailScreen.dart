@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/LocationScreen.dart';
 import 'package:PetsMating/screens/addStoryScreen1.dart';
 import 'package:PetsMating/screens/likes&IntrestScreen.dart';
 import 'package:PetsMating/services/auth.dart';
@@ -346,12 +347,11 @@ class _ProfileDetailScreenState extends BaseRouteState {
                                       final auth = Provider.of<Auth>(context,
                                           listen: false);
                                       await auth.tryLogin(false);
+
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  BottomNavigationWidgetLight(
-                                                    currentIndex: 0,
-                                                  )));
+                                                  LocationScreen()));
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(

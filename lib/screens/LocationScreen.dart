@@ -1,11 +1,13 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
-import 'package:PetsMating/widgets/bottomNavigationBarWidgetDark.dart';
+import 'package:PetsMating/services/auth.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:loading_indicator/loading_indicator.dart';
+import 'package:provider/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 class LocationScreen extends BaseRoute {
   LocationScreen({a, o}) : super(a: a, o: o, r: 'LocationScreen');
@@ -15,9 +17,13 @@ class LocationScreen extends BaseRoute {
 
 class _LocationScreenState extends BaseRouteState {
   var _scaffoldKey = GlobalKey<ScaffoldState>();
-  TextEditingController _cLocation = new TextEditingController();
-  TextEditingController _cNewLocation = new TextEditingController();
+  TextEditingController _cLongitude = new TextEditingController();
+  TextEditingController _cLatitude = new TextEditingController();
   _LocationScreenState() : super();
+  TextEditingController _cCountry = new TextEditingController();
+  TextEditingController _cCity = new TextEditingController();
+
+  bool btnIsDisabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +41,6 @@ class _LocationScreenState extends BaseRouteState {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: AppBar(
             elevation: 0,
-            leading: IconButton(
-              icon: Icon(FontAwesomeIcons.longArrowAltLeft),
-              color: Theme.of(context).iconTheme.color,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
             backgroundColor: Colors.transparent,
           ),
           body: Center(
@@ -93,9 +92,11 @@ class _LocationScreenState extends BaseRouteState {
                       ),
                       height: 60,
                       child: TextFormField(
-                        cursorColor: Colors.white,
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 42, 6, 110)),
+                        cursorColor: Color.fromARGB(255, 235, 65, 65),
                         textAlign: TextAlign.start,
-                        controller: _cLocation,
+                        controller: _cCountry,
                         decoration: InputDecoration(
                           suffixIcon: Padding(
                             padding: g.isRTL
@@ -111,7 +112,7 @@ class _LocationScreenState extends BaseRouteState {
                               : EdgeInsets.only(left: 20, top: 15),
                           hintStyle:
                               Theme.of(context).primaryTextTheme.subtitle2,
-                          hintText: 'Florida, US',
+                          hintText: 'Country',
                         ),
                       ),
                     ),
@@ -137,9 +138,11 @@ class _LocationScreenState extends BaseRouteState {
                       ),
                       height: 60,
                       child: TextFormField(
-                        cursorColor: Colors.white,
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 42, 6, 110)),
+                        cursorColor: Color.fromARGB(255, 235, 65, 65),
                         textAlign: TextAlign.start,
-                        controller: _cNewLocation,
+                        controller: _cCity,
                         decoration: InputDecoration(
                           suffixIcon: Padding(
                             padding: g.isRTL
@@ -155,8 +158,7 @@ class _LocationScreenState extends BaseRouteState {
                               : EdgeInsets.only(left: 20, top: 15),
                           hintStyle:
                               Theme.of(context).primaryTextTheme.subtitle2,
-                          hintText: AppLocalizations.of(context)
-                              .lbl_search_location_hint,
+                          hintText: 'City',
                         ),
                       ),
                     ),
@@ -176,56 +178,202 @@ class _LocationScreenState extends BaseRouteState {
                         ),
                       ),
                       child: TextButton(
-                        onPressed: () {
-                          g.isDarkModeEnable
-                              ? Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      BottomNavigationWidgetDark(
-                                        currentIndex: 0,
-                                        a: widget.analytics,
-                                        o: widget.observer,
-                                      )))
-                              : Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      BottomNavigationWidgetLight(
-                                        currentIndex: 0,
-                                      )));
-                        },
-                        child: Text(AppLocalizations.of(context).btn_continue,
-                            style: Theme.of(context)
-                                .textButtonTheme
-                                .style
-                                .textStyle
-                                .resolve({
-                              MaterialState.pressed,
-                            })),
+                        onPressed: btnIsDisabled
+                            ? null
+                            : () async {
+                                setState(() {
+                                  btnIsDisabled = true;
+                                });
+
+                                bool isLocationServiceEnabled =
+                                    await Geolocator.isLocationServiceEnabled();
+                                if (isLocationServiceEnabled) {
+                                  LocationPermission permission =
+                                      await Geolocator.checkPermission();
+                                  if (permission == LocationPermission.always ||
+                                      permission ==
+                                          LocationPermission.whileInUse) {
+                                    Position location =
+                                        await Geolocator.getCurrentPosition(
+                                            desiredAccuracy:
+                                                LocationAccuracy.high,
+                                            forceAndroidLocationManager: true);
+                                    // _cLatitude.text = location.Latitude;
+                                    print('location');
+                                    _cLatitude.text =
+                                        location.latitude.toString();
+                                    _cLongitude.text =
+                                        location.longitude.toString();
+                                    print('location');
+                                  } else {
+                                    if (permission ==
+                                        LocationPermission.denied) {
+                                      LocationPermission permission =
+                                          await Geolocator.requestPermission();
+                                      if (permission ==
+                                              LocationPermission.always ||
+                                          permission ==
+                                              LocationPermission.whileInUse) {
+                                        dynamic location =
+                                            await Geolocator.getCurrentPosition(
+                                                desiredAccuracy:
+                                                    LocationAccuracy.high,
+                                                forceAndroidLocationManager:
+                                                    true);
+                                        print('location');
+                                        _cLatitude.text =
+                                            location.latitude.toString();
+                                        _cLongitude.text =
+                                            location.longitude.toString();
+                                        print('location');
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                                'Sorry, we cannot access your location!'),
+                                            backgroundColor: Colors.redAccent,
+                                          ),
+                                        );
+                                        setState(() {
+                                          btnIsDisabled = false;
+                                        });
+                                      }
+                                    } else {
+                                      // PLEASE GRANT PERMISSION FROM SETTINGS
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                              'Location permission is denied forever, please enable it from app settings.'),
+                                          backgroundColor: Colors.redAccent,
+                                        ),
+                                      );
+                                      setState(() {
+                                        btnIsDisabled = false;
+                                      });
+                                    }
+                                  }
+                                } else {
+                                  // PLEASE ENABLE LOCATION
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          'Make sure location service is enabled on your device.'),
+                                      backgroundColor: Colors.redAccent,
+                                    ),
+                                  );
+                                  setState(() {
+                                    btnIsDisabled = false;
+                                  });
+                                }
+                                if (_cCountry.text.isEmpty ||
+                                    _cCity.text.isEmpty ||
+                                    _cLongitude.text.isEmpty ||
+                                    _cLatitude.text.isEmpty) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          'Cannot get your position correctly!'),
+                                      backgroundColor: Colors.redAccent,
+                                    ),
+                                  );
+                                  setState(() {
+                                    btnIsDisabled = false;
+                                  });
+                                  return;
+                                } else {
+                                  Map data = {
+                                    'country': _cCountry.text,
+                                    'city': _cCity.text,
+                                    'longitude': _cLongitude.text,
+                                    'latitude': _cLatitude.text
+                                  };
+                                  dynamic res = await Provider.of<Auth>(context,
+                                          listen: false)
+                                      .addLocation(data);
+
+                                  if (res.toString() ==
+                                      'Updated successfully.') {
+                                    final auth = Provider.of<Auth>(context,
+                                        listen: false);
+                                    await auth.tryLogin(false);
+
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                BottomNavigationWidgetLight(
+                                                  currentIndex: 0,
+                                                )));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                            'Error happened getting your location!'),
+                                        backgroundColor: Colors.redAccent,
+                                      ),
+                                    );
+                                  }
+                                  setState(() {
+                                    btnIsDisabled = false;
+                                  });
+                                }
+                              },
+                        child: btnIsDisabled
+                            ? LoadingIndicator(
+                                indicatorType: Indicator.ballPulse,
+
+                                /// Required, The loading type of the widget
+                                colors: const [Colors.white],
+
+                                /// Optional, The color collections
+                                strokeWidth: 2,
+
+                                /// Optional, The stroke of the line, only applicable to widget which contains line
+                                backgroundColor: Colors.transparent,
+
+                                /// Optional, Background of the widget
+                                pathBackgroundColor: Colors.black
+
+                                /// Optional, the stroke backgroundColor
+                                )
+                            : Text(
+                                'Save',
+                                style: Theme.of(context)
+                                    .textButtonTheme
+                                    .style
+                                    .textStyle
+                                    .resolve({
+                                  MaterialState.pressed,
+                                }),
+                              ),
                       ),
                     ),
                   ),
                   Expanded(child: SizedBox()),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 40),
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            AppLocalizations.of(context).lbl_powered_by,
-                            style: Theme.of(context).primaryTextTheme.subtitle2,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 4, top: 4),
-                            child: Image.asset(
-                              'assets/images/google_back.png',
-                              height: 25,
-                              width: 70,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(bottom: 40),
+                  //   child: Align(
+                  //     alignment: Alignment.bottomCenter,
+                  //     child: Row(
+                  //       mainAxisSize: MainAxisSize.min,
+                  //       children: [
+                  //         Text(
+                  //           AppLocalizations.of(context).lbl_powered_by,
+                  //           style: Theme.of(context).primaryTextTheme.subtitle2,
+                  //         ),
+                  //         Padding(
+                  //           padding: EdgeInsets.only(left: 4, top: 4),
+                  //           child: Image.asset(
+                  //             'assets/images/google_back.png',
+                  //             height: 25,
+                  //             width: 70,
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
