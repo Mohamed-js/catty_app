@@ -1,4 +1,4 @@
-#Fri Jun 24 14:08:43 EET 2022
+#Sat Jun 25 17:51:19 EET 2022
 base.1=C\:\\Users\\lordd\\Documents\\GitHub\\animal-dating\\build\\app\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
 path.1=classes2.dex
 base.0=C\:\\Users\\lordd\\Documents\\GitHub\\animal-dating\\build\\app\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex

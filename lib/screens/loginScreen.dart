@@ -1,5 +1,6 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/LocationScreen.dart';
 import 'package:PetsMating/screens/addStoryScreen1.dart';
 import 'package:PetsMating/screens/profileDetailScreen.dart';
 import 'package:PetsMating/screens/verifyOtpScreen.dart';
@@ -287,12 +288,15 @@ class _LoginScreenState extends BaseRouteState {
                                   print('redirect to OTPPPPPPPPPPPP');
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => VerifyOtpScreen()));
-                                } else if (canLogin['first_name'] != null &&
-                                    canLogin['first_name'].isEmpty) {
+                                } else if (canLogin['first_name'] == null) {
                                   print('redirect to PROFILEEEEEEEEE ADD');
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
                                           ProfileDetailScreen()));
+                                } else if (canLogin['longitude'] == null) {
+                                  print('redirect to ADD LOCATIONNNNNN');
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => LocationScreen()));
                                 } else {
                                   print('redirect to PROFILEEEEEEEEE');
                                   Navigator.of(context).push(MaterialPageRoute(
