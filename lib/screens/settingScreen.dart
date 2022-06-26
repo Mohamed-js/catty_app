@@ -99,7 +99,9 @@ class _SettingScreenState extends BaseRouteState {
                                   : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_account,
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 48, 0, 160)),
                               ),
                             ),
                           )
@@ -182,7 +184,10 @@ class _SettingScreenState extends BaseRouteState {
                                   : const EdgeInsets.only(left: 10),
                               child: Text(
                                 'Messages',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 48, 0, 160),
+                                ),
                               ),
                             ),
                           )
@@ -225,7 +230,9 @@ class _SettingScreenState extends BaseRouteState {
                                   : const EdgeInsets.only(left: 10),
                               child: Text(
                                 AppLocalizations.of(context).lbl_notifications,
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 48, 0, 160)),
                               ),
                             ),
                           )

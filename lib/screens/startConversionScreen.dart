@@ -204,11 +204,15 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
     });
   }
 
+  void freshize() async {
+    final appState = Provider.of<AppState>(context, listen: false);
+    appState.getNotifications();
+    await appState.getChats();
+  }
+
   @override
   void initState() {
     super.initState();
-    final appState = Provider.of<AppState>(context, listen: false);
-    appState.getChats();
-    appState.getNotifications();
+    freshize();
   }
 }

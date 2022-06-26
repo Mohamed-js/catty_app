@@ -6,6 +6,7 @@ import 'package:PetsMating/screens/settingScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/services/auth.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -827,6 +828,39 @@ class _MyProfileScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+                  title: Text('Allow Notifications'),
+                  content:
+                      Text('PetsMating would like to send you notifications..'),
+                  actions: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text(
+                          "Don't allow",
+                          style: Theme.of(context).primaryTextTheme.subtitle2,
+                        )),
+                    TextButton(
+                        onPressed: () {
+                          AwesomeNotifications()
+                              .requestPermissionToSendNotifications()
+                              .then((_) => Navigator.pop(context));
+                        },
+                        child: Text(
+                          "Allow",
+                          style: Theme.of(context).primaryTextTheme.subtitle1,
+                        ))
+                  ],
+                ));
+      }
+    });
+
     final auth = Provider.of<Auth>(context, listen: false);
 
     _tabController =

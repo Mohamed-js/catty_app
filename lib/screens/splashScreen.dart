@@ -61,27 +61,27 @@ class _SplashScreenState extends BaseRouteState {
       await auth.tryLogin(false);
       if (auth.authenticated) {
         appState.setCurrentAnimal(auth.current_user, null);
-        appState.getChats();
         appState.getNotifications();
         appState.getSubscription();
         appState.getQuota();
+        await appState.getChats();
       }
       startTime(auth.authenticated, auth.current_user);
     });
   }
 
-  startTime(loggedIn, current_user) {
+  startTime(loggedIn, currentUser) {
     try {
       var _duration = new Duration(seconds: 3);
       return new Timer(_duration, () {
         if (loggedIn) {
-          if (current_user['verified'] == false) {
+          if (currentUser['verified'] == false) {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => VerifyOtpScreen()));
-          } else if (current_user['first_name'] == null) {
+          } else if (currentUser['first_name'] == null) {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => ProfileDetailScreen()));
-          } else if (current_user['longitude'] == null) {
+          } else if (currentUser['longitude'] == null) {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => LocationScreen()));
           } else {

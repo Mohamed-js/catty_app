@@ -3,6 +3,7 @@ import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/screens/videoCallingScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/services/sender_socket.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetDark.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:PetsMating/widgets/drawerMenuWidget.dart';
@@ -19,7 +20,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'dart:io';
-import 'package:PetsMating/services/socket.dart';
 
 class ChatScreen extends StatefulWidget {
   final int chat_id;
@@ -242,15 +242,15 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                             .primaryTextTheme
                                             .headline3,
                                       ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 4, bottom: 6),
-                                  child: CircleAvatar(
-                                    radius: 4,
-                                    backgroundColor:
-                                        Colors.lightGreenAccent[400],
-                                  ),
-                                )
+                                // Padding(
+                                //   padding:
+                                //       const EdgeInsets.only(left: 4, bottom: 6),
+                                //   child: CircleAvatar(
+                                //     radius: 4,
+                                //     backgroundColor:
+                                //         Colors.lightGreenAccent[400],
+                                //   ),
+                                // )
                               ],
                             ),
                             SizedBox(
@@ -602,7 +602,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   void initSock() async {
     final auth = Provider.of<Auth>(context, listen: false);
-    socket = socketInit(
+    socket = senderSocketInit(
         userId: auth.current_user['id'],
         context: context,
         refreshChat: _updateChatFromSocket);
@@ -633,12 +633,16 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     }
 
     void getUsr() {
-      final auth = Provider.of<Auth>(context, listen: false);
-      setState(() {
-        usr = auth.current_user['id'] == _chat['sender_id']
-            ? _chat['receiver']
-            : _chat['sender'];
-      });
+      try {
+        final auth = Provider.of<Auth>(context, listen: false);
+        setState(() {
+          usr = auth.current_user['id'] == _chat['sender_id']
+              ? _chat['receiver']
+              : _chat['sender'];
+        });
+      } catch (e) {
+        print(e);
+      }
     }
 
     Future getChatUsr() async {
@@ -651,7 +655,10 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
   void dispose() {
     socket.dispose();
+    socket.disconnect();
+
     super.dispose();
+    socket.disconnect();
   }
 
   void _tabControllerListener() {
@@ -878,7 +885,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         );
         setState(() {
           emojiShowing = false;
-          appState.insertComingMessage(response.data);
+          appState.insertComingMessage(response.data, true);
           _updateChat(auth);
         });
         return 'sent';

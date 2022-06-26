@@ -52,6 +52,7 @@ dependencies:
   redis: ^3.1.0
   flutter_ringtone_player: ^3.2.0
   geolocator: ^8.2.1
+  awesome_notifications: ^0.6.21
 
 dev_dependencies:
   flutter_test:

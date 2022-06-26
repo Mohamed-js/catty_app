@@ -304,21 +304,21 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                       .subtitle1,
                                                                 ),
                                                               ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .only(
-                                                                        left: 4,
-                                                                        bottom:
-                                                                            10),
-                                                                child:
-                                                                    CircleAvatar(
-                                                                  radius: 4,
-                                                                  backgroundColor:
-                                                                      Colors.lightGreenAccent[
-                                                                          400],
-                                                                ),
-                                                              )
+                                                              // Padding(
+                                                              //   padding:
+                                                              //       const EdgeInsets
+                                                              //               .only(
+                                                              //           left: 4,
+                                                              //           bottom:
+                                                              //               10),
+                                                              //   child:
+                                                              //       CircleAvatar(
+                                                              //     radius: 4,
+                                                              //     backgroundColor:
+                                                              //         Colors.lightGreenAccent[
+                                                              //             400],
+                                                              //   ),
+                                                              // )
                                                             ],
                                                           ),
                                                           appState.chats[index][

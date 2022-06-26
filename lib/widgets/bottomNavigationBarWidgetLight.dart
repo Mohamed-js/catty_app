@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:PetsMating/services/socket.dart';
+import 'package:PetsMating/services/receiver_socket.dart';
 
 class BottomNavigationWidgetLight extends StatefulWidget {
   final int currentIndex;

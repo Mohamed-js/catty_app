@@ -3,6 +3,7 @@ import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/screens/ownerProfileScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/services/notifications.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -236,6 +237,7 @@ class _NotificationListScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+
     final appState = Provider.of<AppState>(context, listen: false);
     appState.getNotifications();
   }

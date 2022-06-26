@@ -33,8 +33,8 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
       mainAxisSize: MainAxisSize.max,
       children: [
         Container(
-          alignment: Alignment.center,
-          height: MediaQuery.of(context).size.height * 0.4,
+          alignment: Alignment.topRight,
+          height: MediaQuery.of(context).size.height * 0.9,
           color: Colors.transparent,
           child: ClipRRect(
             borderRadius: BorderRadius.only(
@@ -47,7 +47,10 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                     bottomLeft: Radius.circular(40),
                   ),
                   gradient: LinearGradient(
-                    colors: [Color(0xffD6376E), Color(0xFFAD45B3)],
+                    colors: [
+                      Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 255, 255, 255)
+                    ],
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
                   ),
@@ -57,11 +60,11 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                     ListTile(
                       leading: Icon(
                         Icons.person,
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 0, 55, 138),
                       ),
                       title: Text(
                         'View Profile',
-                        style: TextStyle(fontSize: 15, color: Colors.white),
+                        style: Theme.of(context).primaryTextTheme.subtitle1,
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -140,16 +143,16 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                     //   onTap: () {},
                     // ),
                     Divider(
-                      color: Colors.white54,
+                      color: Color.fromARGB(137, 255, 145, 145),
                     ),
                     ListTile(
                       leading: Icon(
                         Icons.block,
-                        color: Colors.white,
+                        color: Colors.red,
                       ),
                       title: Text(
                         'Block User',
-                        style: TextStyle(fontSize: 15, color: Colors.white),
+                        style: TextStyle(color: Colors.red),
                       ),
                       onTap: () async {
                         try {
@@ -170,18 +173,21 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                       },
                     ),
                     Divider(
-                      color: Colors.white54,
+                      color: Color.fromARGB(137, 255, 145, 145),
                     ),
                     ListTile(
                       leading: Icon(
                         Icons.report,
-                        color: Colors.white,
+                        color: Colors.grey,
                       ),
                       title: Text(
                         'Report User',
-                        style: TextStyle(fontSize: 15, color: Colors.white),
+                        style: TextStyle(color: Colors.grey),
                       ),
                       onTap: () {},
+                    ),
+                    Divider(
+                      color: Color.fromARGB(137, 255, 145, 145),
                     ),
                   ],
                 ),

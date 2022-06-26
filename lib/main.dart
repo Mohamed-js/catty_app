@@ -5,16 +5,28 @@ import 'package:PetsMating/provider/local_provider.dart';
 import 'package:PetsMating/screens/splashScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/services/auth.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:PetsMating/services/socket.dart';
+import 'package:PetsMating/services/receiver_socket.dart';
 import 'package:flutter/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+          channelKey: 'messages_channel',
+          channelName: 'PetsMating Notification',
+          defaultColor: Colors.white,
+          importance: NotificationImportance.High,
+          channelShowBadge: true),
+    ],
+  );
   runApp(
     Phoenix(
       child: MultiProvider(
@@ -36,14 +48,14 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   dynamic analytics;
   dynamic observer;
-  dynamic socket;
+  dynamic receiverSocket;
 
   void initSock() async {
     final auth = Provider.of<Auth>(context, listen: false);
 
     await auth.tryLogin(false);
     if (auth.current_user != null) {
-      socket = socketInit(
+      receiverSocket = receiverSocketInit(
           userId: auth.current_user['id'], receiver: true, context: context);
     }
   }
@@ -56,8 +68,11 @@ class MyAppState extends State<MyApp> {
 
   @override
   void dispose() {
-    socket.dispose();
+    receiverSocket.disconnect();
+    receiverSocket.dispose();
+
     super.dispose();
+    receiverSocket.disconnect();
   }
 
   @override

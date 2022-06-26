@@ -184,8 +184,9 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void insertComingMessage(data) {
+  void insertComingMessage(data, meInserting) {
     var now = new DateTime.now();
+    print(new DateFormat("yyyy-MM-dd Hms").format(now));
     final chat = _chats.where((chat) {
       return chat['id'] == data['chat_id'];
     }).toList()[0];
@@ -193,17 +194,17 @@ class AppState extends ChangeNotifier {
     chat['last_message'] = {
       'sender_id': data['sender_id'],
       'body': data['body'],
-      'seen': false,
+      'seen': meInserting ? true : false,
       'chat_id': data['chat_id'],
-      'created_at': new DateFormat("yyyy-MM-dd").format(now)
+      'created_at': new DateFormat("yyyy-MM-dd hh:mm").format(now)
     };
 
     chat['messages'].insert(0, {
       'sender_id': data['sender_id'],
       'body': data['body'],
-      'seen': false,
+      'seen': meInserting ? true : false,
       'chat_id': data['chat_id'],
-      'created_at': new DateFormat("yyyy-MM-dd").format(now)
+      'created_at': new DateFormat("yyyy-MM-dd hh:mm").format(now)
     });
 
     chat['unread_messages_count']++;
