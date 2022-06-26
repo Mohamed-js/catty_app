@@ -1,6 +1,7 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/screens/chatScreen.dart';
+import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/services/auth.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
@@ -206,5 +207,8 @@ class _StartConversionScreenState extends State<StartConversionScreen> {
   @override
   void initState() {
     super.initState();
+    final appState = Provider.of<AppState>(context, listen: false);
+    appState.getChats();
+    appState.getNotifications();
   }
 }

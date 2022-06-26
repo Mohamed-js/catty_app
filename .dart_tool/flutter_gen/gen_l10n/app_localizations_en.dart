@@ -149,10 +149,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get btn_skip => 'Skip';
 
   @override
-  String get lbl_location_subtitle1 => 'Let the app locate you to provide best';
+  String get lbl_location_subtitle1 => 'Let the app locate you to provide you ';
 
   @override
-  String get lbl_location_subtitle2 => 'searched results around you';
+  String get lbl_location_subtitle2 => 'with the best results';
 
   @override
   String get lbl_current_location => 'Current Location';

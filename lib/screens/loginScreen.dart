@@ -273,19 +273,16 @@ class _LoginScreenState extends BaseRouteState {
                                       context,
                                       listen: false)
                                   .login(creds);
-                              print(canLogin);
                               // adb reverse tcp:8000 tcp:8000
 
-                              final auth = await Provider.of<Auth>(context,
-                                  listen: false);
+                              final auth =
+                                  Provider.of<Auth>(context, listen: false);
                               if (canLogin.isNotEmpty &&
                                   canLogin['message'] == null) {
                                 setState(() {
                                   loginBtnText = 'Submit';
                                 });
-                                print('canLogin');
-                                print(canLogin);
-                                print('canLogin');
+
                                 if (canLogin['verified'] == false) {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => VerifyOtpScreen()));

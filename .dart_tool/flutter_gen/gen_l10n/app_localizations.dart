@@ -379,13 +379,13 @@ abstract class AppLocalizations {
   /// No description provided for @lbl_location_subtitle1.
   ///
   /// In en, this message translates to:
-  /// **'Let the app locate you to provide best'**
+  /// **'Let the app locate you to provide you '**
   String get lbl_location_subtitle1;
 
-  /// searched results around you
+  /// with the best results
   ///
   /// In en, this message translates to:
-  /// **'searched results around you'**
+  /// **'with the best results'**
   String get lbl_location_subtitle2;
 
   /// Current Location

@@ -1,6 +1,7 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/services/auth.dart';
+import 'package:PetsMating/services/dio.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -103,7 +104,7 @@ class _LocationScreenState extends BaseRouteState {
                                 ? const EdgeInsets.only(left: 20)
                                 : const EdgeInsets.only(right: 20),
                             child: Icon(
-                              Icons.my_location,
+                              Icons.flag,
                               color: Theme.of(context).iconTheme.color,
                             ),
                           ),
@@ -149,7 +150,7 @@ class _LocationScreenState extends BaseRouteState {
                                 ? const EdgeInsets.only(left: 20)
                                 : const EdgeInsets.only(right: 20),
                             child: Icon(
-                              Icons.search,
+                              Icons.location_city,
                               color: Theme.of(context).iconTheme.color,
                             ),
                           ),
@@ -179,7 +180,7 @@ class _LocationScreenState extends BaseRouteState {
                       ),
                       child: TextButton(
                         onPressed: btnIsDisabled
-                            ? null
+                            ? () {}
                             : () async {
                                 setState(() {
                                   btnIsDisabled = true;
@@ -187,6 +188,7 @@ class _LocationScreenState extends BaseRouteState {
 
                                 bool isLocationServiceEnabled =
                                     await Geolocator.isLocationServiceEnabled();
+
                                 if (isLocationServiceEnabled) {
                                   LocationPermission permission =
                                       await Geolocator.checkPermission();
@@ -196,16 +198,17 @@ class _LocationScreenState extends BaseRouteState {
                                     Position location =
                                         await Geolocator.getCurrentPosition(
                                             desiredAccuracy:
-                                                LocationAccuracy.high,
-                                            forceAndroidLocationManager: true);
-                                    // _cLatitude.text = location.Latitude;
-                                    print('location');
+                                                LocationAccuracy.medium);
+
                                     _cLatitude.text =
                                         location.latitude.toString();
                                     _cLongitude.text =
                                         location.longitude.toString();
-                                    print('location');
+
                                     handleSubmit();
+                                    setState(() {
+                                      btnIsDisabled = false;
+                                    });
                                   } else {
                                     if (permission ==
                                         LocationPermission.denied) {
@@ -215,19 +218,20 @@ class _LocationScreenState extends BaseRouteState {
                                               LocationPermission.always ||
                                           permission ==
                                               LocationPermission.whileInUse) {
-                                        dynamic location =
+                                        Position location =
                                             await Geolocator.getCurrentPosition(
-                                                desiredAccuracy:
-                                                    LocationAccuracy.high,
-                                                forceAndroidLocationManager:
-                                                    true);
-                                        print('location');
+                                          desiredAccuracy:
+                                              LocationAccuracy.medium,
+                                        );
+
                                         _cLatitude.text =
                                             location.latitude.toString();
                                         _cLongitude.text =
                                             location.longitude.toString();
                                         handleSubmit();
-                                        print('location');
+                                        setState(() {
+                                          btnIsDisabled = false;
+                                        });
                                       } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
@@ -256,6 +260,9 @@ class _LocationScreenState extends BaseRouteState {
                                       });
                                     }
                                   }
+                                  setState(() {
+                                    btnIsDisabled = false;
+                                  });
                                 } else {
                                   // PLEASE ENABLE LOCATION
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -269,6 +276,9 @@ class _LocationScreenState extends BaseRouteState {
                                     btnIsDisabled = false;
                                   });
                                 }
+                                setState(() {
+                                  btnIsDisabled = false;
+                                });
                               },
                         child: btnIsDisabled
                             ? LoadingIndicator(
@@ -337,6 +347,7 @@ class _LocationScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+    getLocation();
   }
 
   void handleSubmit() async {
@@ -346,7 +357,7 @@ class _LocationScreenState extends BaseRouteState {
         _cLatitude.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Cannot get your position correctly!'),
+          content: Text('Please fill all inputs correctly...'),
           backgroundColor: Colors.redAccent,
         ),
       );
@@ -383,6 +394,55 @@ class _LocationScreenState extends BaseRouteState {
       setState(() {
         btnIsDisabled = false;
       });
+    }
+  }
+
+  getLocation() async {
+    bool isLocationServiceEnabled = await Geolocator.isLocationServiceEnabled();
+
+    if (isLocationServiceEnabled) {
+      LocationPermission permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.always ||
+          permission == LocationPermission.whileInUse) {
+        Position position = await Geolocator.getCurrentPosition(
+            desiredAccuracy: LocationAccuracy.medium);
+
+        dynamic response = await dio().get(
+            'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.latitude}&longitude=${position.longitude}&localityLanguage=en');
+
+        if (response.data['city'].isNotEmpty) {
+          _cCity.text = response.data['city'];
+        } else if (response
+            .data['localityInfo']['administrative'][1]['name'].isNotEmpty) {
+          _cCity.text =
+              response.data['localityInfo']['administrative'][1]['name'];
+        } else {
+          _cCity.text = response.data['locality'];
+        }
+
+        _cCountry.text = response.data['countryName'];
+      } else {
+        LocationPermission permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.always ||
+            permission == LocationPermission.whileInUse) {
+          Position position = await Geolocator.getCurrentPosition(
+              desiredAccuracy: LocationAccuracy.medium);
+
+          dynamic response = await dio().get(
+              'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.latitude}&longitude=${position.longitude}&localityLanguage=en');
+
+          if (response.data['city'].isNotEmpty) {
+            _cCity.text = response.data['city'];
+          } else if (response
+              .data['localityInfo']['administrative'][1]['name'].isNotEmpty) {
+            _cCity.text =
+                response.data['localityInfo']['administrative'][1]['name'];
+          } else {
+            _cCity.text = response.data['locality'];
+          }
+          _cCountry.text = response.data['countryName'];
+        }
+      }
     }
   }
 }

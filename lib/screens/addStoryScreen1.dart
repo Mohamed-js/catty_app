@@ -1,28 +1,18 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
-import 'package:PetsMating/screens/createStoryScreen.dart';
 import 'package:PetsMating/screens/filterOptionsScreen.dart';
-import 'package:PetsMating/screens/myAnimalProfileScreen.dart';
-import 'package:PetsMating/screens/myProfileDetailScreen.dart';
-import 'package:PetsMating/screens/notificationListScreen.dart';
-import 'package:PetsMating/screens/splashScreen.dart';
 import 'package:PetsMating/screens/startConversionScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/services/auth.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
-import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:PetsMating/services/dio.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'dart:developer';
+
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 
 class AddStoryScreen extends BaseRoute {

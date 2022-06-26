@@ -48,7 +48,7 @@ class _ProfileDetailScreenState extends BaseRouteState {
             ),
           ),
           child: Scaffold(
-            resizeToAvoidBottomInset: false,
+            resizeToAvoidBottomInset: true,
             key: _scaffoldKey,
             body: SingleChildScrollView(
               child: Center(

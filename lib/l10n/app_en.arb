@@ -187,13 +187,13 @@
    "@btn_skip":{
       "description": "Skip"
    },
-   "lbl_location_subtitle1" : "Let the app locate you to provide best",
+   "lbl_location_subtitle1" : "Let the app locate you to provide you ",
    "@lbl_location_subtitle":{
-      "description": "Let the app locate you to provide best"
+      "description": "Let the app locate you to provide you "
    },
-   "lbl_location_subtitle2" : "searched results around you",
+   "lbl_location_subtitle2" : "with the best results",
    "@lbl_location_subtitle2":{
-      "description": "searched results around you"
+      "description": "with the best results"
    },
    "lbl_current_location" : "Current Location",
    "@lbl_current_location":{

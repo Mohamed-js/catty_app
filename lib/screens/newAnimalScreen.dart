@@ -57,7 +57,7 @@ class _NewAnimalScreenState extends BaseRouteState {
           ),
         ),
         child: Scaffold(
-          resizeToAvoidBottomInset: false,
+          resizeToAvoidBottomInset: true,
           key: _scaffoldKey,
           body: SingleChildScrollView(
             child: Center(
@@ -212,6 +212,20 @@ class _NewAnimalScreenState extends BaseRouteState {
                     // ),
 
                     // TYPE
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.pets),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "What is the type of your animal ?",
+                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                          ),
+                        ),
+                        Icon(Icons.pets),
+                      ],
+                    ),
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -278,6 +292,11 @@ class _NewAnimalScreenState extends BaseRouteState {
                               }
                             });
                           },
+                          onSaved: (value) {
+                            setState(() {
+                              _type = value;
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -285,9 +304,41 @@ class _NewAnimalScreenState extends BaseRouteState {
                     // BREEEEEEEEEEEED
                     _type == 'Select Type'
                         ? SizedBox(width: 10)
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.pets),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "What is your animal's breed ?",
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .subtitle2,
+                                ),
+                              ),
+                              Icon(Icons.pets),
+                            ],
+                          ),
+                    _type == 'Select Type'
+                        ? SizedBox(width: 10)
                         : renderBreeds(),
 
                     // GENDER ================================================
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.male),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "What is your animal's gender ?",
+                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                          ),
+                        ),
+                        Icon(Icons.female),
+                      ],
+                    ),
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -348,11 +399,30 @@ class _NewAnimalScreenState extends BaseRouteState {
                               _gender = value;
                             });
                           },
+                          onSaved: (value) {
+                            setState(() {
+                              _gender = value;
+                            });
+                          },
                         ),
                       ),
                     ),
 
                     // Vaccination ================================================
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.vaccines),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Is it vaccinated ?',
+                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                          ),
+                        ),
+                        Icon(Icons.vaccines),
+                      ],
+                    ),
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -413,33 +483,71 @@ class _NewAnimalScreenState extends BaseRouteState {
                               _vaccination = value;
                             });
                           },
+                          onSaved: (value) {
+                            setState(() {
+                              _vaccination = value;
+                            });
+                          },
                         ),
                       ),
                     ),
-                    TextButton(
-                        onPressed: () {
-                          DatePicker.showDatePicker(context,
-                              showTitleActions: true,
-                              minTime: DateTime(2000, 3, 5),
-                              maxTime: new DateTime.now(), onChanged: (date) {
-                            print('change $date');
-                          }, onConfirm: (date) {
-                            print('confirm $date');
-                            setState(() {
-                              _dob = date;
-                            });
-                          },
-                              currentTime: DateTime.now(),
-                              locale: LocaleType.en);
-                        },
-                        child: Text(
-                          'Set date of birth',
-                          style: TextStyle(color: Colors.blue),
-                        )),
+                    _dob != null
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Born on: ${_dob.year.toString()} - ${_dob.month.toString()} - ${_dob.day.toString()}',
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle1,
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    DatePicker.showDatePicker(context,
+                                        showTitleActions: true,
+                                        minTime: DateTime(2000, 3, 5),
+                                        maxTime: new DateTime.now(),
+                                        onChanged: (date) {
+                                      print('change $date');
+                                    }, onConfirm: (date) {
+                                      print('confirm $date');
+                                      setState(() {
+                                        _dob = date;
+                                      });
+                                    },
+                                        currentTime: DateTime.now(),
+                                        locale: LocaleType.en);
+                                  },
+                                  child: Text(
+                                    'Change',
+                                    style: TextStyle(color: Colors.blue),
+                                  )),
+                            ],
+                          )
+                        : TextButton(
+                            onPressed: () {
+                              DatePicker.showDatePicker(context,
+                                  showTitleActions: true,
+                                  minTime: DateTime(2000, 3, 5),
+                                  maxTime: new DateTime.now(),
+                                  onChanged: (date) {
+                                print('change $date');
+                              }, onConfirm: (date) {
+                                print('confirm $date');
+                                setState(() {
+                                  _dob = date;
+                                });
+                              },
+                                  currentTime: DateTime.now(),
+                                  locale: LocaleType.en);
+                            },
+                            child: Text(
+                              'Set date of birth',
+                              style: TextStyle(color: Colors.blue),
+                            )),
                     // ABOUTTTTTTTTTTTTTTTTTTTT
                     Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      margin: EdgeInsets.only(top: 10, left: 20, right: 20),
                       padding: EdgeInsets.all(1.5),
                       height: 120,
                       decoration: BoxDecoration(
@@ -476,113 +584,122 @@ class _NewAnimalScreenState extends BaseRouteState {
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Container(
-                        margin: EdgeInsets.only(top: 20),
-                        height: 50,
-                        width: 180,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: g.gradientColors,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 30),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          margin: EdgeInsets.only(top: 20),
+                          height: 50,
+                          width: 180,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: g.gradientColors,
+                            ),
                           ),
-                        ),
-                        child: TextButton(
-                          onPressed: btnIsDisabled
-                              ? null
-                              : () async {
-                                  setState(() {
-                                    btnIsDisabled = true;
-                                  });
-                                  if (_cFirstName.text.isEmpty ||
-                                      _cInfo.text.isEmpty ||
-                                      breedId == null ||
-                                      _gender == 'Select Gender' ||
-                                      _currentImage.isEmpty ||
-                                      _dob == null) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content:
-                                            Text('Please enter valid data!'),
-                                        backgroundColor: Colors.redAccent,
-                                      ),
-                                    );
-                                    return;
-                                  }
-                                  Map data = {
-                                    'name': _cFirstName.text,
-                                    'info': _cInfo.text,
-                                    'gender': _gender,
-                                    'avatar': _currentImage,
-                                    'breed_id': breedId,
-                                    'vaccinated': _vaccination,
-                                    'dob': _dob
-                                  };
-                                  print(data);
-                                  dynamic res = await Provider.of<Auth>(context,
-                                          listen: false)
-                                      .addAnimal(data);
-                                  print(res);
-                                  if (res != 'failed') {
-                                    final auth = Provider.of<Auth>(context,
-                                        listen: false);
-                                    await auth.tryLogin(true);
+                          child: TextButton(
+                            onPressed: btnIsDisabled
+                                ? null
+                                : () async {
+                                    setState(() {
+                                      btnIsDisabled = true;
+                                    });
+                                    if (_cFirstName.text.isEmpty ||
+                                        _cInfo.text.isEmpty ||
+                                        breedId == null ||
+                                        _gender == 'Select Gender' ||
+                                        _currentImage.isEmpty ||
+                                        _dob == null) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content:
+                                              Text('Please enter valid data!'),
+                                          backgroundColor: Colors.redAccent,
+                                        ),
+                                      );
+                                      setState(() {
+                                        btnIsDisabled = false;
+                                      });
+                                      return;
+                                    }
+                                    Map data = {
+                                      'name': _cFirstName.text,
+                                      'info': _cInfo.text,
+                                      'gender': _gender,
+                                      'avatar': _currentImage,
+                                      'breed_id': breedId,
+                                      'vaccinated': _vaccination,
+                                      'dob': _dob
+                                    };
+                                    print(data);
+                                    dynamic res = await Provider.of<Auth>(
+                                            context,
+                                            listen: false)
+                                        .addAnimal(data);
+                                    print(res);
+                                    if (res != 'failed') {
+                                      final auth = Provider.of<Auth>(context,
+                                          listen: false);
+                                      await auth.tryLogin(true);
 
-                                    Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                BottomNavigationWidgetLight(
-                                                  currentIndex: 0,
-                                                )),
-                                        ModalRoute.withName('/'));
-                                  } else {
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  BottomNavigationWidgetLight(
+                                                    currentIndex: 0,
+                                                  )),
+                                          ModalRoute.withName('/'));
+                                    } else {
+                                      setState(() {
+                                        btnIsDisabled = false;
+                                      });
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                              'Please enter valid values.'),
+                                          backgroundColor: Colors.redAccent,
+                                        ),
+                                      );
+                                    }
                                     setState(() {
                                       btnIsDisabled = false;
                                     });
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content:
-                                            Text('Please enter valid values.'),
-                                        backgroundColor: Colors.redAccent,
-                                      ),
-                                    );
-                                  }
-                                  setState(() {
-                                    btnIsDisabled = false;
-                                  });
-                                },
-                          child: btnIsDisabled
-                              ? LoadingIndicator(
-                                  indicatorType: Indicator.ballPulse,
+                                  },
+                            child: btnIsDisabled
+                                ? LoadingIndicator(
+                                    indicatorType: Indicator.ballPulse,
 
-                                  /// Required, The loading type of the widget
-                                  colors: const [Colors.white],
+                                    /// Required, The loading type of the widget
+                                    colors: const [Colors.white],
 
-                                  /// Optional, The color collections
-                                  strokeWidth: 2,
+                                    /// Optional, The color collections
+                                    strokeWidth: 2,
 
-                                  /// Optional, The stroke of the line, only applicable to widget which contains line
-                                  backgroundColor: Colors.transparent,
+                                    /// Optional, The stroke of the line, only applicable to widget which contains line
+                                    backgroundColor: Colors.transparent,
 
-                                  /// Optional, Background of the widget
-                                  pathBackgroundColor: Colors.black
+                                    /// Optional, Background of the widget
+                                    pathBackgroundColor: Colors.black
 
-                                  /// Optional, the stroke backgroundColor
-                                  )
-                              : Text(
-                                  'Save',
-                                  style: Theme.of(context)
-                                      .textButtonTheme
-                                      .style
-                                      .textStyle
-                                      .resolve({
-                                    MaterialState.pressed,
-                                  }),
-                                ),
+                                    /// Optional, the stroke backgroundColor
+                                    )
+                                : Text(
+                                    'Save',
+                                    style: Theme.of(context)
+                                        .textButtonTheme
+                                        .style
+                                        .textStyle
+                                        .resolve({
+                                      MaterialState.pressed,
+                                    }),
+                                  ),
+                          ),
                         ),
                       ),
                     )
@@ -696,6 +813,11 @@ class _NewAnimalScreenState extends BaseRouteState {
                   .toList();
 
               breedId = x[0]['id'];
+            });
+          },
+          onSaved: (value) {
+            setState(() {
+              _breed = value;
             });
           },
         ),
