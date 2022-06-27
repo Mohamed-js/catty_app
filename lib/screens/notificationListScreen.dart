@@ -239,6 +239,8 @@ class _NotificationListScreenState extends BaseRouteState {
     super.initState();
 
     final appState = Provider.of<AppState>(context, listen: false);
-    appState.getNotifications();
+    if (appState.notificationList.isEmpty) {
+      appState.getNotifications();
+    }
   }
 }

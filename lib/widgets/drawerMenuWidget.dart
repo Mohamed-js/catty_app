@@ -1,6 +1,7 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/screens/myProfileDetailScreen.dart';
 import 'package:PetsMating/screens/ownerProfileScreen.dart';
+import 'package:PetsMating/screens/reportsScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/foundation.dart';
@@ -184,7 +185,11 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                         'Report User',
                         style: TextStyle(color: Colors.grey),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                ReportsScreen(widget.user['id'])));
+                      },
                     ),
                     Divider(
                       color: Color.fromARGB(137, 255, 145, 145),

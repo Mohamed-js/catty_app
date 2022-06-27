@@ -210,4 +210,8 @@ class Auth extends ChangeNotifier {
       print(e);
     }
   }
+
+  Future reportUser(data) async {
+    return 'Reported successfully.';
+  }
 }

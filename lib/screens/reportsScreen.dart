@@ -10,14 +10,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-class ReportsScreen extends BaseRoute {
-  ReportsScreen({a, o}) : super(a: a, o: o, r: 'ReportsScreen');
+class ReportsScreen extends StatefulWidget {
+  final int userId;
+  const ReportsScreen(this.userId);
   @override
-  _ReportsScreenState createState() => _ReportsScreenState();
+  State<ReportsScreen> createState() => _ReportsScreenState();
 }
 
-class _ReportsScreenState extends BaseRouteState {
+class _ReportsScreenState extends State<ReportsScreen> {
   TextEditingController _cReport = new TextEditingController();
+  TextEditingController _cReportedUserId = new TextEditingController();
 
   String _currentImage = '';
 
@@ -30,7 +32,13 @@ class _ReportsScreenState extends BaseRouteState {
     return SafeArea(
       child: WillPopScope(
         onWillPop: () {
-          return exitAppDialog();
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => BottomNavigationWidgetLight(
+                        currentIndex: 2,
+                      )),
+              ModalRoute.withName('/'));
         },
         child: Container(
           decoration: BoxDecoration(
@@ -48,10 +56,10 @@ class _ReportsScreenState extends BaseRouteState {
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, right: 20, top: 30),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        AppLocalizations.of(context).lbl_profile_details,
+                        'Report User',
                         style: Theme.of(context).primaryTextTheme.headline1,
                       ),
                       Padding(
@@ -62,26 +70,47 @@ class _ReportsScreenState extends BaseRouteState {
                           style: Theme.of(context).primaryTextTheme.subtitle2,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Stack(
-                          alignment: Alignment.bottomRight,
-                          children: [
-                            CircleAvatar(
-                              radius: 63,
-                              backgroundColor: Colors.white,
-                              child: CircleAvatar(
-                                backgroundImage: _currentImage.isEmpty
-                                    ? AssetImage('assets/images/holder.png')
-                                    : FileImage(File(_currentImage)),
-                                radius: 60,
-                                backgroundColor: Color(0xFF33196B),
-                              ),
+                      Container(
+                        margin: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(1.5),
+                        height: 150,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: g.gradientColors,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          borderRadius: BorderRadius.circular(35),
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: g.isDarkModeEnable
+                                ? Colors.black
+                                : Theme.of(context).scaffoldBackgroundColor,
+                            borderRadius: BorderRadius.circular(35),
+                          ),
+                          height: 150,
+                          child: TextFormField(
+                            expands: true,
+                            minLines: null,
+                            maxLines: null,
+                            style: Theme.of(context).primaryTextTheme.subtitle2,
+                            controller: _cReport,
+                            decoration: InputDecoration(
+                              labelText: 'What is your problem...?',
+                              labelStyle:
+                                  Theme.of(context).primaryTextTheme.subtitle2,
+                              contentPadding: g.isRTL
+                                  ? EdgeInsets.only(right: 20)
+                                  : EdgeInsets.only(left: 20),
                             ),
-                            Positioned(
-                              top: 75,
-                              left: 75,
-                              child: TextButton(
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: _currentImage.isEmpty
+                            ? TextButton(
                                 onPressed: () => getImage(),
                                 child: Container(
                                   height: 30,
@@ -101,51 +130,24 @@ class _ReportsScreenState extends BaseRouteState {
                                     backgroundColor: Colors.transparent,
                                     radius: 20,
                                     child: Icon(
-                                      Icons.photo_camera,
+                                      Icons.attach_file,
                                       size: 18,
                                       color: Colors.white,
                                     ),
                                   ),
                                 ),
+                              )
+                            : Container(
+                                height: 200,
+                                margin: EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Image.file(
+                                  File(_currentImage),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        padding: EdgeInsets.all(1.5),
-                        height: 55,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: g.gradientColors,
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: g.isDarkModeEnable
-                                ? Colors.black
-                                : Theme.of(context).scaffoldBackgroundColor,
-                            borderRadius: BorderRadius.circular(35),
-                          ),
-                          height: 55,
-                          child: TextFormField(
-                            style: Theme.of(context).primaryTextTheme.subtitle2,
-                            controller: _cReport,
-                            decoration: InputDecoration(
-                              labelText: AppLocalizations.of(context)
-                                  .lbl_first_name_hint,
-                              labelStyle:
-                                  Theme.of(context).primaryTextTheme.subtitle2,
-                              contentPadding: g.isRTL
-                                  ? EdgeInsets.only(right: 20)
-                                  : EdgeInsets.only(left: 20),
-                            ),
-                          ),
-                        ),
                       ),
                       Align(
                         alignment: Alignment.center,
@@ -163,34 +165,46 @@ class _ReportsScreenState extends BaseRouteState {
                           ),
                           child: TextButton(
                             onPressed: () async {
-                              Map data = {
-                                'report': _cReport.text,
-                                'img': _currentImage
-                              };
-                              dynamic res = await Provider.of<Auth>(context,
-                                      listen: false)
-                                  .updateProfile(data);
-                              if (res == 'Reported successfully.') {
-                                final auth =
-                                    Provider.of<Auth>(context, listen: false);
-                                await auth.tryLogin(false);
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>
-                                        BottomNavigationWidgetLight(
-                                          currentIndex: 0,
-                                        )));
+                              if (_cReport.text.isNotEmpty) {
+                                Map data = {
+                                  'user_id': _cReportedUserId.text,
+                                  'report': _cReport.text,
+                                  'img': _currentImage
+                                };
+                                dynamic res = await Provider.of<Auth>(context,
+                                        listen: false)
+                                    .reportUser(data);
+                                if (res == 'Reported successfully.') {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Reported successfully.'),
+                                      backgroundColor: Colors.green,
+                                    ),
+                                  );
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) =>
+                                          BottomNavigationWidgetLight(
+                                            currentIndex: 2,
+                                          )));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Error happened...'),
+                                      backgroundColor: Colors.redAccent,
+                                    ),
+                                  );
+                                }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content:
-                                        Text('Please choose a valid image.'),
+                                    content: Text('Please enter some data...'),
                                     backgroundColor: Colors.redAccent,
                                   ),
                                 );
                               }
                             },
                             child: Text(
-                              'Save',
+                              'Report',
                               style: Theme.of(context)
                                   .textButtonTheme
                                   .style
@@ -237,5 +251,6 @@ class _ReportsScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+    _cReportedUserId.text = widget.userId.toString();
   }
 }

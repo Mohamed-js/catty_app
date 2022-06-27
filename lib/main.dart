@@ -20,6 +20,8 @@ void main() {
     null,
     [
       NotificationChannel(
+          channelDescription:
+              'Handles showing messages notifications to users.',
           channelKey: 'messages_channel',
           channelName: 'PetsMating Notification',
           defaultColor: Colors.white,

@@ -12,10 +12,16 @@
 @import awesome_notifications;
 #endif
 
-#if __has_include(<emoji_picker_flutter/EmojiPickerFlutterPlugin.h>)
-#import <emoji_picker_flutter/EmojiPickerFlutterPlugin.h>
+#if __has_include(<emoji_keyboard_flutter/EmojiKeyboardFlutterPlugin.h>)
+#import <emoji_keyboard_flutter/EmojiKeyboardFlutterPlugin.h>
 #else
-@import emoji_picker_flutter;
+@import emoji_keyboard_flutter;
+#endif
+
+#if __has_include(<flutter_keyboard_visibility/FlutterKeyboardVisibilityPlugin.h>)
+#import <flutter_keyboard_visibility/FlutterKeyboardVisibilityPlugin.h>
+#else
+@import flutter_keyboard_visibility;
 #endif
 
 #if __has_include(<flutter_ringtone_player/FlutterRingtonePlayerPlugin.h>)
@@ -76,7 +82,8 @@
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [AwesomeNotificationsPlugin registerWithRegistrar:[registry registrarForPlugin:@"AwesomeNotificationsPlugin"]];
-  [EmojiPickerFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"EmojiPickerFlutterPlugin"]];
+  [EmojiKeyboardFlutterPlugin registerWithRegistrar:[registry registrarForPlugin:@"EmojiKeyboardFlutterPlugin"]];
+  [FlutterKeyboardVisibilityPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterKeyboardVisibilityPlugin"]];
   [FlutterRingtonePlayerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterRingtonePlayerPlugin"]];
   [GeolocatorPlugin registerWithRegistrar:[registry registrarForPlugin:@"GeolocatorPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];

@@ -18,8 +18,8 @@ import 'package:PetsMating/services/dio.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'dart:io';
+import 'package:emoji_keyboard_flutter/emoji_keyboard_flutter.dart';
 
 class ChatScreen extends StatefulWidget {
   final int chat_id;
@@ -38,19 +38,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   TextEditingController _cMessage = new TextEditingController();
   _ChatScreenState() : super();
   bool emojiShowing = false;
-  _onEmojiSelected(Emoji emoji) {
-    _cMessage
-      ..text += emoji.emoji
-      ..selection = TextSelection.fromPosition(
-          TextPosition(offset: _cMessage.text.length));
-  }
 
-  _onBackspacePressed() {
-    _cMessage
-      ..text = _cMessage.text.characters.skipLast(1).toString()
-      ..selection = TextSelection.fromPosition(
-          TextPosition(offset: _cMessage.text.length));
-  }
+  final TextEditingController controller = TextEditingController();
 
   List<Widget> _messages = [];
 
@@ -259,72 +248,25 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
                             _renderMessages(),
 
-                            emojiShowing
-                                ? Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 250,
-                                        child: EmojiPicker(
-                                            onEmojiSelected: (Category category,
-                                                Emoji emoji) {
-                                              _onEmojiSelected(emoji);
-                                            },
-                                            onBackspacePressed:
-                                                _onBackspacePressed,
-                                            config: Config(
-                                                columns: 7,
-                                                // Issue: https://github.com/flutter/flutter/issues/28894
-                                                // emojiSizeMax:
-                                                //     32 * (Platform.isIOS ? 1.30 : 1.0),
-                                                // verticalSpacing: 0,
-                                                // horizontalSpacing: 0,
-                                                // gridPadding: EdgeInsets.zero,
-                                                initCategory: Category.RECENT,
-                                                bgColor: Color.fromARGB(
-                                                    193, 212, 241, 255),
-                                                indicatorColor: Colors.blue,
-                                                iconColor: Color.fromARGB(
-                                                    255, 28, 3, 119),
-                                                iconColorSelected:
-                                                    Color.fromARGB(
-                                                        255, 28, 3, 119),
-                                                progressIndicatorColor:
-                                                    Color.fromARGB(
-                                                        255, 28, 3, 119),
-                                                backspaceColor: Color.fromARGB(
-                                                    255, 28, 3, 119),
-                                                skinToneDialogBgColor:
-                                                    Color.fromARGB(
-                                                        255, 194, 27, 27),
-                                                skinToneIndicatorColor:
-                                                    Color.fromARGB(
-                                                        255, 240, 74, 74),
-                                                enableSkinTones: true,
-                                                showRecentsTab: true,
-                                                recentsLimit: 28,
-                                                replaceEmojiOnLimitExceed:
-                                                    false,
-                                                noRecents: const Text(
-                                                  'No Recents',
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.black26),
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                                tabIndicatorAnimDuration:
-                                                    kTabScrollDuration,
-                                                categoryIcons:
-                                                    const CategoryIcons(),
-                                                buttonMode: ButtonMode.MATERIAL)),
-                                      ),
-                                      SizedBox(
-                                        height: 50,
-                                      )
-                                    ],
-                                  )
-                                : SizedBox(
-                                    height: 0,
-                                  )
+                            // emojiShowing
+                            //     ? Column(
+                            //         children: [
+                            //           SizedBox(
+                            //             height: 255,
+                            //             child: EmojiKeyboard(
+                            //                 emotionController: controller,
+                            //                 emojiKeyboardHeight: 255,
+                            //                 showEmojiKeyboard: true,
+                            //                 darkMode: true),
+                            //           ),
+                            //           SizedBox(
+                            //             height: 50,
+                            //           )
+                            //         ],
+                            //       )
+                            //     : SizedBox(
+                            //         height: 0,
+                            //       )
 
                             // VIDEO CALLLLLLLLLLLLLLL
                             // Padding(
@@ -444,7 +386,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                               children: [
                                 Container(
                                   width:
-                                      MediaQuery.of(context).size.width * 0.45,
+                                      MediaQuery.of(context).size.width * 0.75,
                                   child: TextField(
                                     style: Theme.of(context)
                                         .primaryTextTheme
@@ -465,7 +407,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                 Container(
                                   height: 60,
                                   width:
-                                      MediaQuery.of(context).size.width * 0.45,
+                                      MediaQuery.of(context).size.width * 0.25,
                                   child: TabBar(
                                     controller: _tabController,
                                     indicatorWeight: 2,
@@ -544,27 +486,27 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                                       }
                                                     },
                                             )),
-                                      Tab(
-                                        child: IconButton(
-                                          iconSize: 20,
-                                          icon: Icon(MdiIcons.emoticonHappy),
-                                          padding: EdgeInsets.all(0),
-                                          onPressed: () async {
-                                            setState(() {
-                                              emojiShowing =
-                                                  emojiShowing ? false : true;
-                                            });
-                                            if (emojiShowing) {
-                                              _scrollController.animateTo(
-                                                0.0,
-                                                curve: Curves.easeOut,
-                                                duration: const Duration(
-                                                    milliseconds: 300),
-                                              );
-                                            }
-                                          },
-                                        ),
-                                      ),
+                                      // Tab(
+                                      //   child: IconButton(
+                                      //     iconSize: 20,
+                                      //     icon: Icon(MdiIcons.emoticonHappy),
+                                      //     padding: EdgeInsets.all(0),
+                                      //     onPressed: () async {
+                                      //       setState(() {
+                                      //         emojiShowing =
+                                      //             emojiShowing ? false : true;
+                                      //       });
+                                      //       if (emojiShowing) {
+                                      //         _scrollController.animateTo(
+                                      //           0.0,
+                                      //           curve: Curves.easeOut,
+                                      //           duration: const Duration(
+                                      //               milliseconds: 300),
+                                      //         );
+                                      //       }
+                                      //     },
+                                      //   ),
+                                      // ),
                                       // Tab(
                                       //   child: Icon(
                                       //     MdiIcons.attachment,
@@ -613,7 +555,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     super.initState();
     initSock();
     _tabController =
-        new TabController(length: 2, vsync: this, initialIndex: _currentIndex);
+        new TabController(length: 1, vsync: this, initialIndex: _currentIndex);
     _tabController.addListener(_tabControllerListener);
     Future getChat() async {
       dynamic auth = Provider.of<Auth>(context, listen: false);
@@ -918,11 +860,12 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             controller: _scrollController,
             shrinkWrap: true,
             children: <Widget>[
-              emojiShowing
-                  ? SizedBox(height: 10)
-                  : SizedBox(
-                      height: 70,
-                    ),
+              // emojiShowing
+              //     ? SizedBox(height: 10)
+              //     :
+              SizedBox(
+                height: 70,
+              ),
               ..._messages,
             ]),
       );

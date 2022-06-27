@@ -5,6 +5,7 @@ INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:1:1-49:12
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:1:1-49:12
 MERGED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:1:1-49:12
+MERGED from [:emoji_keyboard_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_keyboard_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -15,8 +16,11 @@ MERGED from [:multi_image_picker2] C:\Users\lordd\Documents\GitHub\animal-dating
 MERGED from [:shared_preferences_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:permission_handler_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\permission_handler_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:flutter_ringtone_player] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_ringtone_player\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:emoji_picker_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_picker_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_keyboard_visibility] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:2:1-34:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5695d8d932d545af38bf66b725566d02\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\6ecbd03c0ba003b6c6cab88140d4ae56\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2c221959306f1e25600c0a03d2200e72\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.exoplayer:exoplayer-hls:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\de89a9216ec4cd9c2bf0dab424b9a837\jetified-exoplayer-hls-2.17.0\AndroidManifest.xml:17:1-24:12
@@ -28,11 +32,9 @@ MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.g
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\851cd8c44ebf76c5b47504ad4cc94222\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\b7a1c6e780b5901c5c6ba597df670b7d\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:17:1-28:12
-MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:2:1-34:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5e5e9b140668497482a6a54ebf052fb5\material-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\93d87818a22850af90636553247cace9\appcompat-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\ba80674a1a5fdce2b1b29eea5683af77\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5695d8d932d545af38bf66b725566d02\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.media:media:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\72501ffe447ffd613fc88578f19a914c\media-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\3bb21b1136fbfe94f6db9b5496fef015\recyclerview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\a3d70fc7ec641cd22191d41c9098d3d5\vectordrawable-animated-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -41,7 +43,6 @@ MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\lordd\.gr
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2f70304b103eacfab05dbe55739e869f\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\49dee3543bc65746b6bba9f83aa0b18a\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\68865d38a53fb5c240061f062e474515\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\bcd808757e47d4888ffa27457339053b\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\22a5d9f52d495a432176451a4c4ba982\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2c07f8b2725cf3ca7c7510a86eb18cae\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -134,6 +135,10 @@ MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-datin
 MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-34:19
 MERGED from [:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-34:19
+MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:11:5-32:19
+MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:11:5-32:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\6ecbd03c0ba003b6c6cab88140d4ae56\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\6ecbd03c0ba003b6c6cab88140d4ae56\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\56f4cf96c56e3c6b85582297d2e8851f\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
@@ -146,12 +151,8 @@ MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\lordd\.
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\b7a1c6e780b5901c5c6ba597df670b7d\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
-MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:11:5-32:19
-MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:11:5-32:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5e5e9b140668497482a6a54ebf052fb5\material-1.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5e5e9b140668497482a6a54ebf052fb5\material-1.0.0\AndroidManifest.xml:22:5-20
-MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
-MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.core:core:1.7.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e596bd84a87a4cbdcf9d545f7eacbd1e\core-1.7.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.7.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e596bd84a87a4cbdcf9d545f7eacbd1e\core-1.7.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:24:5-30:19
@@ -216,6 +217,8 @@ uses-sdk
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml
+MERGED from [:emoji_keyboard_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_keyboard_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:emoji_keyboard_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_keyboard_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -236,10 +239,16 @@ MERGED from [:permission_handler_android] C:\Users\lordd\Documents\GitHub\animal
 MERGED from [:permission_handler_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\permission_handler_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_ringtone_player] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_ringtone_player\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_ringtone_player] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_ringtone_player\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:emoji_picker_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_picker_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:emoji_picker_flutter] C:\Users\lordd\Documents\GitHub\animal-dating\build\emoji_picker_flutter\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_keyboard_visibility] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_keyboard_visibility] C:\Users\lordd\Documents\GitHub\animal-dating\build\flutter_keyboard_visibility\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:video_player_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\video_player_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5695d8d932d545af38bf66b725566d02\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5695d8d932d545af38bf66b725566d02\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\6ecbd03c0ba003b6c6cab88140d4ae56\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\6ecbd03c0ba003b6c6cab88140d4ae56\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2c221959306f1e25600c0a03d2200e72\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
@@ -262,16 +271,12 @@ MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\lordd\.
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\b7a1c6e780b5901c5c6ba597df670b7d\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:7:5-9:41
-MERGED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5e5e9b140668497482a6a54ebf052fb5\material-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5e5e9b140668497482a6a54ebf052fb5\material-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\93d87818a22850af90636553247cace9\appcompat-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\93d87818a22850af90636553247cace9\appcompat-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\ba80674a1a5fdce2b1b29eea5683af77\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\ba80674a1a5fdce2b1b29eea5683af77\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5695d8d932d545af38bf66b725566d02\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
-MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\5695d8d932d545af38bf66b725566d02\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.media:media:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\72501ffe447ffd613fc88578f19a914c\media-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.media:media:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\72501ffe447ffd613fc88578f19a914c\media-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\3bb21b1136fbfe94f6db9b5496fef015\recyclerview-1.0.0\AndroidManifest.xml:20:5-44
@@ -288,8 +293,6 @@ MERGED from [androidx.loader:loader:1.0.0] C:\Users\lordd\.gradle\caches\transfo
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\49dee3543bc65746b6bba9f83aa0b18a\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\68865d38a53fb5c240061f062e474515\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\68865d38a53fb5c240061f062e474515\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\bcd808757e47d4888ffa27457339053b\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\bcd808757e47d4888ffa27457339053b\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\22a5d9f52d495a432176451a4c4ba982\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
@@ -464,26 +467,6 @@ action#android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED
 ADDED from [:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:31:17-107
 	android:name
 		ADDED from [:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:31:25-104
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\af22d9d074b160bfe6eda1bb458796ae\jetified-exoplayer-common-2.17.0\AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\af22d9d074b160bfe6eda1bb458796ae\jetified-exoplayer-common-2.17.0\AndroidManifest.xml:24:5-79
-	android:name
-		ADDED from [com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:22-76
-activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-	android:exported
-		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-	android:theme
-		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-	android:name
-		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-	android:value
-		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-	android:name
-		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
 provider#com.sangcomz.fishbun.FishBunFileProvider
 ADDED from [com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
 	android:grantUriPermissions
@@ -526,6 +509,26 @@ ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\t
 		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 	android:name
 		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\af22d9d074b160bfe6eda1bb458796ae\jetified-exoplayer-common-2.17.0\AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.exoplayer:exoplayer-common:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\af22d9d074b160bfe6eda1bb458796ae\jetified-exoplayer-common-2.17.0\AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from [com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:22-76
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
 provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
 ADDED from [androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
 	android:authorities

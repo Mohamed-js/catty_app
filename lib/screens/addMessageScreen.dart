@@ -451,6 +451,10 @@ class _AddMessageScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+    final appState = Provider.of<AppState>(context, listen: false);
+    if (appState.chats.isEmpty) {
+      appState.getChats();
+    }
   }
 
   PreferredSizeWidget _appBarWidget() {

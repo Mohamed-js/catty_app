@@ -1,0 +1,2 @@
+nl/emoji_keyboard_flutter/BuildConfig.java
+ nl.emoji_keyboard_flutter.BuildConfig
