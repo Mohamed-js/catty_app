@@ -212,6 +212,14 @@ class Auth extends ChangeNotifier {
   }
 
   Future reportUser(data) async {
-    return 'Reported successfully.';
+    try {
+      Dio.Response response = await dio().post(
+        '/reports',
+        data: data,
+      );
+      return response;
+    } catch (e) {
+      print(e);
+    }
   }
 }

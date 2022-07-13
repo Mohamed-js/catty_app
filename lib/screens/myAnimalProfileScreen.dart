@@ -130,67 +130,34 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                           ],
                                         ),
                                       ),
-                                      Divider(
-                                        color: g.isDarkModeEnable
-                                            ? Color(0xFF230f4E)
-                                            : Colors.purple[100],
-                                      ),
-                                      Container(
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        OwnerProfileScreen(
-                                                            _animal['user']
-                                                                ['id'])));
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              children: [
-                                                Icon(
-                                                  Icons.person,
-                                                  size: 22,
-                                                  color: Color(0xFF230f4E),
-                                                ),
-                                                Text('Contact',
-                                                    style: Theme.of(context)
-                                                        .primaryTextTheme
-                                                        .bodyText1)
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Divider(
-                                        color: g.isDarkModeEnable
-                                            ? Color(0xFF230f4E)
-                                            : Colors.purple[100],
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8.0),
-                                        child: Container(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              children: [
-                                                Icon(
-                                                  Icons.report_problem_rounded,
-                                                  size: 22,
-                                                  color: Color.fromARGB(
-                                                      255, 247, 149, 3),
-                                                ),
-                                                Text('Report',
-                                                    style: Theme.of(context)
-                                                        .primaryTextTheme
-                                                        .bodyText1)
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
+                                      // Divider(
+                                      //   color: g.isDarkModeEnable
+                                      //       ? Color(0xFF230f4E)
+                                      //       : Colors.purple[100],
+                                      // ),
+                                      // Padding(
+                                      //   padding:
+                                      //       const EdgeInsets.only(bottom: 8.0),
+                                      //   child: Container(
+                                      //     child: Padding(
+                                      //       padding: const EdgeInsets.all(8.0),
+                                      //       child: Column(
+                                      //         children: [
+                                      //           Icon(
+                                      //             Icons.report_problem_rounded,
+                                      //             size: 22,
+                                      //             color: Color.fromARGB(
+                                      //                 255, 247, 149, 3),
+                                      //           ),
+                                      //           Text('Reports',
+                                      //               style: Theme.of(context)
+                                      //                   .primaryTextTheme
+                                      //                   .bodyText1)
+                                      //         ],
+                                      //       ),
+                                      //     ),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 )

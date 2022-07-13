@@ -1,5 +1,6 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/animalProfileScreen.dart';
 import 'package:PetsMating/screens/myAnimalProfileScreen.dart';
 import 'package:PetsMating/screens/newAnimalScreen.dart';
 import 'package:PetsMating/screens/settingScreen.dart';
@@ -228,7 +229,7 @@ class _OwnerProfileState extends State<OwnerProfileScreen>
                                                                     context)
                                                                 .push(MaterialPageRoute(
                                                                     builder: (context) =>
-                                                                        MyAnimalProfileScreen(_profile['animals'][index]
+                                                                        AnimalProfileScreen(_profile['animals'][index]
                                                                             [
                                                                             'id'])));
                                                           },
