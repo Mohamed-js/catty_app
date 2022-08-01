@@ -151,6 +151,58 @@ class Auth extends ChangeNotifier {
     }
   }
 
+  Future editProfile(dat) async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+
+    Dio.FormData data = Dio.FormData.fromMap({
+      "first_name": dat['first_name'],
+      "last_name": dat['last_name'],
+    });
+
+    try {
+      Dio.Response response = await dio(multipart: true).post('/edit-profile',
+          data: data,
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+          }));
+
+      return response;
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future editProfileImage(dat) async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+    dynamic av = '';
+    if (dat['img'].isNotEmpty) {
+      av = await Dio.MultipartFile.fromFile(
+        dat['img'],
+        filename: dat['img'].split('/').last,
+      );
+    }
+
+    Dio.FormData data = Dio.FormData.fromMap({
+      "avatar": av,
+    });
+
+    try {
+      print(data.fields);
+      Dio.Response response =
+          await dio(multipart: true).post('/edit-profile-image',
+              data: data,
+              options: Dio.Options(headers: {
+                'Authorization': 'Bearer $token',
+              }));
+
+      return response;
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future addAnimal(dat) async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('i-pet-kk');

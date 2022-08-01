@@ -1,5 +1,6 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/editProfileScreen.dart';
 import 'package:PetsMating/screens/ownerProfileScreen.dart';
 import 'package:PetsMating/screens/settingScreen.dart';
 import 'package:flutter/material.dart';
@@ -123,10 +124,14 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                                       .primaryColorLight,
                                               size: 24,
                                             ),
-                                            Text('20',
-                                                style: Theme.of(context)
-                                                    .primaryTextTheme
-                                                    .bodyText1)
+                                            _animal['empty'] == true
+                                                ? Text('')
+                                                : Text(
+                                                    _animal['likes_count']
+                                                        .toString(),
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .bodyText1)
                                           ],
                                         ),
                                       ),
@@ -193,8 +198,8 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      // mainAxisAlignment:
+                                      //     MainAxisAlignment.spaceBetween,
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
@@ -205,9 +210,35 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                                   _animal['name'].toUpperCase(),
                                                   style: Theme.of(context)
                                                       .primaryTextTheme
-                                                      .headline1,
+                                                      .headline2,
                                                 ),
                                         ),
+                                        Padding(
+                                          padding: g.isRTL
+                                              ? const EdgeInsets.only(right: 5)
+                                              : const EdgeInsets.only(left: 5),
+                                          child: SizedBox(
+                                            height: 30,
+                                            width: 30,
+                                            child: TextButton(
+                                              style: TextButton.styleFrom(
+                                                  textStyle: const TextStyle(
+                                                      fontSize: 12),
+                                                  backgroundColor:
+                                                      Color.fromARGB(
+                                                          255, 36, 2, 100)),
+                                              onPressed: () {
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            EditProfileDetailScreen()));
+                                              },
+                                              child: Icon(Icons.edit,
+                                                  color: Colors.white,
+                                                  size: 12),
+                                            ),
+                                          ),
+                                        )
                                         // Padding(
                                         //   padding: const EdgeInsets.only(top: 20, right: 30),
                                         //   child: CircleAvatar(

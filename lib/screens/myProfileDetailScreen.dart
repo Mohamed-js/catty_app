@@ -1,5 +1,6 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
+import 'package:PetsMating/screens/editProfileScreen.dart';
 import 'package:PetsMating/screens/myAnimalProfileScreen.dart';
 import 'package:PetsMating/screens/newAnimalScreen.dart';
 import 'package:PetsMating/screens/settingScreen.dart';
@@ -295,21 +296,53 @@ class _MyProfileScreenState extends BaseRouteState {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Text(
-                                    auth.current_user['first_name']
-                                            .toUpperCase() +
-                                        " " +
-                                        auth.current_user['last_name']
-                                            .toUpperCase(),
-                                    style: Theme.of(context)
-                                        .primaryTextTheme
-                                        .headline1,
+                              Row(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20, top: 15),
+                                      child: Text(
+                                        auth.current_user['first_name']
+                                                .toUpperCase() +
+                                            " " +
+                                            auth.current_user['last_name']
+                                                .toUpperCase(),
+                                        style: Theme.of(context)
+                                            .primaryTextTheme
+                                            .headline2,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Padding(
+                                    padding: g.isRTL
+                                        ? const EdgeInsets.only(right: 5)
+                                        : const EdgeInsets.only(left: 5),
+                                    child: SizedBox(
+                                      height: 30,
+                                      width: 30,
+                                      child: TextButton(
+                                        style: TextButton.styleFrom(
+                                            textStyle:
+                                                const TextStyle(fontSize: 12),
+                                            backgroundColor: Color.fromARGB(
+                                                255, 36, 2, 100)),
+                                        onPressed: () {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      EditProfileDetailScreen(
+                                                        a: widget.analytics,
+                                                        o: widget.observer,
+                                                      )));
+                                        },
+                                        child: Icon(Icons.edit,
+                                            color: Colors.white, size: 12),
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                               Padding(
                                 padding: g.isRTL

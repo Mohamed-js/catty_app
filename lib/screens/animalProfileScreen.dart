@@ -123,10 +123,14 @@ class _MyAnimalProfileScreenState extends State<AnimalProfileScreen>
                                                       .primaryColorLight,
                                               size: 24,
                                             ),
-                                            Text('20',
-                                                style: Theme.of(context)
-                                                    .primaryTextTheme
-                                                    .bodyText1)
+                                            _animal['empty'] == true
+                                                ? Text('')
+                                                : Text(
+                                                    _animal['likes_count']
+                                                        .toString(),
+                                                    style: Theme.of(context)
+                                                        .primaryTextTheme
+                                                        .bodyText1)
                                           ],
                                         ),
                                       ),
