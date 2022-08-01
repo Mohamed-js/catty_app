@@ -237,6 +237,31 @@ class Auth extends ChangeNotifier {
     }
   }
 
+  Future updateAnimal(dat) async {
+    final prefs = await SharedPreferences.getInstance();
+    String token = prefs.getString('i-pet-kk');
+
+    Dio.FormData data = Dio.FormData.fromMap({
+      'id': dat['id'],
+      "name": dat['name'],
+      "info": dat['info'],
+      "vaccinated": dat['vaccinated'],
+    });
+
+    try {
+      Dio.Response response = await dio().post('/edit-animal-profile',
+          data: data,
+          options: Dio.Options(headers: {
+            'Authorization': 'Bearer $token',
+            'Content-Type': 'multipart/form-data'
+          }));
+      print(response.data);
+      return response.data;
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future addLocation(dat) async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString('i-pet-kk');

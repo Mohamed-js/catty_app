@@ -1,6 +1,6 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
-import 'package:PetsMating/screens/editProfileScreen.dart';
+import 'package:PetsMating/screens/editAnimalProfileScreen.dart';
 import 'package:PetsMating/screens/ownerProfileScreen.dart';
 import 'package:PetsMating/screens/settingScreen.dart';
 import 'package:flutter/material.dart';
@@ -231,7 +231,9 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                                 Navigator.of(context).push(
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            EditProfileDetailScreen()));
+                                                            EditAnimalProfileScreen(
+                                                                widget
+                                                                    .animal_id)));
                                               },
                                               child: Icon(Icons.edit,
                                                   color: Colors.white,

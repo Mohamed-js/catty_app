@@ -16,34 +16,28 @@ import 'package:provider/provider.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:PetsMating/services/dio.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class NewAnimalScreen extends BaseRoute {
-  NewAnimalScreen({a, o}) : super(a: a, o: o, r: 'NewAnimalScreen');
+class EditAnimalProfileScreen extends StatefulWidget {
+  final int animal_id;
+  const EditAnimalProfileScreen(this.animal_id);
   @override
-  _NewAnimalScreenState createState() => _NewAnimalScreenState();
+  _EditAnimalProfileScreenState createState() =>
+      _EditAnimalProfileScreenState();
 }
 
-class _NewAnimalScreenState extends BaseRouteState {
+class _EditAnimalProfileScreenState extends State<EditAnimalProfileScreen> {
+  Map<String, dynamic> _animal = {'empty': true};
   TextEditingController _cFirstName = new TextEditingController();
   TextEditingController _cInfo = new TextEditingController();
-  String _gender = 'Select Gender';
+
   String _vaccination = 'No';
-  DateTime _dob;
-  String _currentImage = '';
-  int breedId;
+
   bool btnIsDisabled = false;
-
-  String _type = 'Select Type';
-  String _breed = 'Select Breed';
-  List<dynamic> typeBreed;
-  List<String> types = [];
-  List<String> breeds = [];
-
-  List<dynamic> selectedBreeds;
 
   var _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  _NewAnimalScreenState() : super();
+  _EditAnimalProfileScreenState() : super();
 
   @override
   Widget build(BuildContext context) {
@@ -67,68 +61,17 @@ class _NewAnimalScreenState extends BaseRouteState {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
+                      "Update",
+                      style: Theme.of(context).primaryTextTheme.headline1,
+                    ),
+                    Text(
                       "Pet Details",
                       style: Theme.of(context).primaryTextTheme.headline1,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4),
-                      child: Text(
-                        AppLocalizations.of(context)
-                            .lbl_profile_details_subtitle,
-                        style: Theme.of(context).primaryTextTheme.subtitle2,
-                      ),
+                    Divider(
+                      height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Stack(
-                        alignment: Alignment.bottomRight,
-                        children: [
-                          CircleAvatar(
-                            radius: 63,
-                            backgroundColor: Colors.white,
-                            child: CircleAvatar(
-                              backgroundImage: _currentImage.isEmpty
-                                  ? AssetImage(
-                                      'assets/images/dog_placeholder.png')
-                                  : FileImage(File(_currentImage)),
-                              radius: 60,
-                              backgroundColor: Color(0xFF33196B),
-                            ),
-                          ),
-                          Positioned(
-                            top: 75,
-                            left: 75,
-                            child: TextButton(
-                              onPressed: () => getImage(),
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  border: g.isDarkModeEnable
-                                      ? Border.all(color: Colors.black)
-                                      : null,
-                                  borderRadius: BorderRadius.circular(20),
-                                  gradient: LinearGradient(
-                                    colors: g.gradientColors,
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                                ),
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  radius: 20,
-                                  child: Icon(
-                                    Icons.photo_camera,
-                                    size: 18,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+
                     Container(
                       margin:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -211,203 +154,6 @@ class _NewAnimalScreenState extends BaseRouteState {
                     //   ),
                     // ),
 
-                    // TYPE
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.pets),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "What is the type of your animal ?",
-                            style: Theme.of(context).primaryTextTheme.subtitle2,
-                          ),
-                        ),
-                        Icon(Icons.pets),
-                      ],
-                    ),
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      padding: EdgeInsets.all(1.5),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: g.isDarkModeEnable
-                              ? Colors.black
-                              : Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        height: 55,
-                        child: DropdownButtonFormField<String>(
-                          dropdownColor: Theme.of(context).primaryColorLight,
-                          icon: Padding(
-                            padding: g.isRTL
-                                ? EdgeInsets.only(left: 20)
-                                : EdgeInsets.only(right: 20),
-                            child: Icon(Icons.expand_more,
-                                color: Theme.of(context).iconTheme.color),
-                          ),
-                          value: _type,
-                          items: ['Select Type', ...types]
-                              .map((label) => DropdownMenuItem(
-                                    child: Padding(
-                                      padding: g.isRTL
-                                          ? EdgeInsets.only(right: 20)
-                                          : EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        label.toString(),
-                                        style: Theme.of(context)
-                                            .primaryTextTheme
-                                            .subtitle2,
-                                      ),
-                                    ),
-                                    value: label,
-                                  ))
-                              .toList(),
-                          hint: Padding(
-                            padding: g.isRTL
-                                ? EdgeInsets.only(right: 20)
-                                : EdgeInsets.only(left: 20),
-                            child: Text(_type.isEmpty ? "Type" : _type),
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              _type = value;
-                              selectedBreeds =
-                                  typeBreed[types.indexOf(value)]['breeds'];
-                              if (_type != 'Select Type') {
-                                typeBreed[types.indexOf(value)]['breeds']
-                                    .forEach((element) {
-                                  breeds.add(element['name'].toUpperCase());
-                                });
-                              }
-                            });
-                          },
-                          onSaved: (value) {
-                            setState(() {
-                              _type = value;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-
-                    // BREEEEEEEEEEEED
-                    _type == 'Select Type'
-                        ? SizedBox(width: 10)
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.pets),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "What is your animal's breed ?",
-                                  style: Theme.of(context)
-                                      .primaryTextTheme
-                                      .subtitle2,
-                                ),
-                              ),
-                              Icon(Icons.pets),
-                            ],
-                          ),
-                    _type == 'Select Type'
-                        ? SizedBox(width: 10)
-                        : renderBreeds(),
-
-                    // GENDER ================================================
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.male),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "What is your animal's gender ?",
-                            style: Theme.of(context).primaryTextTheme.subtitle2,
-                          ),
-                        ),
-                        Icon(Icons.female),
-                      ],
-                    ),
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      padding: EdgeInsets.all(1.5),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: g.isDarkModeEnable
-                              ? Colors.black
-                              : Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        height: 55,
-                        child: DropdownButtonFormField<String>(
-                          dropdownColor: Theme.of(context).primaryColorLight,
-                          icon: Padding(
-                            padding: g.isRTL
-                                ? EdgeInsets.only(left: 20)
-                                : EdgeInsets.only(right: 20),
-                            child: Icon(Icons.expand_more,
-                                color: Theme.of(context).iconTheme.color),
-                          ),
-                          value: _gender,
-                          items: ['Select Gender', 'Female', 'Male']
-                              .map((label) => DropdownMenuItem(
-                                    child: Padding(
-                                      padding: g.isRTL
-                                          ? EdgeInsets.only(right: 20)
-                                          : EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        label.toString(),
-                                        style: Theme.of(context)
-                                            .primaryTextTheme
-                                            .subtitle2,
-                                      ),
-                                    ),
-                                    value: label,
-                                  ))
-                              .toList(),
-                          hint: Padding(
-                            padding: g.isRTL
-                                ? EdgeInsets.only(right: 20)
-                                : EdgeInsets.only(left: 20),
-                            child: Text(_gender.isEmpty
-                                ? AppLocalizations.of(context).lbl_gender_hint
-                                : _gender),
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              _gender = value;
-                            });
-                          },
-                          onSaved: (value) {
-                            setState(() {
-                              _gender = value;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-
                     // Vaccination ================================================
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -423,128 +169,78 @@ class _NewAnimalScreenState extends BaseRouteState {
                         Icon(Icons.vaccines),
                       ],
                     ),
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                      padding: EdgeInsets.all(1.5),
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: g.gradientColors,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(35),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: g.isDarkModeEnable
-                              ? Colors.black
-                              : Theme.of(context).scaffoldBackgroundColor,
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                        height: 55,
-                        child: DropdownButtonFormField<String>(
-                          dropdownColor: Theme.of(context).primaryColorLight,
-                          icon: Padding(
-                            padding: g.isRTL
-                                ? EdgeInsets.only(left: 20)
-                                : EdgeInsets.only(right: 20),
-                            child: Icon(Icons.expand_more,
-                                color: Theme.of(context).iconTheme.color),
-                          ),
-                          value: _vaccination,
-                          items: ['No', 'Yes']
-                              .map((label) => DropdownMenuItem(
-                                    child: Padding(
-                                      padding: g.isRTL
-                                          ? EdgeInsets.only(right: 20)
-                                          : EdgeInsets.only(left: 20),
-                                      child: Text(
-                                        label.toString(),
-                                        style: Theme.of(context)
-                                            .primaryTextTheme
-                                            .subtitle2,
-                                      ),
-                                    ),
-                                    value: label,
-                                  ))
-                              .toList(),
-                          hint: Padding(
-                            padding: g.isRTL
-                                ? EdgeInsets.only(right: 20)
-                                : EdgeInsets.only(left: 20),
-                            child: Text(_gender.isEmpty
-                                ? AppLocalizations.of(context).lbl_gender_hint
-                                : _gender),
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              _vaccination = value;
-                            });
-                          },
-                          onSaved: (value) {
-                            setState(() {
-                              _vaccination = value;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
-                    _dob != null
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Born on: ${_dob.year.toString()} - ${_dob.month.toString()} - ${_dob.day.toString()}',
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle1,
+                    _vaccination.isEmpty
+                        ? Text("")
+                        : Container(
+                            margin: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
+                            padding: EdgeInsets.all(1.5),
+                            height: 55,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: g.gradientColors,
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
                               ),
-                              TextButton(
-                                  onPressed: () {
-                                    DatePicker.showDatePicker(context,
-                                        showTitleActions: true,
-                                        minTime: DateTime(2000, 3, 5),
-                                        maxTime: new DateTime.now(),
-                                        onChanged: (date) {
-                                      print('change $date');
-                                    }, onConfirm: (date) {
-                                      print('confirm $date');
-                                      setState(() {
-                                        _dob = date;
-                                      });
-                                    },
-                                        currentTime: DateTime.now(),
-                                        locale: LocaleType.en);
-                                  },
-                                  child: Text(
-                                    'Change',
-                                    style: TextStyle(color: Colors.blue),
-                                  )),
-                            ],
-                          )
-                        : TextButton(
-                            onPressed: () {
-                              DatePicker.showDatePicker(context,
-                                  showTitleActions: true,
-                                  minTime: DateTime(2000, 3, 5),
-                                  maxTime: new DateTime.now(),
-                                  onChanged: (date) {
-                                print('change $date');
-                              }, onConfirm: (date) {
-                                print('confirm $date');
-                                setState(() {
-                                  _dob = date;
-                                });
-                              },
-                                  currentTime: DateTime.now(),
-                                  locale: LocaleType.en);
-                            },
-                            child: Text(
-                              'Set date of birth',
-                              style: TextStyle(color: Colors.blue),
-                            )),
+                              borderRadius: BorderRadius.circular(35),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: g.isDarkModeEnable
+                                    ? Colors.black
+                                    : Theme.of(context).scaffoldBackgroundColor,
+                                borderRadius: BorderRadius.circular(35),
+                              ),
+                              height: 55,
+                              child: DropdownButtonFormField<String>(
+                                dropdownColor:
+                                    Theme.of(context).primaryColorLight,
+                                icon: Padding(
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(left: 20)
+                                      : EdgeInsets.only(right: 20),
+                                  child: Icon(Icons.expand_more,
+                                      color: Theme.of(context).iconTheme.color),
+                                ),
+                                value: _vaccination,
+                                items: ['No', 'Yes']
+                                    .map((label) => DropdownMenuItem(
+                                          child: Padding(
+                                            padding: g.isRTL
+                                                ? EdgeInsets.only(right: 20)
+                                                : EdgeInsets.only(left: 20),
+                                            child: Text(
+                                              label.toString(),
+                                              style: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .subtitle2,
+                                            ),
+                                          ),
+                                          value: label,
+                                        ))
+                                    .toList(),
+                                hint: Padding(
+                                  padding: g.isRTL
+                                      ? EdgeInsets.only(right: 20)
+                                      : EdgeInsets.only(left: 20),
+                                  child: Text(_vaccination.isEmpty
+                                      ? "..."
+                                      : _vaccination),
+                                ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    _vaccination = value;
+                                  });
+                                },
+                                onSaved: (value) {
+                                  setState(() {
+                                    _vaccination = value;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+
                     // ABOUTTTTTTTTTTTTTTTTTTTT
                     Container(
                       margin: EdgeInsets.only(top: 10, left: 20, right: 20),
@@ -608,11 +304,7 @@ class _NewAnimalScreenState extends BaseRouteState {
                                       btnIsDisabled = true;
                                     });
                                     if (_cFirstName.text.isEmpty ||
-                                        _cInfo.text.isEmpty ||
-                                        breedId == null ||
-                                        _gender == 'Select Gender' ||
-                                        _currentImage.isEmpty ||
-                                        _dob == null) {
+                                        _cInfo.text.isEmpty) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -629,17 +321,14 @@ class _NewAnimalScreenState extends BaseRouteState {
                                     Map data = {
                                       'name': _cFirstName.text,
                                       'info': _cInfo.text,
-                                      'gender': _gender,
-                                      'avatar': _currentImage,
-                                      'breed_id': breedId,
                                       'vaccinated': _vaccination,
-                                      'dob': _dob
+                                      'id': widget.animal_id
                                     };
                                     print(data);
                                     dynamic res = await Provider.of<Auth>(
                                             context,
                                             listen: false)
-                                        .addAnimal(data);
+                                        .updateAnimal(data);
                                     print(res);
                                     if (res != 'failed') {
                                       final auth = Provider.of<Auth>(context,
@@ -651,7 +340,7 @@ class _NewAnimalScreenState extends BaseRouteState {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   BottomNavigationWidgetLight(
-                                                    currentIndex: 0,
+                                                    currentIndex: 3,
                                                   )),
                                           ModalRoute.withName('/'));
                                     } else {
@@ -713,115 +402,32 @@ class _NewAnimalScreenState extends BaseRouteState {
     );
   }
 
-  XFile _imageFile;
-  final ImagePicker _picker = ImagePicker();
-  void getImage() async {
-    try {
-      final image = await _picker.pickImage(
-          source: ImageSource.gallery,
-          imageQuality: 100,
-          maxHeight: 600,
-          maxWidth: 800);
-      setState(() {
-        _currentImage = image.path;
-      });
-
-      setState(() {
-        _imageFile = image;
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    void getTypes() async {
+
+    void getAnimal() async {
       try {
-        Dio.Response response = await dio().get('/animals/create');
-        setState(() {
-          typeBreed = response.data;
-          typeBreed.forEach((element) {
-            types.add(element['name'].toUpperCase());
+        final prefs = await SharedPreferences.getInstance();
+        String token = prefs.getString('i-pet-kk');
+        if (token != null) {
+          Dio.Response response = await dio().get('/animal/${widget.animal_id}',
+              options:
+                  Dio.Options(headers: {'Authorization': 'Bearer $token'}));
+
+          setState(() {
+            _animal = response.data;
+            _vaccination = response.data['vaccinated'] ? 'Yes' : 'No';
           });
-        });
+
+          _cFirstName.text = response.data['name'];
+          _cInfo.text = response.data['info'];
+        }
       } catch (e) {
         print(e);
       }
     }
 
-    getTypes();
-  }
-
-  renderBreeds() {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      padding: EdgeInsets.all(1.5),
-      height: 55,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: g.gradientColors,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(35),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: g.isDarkModeEnable
-              ? Colors.black
-              : Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(35),
-        ),
-        height: 55,
-        child: DropdownButtonFormField<String>(
-          dropdownColor: Theme.of(context).primaryColorLight,
-          icon: Padding(
-            padding: g.isRTL
-                ? EdgeInsets.only(left: 20)
-                : EdgeInsets.only(right: 20),
-            child: Icon(Icons.expand_more,
-                color: Theme.of(context).iconTheme.color),
-          ),
-          value: _breed,
-          items: ['Select Breed', ...breeds]
-              .map((label) => DropdownMenuItem(
-                    child: Padding(
-                      padding: g.isRTL
-                          ? EdgeInsets.only(right: 20)
-                          : EdgeInsets.only(left: 20),
-                      child: Text(
-                        label.toString(),
-                        style: Theme.of(context).primaryTextTheme.subtitle2,
-                      ),
-                    ),
-                    value: label,
-                  ))
-              .toList(),
-          hint: Padding(
-            padding: g.isRTL
-                ? EdgeInsets.only(right: 20)
-                : EdgeInsets.only(left: 20),
-            child: Text(_breed.isEmpty ? "Breed" : _breed),
-          ),
-          onChanged: (value) {
-            setState(() {
-              _breed = value;
-              List x = selectedBreeds
-                  .where((breed) => breed['name'].toUpperCase() == value)
-                  .toList();
-
-              breedId = x[0]['id'];
-            });
-          },
-          onSaved: (value) {
-            setState(() {
-              _breed = value;
-            });
-          },
-        ),
-      ),
-    );
+    getAnimal();
   }
 }
