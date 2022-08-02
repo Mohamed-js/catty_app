@@ -4,6 +4,7 @@ import 'package:PetsMating/screens/changeLanguageScreen.dart';
 import 'package:PetsMating/screens/datingMatchingScreen.dart';
 import 'package:PetsMating/screens/liked&LikesScreen.dart';
 import 'package:PetsMating/screens/notificationListScreen.dart';
+import 'package:PetsMating/screens/privacyScreen.dart';
 import 'package:PetsMating/screens/rewardScreen.dart';
 import 'package:PetsMating/screens/selectPlanScreen.dart';
 import 'package:PetsMating/screens/splashScreen.dart';
@@ -84,27 +85,17 @@ class _SettingScreenState extends BaseRouteState {
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                AppLocalizations.of(context).lbl_account,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 48, 0, 160)),
-                              ),
+                          Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
+                            child: Text(
+                              AppLocalizations.of(context).lbl_account,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 75, 5, 206)),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -169,28 +160,18 @@ class _SettingScreenState extends BaseRouteState {
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Messages',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 48, 0, 160),
-                                ),
+                          Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Messages',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 75, 5, 206),
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -215,27 +196,50 @@ class _SettingScreenState extends BaseRouteState {
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                AppLocalizations.of(context).lbl_notifications,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 48, 0, 160)),
-                              ),
+                          Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
+                            child: Text(
+                              AppLocalizations.of(context).lbl_notifications,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 75, 5, 206)),
                             ),
-                          )
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => PrivacyScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.private_connectivity_outlined,
+                            color: Theme.of(context).iconTheme.color,
+                            size: 18,
+                          ),
+                          Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
+                            child: Text(
+                              "Privacy",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 75, 5, 206)),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -729,15 +733,15 @@ class _SettingScreenState extends BaseRouteState {
                   //     ],
                   //   ),
                   // ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                    child: InkWell(
-                      onTap: (() {
-                        final auth = Provider.of<Auth>(context, listen: false);
-                        auth.logout();
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SplashScreen()));
-                      }),
+                  InkWell(
+                    onTap: (() {
+                      final auth = Provider.of<Auth>(context, listen: false);
+                      auth.logout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SplashScreen()));
+                    }),
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -746,25 +750,17 @@ class _SettingScreenState extends BaseRouteState {
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
-                          ShaderMask(
-                            blendMode: BlendMode.srcIn,
-                            shaderCallback: (Rect bounds) {
-                              return LinearGradient(
-                                colors: g.gradientColors,
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                              ).createShader(bounds);
-                            },
-                            child: Padding(
-                              padding: g.isRTL
-                                  ? const EdgeInsets.only(right: 10)
-                                  : const EdgeInsets.only(left: 10),
-                              child: Text(
-                                'Logout',
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
+                          Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Logout',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromARGB(255, 75, 5, 206)),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
