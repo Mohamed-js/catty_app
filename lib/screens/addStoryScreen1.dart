@@ -664,7 +664,7 @@ class _AddStoryScreenState extends BaseRouteState {
 
   PreferredSizeWidget _appBarWidget() {
     return PreferredSize(
-      preferredSize: Size.fromHeight(70),
+      preferredSize: Size.fromHeight(85),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -676,39 +676,31 @@ class _AddStoryScreenState extends BaseRouteState {
                       horizontal: 15.0, vertical: 8.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        overlayColor:
-                            MaterialStateProperty.all(Colors.transparent),
-                        highlightColor: Colors.transparent,
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => BottomNavigationWidgetLight(
-                                    currentIndex: 3,
-                                  )));
-                        },
-                        child: CircleAvatar(
-                          radius: 22,
-                          backgroundImage: auth.current_user['avatar'] == null
-                              ? AssetImage('assets/images/holder.png')
-                              : NetworkImage('${auth.current_user['avatar']}'),
-                        ),
-                      ),
+                      // InkWell(
+                      //   splashColor: Colors.transparent,
+                      //   focusColor: Colors.transparent,
+                      //   hoverColor: Colors.transparent,
+                      //   overlayColor:
+                      //       MaterialStateProperty.all(Colors.transparent),
+                      //   highlightColor: Colors.transparent,
+                      //   onTap: () {
+                      //     Navigator.of(context).push(MaterialPageRoute(
+                      //         builder: (context) => BottomNavigationWidgetLight(
+                      //               currentIndex: 3,
+                      //             )));
+                      //   },
+                      //   child: CircleAvatar(
+                      //     radius: 22,
+                      //     backgroundImage: auth.current_user['avatar'] == null
+                      //         ? AssetImage('assets/images/holder.png')
+                      //         : NetworkImage('${auth.current_user['avatar']}'),
+                      //   ),
+                      // ),
                       Container(
                           child: Image.asset('assets/images/pets_logo2.png'),
-                          width: MediaQuery.of(context).size.width * 0.5),
-                      IconButton(
-                        icon: Icon(Icons.filter_alt),
-                        color: Color.fromARGB(510, 46, 49, 146),
-                        onPressed: () async {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => FilterOptionsScreen()));
-                        },
-                      ),
+                          width: MediaQuery.of(context).size.width * 0.75),
                     ],
                   ),
                 );

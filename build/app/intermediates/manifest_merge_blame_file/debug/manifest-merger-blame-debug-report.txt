@@ -32,15 +32,15 @@
 20    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
 20-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:9:5-92
 20-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:9:22-90
-21    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-21-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-77
-21-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-74
-22    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-22-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
-22-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-78
-23    <uses-permission android:name="android.permission.VIBRATE" />
-23-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:5-66
-23-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:8:22-63
+21    <uses-permission android:name="android.permission.VIBRATE" />
+21-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:10:5-65
+21-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:10:22-63
+22    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+22-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-77
+22-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-74
+23    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+23-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
+23-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-78
 24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- for android -->
 24-->[com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:5-79
 24-->[com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:22-76
@@ -99,30 +99,30 @@
 45-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:50:22-86
 46
 47    <application
-47-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:10:4-48:19
+47-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:11:4-49:19
 48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 48-->[androidx.core:core:1.7.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e596bd84a87a4cbdcf9d545f7eacbd1e\core-1.7.0\AndroidManifest.xml:24:18-86
 49        android:debuggable="true"
 50        android:icon="@mipmap/ic_launcher"
-50-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:12:9-43
+50-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:13:9-43
 51        android:label="PetsMating" >
-51-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:11:9-35
+51-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:12:9-35
 52        <activity
-52-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:13:9-42:20
+52-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:14:9-43:20
 53            android:name="com.etk.PetsMating.MainActivity"
-53-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:14:13-41
+53-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:15:13-41
 54            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-54-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:17:13-163
+54-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:18:13-163
 55            android:exported="true"
-55-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:20:13-36
+55-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:21:13-36
 56            android:hardwareAccelerated="true"
-56-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:18:13-47
+56-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:19:13-47
 57            android:launchMode="singleTop"
-57-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:15:13-43
+57-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:16:13-43
 58            android:theme="@style/LaunchTheme"
-58-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:16:13-47
+58-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:17:13-47
 59            android:windowSoftInputMode="adjustResize" >
-59-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:19:13-55
+59-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:20:13-55
 60
 61            <!--
 62                 Specifies an Android theme to apply to this Activity as soon as
@@ -131,11 +131,11 @@
 65                 to determine the Window background behind the Flutter UI.
 66            -->
 67            <meta-data
-67-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:25:13-28:17
+67-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:26:13-29:17
 68                android:name="io.flutter.embedding.android.NormalTheme"
-68-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:26:15-70
+68-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:27:15-70
 69                android:resource="@style/NormalTheme" />
-69-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:27:15-52
+69-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:28:15-52
 70            <!--
 71                 Displays an Android View that continues showing the launch screen
 72                 Drawable until Flutter paints its first frame, then this splash
@@ -144,21 +144,21 @@
 75                 Flutter's first frame.
 76            -->
 77            <meta-data
-77-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:34:13-37:17
+77-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:35:13-38:17
 78                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-78-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:35:15-79
+78-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:36:15-79
 79                android:resource="@drawable/launch_background" />
-79-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:36:15-61
+79-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:37:15-61
 80
 81            <intent-filter>
-81-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:38:13-41:29
+81-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:39:13-42:29
 82                <action android:name="android.intent.action.MAIN" />
-82-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:39:17-68
-82-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:39:25-66
+82-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:40:17-68
+82-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:40:25-66
 83
 84                <category android:name="android.intent.category.LAUNCHER" />
-84-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:40:17-76
-84-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:40:27-74
+84-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:41:17-76
+84-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:41:27-74
 85            </intent-filter>
 86        </activity>
 87        <!--
@@ -166,11 +166,11 @@
 89             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 90        -->
 91        <meta-data
-91-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:45:9-47:33
+91-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:46:9-48:33
 92            android:name="flutterEmbedding"
-92-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:46:13-44
+92-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:47:13-44
 93            android:value="2" />
-93-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:47:13-30
+93-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:48:13-30
 94
 95        <service
 95-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-14:56
@@ -252,73 +252,73 @@
 132            </intent-filter>
 133        </receiver>
 134
-135        <provider
-135-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
-136            android:name="com.sangcomz.fishbun.FishBunFileProvider"
-136-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
-137            android:authorities="com.etk.PetsMating.fishbunfileprovider"
-137-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
-138            android:exported="false"
-138-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
-139            android:grantUriPermissions="true" >
-139-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
-140            <meta-data
-140-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
-141                android:name="android.support.FILE_PROVIDER_PATHS"
-141-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
-142                android:resource="@xml/provider_paths" />
-142-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
-143        </provider>
-144
-145        <activity
-145-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
-146            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
-146-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
-147            android:label="@string/album"
-147-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
-148            android:theme="@style/FishBunTheme" />
-148-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
-149        <activity
-149-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
-150            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
-150-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
-151            android:theme="@style/FishBunTheme" />
-151-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
-152        <activity
-152-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
-153            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
-153-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
-154            android:theme="@style/DetailViewTheme" />
-154-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
-155
-156        <uses-library
-156-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-157            android:name="androidx.window.extensions"
-157-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-158            android:required="false" />
-158-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-159        <uses-library
-159-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-160            android:name="androidx.window.sidecar"
-160-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-161            android:required="false" />
-161-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-162
-163        <activity
-163-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-164            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-164-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-165            android:exported="false"
-165-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-166            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-166-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-167
-168        <meta-data
-168-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-169            android:name="com.google.android.gms.version"
-169-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-170            android:value="@integer/google_play_services_version" />
-170-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+135        <activity
+135-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+136            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+136-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+137            android:exported="false"
+137-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+138            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+138-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+139
+140        <meta-data
+140-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+141            android:name="com.google.android.gms.version"
+141-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+142            android:value="@integer/google_play_services_version" />
+142-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+143
+144        <provider
+144-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
+145            android:name="com.sangcomz.fishbun.FishBunFileProvider"
+145-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
+146            android:authorities="com.etk.PetsMating.fishbunfileprovider"
+146-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+147            android:exported="false"
+147-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+148            android:grantUriPermissions="true" >
+148-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+149            <meta-data
+149-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+150                android:name="android.support.FILE_PROVIDER_PATHS"
+150-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+151                android:resource="@xml/provider_paths" />
+151-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+152        </provider>
+153
+154        <activity
+154-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
+155            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
+155-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
+156            android:label="@string/album"
+156-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
+157            android:theme="@style/FishBunTheme" />
+157-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
+158        <activity
+158-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
+159            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
+159-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
+160            android:theme="@style/FishBunTheme" />
+160-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
+161        <activity
+161-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
+162            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
+162-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
+163            android:theme="@style/DetailViewTheme" />
+163-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
+164
+165        <uses-library
+165-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+166            android:name="androidx.window.extensions"
+166-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+167            android:required="false" />
+167-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+168        <uses-library
+168-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+169            android:name="androidx.window.sidecar"
+169-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+170            android:required="false" />
+170-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
 171
 172        <provider
 172-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43

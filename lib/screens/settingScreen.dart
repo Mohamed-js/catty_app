@@ -2,7 +2,9 @@ import 'package:PetsMating/models/businessLayer/baseRoute.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:PetsMating/screens/changeLanguageScreen.dart';
 import 'package:PetsMating/screens/datingMatchingScreen.dart';
+import 'package:PetsMating/screens/filterOptionsScreen.dart';
 import 'package:PetsMating/screens/liked&LikesScreen.dart';
+import 'package:PetsMating/screens/moreSettingsScreen.dart';
 import 'package:PetsMating/screens/notificationListScreen.dart';
 import 'package:PetsMating/screens/privacyScreen.dart';
 import 'package:PetsMating/screens/rewardScreen.dart';
@@ -214,6 +216,37 @@ class _SettingScreenState extends BaseRouteState {
 
                   InkWell(
                     onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => FilterOptionsScreen()));
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.filter_alt,
+                            color: Theme.of(context).iconTheme.color,
+                            size: 18,
+                          ),
+                          Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
+                            child: Text(
+                              "Filters",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 75, 5, 206)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  InkWell(
+                    onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (context) => PrivacyScreen()),
@@ -244,6 +277,40 @@ class _SettingScreenState extends BaseRouteState {
                       ),
                     ),
                   ),
+
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (context) => MoreSettingsScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.settings,
+                            color: Theme.of(context).iconTheme.color,
+                            size: 18,
+                          ),
+                          Padding(
+                            padding: g.isRTL
+                                ? const EdgeInsets.only(right: 10)
+                                : const EdgeInsets.only(left: 10),
+                            child: Text(
+                              "More",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 75, 5, 206)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
                   // InkWell(
                   //   onTap: () {
                   //     Navigator.of(context).push(MaterialPageRoute(

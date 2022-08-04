@@ -35,13 +35,11 @@ class _SplashScreenState extends BaseRouteState {
           children: [
             Image.asset(
                 g.isDarkModeEnable
-                    ? 'assets/images/splashydog.png'
-                    : 'assets/images/splashydog.png',
+                    ? 'assets/images/app_icon2.png'
+                    : 'assets/images/app_icon2.png',
                 fit: BoxFit.contain,
-                width: MediaQuery.of(context).size.width * .5),
+                width: MediaQuery.of(context).size.width * .75),
             SizedBox(height: 20),
-            Image.asset('assets/images/pets_logo2.png',
-                width: MediaQuery.of(context).size.width * .5),
           ],
         ),
       ),

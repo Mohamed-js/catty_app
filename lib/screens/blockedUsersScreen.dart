@@ -13,92 +13,95 @@ class BlockedUsersScreen extends StatefulWidget {
 }
 
 class _BlockedUsersScreenState extends State<BlockedUsersScreen> {
-  List<dynamic> _blocks = [];
+  Map<String, dynamic> _blocks = {};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                title: Text(
-                  'Blocks List',
-                  style: Theme.of(context).primaryTextTheme.headline1,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  title: Text(
+                    'Blocks List',
+                    style: Theme.of(context).primaryTextTheme.headline1,
+                  ),
                 ),
               ),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.person,
-                color: Color(0xFFDD3663),
-              ),
-              title: Text(
-                'Mohammed Atef',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Color(0xFF33196B)),
-              ),
-              trailing: InkWell(
-                  onTap: () => null,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('Unblock'),
-                  )),
-            ),
-
-            // Container(
-            //   height: 0.5,
-            //   decoration: BoxDecoration(
-            //     gradient: LinearGradient(
-            //       begin: Alignment.topLeft,
-            //       end: Alignment.bottomRight,
-            //       colors: [
-            //         Color.fromARGB(255, 61, 2, 172),
-            //         Color.fromARGB(190, 75, 5, 206)
-            //       ],
-            //     ),
-            //   ),
-            //   child: Divider(),
-            // ),
-            // InkWell(
-            //   onTap: () => null,
-            //   child: ListTile(
-            //     leading: Icon(
-            //       Icons.block,
-            //       color: Color(0xFF33196B),
-            //     ),
-            //     title: Text(
-            //       'Blocked Contacts',
-            //       style: TextStyle(
-            //           fontWeight: FontWeight.bold,
-            //           color: Color(0xFF33196B)),
-            //     ),
-            //   ),
-            // ),
-          ],
+              _blocks.isNotEmpty && _blocks['users'].isNotEmpty
+                  ? Expanded(
+                      child: ListView(
+                          children: List.generate(
+                              _blocks['users'].length,
+                              (i) => ListTile(
+                                    leading: Icon(
+                                      Icons.person,
+                                      color: Color(0xFFDD3663),
+                                    ),
+                                    title: Text(
+                                      "${_blocks['users'][i]['first_name']} ${_blocks['users'][i]['last_name']}"
+                                          .toUpperCase(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFF33196B)),
+                                    ),
+                                    trailing: InkWell(
+                                        onTap: () async {
+                                          try {
+                                            final prefs =
+                                                await SharedPreferences
+                                                    .getInstance();
+                                            String token =
+                                                prefs.getString('i-pet-kk');
+                                            Dio.Response response = await dio().put(
+                                                '/chat/${_blocks['chats_ids'][i]}?todo=unblock',
+                                                options: Dio.Options(headers: {
+                                                  'Authorization':
+                                                      'Bearer $token',
+                                                }));
+                                            getBlockedUsers();
+                                          } catch (e) {
+                                            print(e);
+                                          }
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text('Unblock'),
+                                        )),
+                                  ))),
+                    )
+                  : Text(
+                      '...',
+                      style: Theme.of(context).primaryTextTheme.subtitle2,
+                    ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  @override
-  void initState() {
-    void getBlockedUsers() async {
+  void getBlockedUsers() async {
+    try {
       final prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('i-pet-kk');
       Dio.Response response = await dio().get('/blocked-users',
           options: Dio.Options(headers: {
             'Authorization': 'Bearer $token',
-            'Content-Type': 'multipart/form-data'
           }));
-
       setState(() {
         _blocks = response.data;
       });
+    } catch (e) {
+      print(e);
     }
+  }
 
+  @override
+  void initState() {
     getBlockedUsers();
     super.initState();
   }

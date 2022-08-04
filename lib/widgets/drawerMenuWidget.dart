@@ -3,6 +3,7 @@ import 'package:PetsMating/screens/myProfileDetailScreen.dart';
 import 'package:PetsMating/screens/ownerProfileScreen.dart';
 import 'package:PetsMating/screens/reportsScreen.dart';
 import 'package:PetsMating/services/app_state.dart';
+import 'package:PetsMating/services/auth.dart';
 import 'package:PetsMating/widgets/bottomNavigationBarWidgetLight.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final auth = Provider.of<Auth>(context, listen: false);
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -165,6 +167,7 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                                     'Authorization': 'Bearer $token',
                                   }));
                           print(response);
+                          auth.tryLogin(true);
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => BottomNavigationWidgetLight(
                                   currentIndex: 2)));
