@@ -1,5 +1,6 @@
 import 'package:PetsMating/services/dio.dart';
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as Dio;
+import 'package:PetsMating/services/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:PetsMating/models/businessLayer/global.dart' as g;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +13,7 @@ class BlockedUsersScreen extends StatefulWidget {
 }
 
 class _BlockedUsersScreenState extends State<BlockedUsersScreen> {
+  List<dynamic> _blocks = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,12 +88,18 @@ class _BlockedUsersScreenState extends State<BlockedUsersScreen> {
     void getBlockedUsers() async {
       final prefs = await SharedPreferences.getInstance();
       String token = prefs.getString('i-pet-kk');
-      dio().get('/blocked-users',
+      Dio.Response response = await dio().get('/blocked-users',
           options: Dio.Options(headers: {
             'Authorization': 'Bearer $token',
             'Content-Type': 'multipart/form-data'
           }));
-      super.initState();
+
+      setState(() {
+        _blocks = response.data;
+      });
     }
+
+    getBlockedUsers();
+    super.initState();
   }
 }
