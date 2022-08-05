@@ -12,7 +12,8 @@ import 'package:provider/provider.dart';
 
 class ReportsScreen extends StatefulWidget {
   final int userId;
-  const ReportsScreen(this.userId);
+  final String reportedType;
+  const ReportsScreen(this.userId, this.reportedType);
   @override
   State<ReportsScreen> createState() => _ReportsScreenState();
 }
@@ -176,7 +177,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                                       'reported_id': _cReportedUserId.text,
                                       'report': _cReport.text,
                                       'img': _currentImage,
-                                      'reported_type': "user"
+                                      'reported_type': widget.reportedType,
                                     };
                                     dynamic res = await Provider.of<Auth>(
                                             context,

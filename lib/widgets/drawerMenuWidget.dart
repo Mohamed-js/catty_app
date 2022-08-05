@@ -191,7 +191,7 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) =>
-                                ReportsScreen(widget.user['id'])));
+                                ReportsScreen(widget.user['id'], 'user')));
                       },
                     ),
                     Divider(
