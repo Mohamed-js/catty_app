@@ -77,7 +77,7 @@ class Auth extends ChangeNotifier {
           print('Refreshing ==========================================');
           _user = response.data;
           notifyListeners();
-        } else if (response.data['verified']) {
+        } else if (response.data['verified'] == '1') {
           _isLoggedIn = true;
           _user = response.data;
           notifyListeners();

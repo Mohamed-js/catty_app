@@ -398,7 +398,8 @@ class _MyAnimalProfileScreenState extends State<MyAnimalProfileScreen>
                                                       _animal['empty'] == true
                                                           ? Text('')
                                                           : Text(
-                                                              _animal['vaccinated']
+                                                              _animal['vaccinated'] ==
+                                                                      'Yes'
                                                                   ? 'Yes'
                                                                   : "No",
                                                               style: Theme.of(

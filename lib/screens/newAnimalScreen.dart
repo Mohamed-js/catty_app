@@ -640,12 +640,14 @@ class _NewAnimalScreenState extends BaseRouteState {
                                             context,
                                             listen: false)
                                         .addAnimal(data);
+                                    print('res');
                                     print(res);
+                                    print('res');
                                     if (res != 'failed') {
                                       final auth = Provider.of<Auth>(context,
                                           listen: false);
                                       await auth.tryLogin(true);
-
+                                      // sleep(const Duration(seconds: 2));
                                       Navigator.pushAndRemoveUntil(
                                           context,
                                           MaterialPageRoute(
@@ -663,7 +665,7 @@ class _NewAnimalScreenState extends BaseRouteState {
                                         SnackBar(
                                           content: Text(
                                               'Please enter valid values.'),
-                                          backgroundColor: Colors.redAccent,
+                                          backgroundColor: Color.fromARGB(255, 39, 30, 30),
                                         ),
                                       );
                                     }

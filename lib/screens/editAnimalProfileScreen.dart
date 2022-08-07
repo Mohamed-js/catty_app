@@ -417,7 +417,7 @@ class _EditAnimalProfileScreenState extends State<EditAnimalProfileScreen> {
 
           setState(() {
             _animal = response.data;
-            _vaccination = response.data['vaccinated'] ? 'Yes' : 'No';
+            _vaccination = response.data['vaccinated'] == 'Yes' ? 'Yes' : 'No';
           });
 
           _cFirstName.text = response.data['name'];

@@ -725,7 +725,6 @@ class _AddStoryScreenState extends BaseRouteState {
       response = await dio().get(
           '/recommendations?id=${appState.current_animal_id}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
 
-      // int toStart = _recommendations.length;
       setState(() {
         _recommendations = response.data;
         _current = 0;
