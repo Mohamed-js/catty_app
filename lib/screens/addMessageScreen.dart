@@ -28,9 +28,10 @@ class AddMessageScreen extends BaseRoute {
 }
 
 class _AddMessageScreenState extends BaseRouteState {
-  TextEditingController _cSearch = new TextEditingController();
   bool loading = false;
+  TextEditingController _filter = new TextEditingController();
 
+  List<dynamic> _chatsToShow = [];
   _AddMessageScreenState() : super();
 
   @override
@@ -86,14 +87,16 @@ class _AddMessageScreenState extends BaseRouteState {
                               ),
                               height: 55,
                               child: TextFormField(
-                                controller: _cSearch,
-                                cursorColor: Colors.white,
+                                style: Theme.of(context)
+                                    .primaryTextTheme
+                                    .subtitle2,
+                                controller: _filter,
+                                cursorColor: Color.fromARGB(255, 10, 10, 10),
                                 decoration: InputDecoration(
                                   contentPadding: g.isRTL
                                       ? EdgeInsets.only(right: 22, top: 15)
                                       : EdgeInsets.only(left: 22, top: 15),
-                                  hintText: AppLocalizations.of(context)
-                                      .hint_Searchlbl_Search_Message_match,
+                                  hintText: 'Search',
                                   hintStyle: Theme.of(context)
                                       .primaryTextTheme
                                       .subtitle2,
@@ -211,234 +214,472 @@ class _AddMessageScreenState extends BaseRouteState {
                                                   .primaryTextTheme
                                                   .bodyText1)),
                                     )
-                                  : Expanded(
-                                      child: ListView.builder(
-                                          itemCount: appState.chats.length,
-                                          itemBuilder: (ctx, index) {
-                                            dynamic _user =
-                                                auth.current_user['id'] !=
-                                                        appState.chats[index]
-                                                            ['sender_id']
-                                                    ? appState.chats[index]
-                                                        ['sender']
-                                                    : appState.chats[index]
-                                                        ['receiver'];
-                                            return Container(
-                                              alignment: Alignment.center,
-                                              margin: EdgeInsets.only(top: 15),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: g.isDarkModeEnable
-                                                    ? Color(0xFF1D0529)
-                                                    : Colors.white54,
-                                              ),
-                                              height: 90,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              child: ListTile(
-                                                title: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Container(
-                                                      padding:
-                                                          EdgeInsets.all(1.5),
-                                                      margin: g.isRTL
-                                                          ? EdgeInsets.only(
-                                                              left: 10)
-                                                          : EdgeInsets.only(
-                                                              right: 10),
-                                                      height: 60,
-                                                      width: 60,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12),
-                                                        color: Colors.white,
-                                                      ),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(11),
-                                                          color: Colors.purple,
-                                                        ),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(12),
-                                                          child: Image.network(
-                                                            "${_user['avatar']}",
-                                                            fit: BoxFit.cover,
+                                  : _filter.text.isEmpty
+                                      ? Expanded(
+                                          child: ListView.builder(
+                                              itemCount: appState.chats.length,
+                                              itemBuilder: (ctx, index) {
+                                                dynamic _user =
+                                                    auth.current_user['id'] !=
+                                                            appState.chats[
+                                                                    index]
+                                                                ['sender_id']
+                                                        ? appState.chats[index]
+                                                            ['sender']
+                                                        : appState.chats[index]
+                                                            ['receiver'];
+                                                return Container(
+                                                  alignment: Alignment.center,
+                                                  margin:
+                                                      EdgeInsets.only(top: 15),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: g.isDarkModeEnable
+                                                        ? Color(0xFF1D0529)
+                                                        : Colors.white54,
+                                                  ),
+                                                  height: 90,
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  child: ListTile(
+                                                    title: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        Container(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  1.5),
+                                                          margin: g.isRTL
+                                                              ? EdgeInsets.only(
+                                                                  left: 10)
+                                                              : EdgeInsets.only(
+                                                                  right: 10),
+                                                          height: 60,
+                                                          width: 60,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12),
+                                                            color: Colors.white,
+                                                          ),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          11),
+                                                              color:
+                                                                  Colors.purple,
+                                                            ),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              child:
+                                                                  Image.network(
+                                                                "${_user['avatar']}",
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                    Flexible(
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Row(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
+                                                        Flexible(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsets
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
                                                                             .only(
                                                                         bottom:
                                                                             10),
-                                                                child: Text(
-                                                                  '${_user['first_name'][0].toUpperCase()}${_user['first_name'].substring(1)} ${_user['last_name'][0].toUpperCase()}${_user['last_name'].substring(1)}',
-                                                                  style: Theme.of(
-                                                                          context)
-                                                                      .primaryTextTheme
-                                                                      .subtitle1,
-                                                                ),
+                                                                    child: Text(
+                                                                      '${_user['first_name'][0].toUpperCase()}${_user['first_name'].substring(1)} ${_user['last_name'][0].toUpperCase()}${_user['last_name'].substring(1)}',
+                                                                      style: Theme.of(
+                                                                              context)
+                                                                          .primaryTextTheme
+                                                                          .subtitle2,
+                                                                    ),
+                                                                  ),
+                                                                  // Padding(
+                                                                  //   padding:
+                                                                  //       const EdgeInsets
+                                                                  //               .only(
+                                                                  //           left: 4,
+                                                                  //           bottom:
+                                                                  //               10),
+                                                                  //   child:
+                                                                  //       CircleAvatar(
+                                                                  //     radius: 4,
+                                                                  //     backgroundColor:
+                                                                  //         Colors.lightGreenAccent[
+                                                                  //             400],
+                                                                  //   ),
+                                                                  // )
+                                                                ],
                                                               ),
-                                                              // Padding(
-                                                              //   padding:
-                                                              //       const EdgeInsets
-                                                              //               .only(
-                                                              //           left: 4,
-                                                              //           bottom:
-                                                              //               10),
-                                                              //   child:
-                                                              //       CircleAvatar(
-                                                              //     radius: 4,
-                                                              //     backgroundColor:
-                                                              //         Colors.lightGreenAccent[
-                                                              //             400],
-                                                              //   ),
-                                                              // )
+                                                              appState.chats[index]
+                                                                          [
+                                                                          'last_message'] ==
+                                                                      null
+                                                                  ? Text("-")
+                                                                  : Text(
+                                                                      '${appState.chats[index]['last_message']['body']}',
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      style: Theme.of(
+                                                                              context)
+                                                                          .primaryTextTheme
+                                                                          .bodyText2,
+                                                                    )
                                                             ],
                                                           ),
-                                                          appState.chats[index][
-                                                                      'last_message'] ==
-                                                                  null
-                                                              ? Text("-")
-                                                              : Text(
-                                                                  '${appState.chats[index]['last_message']['body']}',
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  style: Theme.of(
-                                                                          context)
-                                                                      .primaryTextTheme
-                                                                      .bodyText2,
-                                                                )
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                                trailing: Container(
-                                                  height: 60,
-                                                  width: 53,
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    children: [
-                                                      Expanded(
-                                                        child: appState.chats[index]
-                                                                    [
-                                                                    'last_message'] ==
-                                                                null
-                                                            ? Text(
-                                                                DateFormat.yMd().format(
-                                                                    DateTime.parse(
-                                                                        appState.chats[index]
+                                                        )
+                                                      ],
+                                                    ),
+                                                    trailing: Container(
+                                                      height: 60,
+                                                      width: 53,
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          Expanded(
+                                                            child: appState.chats[
+                                                                            index]
+                                                                        [
+                                                                        'last_message'] ==
+                                                                    null
+                                                                ? Text(
+                                                                    DateFormat
+                                                                            .yMd()
+                                                                        .format(DateTime.parse(appState.chats[index]
                                                                             [
                                                                             'created_at'])),
-                                                                style: Theme.of(
-                                                                        context)
-                                                                    .primaryTextTheme
-                                                                    .caption,
-                                                              )
-                                                            : DateFormat.yMd().format(DateTime.parse(appState.chats[index]
-                                                                            ['last_message']
-                                                                        [
-                                                                        'created_at'])) ==
-                                                                    DateFormat.yMd()
-                                                                        .format(
-                                                                            new DateTime.now())
-                                                                ? Text(
-                                                                    'Today',
                                                                     style: Theme.of(
                                                                             context)
                                                                         .primaryTextTheme
                                                                         .caption,
                                                                   )
-                                                                : Text(
+                                                                : DateFormat.yMd().format(DateTime.parse(appState.chats[index]['last_message']['created_at'])) ==
+                                                                        DateFormat.yMd()
+                                                                            .format(new DateTime.now())
+                                                                    ? Text(
+                                                                        'Today',
+                                                                        style: Theme.of(context)
+                                                                            .primaryTextTheme
+                                                                            .caption,
+                                                                      )
+                                                                    : Text(
+                                                                        DateFormat.yMd().format(DateTime.parse(appState.chats[index]['last_message']
+                                                                            [
+                                                                            'created_at'])),
+                                                                        style: Theme.of(context)
+                                                                            .primaryTextTheme
+                                                                            .caption,
+                                                                      ),
+                                                          ),
+                                                          appState.chats[index][
+                                                                      'unread_messages_count'] ==
+                                                                  '0'
+                                                              ? appState.chats[index]
+                                                                              [
+                                                                              'last_message']
+                                                                          [
+                                                                          'sender_id'] !=
+                                                                      auth.current_user[
+                                                                          'id']
+                                                                  ? Expanded(
+                                                                      child:
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.bottomRight,
+                                                                        child:
+                                                                            CircleAvatar(
+                                                                          radius:
+                                                                              9,
+                                                                          backgroundColor:
+                                                                              Color(0xFFD6386F),
+                                                                          child:
+                                                                              Text(
+                                                                            '${appState.chats[index]['unread_messages_count']}',
+                                                                            style:
+                                                                                Theme.of(context).primaryTextTheme.headline6,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : Text('')
+                                                              : Text(''),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    onTap: () {
+                                                      appState.readChat(index);
+                                                      Navigator.of(context).push(
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  ChatScreen(appState
+                                                                              .chats[
+                                                                          index]
+                                                                      ['id'])));
+                                                    },
+                                                  ),
+                                                );
+                                              }),
+                                        )
+                                      : Expanded(
+                                          child: ListView.builder(
+                                              itemCount: _chatsToShow.length,
+                                              itemBuilder: (ctx, index) {
+                                                dynamic _user =
+                                                    auth.current_user['id'] !=
+                                                            _chatsToShow[index]
+                                                                ['sender_id']
+                                                        ? _chatsToShow[index]
+                                                            ['sender']
+                                                        : _chatsToShow[index]
+                                                            ['receiver'];
+                                                return Container(
+                                                  alignment: Alignment.center,
+                                                  margin:
+                                                      EdgeInsets.only(top: 15),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    color: g.isDarkModeEnable
+                                                        ? Color(0xFF1D0529)
+                                                        : Colors.white54,
+                                                  ),
+                                                  height: 90,
+                                                  width: MediaQuery.of(context)
+                                                      .size
+                                                      .width,
+                                                  child: ListTile(
+                                                    title: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        Container(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  1.5),
+                                                          margin: g.isRTL
+                                                              ? EdgeInsets.only(
+                                                                  left: 10)
+                                                              : EdgeInsets.only(
+                                                                  right: 10),
+                                                          height: 60,
+                                                          width: 60,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12),
+                                                            color: Colors.white,
+                                                          ),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          11),
+                                                              color:
+                                                                  Colors.purple,
+                                                            ),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              child:
+                                                                  Image.network(
+                                                                "${_user['avatar']}",
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Flexible(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
+                                                                        bottom:
+                                                                            10),
+                                                                    child: Text(
+                                                                      '${_user['first_name'][0].toUpperCase()}${_user['first_name'].substring(1)} ${_user['last_name'][0].toUpperCase()}${_user['last_name'].substring(1)}',
+                                                                      style: Theme.of(
+                                                                              context)
+                                                                          .primaryTextTheme
+                                                                          .subtitle2,
+                                                                    ),
+                                                                  ),
+                                                                  // Padding(
+                                                                  //   padding:
+                                                                  //       const EdgeInsets
+                                                                  //               .only(
+                                                                  //           left: 4,
+                                                                  //           bottom:
+                                                                  //               10),
+                                                                  //   child:
+                                                                  //       CircleAvatar(
+                                                                  //     radius: 4,
+                                                                  //     backgroundColor:
+                                                                  //         Colors.lightGreenAccent[
+                                                                  //             400],
+                                                                  //   ),
+                                                                  // )
+                                                                ],
+                                                              ),
+                                                              _chatsToShow[index]
+                                                                          [
+                                                                          'last_message'] ==
+                                                                      null
+                                                                  ? Text("-")
+                                                                  : Text(
+                                                                      '${_chatsToShow[index]['last_message']['body']}',
+                                                                      overflow:
+                                                                          TextOverflow
+                                                                              .ellipsis,
+                                                                      style: Theme.of(
+                                                                              context)
+                                                                          .primaryTextTheme
+                                                                          .bodyText2,
+                                                                    )
+                                                            ],
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
+                                                    trailing: Container(
+                                                      height: 60,
+                                                      width: 53,
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          Expanded(
+                                                            child: _chatsToShow[
+                                                                            index]
+                                                                        [
+                                                                        'last_message'] ==
+                                                                    null
+                                                                ? Text(
                                                                     DateFormat
                                                                             .yMd()
-                                                                        .format(DateTime.parse(appState.chats[index]['last_message']
+                                                                        .format(DateTime.parse(_chatsToShow[index]
                                                                             [
                                                                             'created_at'])),
                                                                     style: Theme.of(
                                                                             context)
                                                                         .primaryTextTheme
                                                                         .caption,
-                                                                  ),
-                                                      ),
-                                                      appState.chats[index][
-                                                                  'unread_messages_count'] >
-                                                              0
-                                                          ? appState.chats[index]
-                                                                          [
-                                                                          'last_message']
-                                                                      [
-                                                                      'sender_id'] !=
-                                                                  auth.current_user[
-                                                                      'id']
-                                                              ? Expanded(
-                                                                  child: Align(
-                                                                    alignment:
-                                                                        Alignment
-                                                                            .bottomRight,
-                                                                    child:
-                                                                        CircleAvatar(
-                                                                      radius: 9,
-                                                                      backgroundColor:
-                                                                          Color(
-                                                                              0xFFD6386F),
-                                                                      child:
-                                                                          Text(
-                                                                        '${appState.chats[index]['unread_messages_count']}',
+                                                                  )
+                                                                : DateFormat.yMd().format(DateTime.parse(_chatsToShow[index]['last_message']
+                                                                            [
+                                                                            'created_at'])) ==
+                                                                        DateFormat.yMd()
+                                                                            .format(new DateTime.now())
+                                                                    ? Text(
+                                                                        'Today',
                                                                         style: Theme.of(context)
                                                                             .primaryTextTheme
-                                                                            .headline6,
+                                                                            .caption,
+                                                                      )
+                                                                    : Text(
+                                                                        DateFormat.yMd().format(DateTime.parse(_chatsToShow[index]['last_message']
+                                                                            [
+                                                                            'created_at'])),
+                                                                        style: Theme.of(context)
+                                                                            .primaryTextTheme
+                                                                            .caption,
                                                                       ),
-                                                                    ),
-                                                                  ),
-                                                                )
-                                                              : Text('')
-                                                          : Text(''),
-                                                    ],
-                                                  ),
-                                                ),
-                                                onTap: () {
-                                                  appState.readChat(index);
-                                                  Navigator.of(context).push(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              ChatScreen(
-                                                                  appState.chats[
+                                                          ),
+                                                          _chatsToShow[index][
+                                                                      'unread_messages_count'] ==
+                                                                  '0'
+                                                              ? _chatsToShow[index]
+                                                                              [
+                                                                              'last_message']
+                                                                          [
+                                                                          'sender_id'] !=
+                                                                      auth.current_user[
+                                                                          'id']
+                                                                  ? Expanded(
+                                                                      child:
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.bottomRight,
+                                                                        child:
+                                                                            CircleAvatar(
+                                                                          radius:
+                                                                              9,
+                                                                          backgroundColor:
+                                                                              Color(0xFFD6386F),
+                                                                          child:
+                                                                              Text(
+                                                                            '${_chatsToShow[index]['unread_messages_count']}',
+                                                                            style:
+                                                                                Theme.of(context).primaryTextTheme.headline6,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    )
+                                                                  : Text('')
+                                                              : Text(''),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    onTap: () {
+                                                      appState.readChat(index);
+                                                      Navigator.of(context).push(
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  ChatScreen(appState
+                                                                              .chats[
                                                                           index]
                                                                       ['id'])));
-                                                },
-                                              ),
-                                            );
-                                          }),
-                                    )
+                                                    },
+                                                  ),
+                                                );
+                                              }),
+                                        )
                         ],
                       )),
                 );
@@ -451,10 +692,24 @@ class _AddMessageScreenState extends BaseRouteState {
   @override
   void initState() {
     super.initState();
+
     final appState = Provider.of<AppState>(context, listen: false);
     if (appState.chats.isEmpty) {
       appState.getChats();
     }
+    void _changeFilter() {
+      setState(() {
+        _chatsToShow = appState.chats
+            .where((chat) =>
+                chat['sender']['first_name'].contains(_filter.text) ||
+                chat['sender']['last_name'].contains(_filter.text) ||
+                chat['receiver']['first_name'].contains(_filter.text) ||
+                chat['receiver']['last_name'].contains(_filter.text))
+            .toList();
+      });
+    }
+
+    _filter.addListener(_changeFilter);
   }
 
   PreferredSizeWidget _appBarWidget() {

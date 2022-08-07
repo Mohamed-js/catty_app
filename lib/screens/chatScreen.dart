@@ -37,6 +37,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   TextEditingController _cMessage = new TextEditingController();
   _ChatScreenState() : super();
   bool emojiShowing = false;
+  TextStyle fSize = TextStyle(
+      fontSize: 13, color: Color(0xFF33196B), fontWeight: FontWeight.w500);
 
   final TextEditingController controller = TextEditingController();
 
@@ -592,6 +594,36 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       getUsr();
     }
 
+    void getFontSize() async {
+      final prefs = await SharedPreferences.getInstance();
+      String fontSize = prefs.getString('i-pet-kk-fontsize');
+      if (fontSize == null || fontSize == 'Small') {
+        setState(() {
+          fSize = TextStyle(
+              fontSize: 11,
+              color: Color(0xFF33196B),
+              fontWeight: FontWeight.w400);
+        });
+      }
+      if (fontSize == 'Medium') {
+        setState(() {
+          fSize = TextStyle(
+              fontSize: 13,
+              color: Color(0xFF33196B),
+              fontWeight: FontWeight.w500);
+        });
+      }
+      if (fontSize == 'Large') {
+        setState(() {
+          fSize = TextStyle(
+              fontSize: 15,
+              color: Color(0xFF33196B),
+              fontWeight: FontWeight.w500);
+        });
+      }
+    }
+
+    getFontSize();
     getChatUsr();
   }
 
@@ -663,9 +695,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                               ),
                               Text(
                                 msg['body'],
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1,
+                                style: fSize,
                               )
                             ],
                           ),
@@ -691,6 +721,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   }
 
   _hisMessage(msg, currentUser) {
+    // print(currentUser['id'] != msg['sender_id']);
+
     return ListTile(
       title: Padding(
         padding: const EdgeInsets.only(left: 5, top: 10),
@@ -734,8 +766,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 5),
-                                child: currentUser['id'] !=
-                                        _chat['sender']['id']
+                                child: currentUser['id'] != msg['sender_id']
                                     ? Text(
                                         _chat['sender']['first_name'][0]
                                                 .toUpperCase() +
@@ -767,9 +798,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                               ),
                               Text(
                                 msg['body'],
-                                style: Theme.of(context)
-                                    .primaryTextTheme
-                                    .bodyText1,
+                                style: fSize,
                               )
                             ],
                           ),
@@ -842,14 +871,17 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         .chats
         .where((chat) => chat['id'] == widget.chat_id)
         .toList()[0];
-    _messages = [];
-    for (var msg in _chat['messages']) {
-      if (auth.current_user['id'] == msg['sender_id']) {
-        _messages.add(_myMessage(msg));
-      } else {
-        _messages.add(_hisMessage(msg, auth.current_user));
+    setState(() {
+      _messages = [];
+
+      for (var msg in _chat['messages']) {
+        if (auth.current_user['id'].toString() == msg['sender_id'].toString()) {
+          _messages.add(_myMessage(msg));
+        } else {
+          _messages.add(_hisMessage(msg, auth.current_user));
+        }
       }
-    }
+    });
   }
 
   _renderMessages() {

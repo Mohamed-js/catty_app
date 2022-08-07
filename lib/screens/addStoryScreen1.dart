@@ -720,17 +720,43 @@ class _AddStoryScreenState extends BaseRouteState {
     await appState.getFilterOptions();
     final options = appState.filter_options;
 
-    Dio.Response response;
-    try {
-      response = await dio().get(
-          '/recommendations?id=${appState.current_animal_id}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+    print(auth.current_user['animals']
+            .where((animal) => animal['id'] == 10)
+            .toList()
+            .length >
+        0);
+    if (appState.current_animal_id != null &&
+        auth.current_user['animals']
+                .where((animal) => animal['id'] == appState.current_animal_id)
+                .toList()
+                .length >
+            0) {
+      Dio.Response response;
+      try {
+        response = await dio().get(
+            '/recommendations?id=${appState.current_animal_id}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
 
-      setState(() {
-        _recommendations = response.data;
-        _current = 0;
-      });
-    } catch (e) {
-      print(e);
+        setState(() {
+          _recommendations = response.data;
+          _current = 0;
+        });
+      } catch (e) {
+        print(e);
+      }
+    } else if (auth.current_user['animals'].length > 0) {
+      appStaty.setCurrenAnimalId(auth.current_user['animals'][0]['id']);
+      Dio.Response response;
+      try {
+        response = await dio().get(
+            '/recommendations?id=${auth.current_user['animals'][0]['id']}&first_load=$firstLoad&same_breed=${options['same_breed']}&no_vaccination_needed=${options['no_vaccination_needed']}&min=${options['min_age']}&max=${options['max_age']}');
+
+        setState(() {
+          _recommendations = response.data;
+          _current = 0;
+        });
+      } catch (e) {
+        print(e);
+      }
     }
   }
 }

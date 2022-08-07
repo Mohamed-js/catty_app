@@ -1,4 +1,5 @@
 import 'package:PetsMating/models/businessLayer/baseRoute.dart';
+import 'package:PetsMating/screens/messageSettingsScreen.dart';
 import 'package:PetsMating/screens/myProfileDetailScreen.dart';
 import 'package:PetsMating/screens/ownerProfileScreen.dart';
 import 'package:PetsMating/screens/reportsScreen.dart';
@@ -182,16 +183,35 @@ class _DrawerMenuWidgetState extends State<DrawerMenuWidget> {
                     ListTile(
                       leading: Icon(
                         Icons.report,
-                        color: Colors.grey,
+                        color: Color.fromARGB(255, 255, 187, 0),
                       ),
                       title: Text(
                         'Report User',
-                        style: TextStyle(color: Colors.grey),
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 255, 187, 0)),
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) =>
                                 ReportsScreen(widget.user['id'], 'user')));
+                      },
+                    ),
+                    Divider(
+                      color: Color.fromARGB(137, 255, 145, 145),
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.settings,
+                        color: Color.fromARGB(255, 77, 77, 77),
+                      ),
+                      title: Text(
+                        'Settings',
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 77, 77, 77)),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MessagesSettingsScreen()));
                       },
                     ),
                     Divider(

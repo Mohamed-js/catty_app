@@ -130,7 +130,7 @@ class _OwnerProfileState extends State<OwnerProfileScreen>
                                         _profile['last_name'].toUpperCase(),
                                     style: Theme.of(context)
                                         .primaryTextTheme
-                                        .headline1,
+                                        .subtitle1,
                                   ),
                                 ),
                               ),

@@ -248,7 +248,7 @@ class _NewAnimalScreenState extends BaseRouteState {
                         ),
                         height: 55,
                         child: DropdownButtonFormField<String>(
-                          dropdownColor: Theme.of(context).primaryColorLight,
+                          dropdownColor: Colors.white,
                           icon: Padding(
                             padding: g.isRTL
                                 ? EdgeInsets.only(left: 20)
@@ -361,7 +361,7 @@ class _NewAnimalScreenState extends BaseRouteState {
                         ),
                         height: 55,
                         child: DropdownButtonFormField<String>(
-                          dropdownColor: Theme.of(context).primaryColorLight,
+                          dropdownColor: Colors.white,
                           icon: Padding(
                             padding: g.isRTL
                                 ? EdgeInsets.only(left: 20)
@@ -445,7 +445,7 @@ class _NewAnimalScreenState extends BaseRouteState {
                         ),
                         height: 55,
                         child: DropdownButtonFormField<String>(
-                          dropdownColor: Theme.of(context).primaryColorLight,
+                          dropdownColor: Colors.white,
                           icon: Padding(
                             padding: g.isRTL
                                 ? EdgeInsets.only(left: 20)
@@ -665,7 +665,8 @@ class _NewAnimalScreenState extends BaseRouteState {
                                         SnackBar(
                                           content: Text(
                                               'Please enter valid values.'),
-                                          backgroundColor: Color.fromARGB(255, 39, 30, 30),
+                                          backgroundColor:
+                                              Color.fromARGB(255, 39, 30, 30),
                                         ),
                                       );
                                     }
@@ -778,7 +779,7 @@ class _NewAnimalScreenState extends BaseRouteState {
         ),
         height: 55,
         child: DropdownButtonFormField<String>(
-          dropdownColor: Theme.of(context).primaryColorLight,
+          dropdownColor: Colors.white,
           icon: Padding(
             padding: g.isRTL
                 ? EdgeInsets.only(left: 20)

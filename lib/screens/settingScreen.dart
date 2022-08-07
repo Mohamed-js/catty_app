@@ -4,7 +4,8 @@ import 'package:PetsMating/screens/changeLanguageScreen.dart';
 import 'package:PetsMating/screens/datingMatchingScreen.dart';
 import 'package:PetsMating/screens/filterOptionsScreen.dart';
 import 'package:PetsMating/screens/liked&LikesScreen.dart';
-import 'package:PetsMating/screens/moreSettingsScreen.dart';
+import 'package:PetsMating/screens/messageSettingsScreen.dart';
+import 'package:PetsMating/screens/notificationSettingsScreen.dart';
 import 'package:PetsMating/screens/notificationListScreen.dart';
 import 'package:PetsMating/screens/privacyScreen.dart';
 import 'package:PetsMating/screens/rewardScreen.dart';
@@ -143,76 +144,41 @@ class _SettingScreenState extends BaseRouteState {
                   //     ),
                   //   ),
                   // ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => BottomNavigationWidgetLight(
-                                  currentIndex: 2,
-                                )),
-                      );
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.message_outlined,
-                            color: Theme.of(context).iconTheme.color,
-                            size: 18,
-                          ),
-                          Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              'Messages',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 75, 5, 206),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
 
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => BottomNavigationWidgetLight(
-                                  currentIndex: 1,
-                                )),
-                      );
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.notifications,
-                            color: Theme.of(context).iconTheme.color,
-                            size: 18,
-                          ),
-                          Padding(
-                            padding: g.isRTL
-                                ? const EdgeInsets.only(right: 10)
-                                : const EdgeInsets.only(left: 10),
-                            child: Text(
-                              AppLocalizations.of(context).lbl_notifications,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 75, 5, 206)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.of(context).push(
+                  //       MaterialPageRoute(
+                  //           builder: (context) => BottomNavigationWidgetLight(
+                  //                 currentIndex: 1,
+                  //               )),
+                  //     );
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           Icons.notifications,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             AppLocalizations.of(context).lbl_notifications,
+                  //             style: TextStyle(
+                  //                 fontWeight: FontWeight.bold,
+                  //                 color: Color.fromARGB(255, 75, 5, 206)),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
 
                   InkWell(
                     onTap: () {
@@ -278,11 +244,45 @@ class _SettingScreenState extends BaseRouteState {
                     ),
                   ),
 
+                  // InkWell(
+                  //   onTap: () {
+                  //     Navigator.of(context).push(
+                  //       MaterialPageRoute(
+                  //           builder: (context) =>
+                  //               NotificationsSettingsScreen()),
+                  //     );
+                  //   },
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(right: 8, top: 8, bottom: 8),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.start,
+                  //       children: [
+                  //         Icon(
+                  //           Icons.settings,
+                  //           color: Theme.of(context).iconTheme.color,
+                  //           size: 18,
+                  //         ),
+                  //         Padding(
+                  //           padding: g.isRTL
+                  //               ? const EdgeInsets.only(right: 10)
+                  //               : const EdgeInsets.only(left: 10),
+                  //           child: Text(
+                  //             "Notifications",
+                  //             style: TextStyle(
+                  //                 fontWeight: FontWeight.bold,
+                  //                 color: Color.fromARGB(255, 75, 5, 206)),
+                  //           ),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+
                   InkWell(
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => MoreSettingsScreen()),
+                            builder: (context) => MessagesSettingsScreen()),
                       );
                     },
                     child: Padding(
@@ -291,7 +291,7 @@ class _SettingScreenState extends BaseRouteState {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Icon(
-                            Icons.settings,
+                            Icons.message_outlined,
                             color: Theme.of(context).iconTheme.color,
                             size: 18,
                           ),
@@ -300,7 +300,7 @@ class _SettingScreenState extends BaseRouteState {
                                 ? const EdgeInsets.only(right: 10)
                                 : const EdgeInsets.only(left: 10),
                             child: Text(
-                              "More",
+                              "Messages",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(255, 75, 5, 206)),

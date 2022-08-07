@@ -255,7 +255,7 @@ class _ProfileDetailScreenState extends BaseRouteState {
                           ),
                           height: 55,
                           child: DropdownButtonFormField<String>(
-                            dropdownColor: Theme.of(context).primaryColorLight,
+                            dropdownColor: Colors.white,
                             icon: Padding(
                               padding: g.isRTL
                                   ? EdgeInsets.only(left: 20)

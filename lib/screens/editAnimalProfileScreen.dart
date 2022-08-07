@@ -194,7 +194,7 @@ class _EditAnimalProfileScreenState extends State<EditAnimalProfileScreen> {
                               height: 55,
                               child: DropdownButtonFormField<String>(
                                 dropdownColor:
-                                    Theme.of(context).primaryColorLight,
+                                    Colors.white,
                                 icon: Padding(
                                   padding: g.isRTL
                                       ? EdgeInsets.only(left: 20)

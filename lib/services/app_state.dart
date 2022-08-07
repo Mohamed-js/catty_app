@@ -179,7 +179,7 @@ class AppState extends ChangeNotifier {
   }
 
   void reduceLikesQuota() {
-    _quota['likes'] = _quota['likes'] - 1;
+    _quota['likes'] = int.parse(_quota['likes']) - 1;
 
     notifyListeners();
   }
@@ -214,6 +214,12 @@ class AppState extends ChangeNotifier {
     }).toList();
 
     _chats.insert(0, chat);
+
+    notifyListeners();
+  }
+
+  setCurrenAnimalId(id) {
+    _animalId = id;
 
     notifyListeners();
   }

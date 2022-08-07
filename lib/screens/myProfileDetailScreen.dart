@@ -15,6 +15,9 @@ import 'package:loading_indicator/loading_indicator.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:dio/dio.dart' as Dio;
+import 'package:PetsMating/services/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyProfileScreen extends BaseRoute {
   MyProfileScreen({a, o}) : super(a: a, o: o, r: 'MyProfileScreen');
@@ -311,7 +314,7 @@ class _MyProfileScreenState extends BaseRouteState {
                                                 .toUpperCase(),
                                         style: Theme.of(context)
                                             .primaryTextTheme
-                                            .headline2,
+                                            .subtitle1,
                                       ),
                                     ),
                                   ),
@@ -691,6 +694,24 @@ class _MyProfileScreenState extends BaseRouteState {
                                                           ),
                                                         ),
                                                         onTap: () {},
+                                                      ),
+                                                      PopupMenuItem(
+                                                        child: TextButton(
+                                                          onPressed: () =>
+                                                              showDeleteDialog(auth
+                                                                          .current_user[
+                                                                      'animals']
+                                                                  [
+                                                                  index]['id']),
+                                                          child: Text(
+                                                            "Delete animal",
+                                                            style: Theme.of(
+                                                                    context)
+                                                                .primaryTextTheme
+                                                                .subtitle2,
+                                                          ),
+                                                        ),
+                                                        onTap: () {},
                                                       )
                                                     ],
                                                     child: Container(
@@ -909,6 +930,48 @@ class _MyProfileScreenState extends BaseRouteState {
     setState(() {
       _currentIndex = _tabController.index;
     });
+  }
+
+  showDeleteDialog(animal_id) {
+    final auth = Provider.of<Auth>(context, listen: false);
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('Delete Your Animal?',
+                  style: Theme.of(context).primaryTextTheme.subtitle1),
+              content: Text(
+                'Are you sure you want to delete this animal?',
+                style: Theme.of(context).primaryTextTheme.subtitle2,
+              ),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "No",
+                      style: Theme.of(context).primaryTextTheme.subtitle2,
+                    )),
+                TextButton(
+                    onPressed: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      String token = prefs.getString('i-pet-kk');
+                      await dio().delete('/animal/$animal_id',
+                          options: Dio.Options(headers: {
+                            'Authorization': 'Bearer $token',
+                          }));
+                      await auth.tryLogin(true);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => BottomNavigationWidgetLight(
+                                currentIndex: 3,
+                              )));
+                    },
+                    child: Text(
+                      "Yes",
+                      style: Theme.of(context).primaryTextTheme.subtitle1,
+                    ))
+              ],
+            ));
   }
 
   PreferredSizeWidget _appBarWidget() {
