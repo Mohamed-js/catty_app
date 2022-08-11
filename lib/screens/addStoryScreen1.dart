@@ -480,7 +480,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                                           if (response.data !=
                                                               "failed to like") {
                                                             if (response.data[
-                                                                'match']) {
+                                                                'match']==true) {
                                                               setState(() {
                                                                 _showMatch =
                                                                     true;

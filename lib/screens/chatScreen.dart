@@ -182,8 +182,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                     child: CircleAvatar(
                                       radius: 55,
                                       backgroundImage:
-                                          auth.current_user['id'] !=
-                                                  _chat['sender']['id']
+                                          auth.current_user['id'].toString() !=
+                                                  _chat['sender']['id'].toString()
                                               ? NetworkImage(
                                                   '${_chat['sender']['avatar']}',
                                                 )
@@ -203,7 +203,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                auth.current_user['id'] != _chat['sender']['id']
+                                auth.current_user['id'].toString() != _chat['sender']['id'].toString()
                                     ? Text(
                                         _chat['sender']['first_name'][0]
                                                 .toUpperCase() +
@@ -580,7 +580,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       try {
         final auth = Provider.of<Auth>(context, listen: false);
         setState(() {
-          usr = auth.current_user['id'] == _chat['sender_id']
+          usr = auth.current_user['id'].toString() == _chat['sender_id'].toString()
               ? _chat['receiver']
               : _chat['sender'];
         });
@@ -766,7 +766,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 5),
-                                child: currentUser['id'] != msg['sender_id']
+                                child: currentUser['id'].toString() != msg['sender_id'].toString()
                                     ? Text(
                                         _chat['sender']['first_name'][0]
                                                 .toUpperCase() +

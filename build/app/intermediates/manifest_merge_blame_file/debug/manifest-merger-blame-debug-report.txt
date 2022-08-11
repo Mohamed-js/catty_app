@@ -12,117 +12,117 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:6:5-66
-14-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:6:22-64
+14-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:6:5-66
+14-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-15-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:3:5-80
-15-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:3:22-78
+15-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:3:5-80
+15-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:3:22-78
 16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-16-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:4:5-78
-16-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:4:22-76
+16-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:4:5-78
+16-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:4:22-76
 17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-17-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:5:5-80
-17-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:5:22-78
+17-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:5:5-80
+17-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:5:22-78
 18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-18-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:7:5-79
-18-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:7:22-77
+18-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:7:5-79
+18-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:7:22-77
 19    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-19-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:8:5-84
-19-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:8:22-82
+19-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:8:5-84
+19-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:8:22-82
 20    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
-20-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:9:5-92
-20-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:9:22-90
+20-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:9:5-92
+20-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:9:22-90
 21    <uses-permission android:name="android.permission.VIBRATE" />
-21-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:10:5-65
-21-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:10:22-63
+21-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:10:5-65
+21-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:10:22-63
 22    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-22-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-77
-22-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-74
+22-->[:geolocator_android] /Users/mac/Documents/GitHub/catty_app/build/geolocator_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-77
+22-->[:geolocator_android] /Users/mac/Documents/GitHub/catty_app/build/geolocator_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-74
 23    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-23-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-81
-23-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:7:22-78
+23-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
+23-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-78
 24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- for android -->
-24-->[com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:5-79
-24-->[com.google.android.exoplayer:exoplayer-core:2.17.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\087aed1c5c985584f988600a207a73e8\jetified-exoplayer-core-2.17.0\AndroidManifest.xml:24:22-76
+24-->[com.google.android.exoplayer:exoplayer-core:2.17.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/087aed1c5c985584f988600a207a73e8/jetified-exoplayer-core-2.17.0/AndroidManifest.xml:24:5-79
+24-->[com.google.android.exoplayer:exoplayer-core:2.17.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/087aed1c5c985584f988600a207a73e8/jetified-exoplayer-core-2.17.0/AndroidManifest.xml:24:22-76
 25    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
 26    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
 27    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
 28    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
 29    <!-- for Samsung -->
 30    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
-30-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:19:5-86
-30-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:19:22-83
+30-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
+30-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
 31    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
-31-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:20:5-87
-31-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:20:22-84
+31-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
+31-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
 32    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
-32-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:23:5-81
-32-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:23:22-78
+32-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
+32-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
 33    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
-33-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:24:5-83
-33-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:24:22-80
+33-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
+33-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
 34    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
-34-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:27:5-88
-34-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:27:22-85
+34-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
+34-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
 35    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
-35-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:28:5-92
-35-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:28:22-89
+35-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
+35-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
 36    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
-36-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:31:5-84
-36-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:31:22-81
+36-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
+36-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
 37    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
-37-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:34:5-83
-37-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:34:22-80
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
+37-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
 38    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
-38-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:37:5-91
-38-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:37:22-88
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
+38-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
 39    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
-39-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:38:5-92
-39-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:38:22-89
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
+39-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
 40    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
-40-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:39:5-93
-40-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:39:22-90
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
+40-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
 41    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
-41-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:42:5-73
-41-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:42:22-70
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
+41-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
 42    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
-42-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:45:5-82
-42-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:45:22-79
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
+42-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
 43    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
-43-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:46:5-83
-43-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:46:22-80
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
+43-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
 44    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
-44-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:49:5-88
-44-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:49:22-85
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
+44-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
 45    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
-45-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:50:5-89
-45-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\091dc4e4cdcc7b8ff4528057aeb8408e\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:50:22-86
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
+45-->[me.leolin:ShortcutBadger:1.1.22] /Users/mac/.gradle/caches/transforms-2/files-2.1/091dc4e4cdcc7b8ff4528057aeb8408e/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
 46
 47    <application
-47-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:11:4-49:19
+47-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:11:4-49:19
 48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-48-->[androidx.core:core:1.7.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e596bd84a87a4cbdcf9d545f7eacbd1e\core-1.7.0\AndroidManifest.xml:24:18-86
+48-->[androidx.core:core:1.7.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/e596bd84a87a4cbdcf9d545f7eacbd1e/core-1.7.0/AndroidManifest.xml:24:18-86
 49        android:debuggable="true"
 50        android:icon="@mipmap/ic_launcher"
-50-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:13:9-43
+50-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:13:9-43
 51        android:label="PetsMating" >
-51-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:12:9-35
+51-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:12:9-35
 52        <activity
-52-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:14:9-43:20
+52-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:14:9-43:20
 53            android:name="com.etk.PetsMating.MainActivity"
-53-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:15:13-41
+53-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:15:13-41
 54            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-54-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:18:13-163
+54-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:18:13-163
 55            android:exported="true"
-55-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:21:13-36
+55-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:21:13-36
 56            android:hardwareAccelerated="true"
-56-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:19:13-47
+56-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:19:13-47
 57            android:launchMode="singleTop"
-57-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:16:13-43
+57-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:16:13-43
 58            android:theme="@style/LaunchTheme"
-58-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:17:13-47
+58-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:17:13-47
 59            android:windowSoftInputMode="adjustResize" >
-59-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:20:13-55
+59-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:20:13-55
 60
 61            <!--
 62                 Specifies an Android theme to apply to this Activity as soon as
@@ -131,11 +131,11 @@
 65                 to determine the Window background behind the Flutter UI.
 66            -->
 67            <meta-data
-67-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:26:13-29:17
+67-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:26:13-29:17
 68                android:name="io.flutter.embedding.android.NormalTheme"
-68-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:27:15-70
+68-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:27:15-70
 69                android:resource="@style/NormalTheme" />
-69-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:28:15-52
+69-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:28:15-52
 70            <!--
 71                 Displays an Android View that continues showing the launch screen
 72                 Drawable until Flutter paints its first frame, then this splash
@@ -144,21 +144,21 @@
 75                 Flutter's first frame.
 76            -->
 77            <meta-data
-77-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:35:13-38:17
+77-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:35:13-38:17
 78                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-78-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:36:15-79
+78-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:36:15-79
 79                android:resource="@drawable/launch_background" />
-79-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:37:15-61
+79-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:37:15-61
 80
 81            <intent-filter>
-81-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:39:13-42:29
+81-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:39:13-42:29
 82                <action android:name="android.intent.action.MAIN" />
-82-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:40:17-68
-82-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:40:25-66
+82-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:40:17-68
+82-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:40:25-66
 83
 84                <category android:name="android.intent.category.LAUNCHER" />
-84-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:41:17-76
-84-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:41:27-74
+84-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:41:17-76
+84-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:41:27-74
 85            </intent-filter>
 86        </activity>
 87        <!--
@@ -166,170 +166,170 @@
 89             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 90        -->
 91        <meta-data
-91-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:46:9-48:33
+91-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:46:9-48:33
 92            android:name="flutterEmbedding"
-92-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:47:13-44
+92-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:47:13-44
 93            android:value="2" />
-93-->C:\Users\lordd\Documents\GitHub\animal-dating\android\app\src\main\AndroidManifest.xml:48:13-30
+93-->/Users/mac/Documents/GitHub/catty_app/android/app/src/main/AndroidManifest.xml:48:13-30
 94
 95        <service
-95-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-14:56
+95-->[:geolocator_android] /Users/mac/Documents/GitHub/catty_app/build/geolocator_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:9-14:56
 96            android:name="com.baseflow.geolocator.GeolocatorLocationService"
-96-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-77
+96-->[:geolocator_android] /Users/mac/Documents/GitHub/catty_app/build/geolocator_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-77
 97            android:enabled="true"
-97-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-35
+97-->[:geolocator_android] /Users/mac/Documents/GitHub/catty_app/build/geolocator_android/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-35
 98            android:exported="false"
-98-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-37
+98-->[:geolocator_android] /Users/mac/Documents/GitHub/catty_app/build/geolocator_android/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-37
 99            android:foregroundServiceType="location" />
-99-->[:geolocator_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\geolocator_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-53
+99-->[:geolocator_android] /Users/mac/Documents/GitHub/catty_app/build/geolocator_android/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-53
 100
 101        <provider
-101-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+101-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-16:20
 102            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-102-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+102-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-82
 103            android:authorities="com.etk.PetsMating.flutter.image_provider"
-103-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+103-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:10:13-74
 104            android:exported="false"
-104-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+104-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:11:13-37
 105            android:grantUriPermissions="true" >
-105-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+105-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-47
 106            <meta-data
-106-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+106-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-15:75
 107                android:name="android.support.FILE_PROVIDER_PATHS"
-107-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+107-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:14:17-67
 108                android:resource="@xml/flutter_image_picker_file_paths" />
-108-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+108-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-72
 109        </provider>
 110
 111        <receiver
-111-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-13:40
+111-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-13:40
 112            android:name="me.carda.awesome_notifications.notifications.broadcastReceivers.DismissedNotificationReceiver"
-112-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-121
+112-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-121
 113            android:exported="false" />
-113-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-37
+113-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-37
 114        <receiver
-114-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:14:9-16:40
+114-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:14:9-16:40
 115            android:name="me.carda.awesome_notifications.notifications.broadcastReceivers.ScheduledNotificationReceiver"
-115-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-121
+115-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-121
 116            android:exported="false" />
-116-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-37
+116-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-37
 117        <receiver
-117-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-19:40
+117-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:17:9-19:40
 118            android:name="me.carda.awesome_notifications.notifications.broadcastReceivers.KeepOnTopActionReceiver"
-118-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-115
+118-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-115
 119            android:exported="false" />
-119-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-37
+119-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-37
 120        <receiver
-120-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-33:20
+120-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:20:9-33:20
 121            android:name="me.carda.awesome_notifications.notifications.broadcastReceivers.RefreshSchedulesReceiver"
-121-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:21:13-116
+121-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:21:13-116
 122            android:exported="false" >
-122-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:22:13-37
+122-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:22:13-37
 123            <intent-filter>
-123-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-32:29
+123-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-32:29
 124                <category android:name="android.intent.category.DEFAULT" />
-124-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:24:17-76
-124-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:24:27-73
+124-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:24:17-76
+124-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:24:27-73
 125
 126                <action android:name="android.intent.action.BOOT_COMPLETED" />
-126-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-79
-126-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:26:25-76
+126-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:26:17-79
+126-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:26:25-76
 127                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
-127-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:27:17-86
-127-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:27:25-83
+127-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:27:17-86
+127-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:27:25-83
 128                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-128-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:28:17-84
-128-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:28:25-81
+128-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:28:17-84
+128-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:28:25-81
 129                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-129-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:29:17-82
-129-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:29:25-79
+129-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:29:17-82
+129-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:29:25-79
 130                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-130-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:30:17-82
-130-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:30:25-79
+130-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:30:17-82
+130-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:30:25-79
 131                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
-131-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:31:17-107
-131-->[:awesome_notifications] C:\Users\lordd\Documents\GitHub\animal-dating\build\awesome_notifications\intermediates\library_manifest\debug\AndroidManifest.xml:31:25-104
+131-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:31:17-107
+131-->[:awesome_notifications] /Users/mac/Documents/GitHub/catty_app/build/awesome_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:31:25-104
 132            </intent-filter>
 133        </receiver>
 134
 135        <activity
-135-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+135-->[com.google.android.gms:play-services-base:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/2631375de80937c90cd3a1032ab35871/jetified-play-services-base-17.0.0/AndroidManifest.xml:23:9-26:75
 136            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-136-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+136-->[com.google.android.gms:play-services-base:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/2631375de80937c90cd3a1032ab35871/jetified-play-services-base-17.0.0/AndroidManifest.xml:24:13-79
 137            android:exported="false"
-137-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+137-->[com.google.android.gms:play-services-base:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/2631375de80937c90cd3a1032ab35871/jetified-play-services-base-17.0.0/AndroidManifest.xml:25:13-37
 138            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-138-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\2631375de80937c90cd3a1032ab35871\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+138-->[com.google.android.gms:play-services-base:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/2631375de80937c90cd3a1032ab35871/jetified-play-services-base-17.0.0/AndroidManifest.xml:26:13-72
 139
 140        <meta-data
-140-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+140-->[com.google.android.gms:play-services-basement:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/dcffa74d8d015470a7eae32b9eb648c7/jetified-play-services-basement-17.0.0/AndroidManifest.xml:23:9-25:69
 141            android:name="com.google.android.gms.version"
-141-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+141-->[com.google.android.gms:play-services-basement:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/dcffa74d8d015470a7eae32b9eb648c7/jetified-play-services-basement-17.0.0/AndroidManifest.xml:24:13-58
 142            android:value="@integer/google_play_services_version" />
-142-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\dcffa74d8d015470a7eae32b9eb648c7\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+142-->[com.google.android.gms:play-services-basement:17.0.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/dcffa74d8d015470a7eae32b9eb648c7/jetified-play-services-basement-17.0.0/AndroidManifest.xml:25:13-66
 143
 144        <provider
-144-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:12:9-20:20
+144-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:12:9-20:20
 145            android:name="com.sangcomz.fishbun.FishBunFileProvider"
-145-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:13:13-68
+145-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:13:13-68
 146            android:authorities="com.etk.PetsMating.fishbunfileprovider"
-146-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:14:13-71
+146-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:14:13-71
 147            android:exported="false"
-147-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:15:13-37
+147-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:15:13-37
 148            android:grantUriPermissions="true" >
-148-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:16:13-47
+148-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:16:13-47
 149            <meta-data
-149-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+149-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-15:75
 150                android:name="android.support.FILE_PROVIDER_PATHS"
-150-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+150-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:14:17-67
 151                android:resource="@xml/provider_paths" />
-151-->[:image_picker_android] C:\Users\lordd\Documents\GitHub\animal-dating\build\image_picker_android\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+151-->[:image_picker_android] /Users/mac/Documents/GitHub/catty_app/build/image_picker_android/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-72
 152        </provider>
 153
 154        <activity
-154-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:22:9-25:51
+154-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:22:9-25:51
 155            android:name="com.sangcomz.fishbun.ui.album.AlbumActivity"
-155-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:23:13-71
+155-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:23:13-71
 156            android:label="@string/album"
-156-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:24:13-42
+156-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:24:13-42
 157            android:theme="@style/FishBunTheme" />
-157-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:25:13-48
+157-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:25:13-48
 158        <activity
-158-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:26:9-28:51
+158-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:26:9-28:51
 159            android:name="com.sangcomz.fishbun.ui.picker.PickerActivity"
-159-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:27:13-73
+159-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:27:13-73
 160            android:theme="@style/FishBunTheme" />
-160-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:28:13-48
+160-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:28:13-48
 161        <activity
-161-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:29:9-31:54
+161-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:29:9-31:54
 162            android:name="com.sangcomz.fishbun.ui.detail.DetailActivity"
-162-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:30:13-73
+162-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:30:13-73
 163            android:theme="@style/DetailViewTheme" />
-163-->[com.sangcomz:FishBun:0.11.2] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\4d2f13d27fea762c2853c69feb4b46e0\jetified-FishBun-0.11.2\AndroidManifest.xml:31:13-51
+163-->[com.sangcomz:FishBun:0.11.2] /Users/mac/.gradle/caches/transforms-2/files-2.1/4d2f13d27fea762c2853c69feb4b46e0/jetified-FishBun-0.11.2/AndroidManifest.xml:31:13-51
 164
 165        <uses-library
-165-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+165-->[androidx.window:window:1.0.0-beta04] /Users/mac/.gradle/caches/transforms-2/files-2.1/e4e324fde2799cc82a9b6d2e3e16efc2/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
 166            android:name="androidx.window.extensions"
-166-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+166-->[androidx.window:window:1.0.0-beta04] /Users/mac/.gradle/caches/transforms-2/files-2.1/e4e324fde2799cc82a9b6d2e3e16efc2/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
 167            android:required="false" />
-167-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+167-->[androidx.window:window:1.0.0-beta04] /Users/mac/.gradle/caches/transforms-2/files-2.1/e4e324fde2799cc82a9b6d2e3e16efc2/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
 168        <uses-library
-168-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+168-->[androidx.window:window:1.0.0-beta04] /Users/mac/.gradle/caches/transforms-2/files-2.1/e4e324fde2799cc82a9b6d2e3e16efc2/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
 169            android:name="androidx.window.sidecar"
-169-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+169-->[androidx.window:window:1.0.0-beta04] /Users/mac/.gradle/caches/transforms-2/files-2.1/e4e324fde2799cc82a9b6d2e3e16efc2/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
 170            android:required="false" />
-170-->[androidx.window:window:1.0.0-beta04] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\e4e324fde2799cc82a9b6d2e3e16efc2\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+170-->[androidx.window:window:1.0.0-beta04] /Users/mac/.gradle/caches/transforms-2/files-2.1/e4e324fde2799cc82a9b6d2e3e16efc2/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
 171
 172        <provider
-172-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+172-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d3bc5bda275628e07c4cddb45804d355/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
 173            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-173-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+173-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d3bc5bda275628e07c4cddb45804d355/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
 174            android:authorities="com.etk.PetsMating.lifecycle-process"
-174-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+174-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d3bc5bda275628e07c4cddb45804d355/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
 175            android:exported="false"
-175-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+175-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d3bc5bda275628e07c4cddb45804d355/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
 176            android:multiprocess="true" />
-176-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\lordd\.gradle\caches\transforms-2\files-2.1\d3bc5bda275628e07c4cddb45804d355\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+176-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/mac/.gradle/caches/transforms-2/files-2.1/d3bc5bda275628e07c4cddb45804d355/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
 177    </application>
 178
 179</manifest>

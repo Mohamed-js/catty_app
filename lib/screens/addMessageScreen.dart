@@ -220,10 +220,10 @@ class _AddMessageScreenState extends BaseRouteState {
                                               itemCount: appState.chats.length,
                                               itemBuilder: (ctx, index) {
                                                 dynamic _user =
-                                                    auth.current_user['id'] !=
+                                                    auth.current_user['id'].toString() !=
                                                             appState.chats[
                                                                     index]
-                                                                ['sender_id']
+                                                                ['sender_id'].toString()
                                                         ? appState.chats[index]
                                                             ['sender']
                                                         : appState.chats[index]
@@ -405,9 +405,9 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                               [
                                                                               'last_message']
                                                                           [
-                                                                          'sender_id'] !=
+                                                                          'sender_id'].toString() !=
                                                                       auth.current_user[
-                                                                          'id']
+                                                                          'id'].toString()
                                                                   ? Expanded(
                                                                       child:
                                                                           Align(
@@ -452,9 +452,9 @@ class _AddMessageScreenState extends BaseRouteState {
                                               itemCount: _chatsToShow.length,
                                               itemBuilder: (ctx, index) {
                                                 dynamic _user =
-                                                    auth.current_user['id'] !=
+                                                    auth.current_user['id'].toString() !=
                                                             _chatsToShow[index]
-                                                                ['sender_id']
+                                                                ['sender_id'].toString()
                                                         ? _chatsToShow[index]
                                                             ['sender']
                                                         : _chatsToShow[index]
@@ -638,9 +638,9 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                               [
                                                                               'last_message']
                                                                           [
-                                                                          'sender_id'] !=
+                                                                          'sender_id'].toString() !=
                                                                       auth.current_user[
-                                                                          'id']
+                                                                          'id'].toString()
                                                                   ? Expanded(
                                                                       child:
                                                                           Align(

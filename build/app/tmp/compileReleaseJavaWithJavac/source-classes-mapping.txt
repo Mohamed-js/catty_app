@@ -1,6 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/etk/PetsMating/BuildConfig.java
- com.etk.PetsMating.BuildConfig
-com/example/datingapp/MainActivity.java
- com.etk.PetsMating.MainActivity
