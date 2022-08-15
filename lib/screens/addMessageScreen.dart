@@ -219,15 +219,16 @@ class _AddMessageScreenState extends BaseRouteState {
                                           child: ListView.builder(
                                               itemCount: appState.chats.length,
                                               itemBuilder: (ctx, index) {
-                                                dynamic _user =
-                                                    auth.current_user['id'].toString() !=
-                                                            appState.chats[
-                                                                    index]
-                                                                ['sender_id'].toString()
-                                                        ? appState.chats[index]
-                                                            ['sender']
-                                                        : appState.chats[index]
-                                                            ['receiver'];
+                                                dynamic _user = auth
+                                                            .current_user['id']
+                                                            .toString() !=
+                                                        appState.chats[index]
+                                                                ['sender_id']
+                                                            .toString()
+                                                    ? appState.chats[index]
+                                                        ['sender']
+                                                    : appState.chats[index]
+                                                        ['receiver'];
                                                 return Container(
                                                   alignment: Alignment.center,
                                                   margin:
@@ -399,15 +400,18 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                       ),
                                                           ),
                                                           appState.chats[index][
-                                                                      'unread_messages_count'] ==
+                                                                      'unread_messages_count'] !=
                                                                   '0'
-                                                              ? appState.chats[index]
+                                                              ? appState.chats[
+                                                                              index]
                                                                               [
                                                                               'last_message']
-                                                                          [
-                                                                          'sender_id'].toString() !=
+                                                                              [
+                                                                              'sender_id']
+                                                                          .toString() !=
                                                                       auth.current_user[
-                                                                          'id'].toString()
+                                                                              'id']
+                                                                          .toString()
                                                                   ? Expanded(
                                                                       child:
                                                                           Align(
@@ -451,14 +455,16 @@ class _AddMessageScreenState extends BaseRouteState {
                                           child: ListView.builder(
                                               itemCount: _chatsToShow.length,
                                               itemBuilder: (ctx, index) {
-                                                dynamic _user =
-                                                    auth.current_user['id'].toString() !=
-                                                            _chatsToShow[index]
-                                                                ['sender_id'].toString()
-                                                        ? _chatsToShow[index]
-                                                            ['sender']
-                                                        : _chatsToShow[index]
-                                                            ['receiver'];
+                                                dynamic _user = auth
+                                                            .current_user['id']
+                                                            .toString() !=
+                                                        _chatsToShow[index]
+                                                                ['sender_id']
+                                                            .toString()
+                                                    ? _chatsToShow[index]
+                                                        ['sender']
+                                                    : _chatsToShow[index]
+                                                        ['receiver'];
                                                 return Container(
                                                   alignment: Alignment.center,
                                                   margin:
@@ -632,15 +638,15 @@ class _AddMessageScreenState extends BaseRouteState {
                                                                       ),
                                                           ),
                                                           _chatsToShow[index][
-                                                                      'unread_messages_count'] ==
+                                                                      'unread_messages_count'] !=
                                                                   '0'
-                                                              ? _chatsToShow[index]
+                                                              ? _chatsToShow[index]['last_message']
                                                                               [
-                                                                              'last_message']
-                                                                          [
-                                                                          'sender_id'].toString() !=
+                                                                              'sender_id']
+                                                                          .toString() !=
                                                                       auth.current_user[
-                                                                          'id'].toString()
+                                                                              'id']
+                                                                          .toString()
                                                                   ? Expanded(
                                                                       child:
                                                                           Align(
@@ -701,10 +707,18 @@ class _AddMessageScreenState extends BaseRouteState {
       setState(() {
         _chatsToShow = appState.chats
             .where((chat) =>
-                chat['sender']['first_name'].contains(_filter.text) ||
-                chat['sender']['last_name'].contains(_filter.text) ||
-                chat['receiver']['first_name'].contains(_filter.text) ||
-                chat['receiver']['last_name'].contains(_filter.text))
+                chat['sender']['first_name']
+                    .toLowerCase()
+                    .contains(_filter.text.toLowerCase()) ||
+                chat['sender']['last_name']
+                    .toLowerCase()
+                    .contains(_filter.text.toLowerCase()) ||
+                chat['receiver']['first_name']
+                    .toLowerCase()
+                    .contains(_filter.text.toLowerCase()) ||
+                chat['receiver']['last_name']
+                    .toLowerCase()
+                    .contains(_filter.text.toLowerCase()))
             .toList();
       });
     }

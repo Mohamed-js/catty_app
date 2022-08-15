@@ -27,7 +27,7 @@ class _AddStoryScreenState extends BaseRouteState {
   int _upDirection;
   bool _openDialog = false;
   bool _showMatch = false;
-
+  CardController _cardController;
   String token = '';
 
   List<String> welcomeImages = [
@@ -374,7 +374,7 @@ class _AddStoryScreenState extends BaseRouteState {
                                                     // )
                                                     ,
                                                     cardController:
-                                                        CardController(),
+                                                        _cardController,
                                                     swipeUpdateCallback:
                                                         (DragUpdateDetails
                                                                 details,
@@ -480,7 +480,9 @@ class _AddStoryScreenState extends BaseRouteState {
                                                           if (response.data !=
                                                               "failed to like") {
                                                             if (response.data[
-                                                                'match']==true) {
+                                                                        'match']
+                                                                    .toString() ==
+                                                                'true') {
                                                               setState(() {
                                                                 _showMatch =
                                                                     true;
@@ -550,74 +552,87 @@ class _AddStoryScreenState extends BaseRouteState {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        InkWell(
-                                          onTap: () {},
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.only(left: 5),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 8),
+                                          child: InkWell(
+                                            onTap: () {
+                                              _cardController.triggerLeft();
+                                            },
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 5),
+                                              child: CircleAvatar(
+                                                backgroundColor:
+                                                    Color(0xFFF0384F),
+                                                radius: 24,
+                                                child: CircleAvatar(
+                                                  radius: 22,
+                                                  backgroundColor:
+                                                      _leftDirection < 0
+                                                          ? Color(0xFFF0384F)
+                                                          : Colors.white,
+                                                  child: Icon(
+                                                    Icons.close,
+                                                    color: _leftDirection < 0
+                                                        ? Colors.white
+                                                        : Color(0xFFF0384F),
+                                                    size: 22,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        // InkWell(
+                                        //   onTap: () {},
+                                        //   child: Padding(
+                                        //     padding: const EdgeInsets.symmetric(
+                                        //         horizontal: 10),
+                                        //     child: CircleAvatar(
+                                        //       backgroundColor: Colors.blue,
+                                        //       radius: 20,
+                                        //       child: CircleAvatar(
+                                        //         radius: 18,
+                                        //         backgroundColor:
+                                        //             _upDirection == 3
+                                        //                 ? Colors.blue
+                                        //                 : Colors.white,
+                                        //         child: Icon(
+                                        //           Icons.star,
+                                        //           color: _upDirection == 3
+                                        //               ? Colors.white
+                                        //               : Colors.blue,
+                                        //           size: 18,
+                                        //         ),
+                                        //       ),
+                                        //     ),
+                                        //   ),
+                                        // ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 8),
+                                          child: InkWell(
+                                            onTap: () {
+                                              _cardController.triggerRight();
+                                            },
                                             child: CircleAvatar(
                                               backgroundColor:
-                                                  Color(0xFFF0384F),
+                                                  Color(0xFF34F07F),
                                               radius: 24,
                                               child: CircleAvatar(
                                                 radius: 22,
                                                 backgroundColor:
-                                                    _leftDirection < 0
-                                                        ? Color(0xFFF0384F)
+                                                    _rightDirection > 0
+                                                        ? Color(0xFF34F07F)
                                                         : Colors.white,
                                                 child: Icon(
-                                                  Icons.close,
-                                                  color: _leftDirection < 0
+                                                  Icons.favorite,
+                                                  color: _rightDirection > 0
                                                       ? Colors.white
-                                                      : Color(0xFFF0384F),
+                                                      : Color(0xFF34F07F),
                                                   size: 22,
                                                 ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () {},
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10),
-                                            child: CircleAvatar(
-                                              backgroundColor: Colors.blue,
-                                              radius: 20,
-                                              child: CircleAvatar(
-                                                radius: 18,
-                                                backgroundColor:
-                                                    _upDirection == 3
-                                                        ? Colors.blue
-                                                        : Colors.white,
-                                                child: Icon(
-                                                  Icons.star,
-                                                  color: _upDirection == 3
-                                                      ? Colors.white
-                                                      : Colors.blue,
-                                                  size: 18,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        InkWell(
-                                          onTap: () {},
-                                          child: CircleAvatar(
-                                            backgroundColor: Color(0xFF34F07F),
-                                            radius: 24,
-                                            child: CircleAvatar(
-                                              radius: 22,
-                                              backgroundColor:
-                                                  _rightDirection > 0
-                                                      ? Color(0xFF34F07F)
-                                                      : Colors.white,
-                                              child: Icon(
-                                                Icons.favorite,
-                                                color: _rightDirection > 0
-                                                    ? Colors.white
-                                                    : Color(0xFF34F07F),
-                                                size: 22,
                                               ),
                                             ),
                                           ),
@@ -641,6 +656,7 @@ class _AddStoryScreenState extends BaseRouteState {
     final appState = Provider.of<AppState>(context, listen: false);
 
     setState(() {
+      _cardController = new CardController();
       authy = auth;
       appStaty = appState;
     });

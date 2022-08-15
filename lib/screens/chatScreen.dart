@@ -181,15 +181,15 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                                     backgroundColor: Colors.white,
                                     child: CircleAvatar(
                                       radius: 55,
-                                      backgroundImage:
-                                          auth.current_user['id'].toString() !=
-                                                  _chat['sender']['id'].toString()
-                                              ? NetworkImage(
-                                                  '${_chat['sender']['avatar']}',
-                                                )
-                                              : NetworkImage(
-                                                  '${_chat['receiver']['avatar']}',
-                                                ),
+                                      backgroundImage: auth.current_user['id']
+                                                  .toString() !=
+                                              _chat['sender']['id'].toString()
+                                          ? NetworkImage(
+                                              '${_chat['sender']['avatar']}',
+                                            )
+                                          : NetworkImage(
+                                              '${_chat['receiver']['avatar']}',
+                                            ),
                                       backgroundColor: Colors.transparent,
                                     ),
                                   ),
@@ -203,7 +203,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                auth.current_user['id'].toString() != _chat['sender']['id'].toString()
+                                auth.current_user['id'].toString() !=
+                                        _chat['sender']['id'].toString()
                                     ? Text(
                                         _chat['sender']['first_name'][0]
                                                 .toUpperCase() +
@@ -576,22 +577,8 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       }
     }
 
-    void getUsr() {
-      try {
-        final auth = Provider.of<Auth>(context, listen: false);
-        setState(() {
-          usr = auth.current_user['id'].toString() == _chat['sender_id'].toString()
-              ? _chat['receiver']
-              : _chat['sender'];
-        });
-      } catch (e) {
-        print(e);
-      }
-    }
-
     Future getChatUsr() async {
       await getChat();
-      getUsr();
     }
 
     void getFontSize() async {
@@ -766,35 +753,16 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 5),
-                                child: currentUser['id'].toString() != msg['sender_id'].toString()
-                                    ? Text(
-                                        _chat['sender']['first_name'][0]
-                                                .toUpperCase() +
-                                            _chat['sender']['first_name']
-                                                .substring(1) +
-                                            " " +
-                                            _chat['sender']['last_name'][0]
-                                                .toUpperCase() +
-                                            _chat['sender']['last_name']
-                                                .substring(1),
-                                        style: Theme.of(context)
-                                            .accentTextTheme
-                                            .headline6,
-                                      )
-                                    : Text(
-                                        _chat['receiver']['first_name'][0]
-                                                .toUpperCase() +
-                                            _chat['receiver']['first_name']
-                                                .substring(1) +
-                                            " " +
-                                            _chat['receiver']['last_name'][0]
-                                                .toUpperCase() +
-                                            _chat['receiver']['last_name']
-                                                .substring(1),
-                                        style: Theme.of(context)
-                                            .accentTextTheme
-                                            .headline6,
-                                      ),
+                                child: Text(
+                                  usr['first_name'][0].toUpperCase() +
+                                      usr['first_name'].substring(1) +
+                                      " " +
+                                      usr['last_name'][0].toUpperCase() +
+                                      usr['last_name'].substring(1),
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .headline6,
+                                ),
                               ),
                               Text(
                                 msg['body'],
@@ -871,6 +839,11 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         .chats
         .where((chat) => chat['id'] == widget.chat_id)
         .toList()[0];
+    setState(() {
+      usr = auth.current_user['id'].toString() == _chat['sender_id'].toString()
+          ? _chat['receiver']
+          : _chat['sender'];
+    });
     setState(() {
       _messages = [];
 
